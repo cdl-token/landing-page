@@ -1,6 +1,7 @@
 {
   "name": "cdl-token",
   "version": "0.1.0",
+  "description": "CDL Token frontend",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
