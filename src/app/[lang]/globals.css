@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #060606;
+  color: #fff;
+}
+
+.ticker-container:hover > * {
+  animation-play-state: paused;
+}
+
+.ticker-text {
+  white-space: nowrap;
+  animation: ticker 40s linear infinite; /* Adjust the duration as needed */
+  white-space: nowrap;
+}
+
+.ticker-text2 {
+  white-space: nowrap;
+  animation: ticker2 40s linear infinite; /* Adjust the duration as needed */
+  position: absolute;
+  white-space: nowrap;
+}
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes ticker2 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

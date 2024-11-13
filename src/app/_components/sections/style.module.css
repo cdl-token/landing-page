@@ -1,0 +1,19 @@
+/* Add stronger glow animation */
+.glowing-svg {
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    filter: url(#filter0_f_60_3587) drop-shadow(0 0 15px #ff00ff)
+      drop-shadow(0 0 25px #ff00ff);
+  }
+  50% {
+    filter: url(#filter0_f_60_3587) drop-shadow(0 0 40px #ff00ff)
+      drop-shadow(0 0 50px #ff00ff);
+  }
+  100% {
+    filter: url(#filter0_f_60_3587) drop-shadow(0 0 15px #ff00ff)
+      drop-shadow(0 0 25px #ff00ff);
+  }
+}
