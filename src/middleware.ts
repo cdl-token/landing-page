@@ -3,7 +3,7 @@ import { getLocation } from "./utils/location";
 
 const locales = ["fr", "en", "es", "ru"];
 
-async function getLocale(request: NextRequest): Promise<string> {
+async function getLocale(): Promise<string> {
   const location = await getLocation();
   const country = location.country;
 
@@ -29,7 +29,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse | v
   if (pathname.includes("/static") || pathname.includes("/favicon")) return;
   if (pathnameHasLocale) return;
 
-  const locale = await getLocale(request);
+  const locale = await getLocale();
   if (locales.includes(locale)) {
     request.nextUrl.pathname = `/${locale}${pathname}`;
     return NextResponse.redirect(request.nextUrl);

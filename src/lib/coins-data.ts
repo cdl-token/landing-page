@@ -30,7 +30,7 @@ export const getMovingBarData = async (): Promise<CoinData[]> => {
           id: data.map((token) => token.id).join(","),
         },
         headers,
-      }
+      },
     );
 
     const detailedDataMap: { [key: string]: { logo: string } } =
@@ -42,6 +42,7 @@ export const getMovingBarData = async (): Promise<CoinData[]> => {
     }));
     return updatedData;
   } catch (err) {
+    console.log("Error", err);
     return [];
   }
 };

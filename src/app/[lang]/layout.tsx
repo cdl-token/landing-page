@@ -37,16 +37,11 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
   children: React.ReactNode;
-  params: {
-    [key: string]: string | undefined;
-  };
+  params: Promise<{ lang: string }>;
 }
 
-export default function RootLayout({
-  children,
-  params,
-}: Readonly<RootLayoutProps>) {
-  const lang = params.lang;
+export default async function RootLayout({ children, params }: RootLayoutProps) {
+  const lang = (await params).lang;
   return (
     <html lang="en">
       <body className={`${neueMachinaFont.variable} ${apfelFont.variable}`}>
