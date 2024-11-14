@@ -9,7 +9,7 @@ const MovingBar = async (): Promise<JSX.Element> => {
     <div
       className={`ticker-text${
         number === 2 ? "2" : ""
-      } text-neutralLight z-[999] flex h-[36px] w-fit select-none items-center gap-x-16 overflow-hidden bg-black px-5 text-white`}
+      } text-neutralLight z-50 flex h-[36px] w-fit select-none items-center gap-x-16 overflow-hidden bg-black px-5 text-white`}
     >
       {data?.map((coin, index) => (
         <div className="flex gap-x-4" key={index}>

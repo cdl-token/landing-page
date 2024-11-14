@@ -1,9 +1,21 @@
 "use client";
 
-const SecondaryButton = ({ title, ...props }: { title: string }) => {
+import { cn } from "@/lib/utils";
+
+const SecondaryButton = ({
+  className = "",
+  title,
+  ...props
+}: {
+  className?: string;
+  title: string;
+}) => {
   return (
     <button
-      className="bg-transparent border border-white font-neue font-bold flex items-center justify-center rounded-md px-5 py-3"
+      className={cn(
+        "flex items-center justify-center rounded-md border border-white bg-transparent px-5 py-3 font-neue font-bold",
+        className,
+      )}
       {...props}
     >
       {title}

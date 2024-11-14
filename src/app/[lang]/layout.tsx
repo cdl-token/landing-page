@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "../_components/header/Header";
+import MovingBar from "../_components/header/MovingBar";
+import Footer from "../_components/footer/Footer";
 
 const neueMachinaFont = localFont({
   src: [
@@ -44,9 +46,11 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   const lang = (await params).lang;
   return (
     <html lang="en">
-      <body className={`${neueMachinaFont.variable} ${apfelFont.variable}`}>
+      <body className={`${neueMachinaFont.variable} ${apfelFont.variable} scrollbar-none`}>
+        <MovingBar />
         <Header lang={lang} />
         {children}
+        <Footer />
       </body>
     </html>
   );

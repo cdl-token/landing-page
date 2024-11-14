@@ -1,9 +1,21 @@
 "use client";
 
-const PrimaryButton = ({ title, ...props }: { title: string }) => {
+import { cn } from "@/lib/utils";
+
+const PrimaryButton = ({
+  className = "",
+  title,
+  ...props
+}: {
+  className?: string;
+  title: string;
+}) => {
   return (
     <button
-      className="bg-primary text-black font-neue font-bold flex items-center justify-center rounded-md px-5 py-3"
+      className={cn(
+        "flex items-center justify-center rounded-md bg-primary px-5 py-3 font-neue font-bold text-black",
+        className,
+      )}
       {...props}
     >
       {title}

@@ -24,7 +24,7 @@ const NavLinks = ({ lang = "en" }) => {
     },
   ];
   return (
-    <div className="flex items-center gap-8 px-10">
+    <div className="hidden lg:flex items-center gap-8 px-10">
       {headerLinks.map((link, index) => (
         <Link
           className="font-apfel text-lg font-bold"

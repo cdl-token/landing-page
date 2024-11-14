@@ -4,8 +4,8 @@ import SecondaryButton from "@/components/buttons/SecondaryButton";
 const MainBanner = () => {
   return (
     <div className="relative flex h-full min-h-screen w-full items-center justify-center overflow-hidden">
-      <div className="z-10 flex w-full max-w-7xl flex-col gap-12 px-5 pt-10">
-        <div className="animate-slideIn flex flex-col gap-2 font-neue text-5xl font-bold uppercase">
+      <div className="z-10 flex w-full max-w-7xl flex-col border-b justify-center border-white/30 min-h-screen gap-12 px-5 pt-10">
+        <div className="animate-slideIn flex flex-col gap-2 font-neue text-4xl md:text-5xl font-bold uppercase">
           <span className="text-primary">Your Gateway to</span>
           <span>real-time</span>
           <span>crypto data</span>
@@ -24,11 +24,12 @@ const MainBanner = () => {
         {gradientBg}
       </div>
       <div
-        className="absolute right-0 top-0 h-[95vh] w-[500px] bg-cover bg-center bg-no-repeat"
+        className="absolute hidden lg:block right-0 top-0 h-[95vh] w-[30vw] bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: "url(/static/banner-bg.png",
         }}
-      ></div>
+      >
+      </div>
     </div>
   );
 };
