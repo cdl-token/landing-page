@@ -13,7 +13,7 @@ const PrimaryButton = ({
   return (
     <button
       className={cn(
-        "flex items-center justify-center rounded-md bg-primary px-5 py-3 font-neue font-bold text-black",
+        "flex items-center justify-center text-nowrap pt-1 rounded-md bg-primary px-5 py-3 font-neue font-bold text-black",
         className,
       )}
       {...props}

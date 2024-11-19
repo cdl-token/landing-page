@@ -5,10 +5,17 @@ import HeaderLogo from "./HeaderLogo";
 import NavLinks from "./NavLinks";
 import { useEffect, useState } from "react";
 import HeaderSheet from "./HeaderSheet";
+import { cn } from "@/lib/utils";
 
 const Header = ({ lang = "en" }: { lang: string }) => {
+  const [isClient, setIsClient] = useState(false);
+  useEffect(()=>{
+    setIsClient(true);
+  }, []);
+
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
   const controlNavbar = () => {
     if (typeof window !== "undefined") {
       if (window.scrollY > 36 && window.scrollY > lastScrollY) {
@@ -33,10 +40,17 @@ const Header = ({ lang = "en" }: { lang: string }) => {
   }, [lastScrollY]);
   return (
     <header
-      className={`fixed z-50 w-full flex-col transition-all duration-150 ease-in ${window.scrollY > 36 && "top-0"} ${isVisible ? "flex" : "hidden"}`}
+      className={cn(
+        "fixed z-50 w-full flex-col transition-all duration-150 ease-in",
+        isClient && window.scrollY > 36 && "top-0",
+        isVisible ? "flex" : "hidden",
+      )}
     >
       <div
-        className={`flex w-full items-center justify-center transition-all duration-150 ease-in ${window.scrollY > 36 ? "bg-black/50" : "py-3"}`}
+        className={cn(
+          "flex w-full items-center justify-center transition-all duration-150 ease-in",
+          isClient && window.scrollY > 36 ? "bg-black/50" : "py-3",
+        )}
       >
         <div className="flex w-full max-w-[82rem] items-center justify-between gap-5 pl-2 pr-5">
           <div className="flex items-center">

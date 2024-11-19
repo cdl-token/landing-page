@@ -46,7 +46,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   const lang = (await params).lang;
   return (
     <html lang="en">
-      <body className={`${neueMachinaFont.variable} ${apfelFont.variable} scrollbar-none`}>
+      <body className={`${neueMachinaFont.variable} ${apfelFont.variable} font-apfel scrollbar-none`}>
         <MovingBar />
         <Header lang={lang} />
         {children}

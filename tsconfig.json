@@ -29,6 +29,6 @@
     "src/custom.d.ts",
     ".next/types/**/*.ts",
     "src/app/_components/footer/footer-icons.tsx"
-  ],
+, "src/app/_components/sections/tokenomics/TotalSuppliesChart.jsx"  ],
   "exclude": ["node_modules"]
 }

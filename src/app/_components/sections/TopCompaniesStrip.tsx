@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const TopCompaniesStrip = () => {
   return (
-    <div className="flex w-full flex-col items-center justify-center">
+    <section className="flex w-full flex-col items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col gap-5 px-5 py-5">
         <div className="flex w-full flex-col gap-2">
           <h2 className="font-apfel text-lg font-bold">
@@ -45,7 +45,7 @@ const TopCompaniesStrip = () => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
