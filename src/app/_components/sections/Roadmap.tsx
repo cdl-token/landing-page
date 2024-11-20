@@ -134,9 +134,9 @@ const gradientSvg = (
         width="1494.31"
         height="1787.02"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -156,8 +156,8 @@ const gradientSvg = (
         y2="454.882"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#F7931A" />
-        <stop offset="0.61947" stop-color="#3104C2" />
+        <stop stopColor="#F7931A" />
+        <stop offset="0.61947" stopColor="#3104C2" />
       </linearGradient>
     </defs>
   </svg>
