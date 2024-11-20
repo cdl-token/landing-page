@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const PresaleSection = () => {
   return (
-    <div className="max-w-screen relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden py-40">
+    <div className="max-w-screen relative flex min-h-screen w-full flex-col items-center justify-center py-40">
       <div className="grid w-full max-w-7xl gap-20 px-5 lg:grid-cols-2">
         <PresaleCard />
         <div className="flex flex-col gap-5 py-20">
@@ -21,7 +21,7 @@ const PresaleSection = () => {
           <Image src="/static/globe.png" width={733} height={659} alt="globe" />
         </div>
       </div>
-      <div className="absolute -z-10">{gradientSvg}</div>
+      <div className="absolute bottom-0 -z-10">{gradientSvg}</div>
     </div>
   );
 };
@@ -32,6 +32,7 @@ const gradientSvg = (
     height="1625"
     viewBox="0 0 1721 1625"
     fill="none"
+    className="xl:w-screen"
     xmlns="http://www.w3.org/2000/svg"
   >
     <g filter="url(#filter0_f_3010_181)">

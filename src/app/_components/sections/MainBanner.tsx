@@ -4,7 +4,7 @@ import SecondaryButton from "@/components/buttons/SecondaryButton";
 const MainBanner = () => {
   return (
     <section className="relative flex h-full min-h-screen w-full items-center justify-center overflow-hidden">
-      <div className="z-10 flex w-full max-w-7xl flex-col border-b justify-center border-white/30 min-h-screen gap-12 px-5 pt-10">
+      <div className="z-10 flex w-full max-w-7xl flex-col justify-center border-b border-white/30 min-h-screen gap-12 px-5 pt-10">
         <div className="animate-slideIn flex flex-col gap-2 font-neue text-4xl md:text-5xl font-bold uppercase">
           <span className="text-primary">Your Gateway to</span>
           <span>real-time</span>

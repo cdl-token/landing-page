@@ -85,6 +85,7 @@ const gradientSvg = (
     viewBox="0 0 1721 1736"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="xl:w-screen"
   >
     <g filter="url(#filter0_f_177_441)">
       <path
