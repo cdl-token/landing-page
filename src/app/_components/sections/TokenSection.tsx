@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import ContactFooter from "../footer/ContactFooter";
 
 const TokenSection = () => {
   const leftToRightVariants = {
@@ -32,19 +33,19 @@ const TokenSection = () => {
     },
   };
   return (
-    <div className=" grid h-auto items-center justify-center">
-      <div className="py-20 flex flex-col border-t border-white/30 px-4 pl-8 md:flex-row md:gap-8 lg:justify-end lg:gap-0">
+    <div className="grid h-auto items-center justify-center">
+      <div className="py-20 flex flex-col border-t border-white/30 px-4 pl-8 md:flex-row md:gap-8 lg:justify-end lg:gap-10">
         <motion.div
-          className="flex max-w-[38.7rem] flex-col md:max-w-[36.7rem] lg:max-w-[36.7rem]"
+          className="flex max-w-[38.7rem] static z-10 flex-col md:max-w-[34.7rem] lg:max-w-[34.7rem]"
           initial="hide"
           whileInView="show"
           exit="show"
           variants={leftToRightVariants}
         >
-          <h3 className="lg:[37.96px] text-wrap font-neue text-xl font-bold uppercase leading-[42.64px] md:text-3xl">
+          <h3 className="lg:[37.96px] text-wrap font-neue text-xl font-bold uppercase leading-[42.64px] md:text-4xl">
             Gain access to real-time and historical data for your favorite
             assets
-          </h3>
+          </h3> 
 
           <p className="text-white/50 mt-8 text-wrap text-[16px] leading-[24px]">
             Empower yourself to manage your cryptocurrencies, NFTs, and other
@@ -103,6 +104,7 @@ const TokenSection = () => {
           </motion.div>
         </motion.div>
       </div>
+      <ContactFooter />
     </div>
   );
 };

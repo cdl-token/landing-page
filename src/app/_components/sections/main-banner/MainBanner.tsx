@@ -1,34 +1,47 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
+import AccountCard from "./AccountCard";
+import TransactionCard from "./TransactionsCard";
 
 const MainBanner = () => {
   return (
-    <section className="relative flex h-full min-h-screen w-full items-center justify-center overflow-hidden">
-      <div className="z-10 flex w-full max-w-7xl flex-col justify-center border-b border-white/30 min-h-screen gap-12 px-5 pt-10">
-        <div className="animate-slideIn flex flex-col gap-2 font-neue text-4xl md:text-5xl font-bold uppercase">
+    <section className="relative flex h-full w-full items-center justify-center overflow-hidden">
+      <div className="relative z-10 flex min-h-screen w-full max-w-7xl flex-col justify-center gap-12 border-b border-white/30 pl-5 pt-10 2xl:min-h-[900px]">
+        <div className="flex animate-slideIn flex-col gap-2 pt-32 font-neue text-4xl font-bold uppercase sm:pt-28 md:text-5xl">
           <span className="text-primary">Your Gateway to</span>
           <span>real-time</span>
           <span>crypto data</span>
         </div>
-        <p className="animate-slideIn w-full max-w-[597px]">
+        <p className="w-full max-w-[597px] animate-slideIn">
           Stay ahead in the crypto market with live price updates, market
           insights, and comprehensive analytics, empowering you to make smart,
           informed investment decisions at every moment.
         </p>
-        <div className="animate-slideIn flex items-center gap-5">
+        <div className="flex animate-slideIn items-center gap-5 pb-20">
           <PrimaryButton title="Buy CDL Token" />
           <SecondaryButton title="Details" />
         </div>
+        <div className="hidden">
+          <TransactionCard />
+        </div>
+        <div className="hidden">
+          <AccountCard />
+        </div>
+        <div className="hidden md:block absolute left-[65%] top-32 z-20">
+          <AccountCard />
+        </div>
+        <div className="hidden md:block absolute left-[50%] bottom-16 z-20">
+          <TransactionCard />
+        </div>
+        <div
+          className="absolute -right-20 top-0 hidden h-[96%] w-[40%] bg-cover bg-center bg-no-repeat lg:block"
+          style={{
+            backgroundImage: "url(/static/banner-bg.png",
+          }}
+        ></div>
       </div>
       <div className="absolute left-[-510px] top-[-568px] -z-10">
         {gradientBg}
-      </div>
-      <div
-        className="absolute hidden lg:block right-0 top-0 h-[95vh] w-[30vw] bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url(/static/banner-bg.png",
-        }}
-      >
       </div>
     </section>
   );

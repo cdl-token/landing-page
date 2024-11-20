@@ -2,7 +2,7 @@ import React from "react";
 
 const Roadmap = () => {
   return (
-    <section className="max-w-screen flex w-full items-center justify-center">
+    <section className="max-w-screen relative flex w-full items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-5 border-t border-white/30 px-5 py-20">
         <h1 className="font-neue text-4xl font-bold">Roadmap</h1>
         <span className="max-w-[520px] text-center font-apfel">
@@ -108,6 +108,9 @@ const Roadmap = () => {
           </div>
         </div>
       </div>
+      <div className="absolute -top-20 left-0">
+        {gradientSvg}
+      </div>
     </section>
   );
 };
@@ -116,6 +119,7 @@ const gradientSvg = (
   <svg
     width="921"
     height="1788"
+    className=""
     viewBox="0 0 921 1788"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

@@ -3,7 +3,7 @@ import Image from "next/image";
 const FeaturesSection = () => {
   return (
     <section className="relative flex w-full items-center justify-center">
-      <div className="static z-10 flex min-h-screen w-full max-w-7xl flex-col gap-10 border-t border-white/30 px-5 py-20">
+      <div className="static z-10 flex w-full max-w-7xl flex-col gap-10 border-t border-white/30 px-5 py-20">
         <h1 className="font-neue text-5xl font-bold uppercase">
           Features and benefits
         </h1>

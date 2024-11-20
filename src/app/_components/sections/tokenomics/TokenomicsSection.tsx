@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import TotalSuppliesChart from "./TotalSuppliesChart";
-import TokenomicsChart2 from "./TokenomicsChart2";
 import Card from "./Card";
+import Image from "next/image";
 
 const TokenomicsSection = () => {
   const leftToRightVariants = {
@@ -44,24 +43,30 @@ const TokenomicsSection = () => {
           of crypto data solutions and drive platform succes
         </span>
         <motion.div
-          className="grid h-full w-full max-w-7xl grid-cols-1 gap-y-5 px-20 py-20 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid h-full w-full max-w-7xl grid-cols-1 gap-y-5 px-5 py-5 sm:grid-cols-2 md:px-20 md:py-20 lg:grid-cols-4"
           initial="hide"
           whileInView="show"
           exit="show"
           variants={rightToLeftVariants}
         >
-          <TotalSuppliesChart />
+          {/* <TotalSuppliesChart /> */}
+          <Image
+            src="/static/charts/chart1.svg"
+            width={380}
+            height={380}
+            alt="chart 1"
+          />
           <div className="flex flex-col justify-center gap-y-4">
             <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#dfebbc]"></div>
+              <div className="h-4 w-4 bg-[#7100BD]"></div>
               <h2>15% Private Sale</h2>
             </div>
             <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#CE86FF]"></div>
+              <div className="h-4 w-4 bg-[#D1A3FF]"></div>
               <h2>15% Public Sale</h2>
             </div>
             <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#F7931A]"></div>
+              <div className="h-4 w-4 bg-[#7F38CC]"></div>
               <h2>10% Partnership Funds</h2>
             </div>
             <div className="flex items-center gap-x-3">
@@ -69,27 +74,37 @@ const TokenomicsSection = () => {
               <h2>15% Staking Reward</h2>
             </div>
             <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#fedb32]"></div>
+              <div className="h-4 w-4 bg-[#5A199A]"></div>
               <h2>5% Team Pool</h2>
             </div>
           </div>
-          <TokenomicsChart2 />
-          <div className="flex flex-col justify-center gap-y-4">
+          {/* <TokenomicsChart2 /> */}
+          <Image
+            src="/static/charts/chart2.svg"
+            width={380}
+            height={380}
+            alt="chart 1"
+          />
+          <div className="flex flex-col justify-center gap-y-4 pl-5">
             <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#5A189A]"></div>
-              <h2>10% Operations</h2>
+              <div className="h-4 w-4 bg-[#CFD4C1]"></div>
+              <h2>15% Private Sale</h2>
             </div>
             <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#7F38CC]"></div>
-              <h2>5% Legal Department</h2>
+              <div className="h-4 w-4 bg-[#CE86FF]"></div>
+              <h2>15% Public Sale</h2>
             </div>
             <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#D1A3FF]"></div>
-              <h2>16% Team Management</h2>
+              <div className="h-4 w-4 bg-[#FEDB32]"></div>
+              <h2>15% Staking Reward</h2>
             </div>
             <div className="flex items-start gap-x-3">
-              <div className="mt-1 h-4 w-4 bg-[#7F38CC]"></div>
-              <h2>10% Marketing & Development</h2>
+              <div className="mt-1 h-4 w-4 bg-[#F7931A]"></div>
+              <h2>10% Partnership Funds</h2>
+            </div>
+            <div className="flex items-start gap-x-3">
+              <div className="mt-1 h-4 w-4 bg-[#7100BD]"></div>
+              <h2>5% Team Pool</h2>
             </div>
           </div>
         </motion.div>

@@ -1,5 +1,5 @@
-import MainBanner from "../_components/sections/MainBanner";
-import { OurServices } from "../_components/sections/OurServices";
+import MainBanner from "../_components/sections/main-banner/MainBanner";
+import { OurServices } from "../_components/sections/our-services/OurServices";
 import TokenomicsSection from "../_components/sections/tokenomics/TokenomicsSection";
 import TopCompaniesStrip from "../_components/sections/TopCompaniesStrip";
 import WhyInvestSection from "../_components/sections/WhyInvestSection";
@@ -8,6 +8,7 @@ import FeaturesSection from "../_components/sections/FeaturesSection";
 import Roadmap from "../_components/sections/Roadmap";
 import TokenSection from "../_components/sections/TokenSection";
 import UnlockSection from "../_components/sections/UnlockSection";
+import PopularQuestions from "../_components/sections/popular-questions/PopularQuestions";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Roadmap />
       <TokenSection />
       <UnlockSection />
+      <PopularQuestions />
     </div>
   );
 }
