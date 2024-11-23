@@ -1,12 +1,21 @@
+"use client"
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import PresaleCard from "./PresaleCard";
 import Image from "next/image";
+import PresaleCardBinance from "./PresaleCardBinance";
+import { useAppKitNetworkCore } from "@reown/appkit/react";
 
 const PresaleSection = () => {
+  const { chainId } = useAppKitNetworkCore();
   return (
     <div className="max-w-screen relative flex w-full flex-col items-center justify-center py-20">
       <div className="grid w-full max-w-7xl gap-20 px-5 lg:grid-cols-2">
-        <PresaleCard />
+        {/* <PresaleCard /> */}
+        {chainId === 97 ? (
+            <PresaleCardBinance/>
+          ) : (
+            <PresaleCard/>
+          )}
         <div className="flex flex-col gap-5 py-20">
           <h1 className="font-neue text-5xl font-bold uppercase">
             Join cdl token presale
