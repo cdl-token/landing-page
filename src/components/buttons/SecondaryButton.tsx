@@ -15,7 +15,7 @@ const SecondaryButton = ({
   return (
     <button onClick={action}
       className={cn(
-        "flex items-center justify-center pt-1 text-nowrap rounded-md border border-white bg-transparent px-5 py-3 font-neue font-bold",
+        "flex items-center justify-center pt-1 text-nowrap rounded-md border border-white bg-transparent hover:border-primary hover:text-primary transition-all ease-in duration-200 px-5 py-3 font-neue font-bold",
         className,
       )}
       {...props}

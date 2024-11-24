@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Card from "./Card";
-import Image from "next/image";
+import Chart1 from "./Chart1";
+import Chart2 from "./Chart2";
 
 const TokenomicsSection = () => {
   const leftToRightVariants = {
@@ -50,12 +51,7 @@ const TokenomicsSection = () => {
           variants={rightToLeftVariants}
         >
           {/* <TotalSuppliesChart /> */}
-          <Image
-            src="/static/charts/chart1.svg"
-            width={380}
-            height={380}
-            alt="chart 1"
-          />
+          <Chart1 />
           <div className="flex flex-col justify-center gap-y-4">
             <div className="flex items-center gap-x-3">
               <div className="h-4 w-4 bg-[#7100BD]"></div>
@@ -79,12 +75,7 @@ const TokenomicsSection = () => {
             </div>
           </div>
           {/* <TokenomicsChart2 /> */}
-          <Image
-            src="/static/charts/chart2.svg"
-            width={380}
-            height={380}
-            alt="chart 1"
-          />
+          <Chart2 />
           <div className="flex flex-col justify-center gap-y-4 pl-5">
             <div className="flex items-center gap-x-3">
               <div className="h-4 w-4 bg-[#CFD4C1]"></div>

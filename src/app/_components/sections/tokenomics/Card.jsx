@@ -1,5 +1,6 @@
 "use client";
 
+import SecondaryButton from "@/components/buttons/SecondaryButton";
 import { useEffect, useRef, useState } from "react";
 
 const Card = ({
@@ -81,19 +82,22 @@ const Card = ({
   }, []);
 
   return (
-    <div className="bg-[#232325] group w-[85vw] min-w-[271.5px] max-w-full rounded-3xl p-4 transition-all duration-500 ease-in-out hover:scale-105 sm:w-[313px]">
+    <div className="group w-[85vw] min-w-[271.5px] max-w-full rounded-3xl bg-[#232325] p-4 transition-all duration-500 ease-in-out hover:scale-105 sm:w-[313px]">
       <h2 className="mt-4 pl-4">State: {state}</h2>
       <div className="flex justify-between">
         <div>
-          <p className="font-neue group-hover:text-primary1 mt-5 pl-3 text-4xl font-extrabold leading-10">
+          <p className="group-hover:text-primary1 mt-5 pl-3 font-neue text-4xl font-extrabold leading-10">
             {bonusPercent}%
           </p>
           <p className="font-apfel-grotezktext group-hover:text-primary1 mt-1 pl-4 text-[18px] font-normal">
             BONUS
           </p>
         </div>
-        <div className="relative mt-7 flex w-full justify-center py-5 text-start">
-        </div>
+        <SecondaryButton
+          className="absolute right-5 top-20 mt-auto hidden group-hover:flex"
+          title="Buy now"
+        />
+        <div className="relative mt-7 flex w-full justify-center py-5 text-start"></div>
       </div>
       <div className="my-4 flex items-center justify-between gap-1 px-4">
         <p className="text-neutralLight">{daysLeft}</p>

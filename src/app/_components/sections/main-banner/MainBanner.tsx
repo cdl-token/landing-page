@@ -6,7 +6,7 @@ import TransactionCard from "./TransactionsCard";
 const MainBanner = () => {
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-hidden">
-      <div className="relative z-10 flex min-h-screen w-full max-w-7xl flex-col justify-center gap-12 border-b border-white/30 pl-5 pt-10 2xl:min-h-[900px]">
+      <div className="relative z-10 flex min-h-screen w-full max-w-7xl flex-col justify-center gap-12 border-b border-white/30 pl-5 pt-10 md:min-h-[900px]">
         <div className="flex animate-slideIn flex-col gap-2 pt-32 font-neue text-4xl font-bold uppercase sm:pt-28 md:text-5xl">
           <span className="text-primary">Your Gateway to</span>
           <span>real-time</span>
@@ -34,11 +34,19 @@ const MainBanner = () => {
           <TransactionCard />
         </div>
         <div
-          className="absolute -right-20 top-0 hidden h-[96%] w-[40%] bg-cover bg-center bg-no-repeat lg:block"
+          className="absolute -right-20 top-0 hidden h-[96%] w-[40%] bg-cover bg-center bg-no-repeat md:block"
           style={{
             backgroundImage: "url(/static/banner-bg.png",
           }}
         ></div>
+        <div
+          className="absolute left-0 top-0 h-[96%] w-screen -z-10 bg-cover bg-center bg-no-repeat md:hidden"
+          style={{
+            backgroundImage: "url(/static/banner-bg.png",
+          }}
+        >
+          <div className="w-full h-full bg-black/60"></div>
+        </div>
       </div>
       <div className="absolute left-[-510px] top-[-568px] -z-10">
         {gradientBg}

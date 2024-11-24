@@ -61,7 +61,7 @@ const Roadmap = () => {
           <div className="flex max-w-[94vw] flex-col gap-3 rounded-2xl border-4 border-white bg-black p-5">
             <div className="flex items-center gap-2">
               <span className="rounded bg-[#D9D9D9] px-2 font-neue text-2xl font-bold text-black">
-                Q1
+                Q2
               </span>
               <span className="font-neue text-3xl font-bold">2024</span>
             </div>
@@ -85,7 +85,7 @@ const Roadmap = () => {
           <div className="flex max-w-[94vw] flex-col gap-3 rounded-2xl border-4 border-white bg-black p-5">
             <div className="flex items-center gap-2">
               <span className="rounded bg-[#D9D9D9] px-2 font-neue text-2xl font-bold text-black">
-                Q1
+                Q3
               </span>
               <span className="font-neue text-3xl font-bold">2024</span>
             </div>
