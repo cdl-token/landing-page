@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const ServiceMain = () => {
   return (
-    <div className="relative flex min-h-[45rem] w-full items-center justify-center pt-20 md:pt-40">
+    <div className="relative flex min-h-[45rem] w-full items-center justify-center pb-20 pt-32 md:pt-40">
       <div className="absolute -left-[500px] -top-[600px]">{gradientSvg}</div>
       <div className="grid w-full max-w-7xl md:grid-cols-[1fr_720px_1fr]">
         <div className="relative hidden lg:block">
@@ -14,9 +14,9 @@ const ServiceMain = () => {
             className="absolute right-0 top-0 min-h-[901px] min-w-[1146px] scale-x-[-1]"
           />
         </div>
-        <div className="static z-10 flex h-full px-5 flex-col items-center justify-center gap-1 md:gap-5 text-center">
+        <div className="static z-10 flex h-full flex-col items-center justify-center gap-1 px-5 text-center md:gap-5">
           <h1
-            className="font-neue text-3xl font-bold uppercase md:text-[70px] md:leading-[72px]"
+            className="font-neue text-3xl font-bold uppercase md:text-[65px] md:leading-[68px]"
             style={{
               background: "linear-gradient(90deg, #FF1CF7 0%, #00D18C 100%)",
               backgroundClip: "text",
@@ -25,13 +25,13 @@ const ServiceMain = () => {
           >
             WHY ACCEPT
           </h1>
-          <h1 className="font-neue text-3xl font-bold uppercase md:text-[70px] md:leading-[72px]">
+          <h1 className="font-neue text-3xl font-bold uppercase md:text-[65px] md:leading-[68px]">
             Raw data when
           </h1>
-          <h1 className="font-neue text-3xl font-bold uppercase md:text-[70px] md:leading-[72px]">
+          <h1 className="font-neue text-3xl font-bold uppercase md:text-[65px] md:leading-[68px]">
             Insights await?
           </h1>
-          <span className="max-w-[597px] py-5 md:py-0 text-sm text-center font-apfel md:text-lg">
+          <span className="max-w-[597px] py-5 text-center font-apfel text-sm md:py-0 md:text-lg">
             The CDL Token enables real-time access to comprehensive crypto data,
             delivering insights on over 6 million tokens and 1 billion NFTs
             across 57 blockchain networks.
@@ -42,14 +42,40 @@ const ServiceMain = () => {
               get started
             </span>
           </button>
-          <div className="my-10 flex h-[160px] w-[696px] flex-col items-center justify-center gap-5 rounded-[20px] bg-white text-black">
+          <div className="my-10 flex py-10 px-5 flex-col items-center justify-center gap-5 rounded-[20px] bg-white text-black md:w-[696px]">
             <span className="uppercase">Powering leading web3 platforms</span>
-            <Image
-              src="/static/services/companies.svg"
-              width={597}
-              height={20}
-              alt="Companies"
-            />
+            <div className="grid place-items-center md:grid-cols-[128px_120px_84px_29px_108px] gap-5">
+              <Image
+                src="/static/services/companies/1.svg"
+                width={128}
+                height={23}
+                alt="trading view"
+              />
+              <Image
+                src="/static/services/companies/2.svg"
+                width={120}
+                height={23}
+                alt="sudoswap"
+              />
+              <Image
+                src="/static/services/companies/3.svg"
+                width={84}
+                height={23}
+                alt="defined"
+              />
+              <Image
+                src="/static/services/companies/4.svg"
+                width={29}
+                height={23}
+                alt="0x"
+              />
+              <Image
+                src="/static/services/companies/5.svg"
+                width={108}
+                height={23}
+                alt="matcha"
+              />
+            </div>
           </div>
         </div>
         <div className="relative hidden lg:block">

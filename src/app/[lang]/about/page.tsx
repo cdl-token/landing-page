@@ -4,7 +4,7 @@ import WhatIsCDL from "./_components/WhatIsCDL";
 import JoinTheSystem from "./_components/JoinTheSystem";
 import TransformingSection from "./_components/TransformingSection";
 import OurTeam from "./_components/OurTeam";
-import StayInformed from "./_components/StayInformed";
+import StayInformed from "../../../components/StayInformed";
 import FAQs from "./_components/faq/FAQs";
 import Link from "next/link";
 
