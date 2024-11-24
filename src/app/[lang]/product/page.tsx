@@ -15,7 +15,7 @@ const ServicesPage = () => {
         <ServiceMain />
         <HowDoes />
         <Comprehensive />
-        <Graphs />
+        {/* <Graphs /> */}
         <VersatileDelivery />
         <FilterSearch />
         <CDLvs />
