@@ -62,7 +62,7 @@ const Header = ({ lang = "en" }: { lang: string }) => {
           <SecondaryButton
             className="hidden lg:flex"
             title="Contact"
-            onClick={() => router.push(`/contact`)}
+            action={() => router.push(`/contact`)}
           />
           <HeaderSheet lang={lang} />
         </div>

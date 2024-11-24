@@ -13,7 +13,7 @@ const ContactHeader = () => {
       </h1>
       <span className="w-full max-w-[780px] py-5 text-center text-[18px]">
         Reach Out to Us, Whether you have questions, feedback, or partnership
-        inquiries, we're here to assist you. Contact CDL TOKEN today and let's
+        inquiries, we&apos;re here to assist you. Contact CDL TOKEN today and let&apos;s
         explore the future of finance together
       </span>
       <div className="flex items-center gap-5">

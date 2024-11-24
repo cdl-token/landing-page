@@ -1,5 +1,3 @@
-import PrimaryButton from "@/components/buttons/PrimaryButton";
-import SecondaryButton from "@/components/buttons/SecondaryButton";
 import ContactHeader from "./ContactHeader";
 import ContactForm from "./ContactForm";
 

@@ -10,7 +10,7 @@ const ContactForm: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  // const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
@@ -25,39 +25,39 @@ const ContactForm: React.FC = () => {
     return () => clearTimeout(timer);
   }, [formSubmitted]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (name && email && isChecked) {
-      await fetch("/api/email", {
-        method: "POST",
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-          selectedOption,
-          phoneNumber,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data) {
-            setFormSubmitted(true);
-            setName("");
-            setMessage("");
-            setPhoneNumber("");
-            setIsChecked(false);
-            setEmail("");
-            setSelectedOption("Your inquiry about");
-          }
-        })
-        .catch((err) => console.error(err));
-    } else {
-      alert("Please fill in all required fields.");
-    }
-  };
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   if (name && email && isChecked) {
+  //     await fetch("/api/email", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         name,
+  //         email,
+  //         message,
+  //         selectedOption,
+  //         phoneNumber,
+  //       }),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         if (data) {
+  //           setFormSubmitted(true);
+  //           setName("");
+  //           setMessage("");
+  //           setPhoneNumber("");
+  //           setIsChecked(false);
+  //           setEmail("");
+  //           setSelectedOption("Your inquiry about");
+  //         }
+  //       })
+  //       .catch((err) => console.error(err));
+  //   } else {
+  //     alert("Please fill in all required fields.");
+  //   }
+  // };
 
   const options: string[] = [
     "Technical Support",
