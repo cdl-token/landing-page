@@ -7,7 +7,7 @@ import ServiceMain from "./_components/ServiceMain"
 import SimpleScalabale from "./_components/SimpleScalabale"
 import TokenPowers from "./_components/TokenPowers"
 import VersatileDelivery from "./_components/VersatileDelivery"
-import Graphs from "./_components/Graphs"
+// import Graphs from "./_components/Graphs"
 
 const ServicesPage = () => {
   return (
