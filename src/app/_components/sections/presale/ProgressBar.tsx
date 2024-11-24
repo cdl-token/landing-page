@@ -1,4 +1,8 @@
-const ProgressBar = () => {
+interface ProgressBarProps {
+  soldPercentage?: number;
+}
+const ProgressBar: React.FC<ProgressBarProps> = ({ soldPercentage }) => {
+
   return (
     <div className="flex flex-col gap-y-1 w-full">
       <div className="flex justify-between">
@@ -10,7 +14,7 @@ const ProgressBar = () => {
       <div className="h-[10px] w-full rounded-[5px] bg-custom-bg/50 sm:h-[17px]">
         <div
           className="bg-primary h-full rounded-[5px]"
-          style={{ width: `10%` }}
+          style={{ width: `${soldPercentage}` }}
         ></div>
       </div>
       <div className="flex justify-between py-1 md:py-1.5">

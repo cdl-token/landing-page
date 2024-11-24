@@ -26,7 +26,7 @@ const WhatIsCDL = () => {
               within the CDL ecosystem.
             </span>
             <span className="text-[19px]">
-              The CDL Token is more than just a cryptocurrency; it's a gateway
+              The CDL Token is more than just a cryptocurrency; it&apos;s a gateway
               to a robust and evolving ecosystem where users, traders, and
               developers collaborate and innovate in the crypto space.
             </span>

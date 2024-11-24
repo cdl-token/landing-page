@@ -5,13 +5,15 @@ import { cn } from "@/lib/utils";
 const SecondaryButton = ({
   className = "",
   title,
+  action,
   ...props
 }: {
   className?: string;
   title: string;
+  action?: () => void;
 }) => {
   return (
-    <button
+    <button onClick={action}
       className={cn(
         "flex items-center justify-center pt-1 text-nowrap rounded-md border border-white bg-transparent px-5 py-3 font-neue font-bold",
         className,

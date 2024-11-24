@@ -4,6 +4,9 @@ import "./globals.css";
 import Header from "../_components/header/Header";
 import MovingBar from "../_components/header/MovingBar";
 import Footer from "../_components/footer/Footer";
+import { AppKit } from "@/context/Web3Modal";
+import { StoreProvider } from "@/context/Store/Store";
+import ToastProvider from "@/components/notification/ToastProvider";
 
 const neueMachinaFont = localFont({
   src: [
@@ -47,10 +50,16 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   return (
     <html lang="en">
       <body className={`${neueMachinaFont.variable} ${apfelFont.variable} font-apfel scrollbar-none`}>
+      <AppKit>
+        <StoreProvider>
+        <ToastProvider>
         <MovingBar />
         <Header lang={lang} />
         {children}
         <Footer />
+        </ToastProvider>
+        </StoreProvider>
+        </AppKit>
       </body>
     </html>
   );
