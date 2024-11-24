@@ -72,7 +72,7 @@ const Comprehensive = () => {
               </h1>
               <span className="font-apfel text-lg uppercase">
                 Detailed information about token and NFT holders in a format
-                that's easy to access and consistently reliable.
+                that&apos;s easy to access and consistently reliable.
               </span>
             </div>
           </div>

@@ -12,12 +12,12 @@ const AdvancedRealTimeChartNoSSR = dynamic(
   },
 );
 
-const SymbolOverviewNoSSR = dynamic(
-  () => import("react-ts-tradingview-widgets").then((w) => w.SymbolOverview),
-  {
-    ssr: false,
-  },
-);
+// const SymbolOverviewNoSSR = dynamic(
+//   () => import("react-ts-tradingview-widgets").then((w) => w.SymbolOverview),
+//   {
+//     ssr: false,
+//   },
+// );
 
 // Define the props interface
 interface GraphsProps {

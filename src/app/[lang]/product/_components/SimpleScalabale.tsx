@@ -173,7 +173,7 @@ const gradientSvg = (
         gradientUnits="userSpaceOnUse"
       >
         <stop stopColor="#D08BFE" />
-        <stop offset="1" stopColor="#3104C2" stop-opacity="0.55" />
+        <stop offset="1" stopColor="#3104C2" stopOpacity="0.55" />
       </linearGradient>
     </defs>
   </svg>

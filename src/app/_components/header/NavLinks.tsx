@@ -11,8 +11,8 @@ const NavLinks = ({ lang = "en" }) => {
       href: `/${lang}/about`,
     },
     {
-      title: "Services",
-      href: `/${lang}/services`,
+      title: "Product",
+      href: `/${lang}/product`,
     },
     {
       title: "Docs",

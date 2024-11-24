@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import ContactFooter from "../footer/ContactFooter";
+import ContactFooter from "../../../components/ContactFooter";
 
 const TokenSection = () => {
   const leftToRightVariants = {

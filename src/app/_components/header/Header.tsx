@@ -6,10 +6,12 @@ import NavLinks from "./NavLinks";
 import { useEffect, useState } from "react";
 import HeaderSheet from "./HeaderSheet";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const Header = ({ lang = "en" }: { lang: string }) => {
+  const router = useRouter();
   const [isClient, setIsClient] = useState(false);
-  useEffect(()=>{
+  useEffect(() => {
     setIsClient(true);
   }, []);
 
@@ -57,7 +59,11 @@ const Header = ({ lang = "en" }: { lang: string }) => {
             <HeaderLogo />
             <NavLinks lang={lang} />
           </div>
-          <SecondaryButton className="hidden lg:flex" title="Contact" />
+          <SecondaryButton
+            className="hidden lg:flex"
+            title="Contact"
+            onClick={() => router.push(`/contact`)}
+          />
           <HeaderSheet lang={lang} />
         </div>
       </div>
