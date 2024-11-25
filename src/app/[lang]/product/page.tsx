@@ -7,7 +7,7 @@ import ServiceMain from "./_components/ServiceMain"
 import SimpleScalabale from "./_components/SimpleScalabale"
 import TokenPowers from "./_components/TokenPowers"
 import VersatileDelivery from "./_components/VersatileDelivery"
-// import Graphs from "./_components/Graphs"
+import LightGraph from "./_components/LightGraph"
 
 const ServicesPage = () => {
   return (
@@ -15,7 +15,7 @@ const ServicesPage = () => {
         <ServiceMain />
         <HowDoes />
         <Comprehensive />
-        {/* <Graphs /> */}
+        <LightGraph />
         <VersatileDelivery />
         <FilterSearch />
         <CDLvs />

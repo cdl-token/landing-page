@@ -4,7 +4,7 @@ const Roadmap = () => {
   return (
     <section className="max-w-screen relative flex w-full items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-5 border-t border-white/30 px-5 py-20">
-        <h1 className="font-neue text-4xl font-bold">Roadmap</h1>
+        <h1 className="font-neue text-3xl md:text-4xl font-bold">Roadmap</h1>
         <span className="max-w-[520px] text-center font-apfel">
           The CDL Token roadmap outlines key phases for launching, expanding,
           and promoting the token.

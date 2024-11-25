@@ -16,8 +16,8 @@ const PresaleSection = () => {
           ) : (
             <PresaleCard/>
           )}
-        <div className="flex flex-col gap-5 py-20">
-          <h1 className="font-neue text-5xl font-bold uppercase">
+        <div className="flex flex-col gap-5 md:py-20">
+          <h1 className="font-neue text-2xl md:text-5xl font-bold uppercase">
             Join cdl token presale
           </h1>
           <span className="text- max-w-[667px]">

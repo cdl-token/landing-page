@@ -51,7 +51,7 @@ const ServicesSlider = () => {
                     market analysis to identify trends, patterns, and
                     opportunities for strategic decision-making
                   </span>
-                  <button className="mt-16 flex w-fit items-center justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <button className="mt-16 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
                     See more
                   </button>
                 </div>
@@ -78,7 +78,7 @@ const ServicesSlider = () => {
                     market analysis to identify trends, patterns, and
                     opportunities for strategic decision-making
                   </span>
-                  <button className="mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <button className="mt-40 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
                     See more
                   </button>
                 </div>
@@ -105,7 +105,7 @@ const ServicesSlider = () => {
                     your platform, delivering real-time crypto data and insights
                     directly to your application
                   </span>
-                  <button className="mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <button className="mt-40 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
                     See more
                   </button>
                 </div>
@@ -132,7 +132,7 @@ const ServicesSlider = () => {
                     place, making it easy to compare prices, liquidity, and
                     trading volume across various platforms
                   </span>
-                  <button className="mt-16 flex w-fit items-center justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <button className="mt-16 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
                     See more
                   </button>
                 </div>
@@ -159,7 +159,7 @@ const ServicesSlider = () => {
                     data, and market trends to stay informed and make timely
                     decisions
                   </span>
-                  <button className="mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <button className="mt-40 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
                     See more
                   </button>
                 </div>
@@ -186,7 +186,7 @@ const ServicesSlider = () => {
                     establish a cutting-edge AI research arm, transforming the
                     way crypto data is analyzed and utilized.
                   </span>
-                  <button className="mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <button className="mt-40 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
                     See more
                   </button>
                 </div>

@@ -6,7 +6,7 @@ export function OurServices() {
   return (
     <div className="flex h-full w-full flex-col items-center justify-center relative">
       <div className="flex w-full gap-5 max-w-7xl flex-col border-t border-white/30 px-5 py-20">
-        <h2 className="pl-4 font-neue text-xl font-bold uppercase md:text-5xl">
+        <h2 className="pl-4 font-neue text-3xl font-bold uppercase md:text-5xl">
           Our Services
         </h2>
         <ServicesSlider />

@@ -3,10 +3,12 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { leftToRightVariants, rightToLeftVariants } from "@/lib/animation-variants";
+import {
+  leftToRightVariants,
+  rightToLeftVariants,
+} from "@/lib/animation-variants";
 
 const UnlockSection = () => {
-
   return (
     <div className="mt-20 flex items-center justify-center bg-[#7100BD]">
       <div className="flex w-full max-w-7xl flex-col items-center px-10 md:flex-row">
@@ -17,18 +19,18 @@ const UnlockSection = () => {
           exit="show"
           variants={leftToRightVariants}
         >
-          <h1 className="font-neue text-[38px] font-bold uppercase leading-[42.6px]">
+          <h1 className="font-neue text-3xl font-bold uppercase md:text-[38px] md:leading-[42.6px]">
             Unlock the future with CDL Token
           </h1>
           <p className="pr-10 text-[16px] leading-[24px]">
             Step into the next era of decentralized finance with CDL Token.
             Harness the power of innovation and opportunity, and be part of a
-            revolutionary platform. Don&apos;t miss out – start your journey with CDL
-            today and experience the limitless potential of blockchain
+            revolutionary platform. Don&apos;t miss out – start your journey
+            with CDL today and experience the limitless potential of blockchain
             technology.
           </p>
           <Link href="#">
-            <button className="rounded-lg font-neue font-bold hover:bg-white/75 hover:text-black transition-all ease-in duration-200 border-white/75 border mt-5 w-fit px-[25px] py-[15px] hover:border">
+            <button className="mt-5 w-fit rounded-lg border border-white/75 px-[25px] py-[15px] font-neue font-bold transition-all duration-200 ease-in hover:border hover:bg-white/75 hover:text-black">
               Launch Dapp
             </button>
           </Link>

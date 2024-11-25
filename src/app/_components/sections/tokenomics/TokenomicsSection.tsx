@@ -83,7 +83,7 @@ const TokenomicsSection = () => {
           <h4 className="mb-5 mr-auto flex items-center justify-center font-neue text-[28.43px] font-extrabold leading-8">
             Token Sale Stages
           </h4>
-          <div className="mt-3 grid w-full items-center justify-center gap-20 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-3 grid w-full items-center justify-center gap-10 md:gap-20 md:grid-cols-2 xl:grid-cols-4">
             <Card
               state={1}
               bonusPercent={13}

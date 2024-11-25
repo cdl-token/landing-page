@@ -7,10 +7,10 @@ const WhatIsCDL = () => {
       <div className="static z-10 flex w-full max-w-7xl flex-col border-y border-white/30 px-5 py-10">
         <div className="grid md:grid-cols-[6fr_4fr] py-10">
           <div className="flex flex-col gap-3">
-            <h1 className="font-neue text-[34px] font-bold uppercase text-primary">
+            <h1 className="font-neue text-2xl md:text-[34px] font-bold uppercase text-primary">
               WHAT IS CDL TOKEN?
             </h1>
-            <h1 className="font-neue text-[45px] font-bold uppercase leading-[50px]">
+            <h1 className="font-neue text-3xl md:text-[45px] font-bold uppercase md:leading-[50px]">
               We’ve built a platform to trade & utilize crypto data
             </h1>
             <span className="text-[19px]">
@@ -18,14 +18,14 @@ const WhatIsCDL = () => {
               empowering access to advanced crypto data services and
               transforming blockchain-driven insights
             </span>
-            <span className="text-[19px]">
+            <span className="md:text-[19px]">
               Built to serve as a utility token, CDL integrates seamlessly into
               platforms that offer advanced crypto analytics, trading insights,
               and decentralized solutions. By holding or using CDL Tokens, users
               gain access to premium features, exclusive tools, and reduced fees
               within the CDL ecosystem.
             </span>
-            <span className="text-[19px]">
+            <span className="md:text-[19px]">
               The CDL Token is more than just a cryptocurrency; it&apos;s a gateway
               to a robust and evolving ecosystem where users, traders, and
               developers collaborate and innovate in the crypto space.

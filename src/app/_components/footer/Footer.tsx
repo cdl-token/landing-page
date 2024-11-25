@@ -39,9 +39,7 @@ const Footer = () => {
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-2xl font-bold">Resources</h1>
             <Link href="/">Whitepaper</Link>
-            <Link href="https://cdl-token.gitbook.io/cdl-token/">
-              Lightpaper
-            </Link>
+            <Link href="https://cdl-token.gitbook.io/cdl-token/">Lightpaper</Link>
             <Link href="/">Github</Link>
             <Link href="/">Roadmap</Link>
           </div>
@@ -51,7 +49,7 @@ const Footer = () => {
             <Link href="/">Ecosystem</Link>
             <Link href="/">Faq&apos;s</Link>
           </div>
-          <div className="flex flex-col justify-end gap-5 px-5 pt-8 lg:px-0">
+          <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0 justify-end">
             <h1 className="font-neue text-xl">Sign up for our neweletter</h1>
             <input
               type="email"
@@ -62,11 +60,11 @@ const Footer = () => {
             />
           </div>
         </div>
-        <div className="ml-5 flex flex-wrap justify-between gap-3 pb-5">
+        <div className="flex flex-wrap justify-between gap-3 pb-5 ml-5">
           <span className="text-sm">
             Copyright © 2024 CDL. All Rights Reserved
           </span>
-          <div className="flex flex-wrap items-center gap-5 text-sm">
+          <div className="flex items-center flex-wrap gap-5 text-sm">
             <Link href="/">Terms of Service</Link>
             <Link href="/">Privacy Policy</Link>
             <Link href="/">Security</Link>

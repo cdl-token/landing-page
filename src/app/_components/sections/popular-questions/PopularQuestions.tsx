@@ -4,7 +4,7 @@ const PopularQuestions = () => {
   return (
     <div className="flex items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col gap-5 px-5 py-20">
-        <h1 className="font-neue text-4xl font-bold uppercase leading-[50px]">
+        <h1 className="font-neue text-3xl md:text-4xl font-bold uppercase md:leading-[50px]">
           Popular Questions <br /> About CDL Token?
         </h1>
         <QuestionAccordion
