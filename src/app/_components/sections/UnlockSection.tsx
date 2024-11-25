@@ -3,35 +3,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { leftToRightVariants, rightToLeftVariants } from "@/lib/animation-variants";
 
 const UnlockSection = () => {
-  const rightToLeftVariants = {
-    hide: {
-      opacity: 0,
-      x: 100,
-    },
-    show: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 1,
-      },
-    },
-  };
-
-  const leftToRightVariants = {
-    hide: {
-      opacity: 0,
-      x: -100,
-    },
-    show: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 1,
-      },
-    },
-  };
 
   return (
     <div className="mt-20 flex items-center justify-center bg-[#7100BD]">

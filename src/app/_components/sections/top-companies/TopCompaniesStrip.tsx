@@ -1,4 +1,4 @@
-import Image from "next/image";
+import CompaniesSlider from "./CompaniesSlider";
 
 const TopCompaniesStrip = () => {
   return (
@@ -12,7 +12,8 @@ const TopCompaniesStrip = () => {
             Used by the world&apos;s TOP companies
           </h1>
         </div>
-        <div className="flex w-full flex-wrap items-center justify-center gap-5 my-10 lg:justify-between">
+        <CompaniesSlider />
+        {/* <div className="flex w-full flex-wrap items-center justify-center gap-5 my-10 lg:justify-between">
           <Image
             src="/static/companies/binance.svg"
             width={150}
@@ -43,7 +44,7 @@ const TopCompaniesStrip = () => {
             height={40}
             alt="gorand"
           />
-        </div>
+        </div> */}
       </div>
     </section>
   );

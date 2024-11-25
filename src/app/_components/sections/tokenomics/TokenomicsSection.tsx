@@ -4,35 +4,9 @@ import { motion } from "framer-motion";
 import Card from "./Card";
 import Chart1 from "./Chart1";
 import Chart2 from "./Chart2";
+import { leftToRightVariants, rightToLeftVariants } from "@/lib/animation-variants";
 
 const TokenomicsSection = () => {
-  const leftToRightVariants = {
-    hide: {
-      opacity: 0,
-      x: -100,
-    },
-    show: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 1,
-      },
-    },
-  };
-
-  const rightToLeftVariants = {
-    hide: {
-      opacity: 0,
-      x: 100,
-    },
-    show: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 1,
-      },
-    },
-  };
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <div className="flex h-full w-full max-w-7xl flex-col items-center justify-center border-t border-white/30 px-5 py-20">

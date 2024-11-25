@@ -68,7 +68,7 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
+              <div className="relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
                     Historical Data & Market Analysis
@@ -95,7 +95,7 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
+              <div className="relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
                     APIs for Real-Time Data
@@ -149,7 +149,7 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
+              <div className="relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
                     Real-Time Data Feeds
@@ -176,7 +176,7 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
+              <div className="relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
                     Harnessing the Power of AI

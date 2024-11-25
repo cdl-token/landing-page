@@ -3,35 +3,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import ContactFooter from "../../../components/ContactFooter";
+import { leftToRightVariants, rightToLeftVariants } from "@/lib/animation-variants";
 
 const TokenSection = () => {
-  const leftToRightVariants = {
-    hide: {
-      opacity: 0,
-      x: -100,
-    },
-    show: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 1,
-      },
-    },
-  };
-
-  const rightToLeftVariants = {
-    hide: {
-      opacity: 0,
-      x: 100,
-    },
-    show: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 1,
-      },
-    },
-  };
   return (
     <div className="grid h-auto items-center justify-center">
       <div className="py-20 flex flex-col border-t border-white/30 px-4 pl-8 md:flex-row md:gap-8 lg:justify-end lg:gap-10">

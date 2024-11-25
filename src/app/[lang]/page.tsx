@@ -1,7 +1,7 @@
 import MainBanner from "../_components/sections/main-banner/MainBanner";
 import { OurServices } from "../_components/sections/our-services/OurServices";
 import TokenomicsSection from "../_components/sections/tokenomics/TokenomicsSection";
-import TopCompaniesStrip from "../_components/sections/TopCompaniesStrip";
+import TopCompaniesStrip from "../_components/sections/top-companies/TopCompaniesStrip";
 import WhyInvestSection from "../_components/sections/WhyInvestSection";
 import PresaleSection from "../_components/sections/presale/PresaleSection";
 import FeaturesSection from "../_components/sections/FeaturesSection";
