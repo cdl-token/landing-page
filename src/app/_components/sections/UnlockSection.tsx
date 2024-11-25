@@ -53,7 +53,7 @@ const UnlockSection = () => {
             today and experience the limitless potential of blockchain
             technology.
           </p>
-          <Link href="https://app.forcefinancecoin.com">
+          <Link href="#">
             <button className="rounded-lg font-neue font-bold hover:bg-white/75 hover:text-black transition-all ease-in duration-200 border-white/75 border mt-5 w-fit px-[25px] py-[15px] hover:border">
               Launch Dapp
             </button>
