@@ -2,20 +2,34 @@
 
 import { createAppKit } from '@reown/appkit/react'
 import { EthersAdapter } from '@reown/appkit-adapter-ethers'
-import { localhost, sepolia } from '@reown/appkit/networks'
+import { bscTestnet, sepolia } from '@reown/appkit/networks'
 
 const projectId = process.env.NEXT_PUBLIC_PROJECT_ID || "";
 
-// const LocalHost = {
-//   id: 1337,
-//   name: "Localhost",
+
+// const bscTestnet = {
+//   id: 97,
+//   name: "bscTestnet",
 //   nativeCurrency: {
 //     decimals: 18,
-//     name: "Ether",
-//     symbol: "ETH",
+//     name: "Binance Smartchain Testnet",
+//     symbol: "BSC",
 //   },
 //   rpcUrls: {
-//     default: { http: ["http://127.0.0.1:8545"] },
+//     default: { http: ["https://bsc-testnet-rpc.publicnode.com"] },
+//   },
+// };
+
+// const sepolia = {
+//   id: 11155111,
+//   name: "Sepolia",
+//   nativeCurrency: {
+//     decimals: 18,
+//     name: "Sepolia",
+//     symbol: "SepoliaETH",
+//   },
+//   rpcUrls: {
+//     default: { http: ["https://1rpc.io/sepolia"] },
 //   },
 // };
 
@@ -29,7 +43,8 @@ const metadata = {
 createAppKit({
   adapters: [new EthersAdapter()],
   metadata: metadata,
-  networks: [localhost,sepolia],
+  defaultNetwork: sepolia,
+  networks: [sepolia, bscTestnet],
   projectId,
   features: {
     swaps: false,          // Disable swaps feature
@@ -43,6 +58,7 @@ createAppKit({
     smartSessions: false,  // Disable smart sessions feature
   },
 })
+
 
 interface AppKitProps {
   children: React.ReactNode;

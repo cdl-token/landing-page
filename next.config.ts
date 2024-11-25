@@ -11,10 +11,19 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  webpack: config => {
-    config.externals.push('pino-pretty', 'lokijs', 'encoding')
-    return config
-  }
+  headers: () => {
+    return Promise.resolve([
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store',
+          },
+        ],
+      },
+    ]);
+  },
 };
 
 export default nextConfig;

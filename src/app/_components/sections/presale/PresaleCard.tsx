@@ -13,8 +13,13 @@ import cdlPresaleContractAddress from "@/context/contractsData/Crypto_Data_Live_
 import cdlPresaleContract from "@/context/contractsData/Crypto_Data_Live_Presale.json"
 import { Store } from "@/context/Store/Store";
 import { ethers, formatEther, formatUnits, JsonRpcProvider, parseEther } from "ethers";
+import useDisableLocalStorage from "@/components/notification/useDisableLocalStorage";
 
 const PresaleCard = () => {
+
+  useDisableLocalStorage();
+
+  { console.log("EthereumEthereumEthereum") }
 
   const context = useContext(Store);
   if (!context) {
@@ -29,20 +34,16 @@ const PresaleCard = () => {
     // purchaseLoader,
     // transactionSuccess,
     copyToClipboard,
-    // copyToClipboardReferral,
     addTokenToMetamask,
-    // networkChange,
     BuyWithETH
-    // presaleStart,
-    // presaleStop,
     // userDatabaseData,
     // transactionHash,
     // transactionHashID 
   } = context;
 
-  const { address,isConnected } = useAppKitAccount();
+  const { address, isConnected } = useAppKitAccount();
   const { open } = useAppKit()
-  const [cdlValue, setcdlValue] = useState("");
+  const [cdlValue, setcdlValue] = useState("0");
   // const [ethValue, setETHValue] = useState(0);
   const [selectedToken, setSelectedToken] = useState("ETH");
   const [tokenAmount, setTokensAmount] = useState('');
@@ -60,7 +61,7 @@ const PresaleCard = () => {
             const presaleContract = new ethers.Contract(
               cdlPresaleContractAddress.address,
               cdlPresaleContract.abi,
-              provider,
+              provider
             );
             const oneDoller = await presaleContract.getLatestUSDTPrice();
 
@@ -76,17 +77,13 @@ const PresaleCard = () => {
         }, 500);
       } else if (selectedToken !== "ETH" && tokenAmount !== '') {
         try {
-          if (tokenAmount > "0") {
-        
-            const price = +contractData?.tokenPrice / 10 ** 6;
- 
-            const tokens = +tokenAmount?.toString() / +price;
-   
-            const force = parseEther(tokens?.toString())?.toString();
-            setcdlValue(force?.toString()); 
-            // setETHValue(tokenAmount);
-          }
-        } catch (error) {
+          const price = +contractData?.tokenPrice / 10 ** 6;
+          const tokens = +tokenAmount?.toString() / +price;
+          const force = parseEther(tokens?.toString())?.toString();
+          setcdlValue(force?.toString());
+          // setETHValue(tokenAmount);
+        }
+        catch (error) {
           console.error("Error in else block:", error);
         }
       } else {
@@ -103,14 +100,6 @@ const PresaleCard = () => {
     GetValues();
   }, [address]);
 
-  // const roundOff = (num: string) => {
-  //   // convert string to int
-  //   const number = parseFloat(num);
-  //   // round off to 2 decimal
-  //   return number.toFixed(2);
-  // };
-
-  // //----------------------------- Inssufficient address to clipboard-------------------------
 
   useEffect(() => {
     const checked = () => {
@@ -123,19 +112,19 @@ const PresaleCard = () => {
       if (parseFloat(tokenAmount > "0" ? tokenAmount?.toString() : "0") > parseFloat(tokenBalance > 0 ? tokenBalance?.toString() : "0")) {
         setButtonText("Insufficient Balance");
         return;
-      } else {
+      } else if (isConnected) {
         setButtonText("Buy");
+        return;
+      } else {
+        setButtonText("Connect Wallet");
         return;
       }
     };
     checked();
-  }, [tokenAmount, selectedToken]);
-  // // -------------------------------------------------------------------------------
-
-
+  }, [tokenAmount, selectedToken, address, isConnected]);
+  console.log(cdlValue, "cdlValuecdlValuecdlValue");
   const soldPercentage = (contractData?.raisedAmount * 100) / 10000000;
-
-
+  
   return (
     <div className="relative">
       <div className="absolute -right-5 -top-24 -z-10">{btcBG}</div>
@@ -167,10 +156,10 @@ const PresaleCard = () => {
               ......
               {cdlToken?.address?.slice(-8)}
             </span>
-            <button onClick={()=>copyToClipboard()}>{clipboardIcon}</button>
+            <button onClick={() => copyToClipboard()}>{clipboardIcon}</button>
           </div>
         </div>
-        <ProgressBar soldPercentage={soldPercentage || 0} />
+        <ProgressBar raisedAmount={contractData?.raisedAmount} soldPercentage={soldPercentage || 0} />
         <div className="flex w-full items-center gap-2">
           <div className="h-[1px] w-full bg-white"></div>
           <span className="text-nowrap font-apfel">1 CDL = {formatUnits(contractData?.tokenPrice || "0", 6)}$</span>
@@ -260,7 +249,8 @@ const PresaleCard = () => {
               className="rounded-md border border-white bg-transparent px-3 py-2"
               type="number"
               name="cdlAmount"
-              defaultValue={Number(formatEther(cdlValue?.toString() || "0"))?.toFixed(2)}
+              value={Number(formatEther(cdlValue?.toString() || "0"))?.toFixed(2)}
+              // onChange={(e) => setcdlValue(e.target.value)}
             />
           </div>
         </div>
@@ -272,13 +262,12 @@ const PresaleCard = () => {
               :
               <PrimaryButton className="text-sm sm:text-base w-full" action={isConnected ? () => BuyWithUSDTandUSDC({ payAmountInUSDT: +tokenAmount, tokens: cdlValue?.toString(), isUSDT: false }) : () => open()} title={buttonText} />}
 
-          <SecondaryButton className="text-sm sm:text-base w-full" action={()=> addTokenToMetamask()} title="ADD TOKEN IN METAMASK" />
+          <SecondaryButton className="text-sm sm:text-base w-full" action={() => addTokenToMetamask()} title="ADD TOKEN IN METAMASK" />
         </div>
       </div>
     </div>
   );
 };
-
 const clipboardIcon = (
   <svg
     width="24"

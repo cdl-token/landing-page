@@ -1,5 +1,4 @@
 "use client";
-
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import HeaderLogo from "./HeaderLogo";
 import NavLinks from "./NavLinks";
@@ -9,14 +8,22 @@ import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
 const Header = ({ lang = "en" }: { lang: string }) => {
-  const router = useRouter();
+
+  
+  // --------------For hydration error-------------------
   const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
     setIsClient(true);
   }, []);
+  // ----------------------------------------------------
+  
+  const router = useRouter();
 
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+
 
   const controlNavbar = () => {
     if (typeof window !== "undefined") {
@@ -31,6 +38,8 @@ const Header = ({ lang = "en" }: { lang: string }) => {
     }
   };
 
+
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", controlNavbar);
@@ -40,6 +49,11 @@ const Header = ({ lang = "en" }: { lang: string }) => {
       };
     }
   }, [lastScrollY]);
+
+  if (!isClient) {
+    return null;
+  }
+  
   return (
     <header
       className={cn(

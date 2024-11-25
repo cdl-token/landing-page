@@ -48,7 +48,7 @@ interface RootLayoutProps {
 export default async function RootLayout({ children, params }: RootLayoutProps) {
   const lang = (await params).lang;
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${neueMachinaFont.variable} ${apfelFont.variable} font-apfel scrollbar-none`}>
       <AppKit>
         <StoreProvider>
