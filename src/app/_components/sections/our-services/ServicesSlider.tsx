@@ -12,7 +12,7 @@ const ServicesSlider = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+  const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
 
   useEffect(() => {
     if (!api) {
@@ -41,7 +41,7 @@ const ServicesSlider = () => {
         <CarouselContent>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="h-ful relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
+              <div className="h-ful relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
                 <div className="z-10 flex h-full flex-col p-5 pt-[180px]">
                   <h1 className="font-neue text-3xl font-bold">
                     Secure transactions
@@ -68,7 +68,7 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
+              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
                     Historical Data & Market Analysis
@@ -95,7 +95,7 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
+              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
                     APIs for Real-Time Data
@@ -122,15 +122,15 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="h-ful relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
+              <div className="h-ful relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
                 <div className="z-10 flex h-full flex-col p-5 pt-[180px]">
                   <h1 className="font-neue text-3xl font-bold">
-                    Secure transactions
+                    Multi-Exchange Support
                   </h1>
                   <span className="font-apfel text-lg text-white/75">
-                    Gain access to historical cryptocurrency data and detailed
-                    market analysis to identify trends, patterns, and
-                    opportunities for strategic decision-making
+                    Get real-time data from multiple crypto exchanges in one
+                    place, making it easy to compare prices, liquidity, and
+                    trading volume across various platforms
                   </span>
                   <button className="mt-16 flex w-fit items-center justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
                     See more
@@ -149,15 +149,15 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
+              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
-                    Historical Data & Market Analysis
+                    Real-Time Data Feeds
                   </h1>
                   <span className="font-apfel text-lg text-white/75">
-                    Gain access to historical cryptocurrency data and detailed
-                    market analysis to identify trends, patterns, and
-                    opportunities for strategic decision-making
+                    Access up-to-the-minute cryptocurrency price updates, volume
+                    data, and market trends to stay informed and make timely
+                    decisions
                   </span>
                   <button className="mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
                     See more
@@ -176,15 +176,15 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
+              <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
-                    APIs for Real-Time Data
+                    Harnessing the Power of AI
                   </h1>
                   <span className="font-apfel text-lg text-white/75">
-                    Seamlessly integrate CDL Token&apos; s powerful APIs into
-                    your platform, delivering real-time crypto data and insights
-                    directly to your application
+                    At CDL Token, we are partnering with leading AI companies to
+                    establish a cutting-edge AI research arm, transforming the
+                    way crypto data is analyzed and utilized.
                   </span>
                   <button className="mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
                     See more

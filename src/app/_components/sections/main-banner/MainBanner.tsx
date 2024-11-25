@@ -7,7 +7,7 @@ const MainBanner = () => {
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-hidden">
       <div className="relative z-10 flex min-h-screen w-full max-w-7xl flex-col justify-center gap-12 border-b border-white/30 pl-5 pt-10 md:min-h-[900px]">
-        <div className="flex animate-slideIn flex-col gap-2 pt-32 font-neue text-4xl font-bold uppercase sm:pt-28 md:text-5xl">
+        <div className="flex animate-slideIn flex-col gap-2 pt-32 font-neue text-4xl font-bold uppercase sm:pt-0 md:text-5xl lg:text-[60px] xl:text-[68px]">
           <span className="text-primary">Your Gateway to</span>
           <span>real-time</span>
           <span>crypto data</span>

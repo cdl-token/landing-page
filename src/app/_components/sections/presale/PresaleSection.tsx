@@ -27,7 +27,7 @@ const PresaleSection = () => {
             chain.
           </span>
           <PrimaryButton className="mt-10 w-fit" title="Launch Dapp" />
-          <Image src="/static/globe.png" width={733} height={659} alt="globe" />
+          <Image src="/static/globe.png" className="hidden md:block" width={733} height={659} alt="globe" />
         </div>
       </div>
       <div className="absolute bottom-0 -z-10">{gradientSvg}</div>

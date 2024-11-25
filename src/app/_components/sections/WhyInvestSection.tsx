@@ -4,24 +4,24 @@ import Image from "next/image";
 const WhyInvestSection = () => {
   return (
     <section className="max-w-screen flex w-full items-center justify-center overflow-hidden">
-      <div className="grid min-h-[1200px] w-full max-w-7xl gap-10 border-t border-white/30 px-5 py-20 sm:min-h-[1300px] md:min-h-[700px] md:grid-cols-2 2xl:min-h-[800px]">
+      <div className="grid w-full max-w-7xl gap-10 border-t border-white/30 px-5 py-20 sm:min-h-[1300px] md:min-h-[700px] md:grid-cols-2 lg:min-h-[700px] 2xl:min-h-[800px]">
         <div className="relative w-full">
           <Image
             src="/static/shape.png"
-            className="absolute -top-20"
+            className="md:absolute md:-top-20"
             width={223}
             height={315}
             alt="shape"
           />
           <Image
             src="/static/shape-1.png"
-            className="absolute top-20 max-w-[450px] sm:max-w-full"
+            className="absolute top-20 hidden max-w-[450px] sm:max-w-full md:block"
             width={624}
             height={600}
             alt="shape"
           />
         </div>
-        <div className="flex w-full flex-col justify-center gap-5 z-10 static">
+        <div className="static z-10 flex w-full flex-col gap-5 md:justify-center">
           <span className="font-neue font-bold">Unbreakable protection</span>
           <h1 className="font-neue text-5xl font-bold">
             Why invest in CDL Token?
