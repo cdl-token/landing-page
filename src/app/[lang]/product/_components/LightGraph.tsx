@@ -1,6 +1,7 @@
 "use client";
 
 import { createChart, ColorType } from "lightweight-charts";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 const LightGraph = () => {
@@ -20,10 +21,11 @@ const LightGraph = () => {
   ];
 
   const backgroundColor = "transparent"; // Set background to transparent
-  const lineColor = "#2962FF";
-  const textColor = "black";
-  const areaTopColor = "#2962FF";
-  const areaBottomColor = "rgba(41, 98, 255, 0.28)";
+  const lineColor = "#57bfbf";
+  const textColor = "white"; // Set text color to white
+  const areaTopColor = "#57bfbf99";
+  const areaBottomColor = "#57bfbf10";
+  const axisLineColor = "#2b2b43"; // Axis lines color
 
   useEffect(() => {
     if (!chartContainerRef.current) return;
@@ -40,11 +42,11 @@ const LightGraph = () => {
       },
       rightPriceScale: {
         visible: true, // Enable right price scale
-        borderColor: "rgba(197, 203, 206, 1)",
+        borderColor: axisLineColor, // Set axis line color
       },
       timeScale: {
         visible: true, // Enable bottom time scale
-        borderColor: "rgba(197, 203, 206, 1)",
+        borderColor: axisLineColor, // Set axis line color
       },
       width: chartContainerRef.current.clientWidth,
       height: 500, // Updated height to 500
@@ -73,10 +75,25 @@ const LightGraph = () => {
       window.removeEventListener("resize", handleResize);
       chart.remove();
     };
-  }, [backgroundColor, lineColor, textColor, areaTopColor, areaBottomColor]);
+  }, [
+    backgroundColor,
+    lineColor,
+    textColor,
+    areaTopColor,
+    areaBottomColor,
+    axisLineColor,
+  ]);
 
   return (
-    <div ref={chartContainerRef} style={{ width: "100%", height: "500px" }} />
+    <div className="relative max-h-[40rem] w-full">
+      <div
+        className="flex h-full min-h-[40rem] w-full items-center justify-center"
+        ref={chartContainerRef}
+      />
+      <div className="absolute bottom-[100px] left-2 z-20 h-10 w-10 rounded-full bg-black">
+        <Image src="/static/logo.svg" width={40} height={40} alt="Logo" />
+      </div>
+    </div>
   );
 };
 

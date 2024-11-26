@@ -44,7 +44,7 @@ const ServiceMain = () => {
           </button>
           <div className="my-10 flex py-10 px-5 flex-col items-center justify-center gap-5 rounded-[20px] bg-white text-black md:w-[696px]">
             <span className="uppercase">Powering leading web3 platforms</span>
-            <div className="grid place-items-center md:grid-cols-[128px_120px_84px_29px_108px] gap-5">
+            <div className="flex items-center flex-wrap justify-center gap-5">
               <Image
                 src="/static/services/companies/1.svg"
                 width={128}

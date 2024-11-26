@@ -41,7 +41,7 @@ const Footer = () => {
             <Link href="/">Whitepaper</Link>
             <Link href="https://cdl-token.gitbook.io/cdl-token/">Lightpaper</Link>
             <Link href="/">Github</Link>
-            <Link href="/">Roadmap</Link>
+            <Link href="/contact">Contact</Link>
           </div>
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-2xl font-bold">Community</h1>

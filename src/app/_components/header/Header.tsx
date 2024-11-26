@@ -5,7 +5,6 @@ import NavLinks from "./NavLinks";
 import { useEffect, useState } from "react";
 import HeaderSheet from "./HeaderSheet";
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
 
 const Header = ({ lang = "en" }: { lang: string }) => {
 
@@ -18,20 +17,14 @@ const Header = ({ lang = "en" }: { lang: string }) => {
   }, []);
   // ----------------------------------------------------
   
-  const router = useRouter();
-
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
-
 
   const controlNavbar = () => {
     if (typeof window !== "undefined") {
       if (window.scrollY > 36 && window.scrollY > lastScrollY) {
-        // Scrolling down
         setIsVisible(false);
       } else {
-        // Scrolling up
         setIsVisible(true);
       }
       setLastScrollY(window.scrollY);
@@ -75,8 +68,7 @@ const Header = ({ lang = "en" }: { lang: string }) => {
           </div>
           <SecondaryButton
             className="hidden lg:flex"
-            title="Contact"
-            action={() => router.push(`/contact`)}
+            title="Connect Wallet"
           />
           <HeaderSheet lang={lang} />
         </div>

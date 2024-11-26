@@ -1,18 +1,18 @@
 import CompaniesSlider from "./CompaniesSlider";
+import Marquee from "react-fast-marquee";
 
 const TopCompaniesStrip = () => {
   return (
     <section className="flex w-full flex-col items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col gap-5 px-5 py-5">
-        <div className="flex w-full flex-col gap-2">
-          <h2 className="font-apfel md:text-lg font-bold">
-            Trusted by Leading Companies Worldwide
-          </h2>
-          <h1 className="font-neue text-2xl md:text-4xl font-bold uppercase">
-            Used by the world&apos;s TOP companies
-          </h1>
+        <div className="text-center font-apfel text-white/50">
+          Used by leading brands and companies from across the globe
         </div>
-        <CompaniesSlider />
+        <div className="w-full py-5">
+          <Marquee>
+            <CompaniesSlider />
+          </Marquee>
+        </div>
         {/* <div className="flex w-full flex-wrap items-center justify-center gap-5 my-10 lg:justify-between">
           <Image
             src="/static/companies/binance.svg"

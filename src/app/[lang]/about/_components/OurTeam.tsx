@@ -7,10 +7,10 @@ const OurTeam = () => {
         <h1 className="text-center font-neue text-3xl font-bold leading-[42px] md:text-[38px]">
           MEET OUR TEAM
         </h1>
-        <span className="max-w-[824px] text-center font-apfel font-normal md:text-[19px]">
+        <span className="max-w-[824px] text-center text-sm font-apfel font-normal md:text-[19px]">
           A dynamic group of passionate professionals, each bringing unique
           expertise to drive innovation, collaboration, and growth. Together,
-          we’re shaping the future of our industry.
+          we&apos;re shaping the future of our industry.
         </span>
         <div className="grid w-full gap-10 py-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col items-center gap-5">

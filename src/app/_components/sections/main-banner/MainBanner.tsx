@@ -1,51 +1,30 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
-import AccountCard from "./AccountCard";
-import TransactionCard from "./TransactionsCard";
+import Image from "next/image";
 
 const MainBanner = () => {
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-hidden">
-      <div className="relative z-10 flex min-h-screen w-full max-w-7xl flex-col justify-center gap-12 border-b border-white/30 pl-5 pt-10 md:min-h-[900px]">
-        <div className="flex animate-slideIn flex-col gap-2 pt-32 font-neue text-4xl font-bold uppercase sm:pt-0 md:text-5xl lg:text-[60px] xl:text-[68px]">
-          <span className="text-primary">Your Gateway to</span>
-          <span>real-time</span>
-          <span>crypto data</span>
+      <div className="grid min-h-screen w-full max-w-7xl md:grid-cols-2 justify-center gap-12 border-b border-white/30 px-5 pt-10 md:min-h-[900px]">
+        <div className="flex h-full flex-col gap-12 justify-center">
+          <div className="flex animate-slideIn flex-col gap-2 pt-32 font-neue text-3xl font-bold uppercase sm:pt-0 md:text-5xl lg:text-[50px] xl:text-[55px]">
+            <span className="text-primary">Outsmarting the</span>
+            <span>Institutions in</span>
+            <span>Their Own Arena</span>
+          </div>
+          <p className="w-full max-w-[597px] animate-slideIn">
+            For years, CDL has empowered institutional investors with bespoke
+            data, advanced analytics, price predictions, and real-time news
+            feeds — giving them a significant edge in the markets. Now, CDL is
+            bringing that same power to you.
+          </p>
+          <div className="flex animate-slideIn items-center gap-5 pb-20">
+            <PrimaryButton title="Buy CDL Token" />
+            <SecondaryButton title="Details" />
+          </div>
         </div>
-        <p className="w-full max-w-[597px] animate-slideIn">
-          Stay ahead in the crypto market with live price updates, market
-          insights, and comprehensive analytics, empowering you to make smart,
-          informed investment decisions at every moment.
-        </p>
-        <div className="flex animate-slideIn items-center gap-5 pb-20">
-          <PrimaryButton title="Buy CDL Token" />
-          <SecondaryButton title="Details" />
-        </div>
-        <div className="hidden">
-          <TransactionCard />
-        </div>
-        <div className="hidden">
-          <AccountCard />
-        </div>
-        <div className="hidden md:block absolute left-[65%] top-32 z-20">
-          <AccountCard />
-        </div>
-        <div className="hidden md:block absolute left-[50%] bottom-16 z-20">
-          <TransactionCard />
-        </div>
-        <div
-          className="absolute -right-20 top-0 hidden h-[96%] w-[40%] bg-cover bg-center bg-no-repeat md:block"
-          style={{
-            backgroundImage: "url(/static/banner-bg.png",
-          }}
-        ></div>
-        <div
-          className="absolute left-0 top-0 h-[96%] w-screen -z-10 bg-cover bg-center bg-no-repeat md:hidden"
-          style={{
-            backgroundImage: "url(/static/banner-bg.png",
-          }}
-        >
-          <div className="w-full h-full bg-black/60"></div>
+        <div className="p-1 flex h-full items-center justify-center">
+          <Image src="/static/globe.svg" width={800} height={800} alt="GLOBE" />
         </div>
       </div>
       <div className="absolute left-[-510px] top-[-568px] -z-10">

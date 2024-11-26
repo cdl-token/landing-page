@@ -13,7 +13,7 @@ const TokenPowers = () => {
       </div>
       <div className="static z-10 grid w-full max-w-7xl md:grid-cols-2 gap-10 px-5 py-20">
         <div className="flex flex-col gap-5 py-10">
-          <h1 className="max-w-[310px] font-neue text-[55px] uppercase leading-[58px]">
+          <h1 className="max-w-[310px] font-neue text-3xl md:text-[55px] uppercase md:leading-[58px]">
             Cdl token powers industry leaders
           </h1>
           <span className="max-w-[320px] font-apfel">

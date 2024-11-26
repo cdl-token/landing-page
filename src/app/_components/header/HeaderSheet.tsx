@@ -29,8 +29,8 @@ const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
       href: `/${lang}/docs`,
     },
     {
-      title: "Roadmap",
-      href: `/${lang}/roadmap`,
+      title: "Contact",
+      href: `/${lang}/contact`,
     },
   ];
   return (
