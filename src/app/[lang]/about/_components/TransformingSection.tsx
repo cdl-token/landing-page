@@ -4,11 +4,11 @@ const TransformingSection = () => {
       <div className="absolute top-0 md:-top-[400px]">{gradientSvg}</div>
       <div className="flex w-full max-w-7xl flex-col border-y border-white/30">
         <div className="static z-10 grid w-full gap-10 px-5 py-10 md:grid-cols-2">
-          <div className="flex flex-col gap-10">
-            <h2 className="font-neue uppercase leading-[24px] tracking-[5px] text-primary md:text-[19px]">
+          <div className="flex flex-col gap-3 md:gap-10">
+            <h2 className="font-neue uppercase tracking-[5px] text-primary md:text-[19px] md:leading-[24px]">
               ABOUT CDL token
             </h2>
-            <h1 className="font-neue text-3xl font-bold uppercase leading-[42px] md:text-[38px]">
+            <h1 className="font-neue text-2xl font-bold uppercase leading-[42px] md:text-[38px]">
               Transforming Data <br /> for Tomorrow
             </h1>
             <span className="max-w-[534px] font-apfel leading-[24px] text-white/50">
@@ -20,28 +20,28 @@ const TransformingSection = () => {
               decentralization.
             </span>
           </div>
-          <div className="grid sm:grid-cols-2">
-            <div className="flex items-center justify-end gap-3 border-y border-white/10 py-10">
-              <span className="text-">Real-Time Analytics</span>
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F3F3F3]/10">
+          <div className="grid grid-cols-2">
+            <div className="flex items-center justify-end gap-2 border-y border-white/10 py-10 sm:gap-3">
+              <span className="text-xs sm:text-base">Real-Time Analytics</span>
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F3F3F3]/10 sm:h-9 sm:w-9">
                 {arrow}
               </div>
             </div>
-            <div className="flex items-center justify-end gap-3 border-b border-white/10 py-10 sm:border-y">
-              <span className="text-">Advanced Security</span>
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F3F3F3]/10">
+            <div className="flex items-center justify-end gap-2 border-y border-white/10 py-10 sm:gap-3">
+              <span className="text-xs sm:text-base">Advanced Security</span>
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F3F3F3]/10 sm:h-9 sm:w-9">
                 {arrow}
               </div>
             </div>
-            <div className="flex items-center justify-end gap-3 border-b border-white/10 py-10">
-              <span className="text-">Scalable Solutions</span>
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F3F3F3]/10">
+            <div className="flex items-center justify-end gap-2 border-b border-white/10 py-10 sm:gap-3">
+              <span className="text-xs sm:text-base">Scalable Solutions</span>
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F3F3F3]/10 sm:h-9 sm:w-9">
                 {arrow}
               </div>
             </div>
-            <div className="flex items-center justify-end gap-3 border-b border-white/10 py-10">
-              <span className="text-">User Education</span>
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F3F3F3]/10">
+            <div className="flex items-center justify-end gap-2 border-b border-white/10 py-10 sm:gap-3">
+              <span className="text-xs sm:text-base">User Education</span>
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F3F3F3]/10 sm:h-9 sm:w-9">
                 {arrow}
               </div>
             </div>
@@ -121,9 +121,9 @@ const TransformingSection = () => {
             </span>
           </div>
         </div>
-        <div className="grid px-5 lg:grid-cols-3 gap-10 py-10">
-          <div className="flex flex-col gap-10">
-            <h1 className="font-neue text-[21px] font-bold uppercase leading-[24px]">
+        <div className="grid gap-10 px-5 py-10 lg:grid-cols-3">
+          <div className="flex flex-col gap-3 md:gap-10">
+            <h1 className="font-neue text-lg md:text-[21px] font-bold uppercase leading-[24px]">
               OUR VISION
             </h1>
             <span className="text-[#898990]">
@@ -135,8 +135,8 @@ const TransformingSection = () => {
               real-time insights and actionable strategies.
             </span>
           </div>
-          <div className="flex flex-col gap-10">
-            <h1 className="font-neue text-[21px] font-bold uppercase leading-[24px]">
+          <div className="flex flex-col gap-3 md:gap-10">
+            <h1 className="font-neue text-lg md:text-[21px] font-bold uppercase leading-[24px]">
               OUR MISSION
             </h1>
             <span className="text-[#898990]">
@@ -148,8 +148,8 @@ const TransformingSection = () => {
               decentralized world.
             </span>
           </div>
-          <div className="flex flex-col gap-10">
-            <h1 className="font-neue text-[21px] font-bold uppercase leading-[24px]">
+          <div className="flex flex-col gap-3 md:gap-10">
+            <h1 className="font-neue text-lg md:text-[21px] font-bold uppercase leading-[24px]">
               CORE VALUE
             </h1>
             <span className="text-[#898990]">

@@ -5,10 +5,10 @@ const TopCompaniesStrip = () => {
     <section className="flex w-full flex-col items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col gap-5 px-5 py-5">
         <div className="flex w-full flex-col gap-2">
-          <h2 className="font-apfel text-lg font-bold">
+          <h2 className="font-apfel md:text-lg font-bold">
             Trusted by Leading Companies Worldwide
           </h2>
-          <h1 className="font-neue text-4xl font-bold uppercase">
+          <h1 className="font-neue text-2xl md:text-4xl font-bold uppercase">
             Used by the world&apos;s TOP companies
           </h1>
         </div>

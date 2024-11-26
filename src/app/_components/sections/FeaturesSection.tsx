@@ -4,12 +4,12 @@ const FeaturesSection = () => {
   return (
     <section className="relative flex w-full items-center justify-center">
       <div className="static z-10 flex w-full max-w-7xl flex-col gap-10 border-t border-white/30 px-5 py-20">
-        <h1 className="font-neue text-5xl font-bold uppercase">
+        <h1 className="font-neue text-3xl md:text-5xl font-bold uppercase">
           Features and benefits
         </h1>
         <div className="grid w-full gap-10 md:grid-cols-[3.5fr_6fr]">
-          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-8">
-            <h1 className="font-neue text-3xl font-bold">
+          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8">
+            <h1 className="font-neue text-xl md:text-3xl font-bold">
               User-Friendly Interface
             </h1>
             <span className="h-full font-apfel text-white/75">
@@ -24,8 +24,8 @@ const FeaturesSection = () => {
             />
             <div className="absolute left-0 top-0">{cardGradient1}</div>
           </div>
-          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-8">
-            <h1 className="font-neue text-3xl font-bold">Advanced Security</h1>
+          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8">
+            <h1 className="font-neue text-xl md:text-3xl font-bold">Advanced Security</h1>
             <span className="h-full font-apfel text-white/75">
               Your assets are protected with top-tier security protocols,
               including multi-factor authentication and cold storage.
@@ -40,8 +40,8 @@ const FeaturesSection = () => {
           </div>
         </div>
         <div className="grid w-full gap-10 md:grid-cols-[6fr_4fr]">
-          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-8">
-            <h1 className="font-neue text-3xl font-bold">
+          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8">
+            <h1 className="font-neue text-xl md:text-3xl font-bold">
               Real-Time Market Data
             </h1>
             <span className="h-full font-apfel text-white/75">
@@ -55,8 +55,8 @@ const FeaturesSection = () => {
             />
             <div className="absolute left-0 top-0">{cardGradient3}</div>
           </div>
-          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-8">
-            <h1 className="font-neue text-3xl font-bold">
+          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8">
+            <h1 className="font-neue text-xl md:text-3xl font-bold">
               Smart Contract Integration
             </h1>
             <span className="h-full font-apfel text-white/75">

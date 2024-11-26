@@ -35,7 +35,7 @@ const QuestionAccordion = ({
       <div
         className={cn(
           isOpen ? "h-fit pb-6" : "h-0 pb-0",
-          "overflow-hidden transition-all duration-200 ease-in",
+          "overflow-hidden text-white/50 pt-3 transition-all duration-200 ease-in",
         )}
       >
         {answer}
@@ -65,6 +65,7 @@ const gradientSvg = (
   <svg
     width="1026"
     height="216"
+    className="h-full min-h-[500px]"
     viewBox="0 0 1026 216"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

@@ -16,11 +16,10 @@ const TokenSection = () => {
           exit="show"
           variants={leftToRightVariants}
         >
-          <h3 className="lg:[37.96px] text-wrap font-neue text-xl font-bold uppercase leading-[42.64px] md:text-4xl">
+          <h3 className="lg:text-[37.96px] text-wrap font-neue text-xl font-bold uppercase lg:leading-[42.64px] md:text-4xl">
             Gain access to real-time and historical data for your favorite
             assets
           </h3> 
-
           <p className="text-white/50 mt-8 text-wrap text-[16px] leading-[24px]">
             Empower yourself to manage your cryptocurrencies, NFTs, and other
             digital assets with complete control, privacy, and security, all

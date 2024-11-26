@@ -4,10 +4,10 @@ const OurTeam = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-3 px-5 py-20">
-        <h1 className="text-center font-neue text-[38px] font-bold leading-[42px]">
+        <h1 className="text-center font-neue text-3xl font-bold leading-[42px] md:text-[38px]">
           MEET OUR TEAM
         </h1>
-        <span className="max-w-[824px] text-center font-apfel text-[19px]">
+        <span className="max-w-[824px] text-center font-apfel font-normal md:text-[19px]">
           A dynamic group of passionate professionals, each bringing unique
           expertise to drive innovation, collaboration, and growth. Together,
           we’re shaping the future of our industry.
@@ -20,16 +20,20 @@ const OurTeam = () => {
               height={230}
               alt="Team 1"
             />
-            <h1 className="text-center font-neue text-[21px] font-bold uppercase leading-[24px]">
-              Jason Shubrook
-            </h1>
-            <span className="text-center text-[#898990]">Co-Founder & CEO</span>
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
-                {linkedIn}
-              </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
-                {twitter}
+            <div className="flex flex-col items-center gap-1">
+              <h1 className="text-center font-neue text-[21px] font-bold uppercase leading-[22px]">
+                Jason Shubrook
+              </h1>
+              <span className="mb-3 text-center text-[#898990]">
+                Co-Founder & CEO
+              </span>
+              <div className="flex items-center gap-2">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
+                  {linkedIn}
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
+                  {twitter}
+                </div>
               </div>
             </div>
           </div>
@@ -40,16 +44,20 @@ const OurTeam = () => {
               height={230}
               alt="Team 1"
             />
-            <h1 className="text-center font-neue text-[21px] font-bold uppercase leading-[24px]">
-              Stephen Freshwater
-            </h1>
-            <span className="text-center text-[#898990]">Co-Founder & COO</span>
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
-                {linkedIn}
-              </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
-                {twitter}
+            <div className="flex flex-col items-center gap-1">
+              <h1 className="text-center font-neue text-[21px] font-bold uppercase leading-[22px]">
+                Stephen Freshwater
+              </h1>
+              <span className="mb-3 text-center text-[#898990]">
+                Co-Founder & COO
+              </span>
+              <div className="flex items-center gap-2">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
+                  {linkedIn}
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
+                  {twitter}
+                </div>
               </div>
             </div>
           </div>
@@ -60,16 +68,20 @@ const OurTeam = () => {
               height={230}
               alt="Team 1"
             />
-            <h1 className="text-center font-neue text-[21px] font-bold uppercase leading-[24px]">
-              Brian Fudge
-            </h1>
-            <span className="text-center text-[#898990]">Co-Founder & CFO</span>
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
-                {linkedIn}
-              </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
-                {twitter}
+            <div className="flex flex-col items-center gap-1">
+              <h1 className="text-center font-neue text-[21px] font-bold uppercase leading-[22px]">
+                Brian Fudge
+              </h1>
+              <span className="mb-3 text-center text-[#898990]">
+                Co-Founder & CFO
+              </span>
+              <div className="flex items-center gap-2">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
+                  {linkedIn}
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
+                  {twitter}
+                </div>
               </div>
             </div>
           </div>
@@ -80,16 +92,18 @@ const OurTeam = () => {
               height={230}
               alt="Team 1"
             />
-            <h1 className="text-center font-neue text-[21px] font-bold uppercase leading-[24px]">
-              Andrew Speer
-            </h1>
-            <span className="text-center text-[#898990]">CMO</span>
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
-                {linkedIn}
-              </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
-                {twitter}
+            <div className="flex flex-col items-center gap-1">
+              <h1 className="text-center font-neue text-[21px] font-bold uppercase leading-[22px]">
+                Andrew Speer
+              </h1>
+              <span className="mb-3 text-center text-[#898990]">CMO</span>
+              <div className="flex items-center gap-2">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
+                  {linkedIn}
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-[#CBFB45] hover:text-black">
+                  {twitter}
+                </div>
               </div>
             </div>
           </div>

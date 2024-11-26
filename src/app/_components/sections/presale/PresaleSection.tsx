@@ -31,12 +31,12 @@ const PresaleSection = () => {
     <div className="max-w-screen relative flex w-full flex-col items-center justify-center py-20">
       <div className="grid w-full max-w-7xl gap-20 px-5 lg:grid-cols-2">
         {chainId === 97 ? (
-          <PresaleCardBinance />
-        ) : (
-          <PresaleCard />
-        )}
-        <div className="flex flex-col gap-5 py-20">
-          <h1 className="font-neue text-5xl font-bold uppercase">
+            <PresaleCardBinance/>
+          ) : (
+            <PresaleCard/>
+          )}
+        <div className="flex flex-col gap-5 md:py-20">
+          <h1 className="font-neue text-2xl md:text-5xl font-bold uppercase">
             Join cdl token presale
           </h1>
           <span className="text- max-w-[667px]">
