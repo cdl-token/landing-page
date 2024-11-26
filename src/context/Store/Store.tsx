@@ -20,38 +20,25 @@ import cdlTokenContract from "../contractsData/CryptoDataLive.json";
 
 /////////////////////////////////////////// BINANCE CHAIN PRESALE ////////////////////////////////////
 
-// import USDTContractAbis from "../contractsData/USDCToken.json";
-// import USDTTokenBinanceAddress from "../contractsData/USDTTokenBinance-address.json";
-// import USDCTokenBinanceAddress from "../contractsData/USDCTokenBinance-address.json";
+import USDTContractAbis from "../contractsData/USDCToken.json";
+import USDTTokenBinanceAddress from "../contractsData/USDTTokenBinance-address.json";
+import USDCTokenBinanceAddress from "../contractsData/USDCTokenBinance-address.json";
 import WrapedBridgecdlBinanceAddress from "../contractsData/WrappedBridgeCDL-address.json";
 import WrapedBridgecdlBinanceAbis from "../contractsData/WrappedBridgeCDL.json";
-// import WrapedcdlBinanceAddress from "../contractsData/WrappedCryptoDataLive-address.json";
-// import WrapedcdlBinanceAbis from "../contractsData/WrappedCryptoDataLive.json";
+import WrapedcdlBinanceAddress from "../contractsData/WrappedCryptoDataLive-address.json";
+import WrapedcdlBinanceAbis from "../contractsData/WrappedCryptoDataLive.json";
 import { toast } from "react-toastify";
+import useDisableLocalStorage from "@/components/notification/useDisableLocalStorage";
 
 
 ///////////////////////////////////// ----------**************----------------- //////////////////////////
 
-
-
-const getProviderBridgePresale = () => {
-  // const providersss = process.env.NEXT_PUBLIC_RPC_URL_ETH;
-  const provider = new JsonRpcProvider("https://1rpc.io/sepolia"); //TODO:: providers  //"http://localhost:8545/"
-  const presaleContract = new ethers.Contract(
-    WrapedBridgecdlBinanceAddress.address,
-    WrapedBridgecdlBinanceAbis.abi,
-    provider,
-  );
-  return presaleContract;
-};
-
-
-
 export const Store = createContext<StoreContextType | null>(null);
 
 export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
+useDisableLocalStorage();
 
-  const { address, isConnected } = useAppKitAccount();
+const { address, isConnected } = useAppKitAccount();
 
   const { walletProvider } = useAppKitProvider("eip155");
 
@@ -89,12 +76,6 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     tokensInContract: 0,
   });
 
-  // ////////////////////////////////////////////////////////////////////////////////////
-  // //////////////////////////////////////// USE STATES ////////////////////////////////
-  // ////////////////////////////////////////////////////////////////////////////////////
-
-
-
   //////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////// HELPING FUNCTIONS ////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////
@@ -104,19 +85,38 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
       setloader(true);
 
       const provider = new JsonRpcProvider("https://1rpc.io/sepolia"); //TODO:: providers  //"http://localhost:8545/"
+      
+      console.log("🚀 ~ GetValues ~ provider:", provider)
+      
       const presaleContract = new ethers.Contract(
         cdlPresaleContractAddress.address,
         cdlPresaleContract.abi,
         provider,
       );
+      
+      const providerBinance = new JsonRpcProvider("https://bsc-testnet-rpc.publicnode.com"); //TODO:: providers  //"http://localhost:8545/"
+      
+      console.log("🚀 ~ GetValues ~ providerBinance:", providerBinance)
+      
+      const binancePresaleContract = new ethers.Contract(
+        WrapedBridgecdlBinanceAddress.address,
+        WrapedBridgecdlBinanceAbis.abi,
+        providerBinance,
+      );
 
+      console.log("🚀 ~ GetValues ~ presaleContract:", presaleContract)
+
+      console.log("🚀 ~ GetValues ~ providerBinance:", binancePresaleContract.target)
+      
       const raisedAmount = await presaleContract.raisedAmount();
 
-      // const raisedAmountEthereum = await getProviderBridgePresale().raisedAmount();
+      console.log("🚀 ~ GetValues ~ raisedAmount:", raisedAmount?.toString())
+
+      const raisedAmountBinance = await binancePresaleContract.raisedAmount();
 
       ////////////////////// Smart Contract Balance Check ////////////////////////////
 
-      // const providers = process.env.NEXT_PUBLIC_RPC_URL_BNB;
+      //const providers = process.env.NEXT_PUBLIC_RPC_URL_BNB;
       const cdlContracts = new ethers.Contract(
         cdlTokenAddress.address,
         cdlTokenContract.abi,
@@ -127,7 +127,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
         cdlPresaleContractAddress.address,
       );
 
-     
+
       setContractData((prevState) => ({
         ...prevState,
         raisedAmount: 0,
@@ -137,11 +137,11 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
 
       setContractData((prevState) => ({
         ...prevState,
-        raisedAmount: Number(formatUnits(raisedAmount?.toString() || "0", 18)?.toString()),
+        raisedAmount: Number(formatUnits(raisedAmount?.toString() || "0", 6)?.toString()) + Number(formatUnits(raisedAmountBinance?.toString() || "0", 18)?.toString()),
         tokensInContract: Number(formatUnits(TokensInContract?.toString() || "0", 18)?.toString()),
       }));
 
-      if (chainId === 56) {
+      if (chainId === 11155111) { //TODO::1 //mainnet
         const sellPrice = await presaleContract.salePrice();
         setContractData((prevState) => ({
           ...prevState,
@@ -253,18 +253,6 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
       });
   };
 
-  // const copyToClipboardReferral = () => {
-  //   const tokenAddress = `https://www.cdllondon.com/en?ref=${address}`; // Your token address
-  //   navigator.clipboard
-  //     .writeText(tokenAddress)
-  //     .then(() => {
-  //       toast.success("Referral address copied to clipboard!");
-  //     })
-  //     .catch((error) => {
-  //       console.error("Failed to copy: ", error);
-  //     });
-  // };
-
   // const copyToClipboardAddress = () => {
   //   const tokenAddress = address; // Your token address
   //   navigator.clipboard
@@ -282,9 +270,9 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     try {
       const buyingTokensAmount = formatEther(tokens?.toString() || "0");
 
-      if (+buyingTokensAmount < 33) {
+      if (+buyingTokensAmount < 10) {
         toast.error("Please buy minimum One (1) Dollar");
-      } else if (+buyingTokensAmount > 100000) {
+      } else if (+buyingTokensAmount > 30000) {
         toast.error("Please buy maximum Three Thousands (3000) Dollars");
       }
 
@@ -294,6 +282,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
       if (walletProvider && isEip1193Provider(walletProvider)) {
         const ethersProvider = new BrowserProvider(walletProvider);
         const signer = await ethersProvider.getSigner()
+
         const presaleContract = new ethers.Contract(
           cdlPresaleContractAddress.address,
           cdlPresaleContract.abi,
@@ -311,7 +300,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
           signer,
         );
 
-    
+
         const amountInWei = parseEther(payAmountInUSDT?.toString() || "0");
 
         const amountAginstTokens = await presaleContract.sellTokenInUDSTPrice(tokens?.toString());
@@ -369,9 +358,9 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     try {
       const buyingTokensAmount = formatEther(tokens?.toString() || "0");
 
-      if (+buyingTokensAmount < 33) {
+      if (+buyingTokensAmount < 10) {
         toast.error("Please buy minimum One (1) Dollar");
-      } else if (+buyingTokensAmount > 100000) {
+      } else if (+buyingTokensAmount > 30000) {
         toast.error("Please buy maximum Three Thousands (3000) Dollars");
       }
 
@@ -423,242 +412,237 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     }
   };
 
-  // const networkChange = async () => {
-  //   let chainid = process.env.NEXT_PUBLIC_CHAIN_ID_ETHEREUM;
-  //   if (isConnected && chainId?.toString() !== chainid?.toString()) {
-  //     console.log(chainid, chainId, "chainidchainid");
-  //     useSwitchNetwork(Number(chainid));
-  //     return;
-  //   }
-  // };
+  const networkChange = async () => {
+    const chainid = process.env.NEXT_PUBLIC_CHAIN_ID_ETHEREUM;
+    if (isConnected && chainId?.toString() !== chainid?.toString()) {
+      console.log(chainid, chainId, "chainidchainid");
+      // useSwitchNetwork(Number(chainid));
+      return;
+    }
+  };
 
   // ////////////////////////////////////////////////////////////////////////////////////
-  // //////////////////////////////-------  ETHEREUM -------////////////////////////////
+  // //////////////////////////////-------  BINANCE -------////////////////////////////
   // ////////////////////////////////////////////////////////////////////////////////////
 
-  // const GetBridgeValues = async () => {
-  //   try {
-  //     setloader(true);
+  const GetBridgeValues = async () => {
+    try {
+      setloader(true);
 
-  //     const providersss = process.env.NEXT_PUBLIC_RPC_URL_ETH;
-  //     const provider = new ethers.providers.JsonRpcProvider(providersss);
-  //     const presaleContract = new ethers.Contract(
-  //       WrapedBridgecdlEthereumAddress.address,
-  //       WrapedBridgecdlEthereumAbis.abi,
-  //       provider,
-  //     );
+      const provider = new JsonRpcProvider("https://bsc-testnet-rpc.publicnode.com"); //TODO:: providers  //"http://localhost:8545/"
+      const binancePresaleContract = new ethers.Contract(
+        WrapedBridgecdlBinanceAddress.address,
+        WrapedBridgecdlBinanceAbis.abi,
+        provider,
+      );
 
-  //     // const raisedAmount = await presaleContract.raisedAmount();
+      if (chainId === 97) { //TODO::56
+        const sellPrice = await binancePresaleContract.salePrice();
+        setContractData((prevState) => ({
+          ...prevState,
+          tokenPrice: sellPrice?.toString(),
+        }));
+      }
 
-  //     if (chainId === 1) {
-  //       const sellPrice = await presaleContract.salePrice();
-  //       setContractData((prevState) => ({
-  //         ...prevState,
-  //         tokenPrice: sellPrice?.toString(),
-  //       }));
-  //     }
 
-  //     //  console.log(raisedAmount?.toString(),"raisedAmountraisedAmount");
+      if (isConnected && chainId === 97) { //TODO: 56 change ChainId
 
-  //     // setContractData(prevState => ({
-  //     //   ...prevState,
-  //     //   raisedAmount: (+prevState.raisedAmount  +  +formatUnits(raisedAmount, 6)?.toString()) //TODO:Test
-  //     // }));
+        if (!walletProvider) throw Error('No wallet provider found');
 
-  //     if (isConnected && chainId === 1) {
-  //       //TODO: change ChainId
+        if (walletProvider && isEip1193Provider(walletProvider)) {
+          const ethersProvider = new BrowserProvider(walletProvider);
 
-  //       const ethersProvider = new ethers.providers.Web3Provider(
-  //         walletProvider,
-  //       );
-  //       const balance = await ethersProvider.getBalance(address);
+          const balance = await ethersProvider.getBalance(address || "");
 
-  //       const USDTContracts = new ethers.Contract(
-  //         USDTTokenEthereumAddress.address,
-  //         USDTContractAbis.abi,
-  //         ethersProvider,
-  //       );
-  //       const USDCContracts = new ethers.Contract(
-  //         USDCTokenEthereumAddress.address,
-  //         USDTContractAbis.abi,
-  //         ethersProvider,
-  //       );
-  //       const cdlContracts = new ethers.Contract(
-  //         WrapedcdlEthereumAddress.address,
-  //         WrapedcdlEthereumAbis.abi,
-  //         ethersProvider,
-  //       );
+          const USDTContracts = new ethers.Contract(
+            USDTTokenBinanceAddress.address,
+            USDTContractAbis.abi,
+            ethersProvider,
+          );
+          const USDCContracts = new ethers.Contract(
+            USDCTokenBinanceAddress.address,
+            USDTContractAbis.abi,
+            ethersProvider,
+          );
+          const cdlContracts = new ethers.Contract(
+            WrapedcdlBinanceAddress.address,
+            WrapedcdlBinanceAbis.abi,
+            ethersProvider,
+          );
 
-  //       console.log(balance?.toString(), "balancebalancebalancebalancebalance");
+          console.log(balance?.toString(), "balancebalancebalancebalancebalance");
 
-  //       const USDTBalance = await USDTContracts.balanceOf(address);
-  //       const USDCBalance = await USDCContracts.balanceOf(address);
-  //       const cdlBalance = await cdlContracts.balanceOf(address);
+          const USDTBalance = await USDTContracts.balanceOf(address);
+          const USDCBalance = await USDCContracts.balanceOf(address);
+          const cdlBalance = await cdlContracts.balanceOf(address);
 
-  //       setContractData((prevState) => ({
-  //         ...prevState,
-  //         ethBalance: formatUnits(balance, 18)?.toString(),
-  //         usdcBalance: formatUnits(USDTBalance, 6)?.toString(),
-  //         usdtBalance: formatUnits(USDCBalance, 6)?.toString(),
-  //         cdlBalance: formatUnits(cdlBalance, 18)?.toString(),
-  //       }));
-  //     }
-  //     setloader(false);
-  //   } catch (error) {
-  //     setloader(false);
-  //     console.log("Ethereum");
-  //     console.log(error);
-  //   }
-  // };
+          setContractData((prevState) => ({
+            ...prevState,
+            ethBalance: Number(formatUnits(balance || "0", 18)?.toString()),
+            usdcBalance: Number(formatUnits(USDCBalance || "0", 18)?.toString()),
+            usdtBalance: Number(formatUnits(USDTBalance || "0", 18)?.toString()),
+            cdlBalance: Number(formatUnits(cdlBalance || "0", 18)?.toString()),
+          }));
+        }
+        setloader(false);
+      }
+    } catch (error) {
+      setloader(false);
+      console.log("Ethereum");
+      console.log(error);
+    }
+  };
 
-  // const BuyWithUSDTandUSDCOnEthereum = async (
-  //   payAmountInUSDT,
-  //   tokens,
-  //   isUSDT,
-  // ) => {
-  //   try {
-  //     networkChange();
+  const BuyWithUSDTandUSDCOnBinance = async ({ payAmountInUSDT, tokens, isUSDT }: BuyWithUSDCProps): Promise<void> => {
+    try {
+      networkChange();
 
-  //     let tokensss = ethers.utils.formatEther(tokens?.toString());
-  //     console.log(+tokensss?.toString(), "tokenssstokenssstokensss");
+      const tokensss = formatEther(tokens?.toString());
+      console.log(+tokensss?.toString(), "tokenssstokenssstokensss");
 
-  //     if (+tokensss?.toString() < 33) {
-  //       return sendErrorToast("Please buy minimum One (1) Dollar");
-  //     } else if (+tokensss?.toString() > 100000) {
-  //       return sendErrorToast("Please buy maximum Three Thousands (3000) Dollars");
-  //     }
+      if (+tokensss?.toString() < 10) {
+        toast.error("Please buy minimum One (1) Dollar");
+      } else if (+tokensss?.toString() > 30000) {
+        toast.error("Please buy maximum Three Thousands (3000) Dollars");
+      }
 
-  //     setPurchaseLoader(true);
+      setPurchaseLoader(true);
 
-  //     const ethersProvider = new ethers.providers.Web3Provider(walletProvider);
-  //     const signer = ethersProvider.getSigner();
-  //     const presaleContract = new ethers.Contract(
-  //       WrapedBridgecdlEthereumAddress.address,
-  //       WrapedBridgecdlEthereumAbis.abi,
-  //       signer,
-  //     );
-  //     const USDTContracts = new ethers.Contract(
-  //       USDTTokenEthereumAddress.address,
-  //       USDTContractAbis.abi,
-  //       signer,
-  //     );
-  //     const USDCContracts = new ethers.Contract(
-  //       USDCTokenEthereumAddress.address,
-  //       USDTContractAbis.abi,
-  //       signer,
-  //     );
+      if (walletProvider && isEip1193Provider(walletProvider)) {
 
-  //     let amountInWei = +payAmountInUSDT?.toString() * 10 ** 6;
-  //     if (isUSDT) {
-  //       let allowance = await USDTContracts.allowance(
-  //         address,
-  //         WrapedBridgecdlEthereumAddress?.address,
-  //       );
+        const ethersProvider = new BrowserProvider(walletProvider);
+        const signer = await ethersProvider.getSigner()
 
-  //       if (+allowance?.toString() < +amountInWei?.toString()) {
-  //         let tokenApprove = await USDTContracts.approve(
-  //           WrapedBridgecdlEthereumAddress?.address,
-  //           amountInWei,
-  //         );
-  //         await tokenApprove.wait();
-  //       }
+        const presaleContract = new ethers.Contract(
+          WrapedBridgecdlBinanceAddress.address,
+          WrapedBridgecdlBinanceAbis.abi,
+          signer,
+        );
+        const USDTContracts = new ethers.Contract(
+          USDTTokenBinanceAddress.address,
+          USDTContractAbis.abi,
+          signer,
+        );
+        const USDCContracts = new ethers.Contract(
+          USDCTokenBinanceAddress.address,
+          USDTContractAbis.abi,
+          signer,
+        );
 
-  //       const buying = await presaleContract.buyWithUSDT(
-  //         address,
-  //         tokens,
-  //         isUSDT,
-  //       );
-  //       buying.wait();
-  //       const ethLink = `https://etherscan.io/tx/${buying?.hash}`;
-  //       setTransactionHashID(buying?.hash);
-  //       setTransactionHash(ethLink);
-  //       setTransactionSuccess(true);
-  //     } else {
-  //       console.log("check2");
-  //       let allowance = await USDCContracts.allowance(
-  //         address,
-  //         WrapedBridgecdlEthereumAddress?.address,
-  //       );
-  //       console.log(+allowance?.toString(), "allowanceallowanceallowance");
-  //       if (+allowance?.toString() < +amountInWei?.toString()) {
-  //         console.log("check3");
-  //         let tokenApprove = await USDCContracts.approve(
-  //           WrapedBridgecdlEthereumAddress?.address,
-  //           amountInWei,
-  //         );
-  //         await tokenApprove.wait();
-  //       }
-  //       console.log("check", isUSDT);
-  //       const buying = await presaleContract.buyWithUSDT(
-  //         address,
-  //         tokens,
-  //         isUSDT,
-  //       );
-  //       buying.wait();
-  //       const ethLink = `https://etherscan.io/tx/${buying?.hash}`;
-  //       setTransactionHashID(buying?.hash);
-  //       setTransactionHash(ethLink);
-  //       setTransactionSuccess(true);
-  //     }
+        const amountInWei = +payAmountInUSDT?.toString() * 10 ** 6;
+        if (isUSDT) {
+          const allowance = await USDTContracts.allowance(
+            address,
+            WrapedBridgecdlBinanceAddress?.address,
+          );
 
-  //     await GetBridgeValues();
-  //     setPurchaseLoader(false);
-  //   } catch (error) {
-  //     setPurchaseLoader(false);
-  //     setTransactionHash("");
-  //     setTransactionSuccess(false);
-  //     sendErrorToast(`${JSON.stringify(error.reason)}`);
-  //     console.log(error);
-  //   }
-  // };
+          if (+allowance?.toString() < +amountInWei?.toString()) {
+            const tokenApprove = await USDTContracts.approve(
+              WrapedBridgecdlBinanceAddress?.address,
+              amountInWei,
+            );
+            await tokenApprove.wait();
+          }
 
-  // const BuyWithETHOnEthereum = async (tokens, amountInEthPayable) => {
-  //   try {
-  //     networkChange();
-  //     let tokensss = ethers.utils.formatEther(tokens?.toString());
+          const buying = await presaleContract.buyWithUSDT(
+            address,
+            tokens,
+            isUSDT,
+          );
+          buying.wait();
+          // const ethLink = `https://etherscan.io/tx/${buying?.hash}`;
+          // setTransactionHashID(buying?.hash);
+          // setTransactionHash(ethLink);
+          // setTransactionSuccess(true);
+        } else {
+          console.log("check2");
+          const allowance = await USDCContracts.allowance(
+            address,
+            WrapedBridgecdlBinanceAddress?.address,
+          );
+          console.log(+allowance?.toString(), "allowanceallowanceallowance");
+          if (+allowance?.toString() < +amountInWei?.toString()) {
+            console.log("check3");
+            const tokenApprove = await USDCContracts.approve(
+              WrapedBridgecdlBinanceAddress?.address,
+              amountInWei,
+            );
+            await tokenApprove.wait();
+          }
+          console.log("check", isUSDT);
+          const buying = await presaleContract.buyWithUSDT(
+            address,
+            tokens,
+            isUSDT,
+          );
+          buying.wait();
+          // const ethLink = `https://etherscan.io/tx/${buying?.hash}`;
+          // setTransactionHashID(buying?.hash);
+          // setTransactionHash(ethLink);
+          // setTransactionSuccess(true);
+        }
+        await GetBridgeValues();
+        setPurchaseLoader(false);
+      }
+    } catch (error) {
+      // setPurchaseLoader(false);
+      // setTransactionHash("");
+      // setTransactionSuccess(false);
+      // sendErrorToast(`${JSON.stringify(error.reason)}`);
+      console.log(error);
+    }
+  };
 
-  //     if (tokensss?.toString() < 33) {
-  //       return sendErrorToast("Please buy minimum One (1) Doller");
-  //     } else if (tokensss?.toString() > 100000) {
-  //       return sendErrorToast("Please buy maximum Three Thousands (3000) Dollers");
-  //     }
+  const BuyWithETHOnBinance = async ({ tokens, amountInEthPayable }: BuyWithETHProps): Promise<void> => {
+    try {
+      networkChange();
+      const tokensss = formatEther(tokens?.toString());
 
-  //     console.log(tokens?.toString(), "tokens?.toString()tokens?.toString()");
-  //     console.log(
-  //       amountInEthPayable?.toString(),
-  //       "tokens?.toString()tokens?.toString()",
-  //     );
+      if (+tokensss?.toString() < 10) {
+        toast.error("Please buy minimum One (1) Dollar");
+      } else if (+tokensss?.toString() > 30000) {
+        toast.error("Please buy maximum Three Thousands (3000) Dollars");
+      }
 
-  //     setPurchaseLoader(true);
+      console.log(tokens?.toString(), "tokens?.toString()tokens?.toString()");
+      console.log(
+        amountInEthPayable?.toString(),
+        "tokens?.toString()tokens?.toString()",
+      );
 
-  //     const ethersProvider = new ethers.providers.Web3Provider(walletProvider);
-  //     const signer = ethersProvider.getSigner();
-  //     const bridgePresaleContract = new ethers.Contract(
-  //       WrapedBridgecdlEthereumAddress.address,
-  //       WrapedBridgecdlEthereumAbis.abi,
-  //       signer,
-  //     );
-  //     let amountInWei = ethers.utils.parseEther(amountInEthPayable?.toString());
-  //     const buying = await bridgePresaleContract.buyWithETH(
-  //       address,
-  //       tokens?.toString(),
-  //       { value: amountInWei?.toString() },
-  //     );
-  //     buying.wait();
-  //     const ethLink = `https://etherscan.io/tx/${buying?.hash}`;
-  //     setTransactionHashID(buying?.hash);
-  //     setTransactionHash(ethLink);
-  //     setTransactionSuccess(true);
-  //     await GetBridgeValues();
-  //     setPurchaseLoader(false);
-  //   } catch (error) {
-  //     setPurchaseLoader(false);
-  //     console.log(error);
-  //     setTransactionHash("");
-  //     setTransactionSuccess(false);
-  //     sendErrorToast(`${JSON.stringify(error.reason)}`);
-  //   }
-  // };
+      setPurchaseLoader(true);
+
+      if (walletProvider && isEip1193Provider(walletProvider)) {
+        const ethersProvider = new BrowserProvider(walletProvider);
+        const signer = await ethersProvider.getSigner()
+
+        const bridgePresaleContract = new ethers.Contract(
+          WrapedBridgecdlBinanceAddress.address,
+          WrapedBridgecdlBinanceAbis.abi,
+          signer,
+        );
+        const amountInWei = parseEther(amountInEthPayable?.toString());
+        const buying = await bridgePresaleContract.buyWithETH(
+          address,
+          tokens?.toString(),
+          { value: amountInWei?.toString() },
+        );
+        buying.wait();
+        // const ethLink = `https://etherscan.io/tx/${buying?.hash}`;
+        // setTransactionHashID(buying?.hash);
+        // setTransactionHash(ethLink);
+        // setTransactionSuccess(true);
+        await GetBridgeValues();
+        setPurchaseLoader(false);
+      }
+    } catch (error) {
+      setPurchaseLoader(false);
+      console.log(error);
+      // setTransactionHash("");
+      // setTransactionSuccess(false);
+      // sendErrorToast(`${JSON.stringify(error.reason)}`);
+    }
+  };
 
   ////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////-------  ETHEREUM -------////////////////////////////
@@ -682,19 +666,13 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
           // transactionHash,
           // transactionHashID,
           addTokenToMetamask,
-          // copyToClipboardReferral,
-          // networkChange,
+          networkChange,
           BuyWithUSDTandUSDC,
-          // presaleStart,
-          // presaleStop,
-          // userDatabaseData,
-          // setUserDatabaseData,
 
-          // ////////////////////////////////////////////////
-          getProviderBridgePresale,
-          // GetBridgeValues,
-          // BuyWithUSDTandUSDCOnEthereum,
-          // BuyWithETHOnEthereum,
+          ///////////////////// Binance Pre Sale ///////////////////////////
+          GetBridgeValues,
+          BuyWithUSDTandUSDCOnBinance,
+          BuyWithETHOnBinance,
         }}
       >
         {children}

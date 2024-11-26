@@ -10,10 +10,10 @@ const SecondaryButton = ({
 }: {
   className?: string;
   title: string;
-  action?: () => void;
+  action?: () => void | undefined; 
 }) => {
   return (
-    <button onClick={action}
+    <button onClick={action && action}
       className={cn(
         "flex items-center justify-center pt-1 text-nowrap rounded-md border border-white bg-transparent hover:border-primary hover:text-primary transition-all ease-in duration-200 px-5 py-3 font-neue font-bold",
         className,
