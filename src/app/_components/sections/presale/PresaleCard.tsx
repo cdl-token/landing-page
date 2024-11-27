@@ -8,18 +8,26 @@ import Image from "next/image";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
-import cdlToken from "@/context/contractsData/CryptoDataLive-address.json"
-import cdlPresaleContractAddress from "@/context/contractsData/Crypto_Data_Live_Presale-address.json"
-import cdlPresaleContract from "@/context/contractsData/Crypto_Data_Live_Presale.json"
+import cdlToken from "@/context/contractsData/CryptoDataLive-address.json";
+import cdlPresaleContractAddress from "@/context/contractsData/Crypto_Data_Live_Presale-address.json";
+import cdlPresaleContract from "@/context/contractsData/Crypto_Data_Live_Presale.json";
 import { Store } from "@/context/Store/Store";
-import { ethers, formatEther, formatUnits, JsonRpcProvider, parseEther } from "ethers";
+import {
+  ethers,
+  formatEther,
+  formatUnits,
+  JsonRpcProvider,
+  parseEther,
+} from "ethers";
 import useDisableLocalStorage from "@/components/notification/useDisableLocalStorage";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const PresaleCard = () => {
-
   useDisableLocalStorage();
 
-  { console.log("EthereumEthereumEthereum") }
+  {
+    console.log("EthereumEthereumEthereum");
+  }
 
   const context = useContext(Store);
   if (!context) {
@@ -30,29 +38,28 @@ const PresaleCard = () => {
     contractData,
     BuyWithUSDTandUSDC,
     GetValues,
-    // loader,
+    loader,
     // purchaseLoader,
     // transactionSuccess,
     copyToClipboard,
     addTokenToMetamask,
-    BuyWithETH
+    BuyWithETH,
     // userDatabaseData,
     // transactionHash,
-    // transactionHashID 
+    // transactionHashID
   } = context;
 
   const { address, isConnected } = useAppKitAccount();
-  const { open } = useAppKit()
+  const { open } = useAppKit();
   const [cdlValue, setcdlValue] = useState("0");
   // const [ethValue, setETHValue] = useState(0);
   const [selectedToken, setSelectedToken] = useState("ETH");
-  const [tokenAmount, setTokensAmount] = useState('');
+  const [tokenAmount, setTokensAmount] = useState("");
   const [buttonText, setButtonText] = useState("Buy");
-
 
   useEffect(() => {
     const main = async () => {
-      if (selectedToken === "ETH" && tokenAmount !== '') {
+      if (selectedToken === "ETH" && tokenAmount !== "") {
         setTimeout(async () => {
           const parse = parseEther(tokenAmount?.toString() || "0");
 
@@ -61,13 +68,14 @@ const PresaleCard = () => {
             const presaleContract = new ethers.Contract(
               cdlPresaleContractAddress.address,
               cdlPresaleContract.abi,
-              provider
+              provider,
             );
             const oneDoller = await presaleContract.getLatestUSDTPrice();
 
             const howMuch = +parse?.toString() / +oneDoller?.toString();
 
-            const tokenTokens = +howMuch / (+contractData?.tokenPrice / 10 ** 6);
+            const tokenTokens =
+              +howMuch / (+contractData?.tokenPrice / 10 ** 6);
 
             const parse2 = parseEther(tokenTokens?.toString() || "0");
 
@@ -75,31 +83,28 @@ const PresaleCard = () => {
             // setETHValue(howMuch);
           }
         }, 500);
-      } else if (selectedToken !== "ETH" && tokenAmount !== '') {
+      } else if (selectedToken !== "ETH" && tokenAmount !== "") {
         try {
           const price = +contractData?.tokenPrice / 10 ** 6;
           const tokens = +tokenAmount?.toString() / +price;
           const force = parseEther(tokens?.toString())?.toString();
           setcdlValue(force?.toString());
           // setETHValue(tokenAmount);
-        }
-        catch (error) {
+        } catch (error) {
           console.error("Error in else block:", error);
         }
       } else {
-        setcdlValue('');
+        setcdlValue("");
         // setETHValue(0);
-        setTokensAmount('');
+        setTokensAmount("");
       }
     };
     main();
   }, [tokenAmount, selectedToken]);
 
-
   useEffect(() => {
     GetValues();
   }, [address]);
-
 
   useEffect(() => {
     const checked = () => {
@@ -109,7 +114,10 @@ const PresaleCard = () => {
           : selectedToken == "USDC"
             ? contractData?.usdcBalance
             : contractData?.usdtBalance;
-      if (parseFloat(tokenAmount > "0" ? tokenAmount?.toString() : "0") > parseFloat(tokenBalance > 0 ? tokenBalance?.toString() : "0")) {
+      if (
+        parseFloat(tokenAmount > "0" ? tokenAmount?.toString() : "0") >
+        parseFloat(tokenBalance > 0 ? tokenBalance?.toString() : "0")
+      ) {
         setButtonText("Insufficient Balance");
         return;
       } else if (isConnected) {
@@ -124,7 +132,7 @@ const PresaleCard = () => {
   }, [tokenAmount, selectedToken, address, isConnected]);
   console.log(cdlValue, "cdlValuecdlValuecdlValue");
   const soldPercentage = (contractData?.raisedAmount * 100) / 10000000;
-  
+
   return (
     <div className="relative">
       <div className="absolute -right-5 -top-24 -z-10">{btcBG}</div>
@@ -144,126 +152,227 @@ const PresaleCard = () => {
             "linear-gradient(164.11deg, rgba(255, 255, 255, 0.28) 4.4%, rgba(255, 255, 255, 0) 54.85%)",
         }}
       >
-        <h1 className="font-neue font-bold uppercase sm:text-2xl">
-          Token sale ends in:
-        </h1>
-        <PresaleCountdown />
+        {loader ? (
+          <Skeleton className="h-8 w-[250px] max-w-full bg-gray-500" />
+        ) : (
+          <h1 className="font-neue font-bold uppercase sm:text-2xl">
+            Token sale ends in:
+          </h1>
+        )}
+        {loader ? (
+          <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
+        ) : (
+          <PresaleCountdown />
+        )}
         <div className="flex w-full flex-col gap-2">
-          <h2 className="font-neue font-bold sm:text-xl">Token Address:</h2>
-          <div className="flex items-center justify-between gap-3 rounded-md border border-white/20 bg-custom-bg py-3 pl-4 pr-2 font-apfel">
-            <span className="">
-              {cdlToken?.address?.slice(0, 8)}
-              ......
-              {cdlToken?.address?.slice(-8)}
-            </span>
-            <button onClick={() => copyToClipboard()}>{clipboardIcon}</button>
-          </div>
+          {loader ? (
+            <Skeleton className="h-6 w-[200px] max-w-full bg-gray-500" />
+          ) : (
+            <h2 className="font-neue font-bold sm:text-xl">Token Address:</h2>
+          )}
+          {loader ? (
+            <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
+          ) : (
+            <div className="flex items-center justify-between gap-3 rounded-md border border-white/20 bg-custom-bg py-3 pl-4 pr-2 font-apfel">
+              <span className="">
+                {cdlToken?.address?.slice(0, 8)}
+                ......
+                {cdlToken?.address?.slice(-8)}
+              </span>
+              <button onClick={() => copyToClipboard()}>{clipboardIcon}</button>
+            </div>
+          )}
         </div>
-        <ProgressBar raisedAmount={contractData?.raisedAmount} soldPercentage={soldPercentage || 0} />
+        {loader ? (
+          <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
+        ) : (
+          <ProgressBar
+            raisedAmount={contractData?.raisedAmount}
+            soldPercentage={soldPercentage || 0}
+          />
+        )}
+
         <div className="flex w-full items-center gap-2">
           <div className="h-[1px] w-full bg-white"></div>
-          <span className="text-nowrap font-apfel">1 CDL = {formatUnits(contractData?.tokenPrice || "0", 6)}$</span>
+          <span className="text-nowrap font-apfel">
+            1 CDL = {formatUnits(contractData?.tokenPrice || "0", 6)}$
+          </span>
           <div className="h-[1px] w-full bg-white"></div>
         </div>
         <div className="grid w-full grid-cols-3 gap-2 font-neue text-sm font-bold sm:gap-5">
-          <button
-            className={cn(
-              "text-xs sm:text-base flex h-10 w-full items-center justify-center gap-1 rounded-md border sm:h-12",
-              selectedToken == "ETH"
-                ? "border-primary bg-primary"
-                : "border-white",
-            )}
-            onClick={() => setSelectedToken("ETH")}
-          >
-            <Image
-              src="/static/coinsvgs/ether.svg"
-              width={20}
-              height={20}
-              alt="ETH"
-            />
-            <span className="pt-1">ETH</span>
-          </button>
-          <button
-            className={cn(
-              "text-xs sm:text-base flex h-10 w-full items-center justify-center gap-1 rounded-md border sm:h-12",
-              selectedToken == "USDT"
-                ? "border-primary bg-primary"
-                : "border-white",
-            )}
-            onClick={() => setSelectedToken("USDT")}
-          >
-            <Image
-              src="/static/coinsvgs/usdt.svg"
-              width={20}
-              height={20}
-              alt="USDT"
-            />
-            <span className="pt-1">USDT</span>
-          </button>
-          <button
-            className={cn(
-              "text-xs sm:text-base flex h-10 w-full items-center justify-center gap-1 rounded-md border sm:h-12",
-              selectedToken == "USDC"
-                ? "border-primary bg-primary"
-                : "border-white",
-            )}
-            onClick={() => setSelectedToken("USDC")}
-          >
-            <Image
-              src="/static/coinsvgs/usdc.svg"
-              width={20}
-              height={20}
-              alt="USDC"
-            />
-            <span className="pt-1">USDC</span>
-          </button>
-        </div>
-        <div className="grid mt-5 w-full gap-5 font-neue font-bold sm:grid-cols-2">
-          <div className="flex flex-col gap-1">
-            <div className="flex sm:items-start items-center sm:flex-col-reverse justify-between">
-              <label htmlFor="tokenAmount">Amount in {selectedToken}:</label>
-              <span className="text-sm font-apfel">(balance:{Number(
+          {loader ? (
+            <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
+          ) : (
+            <button
+              className={cn(
+                "flex h-10 w-full items-center justify-center gap-1 rounded-md border text-xs sm:h-12 sm:text-base",
                 selectedToken == "ETH"
-                  ? contractData?.ethBalance
-                  : selectedToken == "USDT"
-                    ? contractData?.usdtBalance
-                    : contractData?.usdcBalance,
-              ).toFixed(4)}{" "} )</span>
-            </div>
-            <input
-              className="rounded-md border border-white bg-transparent px-3 py-2"
-              type="text"
-              name="tokenAmount"
-              id="tokenAmount"
-              placeholder="0.0"
-              value={tokenAmount}
-              onChange={(e) => setTokensAmount(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col gap-1">
-            <div className="flex sm:items-start items-center sm:flex-col-reverse justify-between">
-              <label htmlFor="cdlAmount">Amount in $CDL:</label>
-              <span className="text-sm font-apfel">(balance: {Number(contractData?.cdlBalance)?.toFixed(2)})</span>
-            </div>
-            <input
-              className="rounded-md border border-white bg-transparent px-3 py-2"
-              type="number"
-              name="cdlAmount"
-              value={Number(formatEther(cdlValue?.toString() || "0"))?.toFixed(2)}
-              // onChange={(e) => setcdlValue(e.target.value)}
-            />
-          </div>
+                  ? "border-primary bg-primary"
+                  : "border-white",
+              )}
+              onClick={() => setSelectedToken("ETH")}
+            >
+              <Image
+                src="/static/coinsvgs/ether.svg"
+                width={20}
+                height={20}
+                alt="ETH"
+              />
+              <span className="pt-1">ETH</span>
+            </button>
+          )}
+          {loader ? (
+            <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
+          ) : (
+            <button
+              className={cn(
+                "flex h-10 w-full items-center justify-center gap-1 rounded-md border text-xs sm:h-12 sm:text-base",
+                selectedToken == "USDT"
+                  ? "border-primary bg-primary"
+                  : "border-white",
+              )}
+              onClick={() => setSelectedToken("USDT")}
+            >
+              <Image
+                src="/static/coinsvgs/usdt.svg"
+                width={20}
+                height={20}
+                alt="USDT"
+              />
+              <span className="pt-1">USDT</span>
+            </button>
+          )}
+          {loader ? (
+            <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
+          ) : (
+            <button
+              className={cn(
+                "flex h-10 w-full items-center justify-center gap-1 rounded-md border text-xs sm:h-12 sm:text-base",
+                selectedToken == "USDC"
+                  ? "border-primary bg-primary"
+                  : "border-white",
+              )}
+              onClick={() => setSelectedToken("USDC")}
+            >
+              <Image
+                src="/static/coinsvgs/usdc.svg"
+                width={20}
+                height={20}
+                alt="USDC"
+              />
+              <span className="pt-1">USDC</span>
+            </button>
+          )}
         </div>
-        <div className="mt-5 flex w-full flex-col items-center justify-between gap-5 xl:flex-row">
-          {selectedToken === "ETH" ?
-            <PrimaryButton className="text-sm sm:text-base w-full" action={isConnected ? () => BuyWithETH({ tokens: cdlValue?.toString(), amountInEthPayable: tokenAmount?.toString() }) : () => open()} title={buttonText} />
-            : selectedToken === "USDT" ?
-              <PrimaryButton className="text-sm sm:text-base w-full" action={isConnected ? () => BuyWithUSDTandUSDC({ payAmountInUSDT: +tokenAmount, tokens: cdlValue?.toString(), isUSDT: true }) : () => open()} title={buttonText} />
-              :
-              <PrimaryButton className="text-sm sm:text-base w-full" action={isConnected ? () => BuyWithUSDTandUSDC({ payAmountInUSDT: +tokenAmount, tokens: cdlValue?.toString(), isUSDT: false }) : () => open()} title={buttonText} />}
+        <div className="mt-5 grid w-full gap-5 font-neue font-bold sm:grid-cols-2">
+          {loader ? (
+            <Skeleton className="h-28 w-full max-w-full bg-gray-500" />
+          ) : (
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center justify-between sm:flex-col-reverse sm:items-start">
+                <label htmlFor="tokenAmount">Amount in {selectedToken}:</label>
+                <span className="font-apfel text-sm">
+                  (balance:
+                  {Number(
+                    selectedToken == "ETH"
+                      ? contractData?.ethBalance
+                      : selectedToken == "USDT"
+                        ? contractData?.usdtBalance
+                        : contractData?.usdcBalance,
+                  ).toFixed(4)}{" "}
+                  )
+                </span>
+              </div>
+              <input
+                className="rounded-md border border-white bg-transparent px-3 py-2"
+                type="text"
+                name="tokenAmount"
+                id="tokenAmount"
+                placeholder="0.0"
+                value={tokenAmount}
+                onChange={(e) => setTokensAmount(e.target.value)}
+              />
+            </div>
+          )}
+          {loader ? (
+            <Skeleton className="h-28 w-full max-w-full bg-gray-500" />
+          ) : (
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center justify-between sm:flex-col-reverse sm:items-start">
+                <label htmlFor="cdlAmount">Amount in $CDL:</label>
+                <span className="font-apfel text-sm">
+                  (balance: {Number(contractData?.cdlBalance)?.toFixed(2)})
+                </span>
+              </div>
+              <input
+                className="rounded-md border border-white bg-transparent px-3 py-2"
+                type="number"
+                name="cdlAmount"
+                value={Number(
+                  formatEther(cdlValue?.toString() || "0"),
+                )?.toFixed(2)}
+                // onChange={(e) => setcdlValue(e.target.value)}
+              />
+            </div>
+          )}
+        </div>
+        {loader ? (
+          <Skeleton className="h-28 w-full max-w-full bg-gray-500" />
+        ) : (
+          <div className="mt-5 flex w-full flex-col items-center justify-between gap-5 xl:flex-row">
+            {selectedToken === "ETH" ? (
+              <PrimaryButton
+                className="w-full text-sm sm:text-base"
+                action={
+                  isConnected
+                    ? () =>
+                        BuyWithETH({
+                          tokens: cdlValue?.toString(),
+                          amountInEthPayable: tokenAmount?.toString(),
+                        })
+                    : () => open()
+                }
+                title={buttonText}
+              />
+            ) : selectedToken === "USDT" ? (
+              <PrimaryButton
+                className="w-full text-sm sm:text-base"
+                action={
+                  isConnected
+                    ? () =>
+                        BuyWithUSDTandUSDC({
+                          payAmountInUSDT: +tokenAmount,
+                          tokens: cdlValue?.toString(),
+                          isUSDT: true,
+                        })
+                    : () => open()
+                }
+                title={buttonText}
+              />
+            ) : (
+              <PrimaryButton
+                className="w-full text-sm sm:text-base"
+                action={
+                  isConnected
+                    ? () =>
+                        BuyWithUSDTandUSDC({
+                          payAmountInUSDT: +tokenAmount,
+                          tokens: cdlValue?.toString(),
+                          isUSDT: false,
+                        })
+                    : () => open()
+                }
+                title={buttonText}
+              />
+            )}
 
-          <SecondaryButton className="text-sm sm:text-base w-full" action={() => addTokenToMetamask()} title="ADD TOKEN IN METAMASK" />
-        </div>
+            <SecondaryButton
+              className="w-full text-sm sm:text-base"
+              action={() => addTokenToMetamask()}
+              title="ADD TOKEN IN METAMASK"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
@@ -306,5 +415,3 @@ const btcBG = (
 );
 
 export default PresaleCard;
-
-
