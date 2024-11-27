@@ -5,8 +5,8 @@ const TopCompaniesStrip = () => {
   return (
     <section className="flex w-full flex-col items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col gap-5 px-5 py-5">
-        <div className="text-center font-apfel text-white/50">
-          Used by leading brands and companies from across the globe
+        <div className="text-center text-xs sm:text-base font-apfel text-white/50">
+          Used by leading brands/companies from across the globe
         </div>
         <div className="w-full py-5">
           <Marquee>
