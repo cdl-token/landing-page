@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import Image from "next/image";
 import PresaleCard from "./PresaleCard";
@@ -6,7 +6,7 @@ import PresaleCardBinance from "./PresaleCardBinance";
 import { useAppKitNetworkCore } from "@reown/appkit/react";
 import { useEffect, useState } from "react";
 import useDisableLocalStorage from "@/components/notification/useDisableLocalStorage";
-
+import SecondaryButton from "@/components/buttons/SecondaryButton";
 
 const PresaleSection = () => {
   useDisableLocalStorage();
@@ -20,8 +20,7 @@ const PresaleSection = () => {
 
   const { chainId } = useAppKitNetworkCore();
 
-
-  console.log("🚀 ~ PresaleSection ~ chainId:", chainId)
+  console.log("🚀 ~ PresaleSection ~ chainId:", chainId);
 
   if (!isClient) {
     return null;
@@ -30,13 +29,9 @@ const PresaleSection = () => {
   return (
     <div className="max-w-screen relative flex w-full flex-col items-center justify-center py-20">
       <div className="grid w-full max-w-7xl gap-20 px-5 lg:grid-cols-2">
-        {chainId === 97 ? (
-            <PresaleCardBinance/>
-          ) : (
-            <PresaleCard/>
-          )}
+        {chainId === 97 ? <PresaleCardBinance /> : <PresaleCard />}
         <div className="flex flex-col gap-5 md:py-20">
-          <h1 className="font-neue text-2xl md:text-5xl font-bold uppercase">
+          <h1 className="font-neue text-2xl font-bold uppercase md:text-5xl">
             Join cdl token presale
           </h1>
           <span className="text- max-w-[667px]">
@@ -45,8 +40,17 @@ const PresaleSection = () => {
             transactions, and innovative analytics, all powered by the Ethereum
             chain.
           </span>
-          <PrimaryButton className="mt-10 w-fit" title="Launch Dapp" />
-          <Image src="/static/globe.png" className="hidden md:block" width={733} height={659} alt="globe" />
+          <div className="flex w-full mt-10 items-center gap-2">
+            <PrimaryButton className="w-full sm:w-fit" title="Launch Dapp" />
+            <SecondaryButton className="w-full sm:w-fit" title="How to buy?" />
+          </div>
+          <Image
+            src="/static/globe.png"
+            className="hidden md:block"
+            width={733}
+            height={659}
+            alt="globe"
+          />
         </div>
       </div>
       <div className="absolute bottom-0 -z-10">{gradientSvg}</div>

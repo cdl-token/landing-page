@@ -18,9 +18,9 @@ const MainBanner = () => {
             feeds — giving them a significant edge in the markets. Now, CDL is
             bringing that same power to you.
           </p>
-          <div className="flex animate-slideIn items-center gap-5 pb-20">
-            <PrimaryButton title="Buy CDL Token" />
-            <SecondaryButton title="Details" />
+          <div className="flex flex-col sm:flex-row animate-slideIn items-center sm:w-fit w-full gap-5 pb-20">
+            <PrimaryButton title="Buy CDL Token" className="w-full sm:w-fit" />
+            <SecondaryButton title="Details" className="w-full sn:w-fit" />
           </div>
         </div>
         <div className="p-1 flex h-full items-center justify-center">

@@ -1,4 +1,5 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import SecondaryButton from "@/components/buttons/SecondaryButton";
 import Image from "next/image";
 
 const WhyInvestSection = () => {
@@ -59,7 +60,10 @@ const WhyInvestSection = () => {
             investing--positioning itself as a crypto leader in crypto data
             solutions.
           </span>
-          <PrimaryButton className="mt-10 w-fit" title="Buy CDL Token" />
+          <div className="flex w-full mt-10 items-center gap-2">
+            <PrimaryButton className="sm:w-fit" title="Buy CDL Token" />
+            <SecondaryButton className="sm:w-fit" title="Launch Dapp" />
+          </div>
         </div>
       </div>
     </section>
