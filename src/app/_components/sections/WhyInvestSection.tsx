@@ -61,8 +61,8 @@ const WhyInvestSection = () => {
             solutions.
           </span>
           <div className="flex w-full mt-10 items-center gap-2">
-            <PrimaryButton className="sm:w-fit" title="Buy CDL Token" />
-            <SecondaryButton className="sm:w-fit" title="Launch Dapp" />
+            <PrimaryButton className="w-full sm:w-fit" title="Buy CDL Token" />
+            <SecondaryButton className="w-full sm:w-fit" title="Launch Dapp" />
           </div>
         </div>
       </div>

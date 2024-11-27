@@ -12,7 +12,7 @@ const AboutMain = () => {
       }}
     >
       <h1
-        className="font-neue text-4xl font-bold lg:text-[70px] lg:leading-[72px]"
+        className="font-neue static z-10 text-4xl font-bold lg:text-[70px] lg:leading-[72px]"
         style={{
           background: "linear-gradient(91.06deg, #FF1CF7 2.26%, #00F0FF 100%)",
           backgroundClip: "text",
@@ -21,17 +21,17 @@ const AboutMain = () => {
       >
         A Next-Gen Blockchain.
       </h1>
-      <h1 className="font-neue text-3xl font-bold lg:text-[60px] lg:leading-[62px]">
+      <h1 className="font-neue static z-10 text-3xl font-bold lg:text-[60px] lg:leading-[62px]">
         Reliable & Secure Data.
       </h1>
-      <span className="w-full max-w-[780px] py-5 text-center text-[20px]">
+      <span className="w-full static z-10 max-w-[780px] py-5 text-center text-[20px]">
         Experience unparalleled speed and efficiency with our next-generation
         blockchain, designed to power seamless transactions and real-time data
         processing
       </span>
-      <div className="mt-10 flex flex-col items-center gap-5 sm:flex-row">
-        <PrimaryButton title="About CDL Token" />
-        <SecondaryButton title="Our Services" />
+      <div className="mt-10 flex flex-col w-full sm:w-fit items-center gap-5 sm:flex-row">
+        <PrimaryButton className="w-full sm:w-fit" title="About CDL Token" />
+        <SecondaryButton className="w-full sm:w-fit" title="Our Services" />
       </div>
       <div className="absolute left-0 top-0">{gradientSvg}</div>
     </div>
