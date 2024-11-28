@@ -24,7 +24,7 @@ const MainBanner = () => {
           </div>
         </div>
         <div className="p-1 flex h-full items-center justify-center">
-          <Image src="/static/globe.svg" width={800} height={800} alt="GLOBE" />
+          <Image src="/static/globe.gif" width={800} height={800} alt="GLOBE" />
         </div>
       </div>
       <div className="absolute left-[-510px] top-[-568px] -z-10">
