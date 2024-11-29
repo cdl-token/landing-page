@@ -13,6 +13,8 @@
     "@coinbase/wallet-sdk": "^4.2.3",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.0",
+    "@react-three/drei": "^9.117.3",
+    "@react-three/fiber": "^8.17.10",
     "@reown/appkit": "^1.5.2",
     "@reown/appkit-adapter-ethers": "^1.5.2",
     "apexcharts": "^4.0.0",
@@ -35,7 +37,9 @@
     "react-toastify": "^10.0.5",
     "react-ts-tradingview-widgets": "^1.2.5",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.171.0",
+    "three-globe": "^2.35.2"
   },
   "devDependencies": {
     "@types/node": "^20",

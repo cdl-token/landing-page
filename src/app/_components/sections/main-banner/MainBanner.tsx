@@ -1,8 +1,63 @@
+"use client";
+
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
-import Image from "next/image";
+import { Globe, GlobeConfig } from "@/components/ui/globe";
 
 const MainBanner = () => {
+  const exampleGlobeConfig: GlobeConfig = {
+    pointSize: 1,
+    globeColor: "#1d072e",
+    showAtmosphere: true,
+    atmosphereColor: "#ffffff",
+    atmosphereAltitude: 0.15,
+    emissive: "#000000",
+    emissiveIntensity: 0.1,
+    shininess: 0.7,
+    polygonColor: "rgba(255, 255, 255, 0.7)",
+    ambientLight: "#888888",
+    directionalLeftLight: "#ffffff",
+    directionalTopLight: "#ffffff",
+    pointLight: "#ffcc00",
+    arcTime: 3000,
+    arcLength: 0.9,
+    rings: 2,
+    maxRings: 3,
+    autoRotate: true,
+    autoRotateSpeed: 0.5,
+  };
+
+  type Position = {
+    order: number; // The order or sequence of the position
+    startLat: number; // Latitude of the start point
+    startLng: number; // Longitude of the start point
+    endLat: number; // Latitude of the endpoint
+    endLng: number; // Longitude of the endpoint
+    arcAlt: number; // Arc altitude multiplier
+    color: string; // Color for the arc or point
+  };
+  
+  // Example Data for Arcs and Points
+  const exampleData: Position[] = [
+    {
+      order: 1,
+      startLat: 37.7749, // San Francisco
+      startLng: -122.4194,
+      endLat: 51.5074, // London
+      endLng: -0.1278,
+      arcAlt: 0.3,
+      color: "#ff5733",
+    },
+    {
+      order: 2,
+      startLat: 35.6895, // Tokyo
+      startLng: 139.6917,
+      endLat: 48.8566, // Paris
+      endLng: 2.3522,
+      arcAlt: 0.4,
+      color: "#33c3ff",
+    },
+  ];
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-hidden">
       <div className="grid min-h-screen w-full max-w-7xl md:grid-cols-2 justify-center gap-12 border-b border-white/30 px-5 pt-10 md:min-h-[900px]">
@@ -24,7 +79,7 @@ const MainBanner = () => {
           </div>
         </div>
         <div className="p-1 flex h-full items-center justify-center">
-          <Image src="/static/globe.gif" width={800} height={800} alt="GLOBE" />
+        <Globe globeConfig={exampleGlobeConfig} data={exampleData} />
         </div>
       </div>
       <div className="absolute left-[-510px] top-[-568px] -z-10">
