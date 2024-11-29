@@ -311,6 +311,7 @@ const PresaleCard = () => {
                 value={Number(
                   formatEther(cdlValue?.toString() || "0"),
                 )?.toFixed(2)}
+                readOnly
               // onChange={(e) => setcdlValue(e.target.value)}
               />
             </div>
