@@ -36,9 +36,9 @@ import useDisableLocalStorage from "@/components/notification/useDisableLocalSto
 export const Store = createContext<StoreContextType | null>(null);
 
 export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
-useDisableLocalStorage();
+  useDisableLocalStorage();
 
-const { address, isConnected } = useAppKitAccount();
+  const { address, isConnected } = useAppKitAccount();
 
   const { walletProvider } = useAppKitProvider("eip155");
 
@@ -85,19 +85,19 @@ const { address, isConnected } = useAppKitAccount();
       setloader(true);
 
       const provider = new JsonRpcProvider("https://1rpc.io/sepolia"); //TODO:: providers  //"http://localhost:8545/"
-      
+
       console.log("🚀 ~ GetValues ~ provider:", provider)
-      
+
       const presaleContract = new ethers.Contract(
         cdlPresaleContractAddress.address,
         cdlPresaleContract.abi,
         provider,
       );
-      
+
       const providerBinance = new JsonRpcProvider("https://bsc-testnet-rpc.publicnode.com"); //TODO:: providers  //"http://localhost:8545/"
-      
+
       console.log("🚀 ~ GetValues ~ providerBinance:", providerBinance)
-      
+
       const binancePresaleContract = new ethers.Contract(
         WrapedBridgecdlBinanceAddress.address,
         WrapedBridgecdlBinanceAbis.abi,
@@ -107,7 +107,7 @@ const { address, isConnected } = useAppKitAccount();
       console.log("🚀 ~ GetValues ~ presaleContract:", presaleContract)
 
       console.log("🚀 ~ GetValues ~ providerBinance:", binancePresaleContract.target)
-      
+
       const raisedAmount = await presaleContract.raisedAmount();
 
       console.log("🚀 ~ GetValues ~ raisedAmount:", raisedAmount?.toString())
@@ -277,8 +277,6 @@ const { address, isConnected } = useAppKitAccount();
       }
 
       setPurchaseLoader(true);
-
-      setPurchaseLoader(true);
       if (walletProvider && isEip1193Provider(walletProvider)) {
         const ethersProvider = new BrowserProvider(walletProvider);
         const signer = await ethersProvider.getSigner()
@@ -343,7 +341,7 @@ const { address, isConnected } = useAppKitAccount();
         setPurchaseLoader(false);
       }
     } catch (error) {
-      // setPurchaseLoader(false);
+      setPurchaseLoader(false);
       // setTransactionSuccess(false);
       // setTransactionHash("");
       // sendErrorToast(`${JSON.stringify(error.reason)}`);
@@ -389,10 +387,10 @@ const { address, isConnected } = useAppKitAccount();
         // setTransactionHash(bnbLink);
         // setTransactionSuccess(true);
         // await GetValues();
-        // setPurchaseLoader(false);
+        setPurchaseLoader(false);
       }
     } catch (error) {
-      // setPurchaseLoader(false);
+      setPurchaseLoader(false);
       // setTransactionSuccess(false);
       // setTransactionHash("");
       console.log(error);
@@ -585,7 +583,7 @@ const { address, isConnected } = useAppKitAccount();
         setPurchaseLoader(false);
       }
     } catch (error) {
-      // setPurchaseLoader(false);
+      setPurchaseLoader(false);
       // setTransactionHash("");
       // setTransactionSuccess(false);
       // sendErrorToast(`${JSON.stringify(error.reason)}`);
