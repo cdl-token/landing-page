@@ -1,13 +1,13 @@
 "use client";
 
-import { GlobeDemo } from "@/components/World";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
+import Earth from "@/components/ui/better-globe";
 
 const MainBanner = () => {
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-x-hidden">
-      <div className="grid min-h-screen w-full max-w-7xl justify-center lg:gap-12 border-b border-white/30 px-5 md:min-h-[900px] lg:grid-cols-2">
+      <div className="grid min-h-screen w-full max-w-7xl pb-20 md:pb-0 justify-center px-5 md:min-h-[900px] lg:grid-cols-2 lg:gap-12">
         <div className="flex h-full flex-col justify-center gap-12">
           <div className="flex animate-slideIn flex-col gap-2 pt-32 font-neue text-3xl font-bold uppercase sm:pt-0 md:text-5xl lg:text-[50px] xl:text-[55px]">
             <span className="text-primary">Outsmarting the</span>
@@ -25,8 +25,10 @@ const MainBanner = () => {
             <SecondaryButton title="Details" className="sn:w-fit w-full" />
           </div>
         </div>
-        <div className="flex aspect-square justify-start h-fit items-start max-w-full">
-          <GlobeDemo />
+        <div className="flex h-full w-full items-center">
+          <div className="relative flex aspect-square h-fit w-full max-w-full items-center justify-center">
+            <Earth />
+          </div>
         </div>
       </div>
       <div className="absolute left-[-510px] top-[-568px] -z-10">
