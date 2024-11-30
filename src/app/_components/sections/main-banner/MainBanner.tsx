@@ -6,7 +6,7 @@ import Earth from "@/components/ui/better-globe";
 import { FlipWords } from "@/components/ui/flip-words";
 
 const MainBanner = () => {
-  const words = ["Outsmarting", "Surpassing"];
+  const words = ["Outsmarting", "Surpassing", "Overcoming"];
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-x-hidden">
       <div className="grid min-h-screen w-full max-w-7xl justify-center px-5 pb-20 md:min-h-[900px] md:pb-0 lg:grid-cols-2 lg:gap-12">
