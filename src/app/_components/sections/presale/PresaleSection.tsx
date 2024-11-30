@@ -7,6 +7,8 @@ import { useAppKitNetworkCore } from "@reown/appkit/react";
 import { useEffect, useState } from "react";
 import useDisableLocalStorage from "@/components/notification/useDisableLocalStorage";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
+import { motion } from "framer-motion";
+import { leftVariant, rightVariants } from "@/lib/animation-variants";
 
 const PresaleSection = () => {
   useDisableLocalStorage();
@@ -29,29 +31,60 @@ const PresaleSection = () => {
   return (
     <div className="max-w-screen relative flex w-full flex-col items-center justify-center py-20">
       <div className="grid w-full max-w-7xl gap-20 px-5 lg:grid-cols-2">
-        {chainId === 97 ? <PresaleCardBinance /> : <PresaleCard />}
-        <div className="flex flex-col gap-5 md:py-20">
-          <h1 className="font-neue text-2xl font-bold uppercase md:text-5xl">
+        <div>{chainId === 97 ? <PresaleCardBinance /> : <PresaleCard />}</div>
+        <motion.div
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={leftVariant(0.1)}
+          className="flex flex-col gap-5 md:py-20"
+        >
+          <motion.h1
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0)}
+            className="font-neue text-2xl font-bold uppercase md:text-5xl"
+          >
             Join cdl token presale
-          </h1>
-          <span className="text- max-w-[667px]">
+          </motion.h1>
+          <motion.span
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.2)}
+            className="text- max-w-[667px]"
+          >
             Welcome to the CDL Token Sale, your exclusive entry point into a
             world of powerful, real-time crypto intelligence, secure
             transactions, and innovative analytics, all powered by the Ethereum
             chain.
-          </span>
-          <div className="flex w-full mt-10 items-center gap-2">
+          </motion.span>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.4)}
+            className="mt-10 flex w-full items-center gap-2"
+          >
             <PrimaryButton className="w-full sm:w-fit" title="Launch Dapp" />
             <SecondaryButton className="w-full sm:w-fit" title="How to buy?" />
-          </div>
-          <Image
-            src="/static/globe.png"
-            className="hidden md:block"
-            width={733}
-            height={659}
-            alt="globe"
-          />
-        </div>
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.5)}
+          >
+            <Image
+              src="/static/globe.png"
+              className="hidden md:block"
+              width={733}
+              height={659}
+              alt="globe"
+            />
+          </motion.div>
+        </motion.div>
       </div>
       <div className="absolute bottom-0 -z-10">{gradientSvg}</div>
     </div>

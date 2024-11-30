@@ -1,15 +1,36 @@
+"use client";
+
+import {
+  bottomVariants,
+  leftVariant,
+  rightVariants,
+  topVariants,
+} from "@/lib/animation-variants";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const FeaturesSection = () => {
   return (
     <section className="relative flex w-full items-center justify-center">
       <div className="static z-10 flex w-full max-w-7xl flex-col gap-10 border-t border-white/30 px-5 py-20">
-        <h1 className="font-neue text-3xl md:text-5xl font-bold uppercase">
+        <motion.h1
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={leftVariant(0)}
+          className="font-neue text-3xl font-bold uppercase md:text-5xl"
+        >
           Features and benefits
-        </h1>
+        </motion.h1>
         <div className="grid w-full gap-10 md:grid-cols-[3.5fr_6fr]">
-          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8">
-            <h1 className="font-neue text-xl md:text-3xl font-bold">
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0.1)}
+            className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8"
+          >
+            <h1 className="font-neue text-xl font-bold md:text-3xl">
               User-Friendly Interface
             </h1>
             <span className="h-full font-apfel text-white/75">
@@ -23,9 +44,17 @@ const FeaturesSection = () => {
               alt="icon"
             />
             <div className="absolute left-0 top-0">{cardGradient1}</div>
-          </div>
-          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8">
-            <h1 className="font-neue text-xl md:text-3xl font-bold">Advanced Security</h1>
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={topVariants(0.5)}
+            className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8"
+          >
+            <h1 className="font-neue text-xl font-bold md:text-3xl">
+              Advanced Security
+            </h1>
             <span className="h-full font-apfel text-white/75">
               Your assets are protected with top-tier security protocols,
               including multi-factor authentication and cold storage.
@@ -37,11 +66,17 @@ const FeaturesSection = () => {
               alt="icon"
             />
             <div className="absolute left-0 top-0">{cardGradient2}</div>
-          </div>
+          </motion.div>
         </div>
         <div className="grid w-full gap-10 md:grid-cols-[6fr_4fr]">
-          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8">
-            <h1 className="font-neue text-xl md:text-3xl font-bold">
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={bottomVariants(0.8)}
+            className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8"
+          >
+            <h1 className="font-neue text-xl font-bold md:text-3xl">
               Real-Time Market Data
             </h1>
             <span className="h-full font-apfel text-white/75">
@@ -54,9 +89,15 @@ const FeaturesSection = () => {
               alt="icon"
             />
             <div className="absolute left-0 top-0">{cardGradient3}</div>
-          </div>
-          <div className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8">
-            <h1 className="font-neue text-xl md:text-3xl font-bold">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(1)}
+            className="relative flex h-[22rem] w-full flex-col gap-3 overflow-hidden rounded-lg border border-white/10 p-5 md:p-8"
+          >
+            <h1 className="font-neue text-xl font-bold md:text-3xl">
               Smart Contract Integration
             </h1>
             <span className="h-full font-apfel text-white/75">
@@ -70,7 +111,7 @@ const FeaturesSection = () => {
               alt="icon"
             />
             <div className="absolute left-0 top-0">{cardGradient4}</div>
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className="absolute -z-10">{gradientSvg}</div>

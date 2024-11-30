@@ -1,12 +1,22 @@
+"use client";
+
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { leftVariant, rightVariants } from "@/lib/animation-variants";
 
 const WhyInvestSection = () => {
   return (
     <section className="max-w-screen flex w-full items-center justify-center overflow-hidden">
       <div className="grid w-full max-w-7xl gap-10 border-t border-white/30 px-5 py-20 sm:min-h-[1300px] md:min-h-[700px] md:grid-cols-2 lg:min-h-[700px] 2xl:min-h-[800px]">
-        <div className="relative hidden w-full md:block">
+        <motion.div
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={leftVariant(0)}
+          className="relative hidden w-full md:block"
+        >
           <Image
             src="/static/shape.png"
             className="hidden md:absolute md:-top-20 md:block"
@@ -21,13 +31,27 @@ const WhyInvestSection = () => {
             height={600}
             alt="shape"
           />
-        </div>
+        </motion.div>
         <div className="static z-10 flex w-full flex-col gap-5 md:justify-center">
-          <span className="font-neue font-bold">Unbreakable protection</span>
+          <motion.span
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0)}
+            className="font-neue font-bold"
+          >
+            Unbreakable protection
+          </motion.span>
           <div className="flex items-center">
-            <h1 className="font-neue text-3xl font-bold md:text-5xl">
+            <motion.h1
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={rightVariants(0.2)}
+              className="font-neue text-3xl font-bold md:text-5xl"
+            >
               Why invest in CDL Token?
-            </h1>
+            </motion.h1>
             <div className="relative h-[70px] w-10 md:hidden">
               <Image
                 src="/static/shape.png"
@@ -52,18 +76,30 @@ const WhyInvestSection = () => {
               />
             </div>
           </div>
-          <span className="text-">
+          <motion.span
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.4)}
+            className="text-"
+          >
             CDL Token empowers investors with real-time analytics, live charts
             and secure transactions on the Binance Smart chain. With plans to
             expand features and partnerships, CDL Token offers exclusive
             insights and innovative tools for informed, data-driven
             investing--positioning itself as a crypto leader in crypto data
             solutions.
-          </span>
-          <div className="flex w-full mt-10 items-center gap-2">
+          </motion.span>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.6)}
+            className="mt-10 flex w-full items-center gap-2"
+          >
             <PrimaryButton className="w-full sm:w-fit" title="Buy CDL Token" />
             <SecondaryButton className="w-full sm:w-fit" title="Launch Dapp" />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

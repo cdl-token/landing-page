@@ -1,15 +1,38 @@
-import React from "react";
+"use client";
+
+import { leftVariant, rightVariants } from "@/lib/animation-variants";
+import { motion } from "framer-motion";
 
 const Roadmap = () => {
   return (
     <section className="max-w-screen relative flex w-full items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-5 border-t border-white/30 px-5 py-20">
-        <h1 className="font-neue text-3xl md:text-4xl font-bold">Roadmap</h1>
-        <span className="max-w-[520px] text-center font-apfel">
+        <motion.h1
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={leftVariant(0)}
+          className="font-neue text-3xl font-bold md:text-4xl"
+        >
+          Roadmap
+        </motion.h1>
+        <motion.span
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={rightVariants(0)}
+          className="max-w-[520px] text-center font-apfel"
+        >
           The CDL Token roadmap outlines key phases for launching, expanding,
           and promoting the token.
-        </span>
-        <div className="grid gap-5 py-10 sm:grid-cols-2 lg:grid-cols-4">
+        </motion.span>
+        <motion.div
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={leftVariant(0)}
+          className="grid gap-5 py-10 sm:grid-cols-2 lg:grid-cols-4"
+        >
           <div className="flex max-w-[94vw] flex-col gap-3 rounded-2xl border-4 border-white bg-black p-5">
             <div className="flex items-center gap-2">
               <span className="rounded bg-[#D9D9D9] px-2 font-neue text-2xl font-bold text-black">
@@ -106,11 +129,9 @@ const Roadmap = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-      <div className="absolute -top-20 left-0">
-        {gradientSvg}
-      </div>
+      <div className="absolute -top-20 left-0">{gradientSvg}</div>
     </section>
   );
 };

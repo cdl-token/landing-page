@@ -1,39 +1,80 @@
 "use client";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import { motion } from "framer-motion";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import Earth from "@/components/ui/better-globe";
 import { FlipWords } from "@/components/ui/flip-words";
+import { leftVariant, rightVariants } from "@/lib/animation-variants";
 
 const MainBanner = () => {
   const words = ["Outsmarting", "Surpassing", "Overcoming"];
+
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-x-hidden">
       <div className="grid min-h-screen w-full max-w-7xl justify-center px-5 pb-20 md:min-h-[900px] md:pb-0 lg:grid-cols-2 lg:gap-12">
         <div className="flex h-full flex-col justify-center gap-12">
-          <div className="flex animate-slideIn flex-col gap-2 pt-32 font-neue text-3xl font-bold uppercase sm:pt-0 md:text-5xl lg:text-[50px] xl:text-[55px]">
-            <span className="flex items-center text-primary">
+          <div className="flex flex-col gap-2 pt-32 font-neue text-3xl font-bold uppercase sm:pt-0 md:text-5xl lg:text-[50px] xl:text-[55px]">
+            <motion.span
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={leftVariant(0)}
+              className="flex items-center text-primary"
+            >
               <FlipWords className="text-primary" words={words} />
               <span className="ml-[-8px] text-white">the</span>
-            </span>
-            <span>Institutions in</span>
-            <span>Their Own Arena</span>
+            </motion.span>
+            <motion.span
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={leftVariant(0.2)}
+            >
+              Institutions in
+            </motion.span>
+            <motion.span
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={leftVariant(0.4)}
+            >
+              Their Own Arena
+            </motion.span>
           </div>
-          <p className="w-full max-w-[597px] animate-slideIn">
+          <motion.p
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0.6)}
+            className="w-full max-w-[597px]"
+          >
             For years, CDL has empowered institutional investors with bespoke
             data, advanced analytics, price predictions, and real-time news
             feeds — giving them a significant edge in the markets. Now, CDL is
             bringing that same power to you.
-          </p>
-          <div className="flex w-full animate-slideIn flex-col items-center gap-5 pb-20 sm:w-fit sm:flex-row">
+          </motion.p>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0.8)}
+            className="flex w-full flex-col items-center gap-5 pb-20 sm:w-fit sm:flex-row"
+          >
             <PrimaryButton title="Buy CDL Token" className="w-full sm:w-fit" />
             <SecondaryButton title="Details" className="sn:w-fit w-full" />
-          </div>
+          </motion.div>
         </div>
         <div className="flex h-full w-full items-center">
-          <div className="relative flex aspect-square h-fit w-full max-w-full items-center justify-center">
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.1)}
+            className="relative flex aspect-square h-fit w-full max-w-full items-center justify-center"
+          >
             <Earth />
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className="absolute left-[-510px] top-[-568px] -z-10">
