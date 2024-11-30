@@ -3,14 +3,19 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import Earth from "@/components/ui/better-globe";
+import { FlipWords } from "@/components/ui/flip-words";
 
 const MainBanner = () => {
+  const words = ["Outsmarting", "Surpassing"];
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-x-hidden">
-      <div className="grid min-h-screen w-full max-w-7xl pb-20 md:pb-0 justify-center px-5 md:min-h-[900px] lg:grid-cols-2 lg:gap-12">
+      <div className="grid min-h-screen w-full max-w-7xl justify-center px-5 pb-20 md:min-h-[900px] md:pb-0 lg:grid-cols-2 lg:gap-12">
         <div className="flex h-full flex-col justify-center gap-12">
           <div className="flex animate-slideIn flex-col gap-2 pt-32 font-neue text-3xl font-bold uppercase sm:pt-0 md:text-5xl lg:text-[50px] xl:text-[55px]">
-            <span className="text-primary">Outsmarting the</span>
+            <span className="flex items-center text-primary">
+              <FlipWords className="text-primary" words={words} />
+              <span className="ml-[-8px] text-white">the</span>
+            </span>
             <span>Institutions in</span>
             <span>Their Own Arena</span>
           </div>
