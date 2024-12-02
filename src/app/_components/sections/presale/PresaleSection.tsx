@@ -9,6 +9,7 @@ import useDisableLocalStorage from "@/components/notification/useDisableLocalSto
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import { motion } from "framer-motion";
 import { leftVariant, rightVariants } from "@/lib/animation-variants";
+import TextAnimation from "@/components/ui/scroll-text";
 
 const PresaleSection = () => {
   useDisableLocalStorage();
@@ -39,27 +40,39 @@ const PresaleSection = () => {
           variants={leftVariant(0.1)}
           className="flex flex-col gap-5 md:py-20"
         >
-          <motion.h1
-            initial="hide"
-            whileInView="show"
-            exit="show"
-            variants={rightVariants(0)}
-            className="font-neue text-2xl font-bold uppercase md:text-5xl"
-          >
-            Join cdl token presale
-          </motion.h1>
-          <motion.span
-            initial="hide"
-            whileInView="show"
-            exit="show"
-            variants={rightVariants(0.2)}
-            className="text- max-w-[667px]"
-          >
-            Welcome to the CDL Token Sale, your exclusive entry point into a
+          <TextAnimation
+            text="Join cdl token presale"
+            variants={{
+              hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+              visible: {
+                filter: "blur(0px)",
+                opacity: 1,
+                y: 0,
+                transition: { ease: "linear" },
+              },
+            }}
+            classname="font-neue text-2xl font-bold uppercase md:text-5xl text-white"
+          />
+          <TextAnimation
+            as="p"
+            letterAnime={true}
+            text="Welcome to the CDL Token Sale, your exclusive entry point into a
             world of powerful, real-time crypto intelligence, secure
             transactions, and innovative analytics, all powered by the Ethereum
-            chain.
-          </motion.span>
+            chain."
+            classname="w-full max-w-[667px] lowercase text-white"
+            variants={{
+              hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
+              visible: {
+                filter: "blur(0px)",
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.2,
+                },
+              },
+            }}
+          />
           <motion.div
             initial="hide"
             whileInView="show"

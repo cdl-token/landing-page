@@ -3,20 +3,38 @@
 import { motion } from "framer-motion";
 import QuestionAccordion from "./QuestionAccordion";
 import { leftVariant } from "@/lib/animation-variants";
+import TextAnimation from "@/components/ui/scroll-text";
 
 const PopularQuestions = () => {
   return (
     <div className="flex items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col gap-5 px-5 py-20">
-        <motion.h1
-          initial="hide"
-          whileInView="show"
-          exit="show"
-          variants={leftVariant(0)}
-          className="font-neue text-3xl font-bold uppercase md:text-4xl md:leading-[50px]"
-        >
-          Popular Questions <br /> About CDL Token?
-        </motion.h1>
+        <TextAnimation
+          text="Popular Questions"
+          variants={{
+            hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+            visible: {
+              filter: "blur(0px)",
+              opacity: 1,
+              y: 0,
+              transition: { ease: "linear" },
+            },
+          }}
+          classname="font-neue text-3xl font-bold uppercase md:text-4xl md:leading-[50px] text-white"
+        />
+        <TextAnimation
+          text="About CDL Token?"
+          variants={{
+            hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+            visible: {
+              filter: "blur(0px)",
+              opacity: 1,
+              y: 0,
+              transition: { ease: "linear" },
+            },
+          }}
+          classname="font-neue text-3xl font-bold uppercase md:text-4xl md:leading-[50px] text-white"
+        />
         <motion.div
           initial="hide"
           whileInView="show"

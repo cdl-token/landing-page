@@ -5,6 +5,7 @@ import SecondaryButton from "@/components/buttons/SecondaryButton";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { leftVariant, rightVariants } from "@/lib/animation-variants";
+import TextAnimation from "@/components/ui/scroll-text";
 
 const WhyInvestSection = () => {
   return (
@@ -43,15 +44,19 @@ const WhyInvestSection = () => {
             Unbreakable protection
           </motion.span>
           <div className="flex items-center">
-            <motion.h1
-              initial="hide"
-              whileInView="show"
-              exit="show"
-              variants={rightVariants(0.2)}
-              className="font-neue text-3xl font-bold md:text-5xl"
-            >
-              Why invest in CDL Token?
-            </motion.h1>
+            <TextAnimation
+              text="Why invest in CDL Token?"
+              variants={{
+                hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+                visible: {
+                  filter: "blur(0px)",
+                  opacity: 1,
+                  y: 0,
+                  transition: { ease: "linear" },
+                },
+              }}
+              classname="font-neue text-3xl font-bold md:text-5xl uppercase text-white"
+            />
             <div className="relative h-[70px] w-10 md:hidden">
               <Image
                 src="/static/shape.png"
@@ -76,20 +81,28 @@ const WhyInvestSection = () => {
               />
             </div>
           </div>
-          <motion.span
-            initial="hide"
-            whileInView="show"
-            exit="show"
-            variants={rightVariants(0.4)}
-            className="text-"
-          >
-            CDL Token empowers investors with real-time analytics, live charts
+          <TextAnimation
+            as="p"
+            letterAnime={true}
+            text="CDL Token empowers investors with real-time analytics, live charts
             and secure transactions on the Binance Smart chain. With plans to
             expand features and partnerships, CDL Token offers exclusive
             insights and innovative tools for informed, data-driven
             investing--positioning itself as a crypto leader in crypto data
-            solutions.
-          </motion.span>
+            solutions."
+            classname="lowercase text-white"
+            variants={{
+              hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
+              visible: {
+                filter: "blur(0px)",
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.2,
+                },
+              },
+            }}
+          />
           <motion.div
             initial="hide"
             whileInView="show"

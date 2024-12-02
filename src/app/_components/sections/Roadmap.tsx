@@ -1,5 +1,6 @@
 "use client";
 
+import TextAnimation from "@/components/ui/scroll-text";
 import { leftVariant, rightVariants } from "@/lib/animation-variants";
 import { motion } from "framer-motion";
 
@@ -7,25 +8,37 @@ const Roadmap = () => {
   return (
     <section className="max-w-screen relative flex w-full items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-5 border-t border-white/30 px-5 py-20">
-        <motion.h1
-          initial="hide"
-          whileInView="show"
-          exit="show"
-          variants={leftVariant(0)}
-          className="font-neue text-3xl font-bold md:text-4xl"
-        >
-          Roadmap
-        </motion.h1>
-        <motion.span
-          initial="hide"
-          whileInView="show"
-          exit="show"
-          variants={rightVariants(0)}
-          className="max-w-[520px] text-center font-apfel"
-        >
-          The CDL Token roadmap outlines key phases for launching, expanding,
-          and promoting the token.
-        </motion.span>
+        <TextAnimation
+          text="Roadmap"
+          variants={{
+            hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+            visible: {
+              filter: "blur(0px)",
+              opacity: 1,
+              y: 0,
+              transition: { ease: "linear" },
+            },
+          }}
+          classname="font-neue text-3xl font-bold md:text-4xl uppercase text-white"
+        />
+        <TextAnimation
+          as="p"
+          letterAnime={true}
+          text="The CDL Token roadmap outlines key phases for launching, expanding,
+            and promoting the token."
+          classname="max-w-[520px] text-center font-apfel lowercase text-white"
+          variants={{
+            hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
+            visible: {
+              filter: "blur(0px)",
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 0.2,
+              },
+            },
+          }}
+        />
         <motion.div
           initial="hide"
           whileInView="show"

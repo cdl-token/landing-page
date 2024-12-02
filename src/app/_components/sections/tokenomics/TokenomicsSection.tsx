@@ -10,32 +10,45 @@ import {
   rightToLeftVariants,
   rightVariants,
 } from "@/lib/animation-variants";
+import TextAnimation from "@/components/ui/scroll-text";
 
 const TokenomicsSection = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <div className="flex h-full w-full max-w-7xl flex-col items-center justify-center border-t border-white/30 px-5 py-20">
-        <motion.h1
-          initial="hide"
-          whileInView="show"
-          exit="show"
-          variants={leftVariant(0)}
-          className="font-neue text-4xl font-bold uppercase"
-        >
-          Tokenomics
-        </motion.h1>
-        <motion.span
-          initial="hide"
-          whileInView="show"
-          exit="show"
-          variants={rightVariants(0)}
-          className="max-w-[1000px] text-balance text-center font-apfel text-white/70"
-        >
-          CDL Token is designed for sustainable growth and long-term value, with
-          adaptable tokenomics to support a thriving community. By offering
-          powerful analytics tools, CDL Token empowers users to shape the future
-          of crypto data solutions and drive platform succes
-        </motion.span>
+        <TextAnimation
+          text="Tokenomics"
+          variants={{
+            hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+            visible: {
+              filter: "blur(0px)",
+              opacity: 1,
+              y: 0,
+              transition: { ease: "linear" },
+            },
+          }}
+          classname="font-neue font-bold text-4xl uppercase text-white"
+        />
+        <TextAnimation
+          as="p"
+          letterAnime={true}
+          text="CDL Token is designed for sustainable growth and long-term value, with
+            adaptable tokenomics to support a thriving community. By offering
+            powerful analytics tools, CDL Token empowers users to shape the future
+            of crypto data solutions and drive platform success."
+          classname="max-w-[1000px] text-balance text-center font-apfel text-white/70 lowercase"
+          variants={{
+            hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
+            visible: {
+              filter: "blur(0px)",
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 0.2,
+              },
+            },
+          }}
+        />
         <motion.div
           className="grid h-full w-full max-w-7xl grid-cols-1 gap-y-5 px-5 py-5 sm:grid-cols-2 md:px-20 md:py-20 lg:grid-cols-4"
           initial="hide"
@@ -99,9 +112,19 @@ const TokenomicsSection = () => {
           exit="show"
           variants={leftToRightVariants}
         >
-          <h4 className="mb-5 mr-auto flex items-center justify-center font-neue text-[28.43px] font-extrabold leading-8">
-            Token Sale Stages
-          </h4>
+          <TextAnimation
+            text="Token Sale Stages"
+            variants={{
+              hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+              visible: {
+                filter: "blur(0px)",
+                opacity: 1,
+                y: 0,
+                transition: { ease: "linear" },
+              },
+            }}
+            classname="mb-5 mr-auto flex items-center justify-center font-neue text-[28.43px] font-extrabold leading-8 text-white"
+          />
           <div className="mt-3 grid w-full items-center justify-center gap-10 md:grid-cols-2 md:gap-20 xl:grid-cols-4">
             <Card
               state={1}

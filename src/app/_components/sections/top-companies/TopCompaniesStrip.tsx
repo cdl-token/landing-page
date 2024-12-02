@@ -5,6 +5,7 @@ import CompaniesSlider from "./CompaniesSlider";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
 import { bottomVariants, topVariants } from "@/lib/animation-variants";
+import TextAnimation from "@/components/ui/scroll-text";
 
 const TopCompaniesStrip = () => {
   return (
@@ -23,15 +24,23 @@ const TopCompaniesStrip = () => {
         </div>
       </div>
       <div className="flex w-full max-w-7xl flex-col gap-5 px-5 py-5">
-        <motion.div
-          initial="hide"
-          whileInView="show"
-          exit="show"
-          variants={topVariants(0)}
-          className="static z-20 text-center font-apfel text-xs text-white/50 sm:text-base"
-        >
-          Used by leading brands/companies from across the globe
-        </motion.div>
+        <TextAnimation
+          as="p"
+          letterAnime={true}
+          text="Used by leading brands/companies from across the globe"
+          classname="static z-20 text-center font-apfel text-xs text-white/50 sm:text-base"
+          variants={{
+            hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
+            visible: {
+              filter: "blur(0px)",
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 0.2,
+              },
+            },
+          }}
+        />
         <motion.div
           initial="hide"
           whileInView="show"

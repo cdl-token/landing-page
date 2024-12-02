@@ -5,7 +5,12 @@ import { motion } from "framer-motion";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import Earth from "@/components/ui/better-globe";
 import { FlipWords } from "@/components/ui/flip-words";
-import { leftVariant, rightVariants } from "@/lib/animation-variants";
+import {
+  bottomVariants,
+  leftVariant,
+  rightVariants,
+} from "@/lib/animation-variants";
+import TextAnimation from "@/components/ui/scroll-text";
 
 const MainBanner = () => {
   const words = ["Outsmarting", "Surpassing", "Overcoming"];
@@ -19,41 +24,71 @@ const MainBanner = () => {
               initial="hide"
               whileInView="show"
               exit="show"
-              variants={leftVariant(0)}
+              variants={bottomVariants(0)}
               className="flex items-center text-primary"
             >
               <FlipWords className="text-primary" words={words} />
-              <span className="ml-[-8px] text-white">the</span>
+              <TextAnimation
+                text="the"
+                variants={{
+                  hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+                  visible: {
+                    filter: "blur(0px)",
+                    opacity: 1,
+                    y: 0,
+                    transition: { ease: "linear" },
+                  },
+                }}
+                classname="font-neue font-bold uppercase text-white"
+              />
             </motion.span>
-            <motion.span
-              initial="hide"
-              whileInView="show"
-              exit="show"
-              variants={leftVariant(0.2)}
-            >
-              Institutions in
-            </motion.span>
-            <motion.span
-              initial="hide"
-              whileInView="show"
-              exit="show"
-              variants={leftVariant(0.4)}
-            >
-              Their Own Arena
-            </motion.span>
+            <TextAnimation
+              text="Institutions in"
+              variants={{
+                hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+                visible: {
+                  filter: "blur(0px)",
+                  opacity: 1,
+                  y: 0,
+                  transition: { ease: "linear" },
+                },
+              }}
+              classname="font-neue font-bold uppercase text-white"
+            />
+            <TextAnimation
+              text="Their Own Arena"
+              variants={{
+                hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+                visible: {
+                  filter: "blur(0px)",
+                  opacity: 1,
+                  y: 0,
+                  transition: { ease: "linear" },
+                },
+              }}
+              classname="font-neue font-bold uppercase text-white"
+            />
           </div>
-          <motion.p
-            initial="hide"
-            whileInView="show"
-            exit="show"
-            variants={leftVariant(0.6)}
-            className="w-full max-w-[597px]"
-          >
-            For years, CDL has empowered institutional investors with bespoke
+          <TextAnimation
+            as="p"
+            letterAnime={true}
+            text="For years, CDL has empowered institutional investors with bespoke
             data, advanced analytics, price predictions, and real-time news
             feeds — giving them a significant edge in the markets. Now, CDL is
-            bringing that same power to you.
-          </motion.p>
+            bringing that same power to you."
+            classname="w-full max-w-[597px] lowercase text-white"
+            variants={{
+              hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
+              visible: {
+                filter: "blur(0px)",
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.2,
+                },
+              },
+            }}
+          />
           <motion.div
             initial="hide"
             whileInView="show"

@@ -1,5 +1,6 @@
 "use client";
 
+import TextAnimation from "@/components/ui/scroll-text";
 import {
   bottomVariants,
   leftVariant,
@@ -13,15 +14,19 @@ const FeaturesSection = () => {
   return (
     <section className="relative flex w-full items-center justify-center">
       <div className="static z-10 flex w-full max-w-7xl flex-col gap-10 border-t border-white/30 px-5 py-20">
-        <motion.h1
-          initial="hide"
-          whileInView="show"
-          exit="show"
-          variants={leftVariant(0)}
-          className="font-neue text-3xl font-bold uppercase md:text-5xl"
-        >
-          Features and benefits
-        </motion.h1>
+        <TextAnimation
+          text="Features and benefits"
+          variants={{
+            hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+            visible: {
+              filter: "blur(0px)",
+              opacity: 1,
+              y: 0,
+              transition: { ease: "linear" },
+            },
+          }}
+          classname="font-neue text-3xl font-bold md:text-5xl uppercase text-white"
+        />
         <div className="grid w-full gap-10 md:grid-cols-[3.5fr_6fr]">
           <motion.div
             initial="hide"
