@@ -53,26 +53,18 @@ const PresaleSection = () => {
             }}
             classname="font-neue text-2xl font-bold uppercase md:text-5xl text-white"
           />
-          <TextAnimation
-            as="p"
-            letterAnime={true}
-            text="Welcome to the CDL Token Sale, your exclusive entry point into a
+          <motion.p
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0)}
+            className="w-full max-w-[667px] lowercase text-white"
+          >
+            Welcome to the CDL Token Sale, your exclusive entry point into a
             world of powerful, real-time crypto intelligence, secure
             transactions, and innovative analytics, all powered by the Ethereum
-            chain."
-            classname="w-full max-w-[667px] lowercase text-white"
-            variants={{
-              hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
-              visible: {
-                filter: "blur(0px)",
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 0.2,
-                },
-              },
-            }}
-          />
+            chain.
+          </motion.p>
           <motion.div
             initial="hide"
             whileInView="show"

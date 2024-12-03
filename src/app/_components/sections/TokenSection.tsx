@@ -5,6 +5,7 @@ import Link from "next/link";
 import ContactFooter from "../../../components/ContactFooter";
 import {
   leftToRightVariants,
+  leftVariant,
   rightToLeftVariants,
 } from "@/lib/animation-variants";
 import TextAnimation from "@/components/ui/scroll-text";
@@ -34,25 +35,17 @@ const TokenSection = () => {
             }}
             classname="text-wrap font-neue text-xl font-bold md:text-4xl lg:text-[37.96px] lg:leading-[42.64px] uppercase text-white"
           />
-          <TextAnimation
-            as="p"
-            letterAnime={true}
-            text="Empower yourself to manage your cryptocurrencies, NFTs, and other
+          <motion.p
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0)}
+            className="mt-8 text-wrap text-[16px] lowercase leading-[24px] text-white/50"
+          >
+            Empower yourself to manage your cryptocurrencies, NFTs, and other
             digital assets with complete control, privacy, and security, all
-            from the convenience of your own device."
-            classname="text-white/50 mt-8 text-wrap text-[16px] leading-[24px] lowercase"
-            variants={{
-              hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
-              visible: {
-                filter: "blur(0px)",
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 0.2,
-                },
-              },
-            }}
-          />
+            from the convenience of your own device.
+          </motion.p>
           <div className="mt-6 max-w-[38rem]">
             <Image
               src="/static/token-section/line2.svg"
@@ -61,23 +54,15 @@ const TokenSection = () => {
               height={1}
             />
           </div>
-          <TextAnimation
-            as="p"
-            letterAnime={true}
-            text="Wondering what tokens is supported?"
-            classname="mt-6 text-white/50 lowercase"
-            variants={{
-              hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
-              visible: {
-                filter: "blur(0px)",
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 0.2,
-                },
-              },
-            }}
-          />
+          <motion.p
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            className="mt-6 lowercase text-white/50"
+            variants={leftVariant(0)}
+          >
+            Wondering what tokens is supported?
+          </motion.p>
           <span className="mt-2 flex text-center">
             <Link href="#">
               <p className="text-primary1 hover:border-primary1 cursor-pointer font-neue font-bold hover:border-b">

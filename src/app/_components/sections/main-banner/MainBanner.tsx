@@ -20,7 +20,7 @@ const MainBanner = () => {
       <div className="grid min-h-screen w-full max-w-7xl justify-center px-5 pb-20 md:min-h-[900px] md:pb-0 lg:grid-cols-2 lg:gap-12">
         <div className="flex h-full flex-col justify-center gap-12">
           <div className="flex flex-col gap-2 pt-32 font-neue text-3xl font-bold uppercase sm:pt-0 md:text-5xl lg:text-[50px] xl:text-[55px]">
-            <motion.span
+            <motion.h1
               initial="hide"
               whileInView="show"
               exit="show"
@@ -28,55 +28,41 @@ const MainBanner = () => {
               className="flex items-center text-primary"
             >
               <FlipWords className="text-primary" words={words} />
-              <TextAnimation
-                text="the"
-                variants={{
-                  hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
-                  visible: {
-                    filter: "blur(0px)",
-                    opacity: 1,
-                    y: 0,
-                    transition: { ease: "linear" },
-                  },
-                }}
-                classname="font-neue font-bold uppercase text-white"
-              />
-            </motion.span>
-            <TextAnimation
-              text="Institutions in"
-              variants={{
-                hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
-                visible: {
-                  filter: "blur(0px)",
-                  opacity: 1,
-                  y: 0,
-                  transition: { ease: "linear" },
-                },
-              }}
-              classname="font-neue font-bold uppercase text-white"
-            />
-            <TextAnimation
-              text="Their Own Arena"
-              variants={{
-                hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
-                visible: {
-                  filter: "blur(0px)",
-                  opacity: 1,
-                  y: 0,
-                  transition: { ease: "linear" },
-                },
-              }}
-              classname="font-neue font-bold uppercase text-white"
-            />
+              <span className="text-white">the</span>
+            </motion.h1>
+            <motion.h1
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={bottomVariants(0.1)}
+            >
+              Institutions in
+            </motion.h1>
+            <motion.h1
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={bottomVariants(0.2)}
+            >
+              Their Own Arena
+            </motion.h1>
           </div>
+          <motion.p
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={bottomVariants(0.4)}
+          >
+            For years, CDL has empowered institutional investors with bespoke
+            data, advanced analytics, price predictions, and real-time news
+            feeds — giving them a significant edge in the markets. Now, CDL is
+            bringing that same power to you." classname="w-full max-w-[597px]
+            lowercase text-white
+          </motion.p>
           <TextAnimation
             as="p"
             letterAnime={true}
-            text="For years, CDL has empowered institutional investors with bespoke
-            data, advanced analytics, price predictions, and real-time news
-            feeds — giving them a significant edge in the markets. Now, CDL is
-            bringing that same power to you."
-            classname="w-full max-w-[597px] lowercase text-white"
+            text=""
             variants={{
               hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
               visible: {
@@ -93,7 +79,7 @@ const MainBanner = () => {
             initial="hide"
             whileInView="show"
             exit="show"
-            variants={leftVariant(0.8)}
+            variants={bottomVariants(0.7)}
             className="flex w-full flex-col items-center gap-5 pb-20 sm:w-fit sm:flex-row"
           >
             <PrimaryButton title="Buy CDL Token" className="w-full sm:w-fit" />

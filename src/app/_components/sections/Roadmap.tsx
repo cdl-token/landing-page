@@ -21,24 +21,16 @@ const Roadmap = () => {
           }}
           classname="font-neue text-3xl font-bold md:text-4xl uppercase text-white"
         />
-        <TextAnimation
-          as="p"
-          letterAnime={true}
-          text="The CDL Token roadmap outlines key phases for launching, expanding,
-            and promoting the token."
-          classname="max-w-[520px] text-center font-apfel lowercase text-white"
-          variants={{
-            hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
-            visible: {
-              filter: "blur(0px)",
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: 0.2,
-              },
-            },
-          }}
-        />
+        <motion.p
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={leftVariant(0)}
+          className="max-w-[520px] text-center font-apfel text-white"
+        >
+          The CDL Token roadmap outlines key phases for launching, expanding,
+          and promoting the token.
+        </motion.p>
         <motion.div
           initial="hide"
           whileInView="show"

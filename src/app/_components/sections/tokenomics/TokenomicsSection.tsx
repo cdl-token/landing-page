@@ -29,26 +29,18 @@ const TokenomicsSection = () => {
           }}
           classname="font-neue font-bold text-4xl uppercase text-white"
         />
-        <TextAnimation
-          as="p"
-          letterAnime={true}
-          text="CDL Token is designed for sustainable growth and long-term value, with
-            adaptable tokenomics to support a thriving community. By offering
-            powerful analytics tools, CDL Token empowers users to shape the future
-            of crypto data solutions and drive platform success."
-          classname="max-w-[1000px] text-balance text-center font-apfel text-white/70 lowercase"
-          variants={{
-            hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
-            visible: {
-              filter: "blur(0px)",
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: 0.2,
-              },
-            },
-          }}
-        />
+        <motion.p
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={leftVariant(0)}
+          className="max-w-[1000px] text-balance text-center font-apfel text-white/70"
+        >
+          CDL Token is designed for sustainable growth and long-term value, with
+          adaptable tokenomics to support a thriving community. By offering
+          powerful analytics tools, CDL Token empowers users to shape the future
+          of crypto data solutions and drive platform success.
+        </motion.p>
         <motion.div
           className="grid h-full w-full max-w-7xl grid-cols-1 gap-y-5 px-5 py-5 sm:grid-cols-2 md:px-20 md:py-20 lg:grid-cols-4"
           initial="hide"

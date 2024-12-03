@@ -81,33 +81,25 @@ const WhyInvestSection = () => {
               />
             </div>
           </div>
-          <TextAnimation
-            as="p"
-            letterAnime={true}
-            text="CDL Token empowers investors with real-time analytics, live charts
+          <motion.p
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0)}
+            className="lowercase text-white"
+          >
+            CDL Token empowers investors with real-time analytics, live charts
             and secure transactions on the Binance Smart chain. With plans to
             expand features and partnerships, CDL Token offers exclusive
             insights and innovative tools for informed, data-driven
             investing--positioning itself as a crypto leader in crypto data
-            solutions."
-            classname="lowercase text-white"
-            variants={{
-              hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
-              visible: {
-                filter: "blur(0px)",
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 0.2,
-                },
-              },
-            }}
-          />
+            solutions.
+          </motion.p>
           <motion.div
             initial="hide"
             whileInView="show"
             exit="show"
-            variants={rightVariants(0.6)}
+            variants={rightVariants(0.2)}
             className="mt-10 flex w-full items-center gap-2"
           >
             <PrimaryButton className="w-full sm:w-fit" title="Buy CDL Token" />

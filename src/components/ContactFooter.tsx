@@ -58,37 +58,13 @@ const ContactFooter = () => {
               />
             </div>
             <div className="flex w-[80%] flex-col gap-x-3 gap-y-3">
-              <TextAnimation
-                text="24/7 Chat Support"
-                variants={{
-                  hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
-                  visible: {
-                    filter: "blur(0px)",
-                    opacity: 1,
-                    y: 0,
-                    transition: { ease: "linear" },
-                  },
-                }}
-                classname="font-neue text-[21.33px] font-bold leading-6 text-white"
-              />
-              <TextAnimation
-                as="p"
-                letterAnime={true}
-                text="Get 24/7 chat support with our friendly customer service agents
-            at your service."
-                classname="lowercase text-white"
-                variants={{
-                  hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
-                  visible: {
-                    filter: "blur(0px)",
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      duration: 0.2,
-                    },
-                  },
-                }}
-              />
+              <span className="font-neue text-[21.33px] font-bold leading-6 text-white">
+                24/7 Chat Support
+              </span>
+              <span className="">
+                Get 24/7 chat support with our friendly customer service agents
+                at your service.
+              </span>
               <button
                 className="mt-2 flex items-center gap-x-2 text-center"
                 onClick={() => router.push("/contact-us")}

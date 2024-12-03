@@ -20,40 +20,16 @@ const UnlockSection = () => {
           exit="show"
           variants={leftToRightVariants}
         >
-          <TextAnimation
-            text="Unlock the future with CDL Token"
-            variants={{
-              hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
-              visible: {
-                filter: "blur(0px)",
-                opacity: 1,
-                y: 0,
-                transition: { ease: "linear" },
-              },
-            }}
-            classname="font-neue text-3xl font-bold md:text-[38px] md:leading-[42.6px] uppercase text-white"
-          />
-          <TextAnimation
-            as="p"
-            letterAnime={true}
-            text="Step into the next era of decentralized finance with CDL Token.
+          <span className="font-neue text-3xl font-bold uppercase text-white md:text-[38px] md:leading-[42.6px]">
+            Unlock the future with CDL Token
+          </span>
+          <p className="pr-10 text-[16px] leading-[24px] text-white">
+            Step into the next era of decentralized finance with CDL Token.
             Harness the power of innovation and opportunity, and be part of a
-            revolutionary platform. Don't miss out - start your journey
-            with CDL today and experience the limitless potential of blockchain
-            technology."
-            classname="pr-10 text-[16px] leading-[24px] lowercase text-white"
-            variants={{
-              hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
-              visible: {
-                filter: "blur(0px)",
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 0.2,
-                },
-              },
-            }}
-          />
+            revolutionary platform. Don't miss out - start your journey with CDL
+            today and experience the limitless potential of blockchain
+            technology.
+          </p>
           <Link href="#">
             <button className="mt-5 w-fit rounded-lg border border-white/75 px-[25px] py-[15px] font-neue font-bold transition-all duration-200 ease-in hover:border hover:bg-white/75 hover:text-black">
               Launch Dapp
