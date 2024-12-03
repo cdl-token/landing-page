@@ -26,7 +26,7 @@ const UnlockSection = () => {
           <p className="pr-10 text-[16px] leading-[24px] text-white">
             Step into the next era of decentralized finance with CDL Token.
             Harness the power of innovation and opportunity, and be part of a
-            revolutionary platform. Don't miss out - start your journey with CDL
+            revolutionary platform. Don&apos;t miss out - start your journey with CDL
             today and experience the limitless potential of blockchain
             technology.
           </p>

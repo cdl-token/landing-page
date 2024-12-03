@@ -1,3 +1,11 @@
+"use client";
+
+import {
+  bottomVariants,
+  leftVariant,
+  rightVariants,
+} from "@/lib/animation-variants";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const ServiceMain = () => {
@@ -15,7 +23,11 @@ const ServiceMain = () => {
           />
         </div>
         <div className="static z-10 flex h-full flex-col items-center justify-center gap-1 px-5 text-center md:gap-5">
-          <h1
+          <motion.h1
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={bottomVariants(0)}
             className="font-neue text-3xl font-bold uppercase md:text-[65px] md:leading-[68px]"
             style={{
               background: "linear-gradient(90deg, #FF1CF7 0%, #00D18C 100%)",
@@ -24,27 +36,65 @@ const ServiceMain = () => {
             }}
           >
             WHY ACCEPT
-          </h1>
-          <h1 className="font-neue text-3xl font-bold uppercase md:text-[65px] md:leading-[68px]">
+          </motion.h1>
+          <motion.h1
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={bottomVariants(0.1)}
+            className="font-neue text-3xl font-bold uppercase md:text-[65px] md:leading-[68px]"
+          >
             Raw data when
-          </h1>
-          <h1 className="font-neue text-3xl font-bold uppercase md:text-[65px] md:leading-[68px]">
+          </motion.h1>
+          <motion.h1
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={bottomVariants(0.2)}
+            className="font-neue text-3xl font-bold uppercase md:text-[65px] md:leading-[68px]"
+          >
             Insights await?
-          </h1>
-          <span className="max-w-[597px] py-5 text-center font-apfel text-sm md:py-0 md:text-lg">
+          </motion.h1>
+          <motion.span
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={bottomVariants(0.3)}
+            className="max-w-[597px] py-5 text-center font-apfel text-sm md:py-0 md:text-lg"
+          >
             The CDL Token enables real-time access to comprehensive crypto data,
             delivering insights on over 6 million tokens and 1 billion NFTs
             across 57 blockchain networks.
-          </span>
-          <button className="my-5 flex items-center rounded-[5px] bg-white p-1 text-black hover:shadow-lg">
+          </motion.span>
+          <motion.button
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={bottomVariants(0.4)}
+            className="my-5 flex items-center rounded-[5px] bg-white p-1 text-black hover:shadow-lg"
+          >
             {buttonSvg}
             <span className="px-3 pt-0.5 font-neue text-sm font-bold uppercase">
               get started
             </span>
-          </button>
-          <div className="my-10 flex py-10 px-5 flex-col items-center justify-center gap-5 rounded-[20px] bg-white text-black md:w-[696px]">
-            <span className="uppercase">Powering leading web3 platforms</span>
-            <div className="flex items-center flex-wrap justify-center gap-5">
+          </motion.button>
+          <div className="my-10 flex flex-col items-center justify-center gap-5 rounded-[20px] bg-white px-5 py-10 text-black md:w-[696px]">
+            <motion.span
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={leftVariant(0)}
+              className="uppercase"
+            >
+              Powering leading web3 platforms
+            </motion.span>
+            <motion.div
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={rightVariants(0)}
+              className="flex flex-wrap items-center justify-center gap-5"
+            >
               <Image
                 src="/static/services/companies/1.svg"
                 width={128}
@@ -75,7 +125,7 @@ const ServiceMain = () => {
                 height={23}
                 alt="matcha"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
         <div className="relative hidden lg:block">

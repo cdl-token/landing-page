@@ -56,8 +56,7 @@ const MainBanner = () => {
             For years, CDL has empowered institutional investors with bespoke
             data, advanced analytics, price predictions, and real-time news
             feeds — giving them a significant edge in the markets. Now, CDL is
-            bringing that same power to you." classname="w-full max-w-[597px]
-            lowercase text-white
+            bringing that same power to you.
           </motion.p>
           <TextAnimation
             as="p"

@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import LightGraph from "./LightGraph";
+import { motion } from "framer-motion";
+import { leftVariant, rightVariants } from "@/lib/animation-variants";
 
 const ExploreNow = () => {
   const tabs = ["chart", "nft", "holders"];
@@ -11,12 +13,24 @@ const ExploreNow = () => {
     <div className="static z-10 flex w-full items-center justify-center gap-3">
       <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-10 border-b border-white/30 px-5 py-10 text-center">
         <div className="flex flex-col items-center justify-center gap-2">
-          <h1 className="font-neue text-3xl font-bold uppercase md:text-[45px] md:leading-[50px]">
+          <motion.h1
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0)}
+            className="font-neue text-3xl font-bold uppercase md:text-[45px] md:leading-[50px]"
+          >
             Explore Now
-          </h1>
-          <span className="text- max-w-[406px] font-apfel uppercase">
+          </motion.h1>
+          <motion.span
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0)}
+            className="text- max-w-[406px] font-apfel uppercase"
+          >
             Choose your data type and view the API code from CDL Token below.
-          </span>
+          </motion.span>
         </div>
         <div className="h-full min-h-[45rem] w-full overflow-hidden rounded-2xl border border-white/30">
           <div className="flex w-full items-center">
@@ -44,8 +58,8 @@ const ExploreNow = () => {
             {selectedTab === "holders" && <p>Coming Soon</p>}
           </div>
         </div>
-        <div className="grid w-full md:grid-cols-2 gap-5">
-          <div className="flex h-[35rem] w-full flex-col max-w-full overflow-auto items-start gap-3 rounded-2xl border border-white/30 px-5 py-4 text-start">
+        <div className="grid w-full gap-5 md:grid-cols-2">
+          <div className="flex h-[35rem] w-full max-w-full flex-col items-start gap-3 overflow-auto rounded-2xl border border-white/30 px-5 py-4 text-start">
             <h1 className="text-2xl font-semibold">QUERY</h1>
             {queryCode}
           </div>

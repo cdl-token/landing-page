@@ -1,14 +1,35 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import {
+  bottomVariants,
+  leftVariant,
+  rightVariants,
+  topVariants,
+} from "@/lib/animation-variants";
 
 const Comprehensive = () => {
   return (
     <div className="flex w-full items-center justify-center">
-      <div className="static z-10 flex w-full max-w-7xl border-b border-white/30 flex-col items-center justify-center gap-10 px-5 py-20 text-center">
-        <h1 className="font-neue text-3xl md:text-[45px] font-bold uppercase">
+      <div className="static z-10 flex w-full max-w-7xl flex-col items-center justify-center gap-10 border-b border-white/30 px-5 py-20 text-center">
+        <motion.h1
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={leftVariant(0)}
+          className="font-neue text-3xl font-bold uppercase md:text-[45px]"
+        >
           Comprehensive Access Points
-        </h1>
-        <div className="grid w-full md:grid-cols-2 pt-10 gap-x-10 gap-y-20">
-          <div className="flex flex-col md:flex-row items-center gap-5 text-start">
+        </motion.h1>
+        <div className="grid w-full gap-x-10 gap-y-20 pt-10 md:grid-cols-2">
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0)}
+            className="flex flex-col items-center gap-5 text-start md:flex-row"
+          >
             <Image
               src="/static/services/pricing.svg"
               width={144}
@@ -24,8 +45,14 @@ const Comprehensive = () => {
                 transaction
               </span>
             </div>
-          </div>
-          <div className="flex flex-col md:flex-row items-center gap-5 text-start">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={bottomVariants(0)}
+            className="flex flex-col items-center gap-5 text-start md:flex-row"
+          >
             <Image
               src="/static/services/charts.svg"
               width={144}
@@ -41,8 +68,14 @@ const Comprehensive = () => {
                 comprehensive pricing charts.
               </span>
             </div>
-          </div>
-          <div className="flex flex-col md:flex-row items-center gap-5 text-start">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={topVariants(0)}
+            className="flex flex-col items-center gap-5 text-start md:flex-row"
+          >
             <Image
               src="/static/services/stacks.svg"
               width={144}
@@ -58,8 +91,14 @@ const Comprehensive = () => {
                 for multiple timeframes
               </span>
             </div>
-          </div>
-          <div className="flex flex-col md:flex-row items-center gap-5 text-start">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0)}
+            className="flex flex-col items-center gap-5 text-start md:flex-row"
+          >
             <Image
               src="/static/services/holder.svg"
               width={144}
@@ -75,7 +114,7 @@ const Comprehensive = () => {
                 that&apos;s easy to access and consistently reliable.
               </span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

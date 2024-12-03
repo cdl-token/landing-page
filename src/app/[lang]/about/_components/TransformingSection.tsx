@@ -1,3 +1,9 @@
+"use client";
+
+import { motion } from "framer-motion";
+import TextAnimation from "@/components/ui/scroll-text";
+import { leftVariant, rightVariants } from "@/lib/animation-variants";
+
 const TransformingSection = () => {
   return (
     <div className="relative flex w-full items-center justify-center">
@@ -5,50 +11,102 @@ const TransformingSection = () => {
       <div className="flex w-full max-w-7xl flex-col border-y border-white/30">
         <div className="static z-10 grid w-full gap-10 px-5 py-10 md:grid-cols-2">
           <div className="flex flex-col gap-3 md:gap-10">
-            <h2 className="font-neue uppercase tracking-[5px] text-primary md:text-[19px] md:leading-[24px]">
+            <motion.h2
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={leftVariant(0)}
+              className="font-neue uppercase tracking-[5px] text-primary md:text-[19px] md:leading-[24px]"
+            >
               ABOUT CDL token
-            </h2>
-            <h1 className="font-neue text-2xl font-bold uppercase leading-[42px] md:text-[38px]">
-              Transforming Data <br /> for Tomorrow
-            </h1>
-            <span className="max-w-[534px] font-apfel leading-[24px] text-white/50">
+            </motion.h2>
+            <TextAnimation
+              text="Transforming Data for Tomorrow"
+              variants={{
+                hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+                visible: {
+                  filter: "blur(0px)",
+                  opacity: 1,
+                  y: 0,
+                  transition: { ease: "linear" },
+                },
+              }}
+              classname="font-neue text-2xl font-bold text-white uppercase leading-[42px] md:text-[38px]"
+            />
+            <motion.span
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={leftVariant(0.1)}
+              className="max-w-[534px] font-apfel leading-[24px] text-white/50"
+            >
               CDL Token stands out as a unique oracle data solution, bridging
               real-world data with decentralized applications. By providing
               secure, reliable, and scalable data feeds, CDL enables blockchain
               projects to make informed decisions and execute smart contracts
               with accuracy, all while fostering transparency and
               decentralization.
-            </span>
+            </motion.span>
           </div>
           <div className="grid grid-cols-2">
-            <div className="flex items-center justify-end gap-2 border-y border-white/10 py-10 sm:gap-3">
+            <motion.div
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={rightVariants(0)}
+              className="flex items-center justify-end gap-2 border-y border-white/10 py-10 sm:gap-3"
+            >
               <span className="text-xs sm:text-base">Real-Time Analytics</span>
               <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F3F3F3]/10 sm:h-9 sm:w-9">
                 {arrow}
               </div>
-            </div>
-            <div className="flex items-center justify-end gap-2 border-y border-white/10 py-10 sm:gap-3">
+            </motion.div>
+            <motion.div
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={rightVariants(0.1)}
+              className="flex items-center justify-end gap-2 border-y border-white/10 py-10 sm:gap-3"
+            >
               <span className="text-xs sm:text-base">Advanced Security</span>
               <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F3F3F3]/10 sm:h-9 sm:w-9">
                 {arrow}
               </div>
-            </div>
-            <div className="flex items-center justify-end gap-2 border-b border-white/10 py-10 sm:gap-3">
+            </motion.div>
+            <motion.div
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={rightVariants(0.2)}
+              className="flex items-center justify-end gap-2 border-b border-white/10 py-10 sm:gap-3"
+            >
               <span className="text-xs sm:text-base">Scalable Solutions</span>
               <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F3F3F3]/10 sm:h-9 sm:w-9">
                 {arrow}
               </div>
-            </div>
-            <div className="flex items-center justify-end gap-2 border-b border-white/10 py-10 sm:gap-3">
+            </motion.div>
+            <motion.div
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={rightVariants(0.3)}
+              className="flex items-center justify-end gap-2 border-b border-white/10 py-10 sm:gap-3"
+            >
               <span className="text-xs sm:text-base">User Education</span>
               <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F3F3F3]/10 sm:h-9 sm:w-9">
                 {arrow}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
         <div className="grid place-items-center gap-5 pb-10 pt-5 text-center font-apfel sm:grid-cols-2 lg:grid-cols-4">
-          <div className="flex w-full max-w-[337px] flex-col items-center justify-center gap-3 px-5">
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0)}
+            className="flex w-full max-w-[337px] flex-col items-center justify-center gap-3 px-5"
+          >
             <div
               className="my-5 flex h-20 w-20 items-center justify-center rounded-full pr-1 pt-1"
               style={{
@@ -65,8 +123,14 @@ const TransformingSection = () => {
               Empowering users at the core, fostering collaboration and driving
               progress within a vibrant community.
             </span>
-          </div>
-          <div className="flex w-full max-w-[337px] flex-col items-center justify-center gap-3 px-5">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0.1)}
+            className="flex w-full max-w-[337px] flex-col items-center justify-center gap-3 px-5"
+          >
             <div
               className="my-5 flex h-20 w-20 items-center justify-center rounded-full pr-0.5 pt-1"
               style={{
@@ -83,8 +147,14 @@ const TransformingSection = () => {
               Experience lightning-fast transactions, backed by top-tier
               security for total peace of mind.
             </span>
-          </div>
-          <div className="flex w-full max-w-[337px] flex-col items-center justify-center gap-3 px-5">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0.2)}
+            className="flex w-full max-w-[337px] flex-col items-center justify-center gap-3 px-5"
+          >
             <div
               className="my-5 flex h-20 w-20 items-center justify-center rounded-full pr-0.5 pt-1.5"
               style={{
@@ -101,8 +171,14 @@ const TransformingSection = () => {
               A resilient infrastructure crafted to effortlessly scale and meet
               evolving demands.
             </span>
-          </div>
-          <div className="flex w-full max-w-[337px] flex-col items-center justify-center gap-3 px-5">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0.3)}
+            className="flex w-full max-w-[337px] flex-col items-center justify-center gap-3 px-5"
+          >
             <div
               className="my-5 flex h-20 w-20 items-center justify-center rounded-full pr-0.5 pt-1"
               style={{
@@ -119,11 +195,17 @@ const TransformingSection = () => {
               Offering equal access to financial opportunities, breaking down
               geographic barriers for users worldwide.
             </span>
-          </div>
+          </motion.div>
         </div>
         <div className="grid gap-10 px-5 py-10 lg:grid-cols-3">
-          <div className="flex flex-col gap-3 md:gap-10">
-            <h1 className="font-neue text-lg md:text-[21px] font-bold uppercase leading-[24px]">
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0)}
+            className="flex flex-col gap-3 md:gap-10"
+          >
+            <h1 className="font-neue text-lg font-bold uppercase leading-[24px] md:text-[21px]">
               OUR VISION
             </h1>
             <span className="text-[#898990]">
@@ -134,9 +216,15 @@ const TransformingSection = () => {
               finance, data analytics, and blockchain technology, enabling
               real-time insights and actionable strategies.
             </span>
-          </div>
-          <div className="flex flex-col gap-3 md:gap-10">
-            <h1 className="font-neue text-lg md:text-[21px] font-bold uppercase leading-[24px]">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.1)}
+            className="flex flex-col gap-3 md:gap-10"
+          >
+            <h1 className="font-neue text-lg font-bold uppercase leading-[24px] md:text-[21px]">
               OUR MISSION
             </h1>
             <span className="text-[#898990]">
@@ -147,9 +235,15 @@ const TransformingSection = () => {
               transforming industries and enabling enterprises to thrive in a
               decentralized world.
             </span>
-          </div>
-          <div className="flex flex-col gap-3 md:gap-10">
-            <h1 className="font-neue text-lg md:text-[21px] font-bold uppercase leading-[24px]">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.2)}
+            className="flex flex-col gap-3 md:gap-10"
+          >
+            <h1 className="font-neue text-lg font-bold uppercase leading-[24px] md:text-[21px]">
               CORE VALUE
             </h1>
             <span className="text-[#898990]">
@@ -159,7 +253,7 @@ const TransformingSection = () => {
               empowering the community and reducing centralization, we create a
               scalable ecosystem that grows with user needs.
             </span>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

@@ -1,33 +1,59 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { leftVariant, rightVariants } from "@/lib/animation-variants";
 
 const HowDoes = () => {
   return (
     <div className="relative flex w-full items-center justify-center">
-      <div className="grid w-full max-w-7xl md:grid-cols-[6fr_4fr] border-y border-white/30 px-5 py-20">
-        <div className="flex justify-center max-w-[730px] flex-col gap-5">
-          <h1 className="font-neue text-3xl md:text-[45px] font-bold uppercase md:leading-[50px]">
+      <div className="grid w-full max-w-7xl border-y border-white/30 px-5 py-20 md:grid-cols-[6fr_4fr]">
+        <div className="flex max-w-[730px] flex-col justify-center gap-5">
+          <motion.h1
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0)}
+            className="font-neue text-3xl font-bold uppercase md:text-[45px] md:leading-[50px]"
+          >
             How does enhanced data drive better decisions?
-          </h1>
-          <span>
+          </motion.h1>
+          <motion.span
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0)}
+          >
             Managing raw blockchain data is complex, requiring nodes, servers,
             and vast technical resources. This process can be time-intensive and
             costly for businesses.
-          </span>
-          <span>
+          </motion.span>
+          <motion.span
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0)}
+          >
             CDL Token simplifies this by providing enriched, well-structured
             blockchain data through valuable endpoints. It saves time, reduces
             costs, and allows businesses to focus on innovation, making
             blockchain data more accessible and efficient to use.
-          </span>
+          </motion.span>
         </div>
-        <div className="flex items-center justify-center px-5 py-5">
+        <motion.div
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={rightVariants(0)}
+          className="flex items-center justify-center px-5 py-5"
+        >
           <Image
             src="/static/services/chip.svg"
             width={433}
             height={518}
             alt="CHIP"
           />
-        </div>
+        </motion.div>
       </div>
       <div className="absolute top-10">{gradientSvg}</div>
     </div>

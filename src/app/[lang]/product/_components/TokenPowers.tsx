@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { leftVariant, rightVariants } from "@/lib/animation-variants";
 
 const TokenPowers = () => {
   return (
@@ -11,17 +15,35 @@ const TokenPowers = () => {
           alt="parallax"
         />
       </div>
-      <div className="static z-10 grid w-full max-w-7xl md:grid-cols-2 gap-10 px-5 py-20">
+      <div className="static z-10 grid w-full max-w-7xl gap-10 px-5 py-20 md:grid-cols-2">
         <div className="flex flex-col gap-5 py-10">
-          <h1 className="max-w-[310px] font-neue text-3xl md:text-[55px] uppercase md:leading-[58px]">
+          <motion.h1
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0)}
+            className="max-w-[310px] font-neue text-3xl uppercase md:text-[55px] md:leading-[58px]"
+          >
             Cdl token powers industry leaders
-          </h1>
-          <span className="max-w-[320px] font-apfel">
+          </motion.h1>
+          <motion.span
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0.1)}
+            className="max-w-[320px] font-apfel"
+          >
             Learn how CDL helps industry leaders save time, money, and
             development resources
-          </span>
+          </motion.span>
         </div>
-        <div className="flex flex-col gap-5 rounded-[20px] border border-white/50 px-10 py-12 text-[#B8B8B8]">
+        <motion.div
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={rightVariants(0)}
+          className="flex flex-col gap-5 rounded-[20px] border border-white/50 px-10 py-12 text-[#B8B8B8]"
+        >
           <Image
             src="/static/services/companies/tradingview.svg"
             width={173}
@@ -32,13 +54,13 @@ const TokenPowers = () => {
             TradingView, and their 50 million users, rely on CDL TOKEN as the
             sole source of truth for all on-chain data.
           </span>
-          <span className="text-[19px] leading-[30px] pb-40">
+          <span className="pb-40 text-[19px] leading-[30px]">
             “CDL has been instrumental in our efforts to support high quality
             DEX data via the TradingView interface. We were using 3-4 data
             providers previously, including the Graph, and have now consolidated
             everything to CDL.”
           </span>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,19 +1,46 @@
+"use client";
+
+import { motion } from "framer-motion";
+import TextAnimation from "@/components/ui/scroll-text";
 import Image from "next/image";
+import { leftVariant, rightVariants } from "@/lib/animation-variants";
 
 const OurTeam = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-3 px-5 py-20">
-        <h1 className="text-center font-neue text-3xl font-bold leading-[42px] md:text-[38px]">
-          MEET OUR TEAM
-        </h1>
-        <span className="max-w-[824px] text-center text-sm font-apfel font-normal md:text-[19px]">
+        <TextAnimation
+          text="MEET OUR TEAM"
+          variants={{
+            hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+            visible: {
+              filter: "blur(0px)",
+              opacity: 1,
+              y: 0,
+              transition: { ease: "linear" },
+            },
+          }}
+          classname="text-center font-neue text-3xl font-bold leading-[42px] md:text-[38px] text-white"
+        />
+        <motion.span
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={leftVariant(0)}
+          className="max-w-[824px] text-center font-apfel text-sm font-normal md:text-[19px]"
+        >
           A dynamic group of passionate professionals, each bringing unique
           expertise to drive innovation, collaboration, and growth. Together,
           we&apos;re shaping the future of our industry.
-        </span>
+        </motion.span>
         <div className="grid w-full gap-10 py-10 md:grid-cols-2 lg:grid-cols-4">
-          <div className="flex flex-col items-center gap-5">
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0)}
+            className="flex flex-col items-center gap-5"
+          >
             <Image
               src="/static/our-team/2.png"
               width={230}
@@ -36,8 +63,14 @@ const OurTeam = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col items-center gap-5">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.1)}
+            className="flex flex-col items-center gap-5"
+          >
             <Image
               src="/static/our-team/1.png"
               width={230}
@@ -60,8 +93,14 @@ const OurTeam = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col items-center gap-5">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.2)}
+            className="flex flex-col items-center gap-5"
+          >
             <Image
               src="/static/our-team/3.png"
               width={230}
@@ -84,8 +123,14 @@ const OurTeam = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col items-center gap-5">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.3)}
+            className="flex flex-col items-center gap-5"
+          >
             <Image
               src="/static/our-team/4.png"
               width={230}
@@ -106,7 +151,7 @@ const OurTeam = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
