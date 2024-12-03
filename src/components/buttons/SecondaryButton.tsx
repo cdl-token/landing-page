@@ -10,7 +10,7 @@ const SecondaryButton = ({
 }: {
   className?: string;
   title: string;
-  action?: () => void | undefined; 
+  action?: (() => void | Promise<void>) | undefined;
 }) => {
   return (
     <button onClick={action && action}

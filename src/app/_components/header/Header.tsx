@@ -68,12 +68,11 @@ const Header = ({ lang = "en" }: { lang: string }) => {
             <HeaderLogo />
             <NavLinks lang={lang} />
           </div>
-          {/* <SecondaryButton
+          <SecondaryButton
             className="hidden lg:flex"
             action={() => open()}
             title="Connect Wallet"
-          /> */}
-          <appkit-button />
+          />
           <HeaderSheet lang={lang} />
         </div>
       </div>
