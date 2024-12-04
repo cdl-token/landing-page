@@ -12,7 +12,7 @@ import {
 const Footer = ({ lang = "en" }: { lang: string }) => {
   return (
     <footer className="relative flex w-full flex-col items-center justify-center overflow-hidden border-t border-white/30">
-      <div className="flex w-full max-w-7xl flex-col gap-5 px-5 pt-20 static z-10">
+      <div className="static z-10 flex w-full max-w-7xl flex-col gap-5 px-5 pt-20">
         <div className="grid gap-10 pb-10 lg:grid-cols-[10fr_5fr_5fr_5fr_10fr]">
           <div className="flex flex-col gap-2">
             <HeaderLogo />
@@ -22,34 +22,70 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
               ahead in the market with CDL
             </span>
             <div className="mt-5 flex items-center gap-3 pl-5">
-              <Link className="hover:text-primary" href="/">{telegramIcon}</Link>
-              <Link className="hover:text-primary" href="/">{twitterIcon}</Link>
-              <Link className="hover:text-primary" href="/">{facebookIcon}</Link>
-              <Link className="hover:text-primary" href="/">{youtubeIcon}</Link>
-              <Link className="hover:text-primary" href="/">{discordIcon}</Link>
+              <Link className="hover:text-primary" href="/">
+                {telegramIcon}
+              </Link>
+              <Link className="hover:text-primary" href="/">
+                {twitterIcon}
+              </Link>
+              <Link className="hover:text-primary" href="/">
+                {facebookIcon}
+              </Link>
+              <Link className="hover:text-primary" href="/">
+                {youtubeIcon}
+              </Link>
+              <Link className="hover:text-primary" href="/">
+                {discordIcon}
+              </Link>
             </div>
           </div>
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-2xl font-bold">Company</h1>
-            <Link className="hover:text-primary" href={`/${lang}/about`}>About</Link>
-            <Link className="hover:text-primary" href={`/${lang}/tokens`}>Token</Link>
-            <Link className="hover:text-primary" href={`/${lang}/team`}>Team</Link>
-            <Link className="hover:text-primary" href={`/${lang}/features`}>Features</Link>
+            <Link className="hover:text-primary" href={`/${lang}/about`}>
+              About
+            </Link>
+            <Link className="hover:text-primary" href={`/${lang}/tokens`}>
+              Token
+            </Link>
+            <Link className="hover:text-primary" href={`/${lang}/team`}>
+              Team
+            </Link>
+            <Link className="hover:text-primary" href={`/${lang}/features`}>
+              Features
+            </Link>
           </div>
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-2xl font-bold">Resources</h1>
-            <Link className="hover:text-primary" href="/">Whitepaper</Link>
-            <Link className="hover:text-primary" href="https://cdl-token.gitbook.io/cdl-token/">
+            <Link className="hover:text-primary" href="/whitepaper.pptx">
+              Whitepaper
+            </Link>
+            <Link
+              className="hover:text-primary"
+              href="https://cdl-token.gitbook.io/cdl-token/"
+            >
               Lightpaper
             </Link>
-            <Link className="hover:text-primary" href="/">Github</Link>
-            <Link className="hover:text-primary" href="/contact">Contact</Link>
+            <Link
+              className="hover:text-primary"
+              href="https://github.com/cyhammad/cdl-token"
+            >
+              Github
+            </Link>
+            <Link className="hover:text-primary" href="/contact">
+              Contact
+            </Link>
           </div>
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-2xl font-bold">Community</h1>
-            <Link className="hover:text-primary" href="/">Roles</Link>
-            <Link className="hover:text-primary" href="/">Ecosystem</Link>
-            <Link className="hover:text-primary" href="/">Faq&apos;s</Link>
+            <Link className="hover:text-primary" href="/">
+              Roles
+            </Link>
+            <Link className="hover:text-primary" href="/">
+              Ecosystem
+            </Link>
+            <Link className="hover:text-primary" href={`/${lang}/faq`}>
+              Faq&apos;s
+            </Link>
           </div>
           <div className="flex flex-col justify-end gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-xl">Sign up for our neweletter</h1>
@@ -67,9 +103,15 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
             Copyright © 2024 CDL. All Rights Reserved
           </span>
           <div className="flex flex-wrap items-center gap-5 text-sm">
-            <Link className="hover:text-primary" href="/">Terms of Service</Link>
-            <Link className="hover:text-primary" href="/">Privacy Policy</Link>
-            <Link className="hover:text-primary" href="/">Security</Link>
+            <Link className="hover:text-primary" href="/">
+              Terms of Service
+            </Link>
+            <Link className="hover:text-primary" href="/">
+              Privacy Policy
+            </Link>
+            <Link className="hover:text-primary" href="/">
+              Security
+            </Link>
           </div>
         </div>
         <img src="/static/footer/cdl-token.svg" className="w-full" />
