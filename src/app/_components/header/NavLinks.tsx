@@ -53,7 +53,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ lang = "en" }) => {
     <div className="hidden items-center gap-8 px-10 lg:flex">
       {headerLinks.map((link, index) => (
         <Link
-          className="font-apfel text-lg font-bold"
+          className="font-apfel text-lg font-bold hover:text-primary"
           key={index}
           href={link.href}
         >
