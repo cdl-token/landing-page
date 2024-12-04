@@ -5,10 +5,12 @@ import NavLinks from "./NavLinks";
 import { useEffect, useState } from "react";
 import HeaderSheet from "./HeaderSheet";
 import { cn } from "@/lib/utils";
+import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
 
 const Header = ({ lang = "en" }: { lang: string }) => {
+  const { address, isConnected } = useAppKitAccount();
+  const { open } = useAppKit();
 
-  
   // --------------For hydration error-------------------
   const [isClient, setIsClient] = useState(false);
 
@@ -16,7 +18,7 @@ const Header = ({ lang = "en" }: { lang: string }) => {
     setIsClient(true);
   }, []);
   // ----------------------------------------------------
-  
+
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -46,7 +48,7 @@ const Header = ({ lang = "en" }: { lang: string }) => {
   if (!isClient) {
     return null;
   }
-  
+
   return (
     <header
       className={cn(
@@ -68,6 +70,7 @@ const Header = ({ lang = "en" }: { lang: string }) => {
           </div>
           <SecondaryButton
             className="hidden lg:flex"
+            action={() => open()}
             title="Connect Wallet"
           />
           <HeaderSheet lang={lang} />

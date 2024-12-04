@@ -1,35 +1,78 @@
+"use client";
+
+import { motion } from "framer-motion";
+import TextAnimation from "@/components/ui/scroll-text";
 import Image from "next/image";
+import { leftVariant } from "@/lib/animation-variants";
 
 const WhatIsCDL = () => {
   return (
     <div className="relative flex min-h-[45rem] w-full items-center justify-center">
       <div className="absolute top-0">{gradientSvg}</div>
       <div className="static z-10 flex w-full max-w-7xl flex-col border-y border-white/30 px-5 py-10">
-        <div className="grid md:grid-cols-[6fr_4fr] py-10">
+        <div className="grid py-10 md:grid-cols-[6fr_4fr]">
           <div className="flex flex-col gap-3">
-            <h1 className="font-neue text-2xl md:text-[34px] font-bold uppercase text-primary">
-              WHAT IS CDL TOKEN?
-            </h1>
-            <h1 className="font-neue text-3xl md:text-[45px] font-bold uppercase md:leading-[50px]">
-              We’ve built a platform to trade & utilize crypto data
-            </h1>
-            <span className="text-[19px]">
+            <TextAnimation
+              text="WHAT IS CDL TOKEN?"
+              variants={{
+                hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+                visible: {
+                  filter: "blur(0px)",
+                  opacity: 1,
+                  y: 0,
+                  transition: { ease: "linear" },
+                },
+              }}
+              classname="font-neue text-2xl md:text-[34px] font-bold uppercase text-primary"
+            />
+            <TextAnimation
+              text="We've built a platform to trade & utilize crypto data"
+              variants={{
+                hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+                visible: {
+                  filter: "blur(0px)",
+                  opacity: 1,
+                  y: 0,
+                  transition: { ease: "linear" },
+                },
+              }}
+              classname="font-neue text-3xl font-bold uppercase text-white md:text-[45px] md:leading-[50px]"
+            />
+            <motion.span
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={leftVariant(0)}
+              className="text-[19px]"
+            >
               CDL Token is a cryptocurrency designed for the future of funding,
               empowering access to advanced crypto data services and
               transforming blockchain-driven insights
-            </span>
-            <span className="md:text-[19px]">
+            </motion.span>
+            <motion.span
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={leftVariant(0.1)}
+              className="md:text-[19px]"
+            >
               Built to serve as a utility token, CDL integrates seamlessly into
               platforms that offer advanced crypto analytics, trading insights,
               and decentralized solutions. By holding or using CDL Tokens, users
               gain access to premium features, exclusive tools, and reduced fees
               within the CDL ecosystem.
-            </span>
-            <span className="md:text-[19px]">
-              The CDL Token is more than just a cryptocurrency; it&apos;s a gateway
-              to a robust and evolving ecosystem where users, traders, and
-              developers collaborate and innovate in the crypto space.
-            </span>
+            </motion.span>
+            <motion.span
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={leftVariant(0.2)}
+              className="md:text-[19px]"
+            >
+              The CDL Token is more than just a cryptocurrency; it&apos;s a
+              gateway to a robust and evolving ecosystem where users, traders,
+              and developers collaborate and innovate in the crypto space.
+            </motion.span>
           </div>
           <Image
             src="/static/shape-1.png"
@@ -38,21 +81,35 @@ const WhatIsCDL = () => {
             height={740}
           />
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 place-items-center lg:grid-cols-4">
-          <div className="flex max-w-[269px] flex-col items-center gap-2">
+        <div className="grid place-items-center gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0)}
+            className="flex max-w-[269px] flex-col items-center gap-2"
+          >
             <Image
               src="/static/what-is/icon-1.svg"
               width={56}
               height={56}
               alt="Icon 1"
             />
-            <h1 className="font-neue font-bold uppercase text-center md:text-start">EVM Compatibility</h1>
+            <h1 className="text-center font-neue font-bold uppercase md:text-start">
+              EVM Compatibility
+            </h1>
             <span className="text-center font-apfel text-white/75">
               Seamless integration with Ethereum-based tools, standards, and
               decentralized applications
             </span>
-          </div>
-          <div className="flex max-w-[269px] flex-col items-center gap-2">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0.1)}
+            className="flex max-w-[269px] flex-col items-center gap-2"
+          >
             <Image
               src="/static/what-is/icon-2.svg"
               width={62}
@@ -64,8 +121,14 @@ const WhatIsCDL = () => {
               Seamless integration with Ethereum-based tools, standards, and
               decentralized applications
             </span>
-          </div>
-          <div className="flex max-w-[269px] flex-col items-center gap-2">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0.2)}
+            className="flex max-w-[269px] flex-col items-center gap-2"
+          >
             <Image
               src="/static/what-is/icon-3.svg"
               width={56}
@@ -77,8 +140,14 @@ const WhatIsCDL = () => {
               Seamless integration with Ethereum-based tools, standards, and
               decentralized applications
             </span>
-          </div>
-          <div className="flex max-w-[269px] flex-col items-center gap-2">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={leftVariant(0.3)}
+            className="flex max-w-[269px] flex-col items-center gap-2"
+          >
             <Image
               src="/static/what-is/icon-4.svg"
               width={48}
@@ -90,7 +159,7 @@ const WhatIsCDL = () => {
               Seamless integration with Ethereum-based tools, standards, and
               decentralized applications
             </span>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

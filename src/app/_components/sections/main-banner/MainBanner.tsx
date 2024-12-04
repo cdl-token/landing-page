@@ -1,30 +1,100 @@
+"use client";
+
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import { motion } from "framer-motion";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
-import Image from "next/image";
+import Earth from "@/components/ui/better-globe";
+import { FlipWords } from "@/components/ui/flip-words";
+import {
+  bottomVariants,
+  leftVariant,
+  rightVariants,
+} from "@/lib/animation-variants";
+import TextAnimation from "@/components/ui/scroll-text";
 
 const MainBanner = () => {
+  const words = ["Outsmarting", "Surpassing", "Overcoming"];
+
   return (
-    <section className="relative flex h-full w-full items-center justify-center overflow-hidden">
-      <div className="grid min-h-screen w-full max-w-7xl md:grid-cols-2 justify-center gap-12 border-b border-white/30 px-5 pt-10 md:min-h-[900px]">
-        <div className="flex h-full flex-col gap-12 justify-center">
-          <div className="flex animate-slideIn flex-col gap-2 pt-32 font-neue text-3xl font-bold uppercase sm:pt-0 md:text-5xl lg:text-[50px] xl:text-[55px]">
-            <span className="text-primary">Outsmarting the</span>
-            <span>Institutions in</span>
-            <span>Their Own Arena</span>
+    <section className="relative flex h-full w-full items-center justify-center overflow-x-hidden">
+      <div className="grid min-h-screen w-full max-w-7xl justify-center px-5 pb-20 md:min-h-[900px] md:pb-0 lg:grid-cols-2 lg:gap-12">
+        <div className="flex h-full flex-col justify-center gap-12">
+          <div className="flex flex-col gap-2 pt-32 font-neue text-3xl font-bold uppercase sm:pt-0 md:text-5xl lg:text-[50px] xl:text-[55px]">
+            <motion.h1
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={bottomVariants(0)}
+              className="flex items-center text-primary"
+            >
+              <FlipWords className="text-primary" words={words} />
+              <span className="text-white">the</span>
+            </motion.h1>
+            <motion.h1
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={bottomVariants(0.1)}
+            >
+              Institutions in
+            </motion.h1>
+            <motion.h1
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={bottomVariants(0.2)}
+            >
+              Their Own Arena
+            </motion.h1>
           </div>
-          <p className="w-full max-w-[597px] animate-slideIn">
+          <motion.p
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={bottomVariants(0.4)}
+          >
             For years, CDL has empowered institutional investors with bespoke
             data, advanced analytics, price predictions, and real-time news
             feeds — giving them a significant edge in the markets. Now, CDL is
             bringing that same power to you.
-          </p>
-          <div className="flex flex-col sm:flex-row animate-slideIn items-center sm:w-fit w-full gap-5 pb-20">
+          </motion.p>
+          <TextAnimation
+            as="p"
+            letterAnime={true}
+            text=""
+            variants={{
+              hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
+              visible: {
+                filter: "blur(0px)",
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.2,
+                },
+              },
+            }}
+          />
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={bottomVariants(0.7)}
+            className="flex w-full flex-col items-center gap-5 pb-20 sm:w-fit sm:flex-row"
+          >
             <PrimaryButton title="Buy CDL Token" className="w-full sm:w-fit" />
-            <SecondaryButton title="Details" className="w-full sn:w-fit" />
-          </div>
+            <SecondaryButton title="Details" className="sn:w-fit w-full" />
+          </motion.div>
         </div>
-        <div className="p-1 flex h-full items-center justify-center">
-          <Image src="/static/globe.gif" width={800} height={800} alt="GLOBE" />
+        <div className="flex h-full w-full items-center">
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={rightVariants(0.1)}
+            className="relative flex aspect-square h-fit w-full max-w-full items-center justify-center"
+          >
+            <Earth />
+          </motion.div>
         </div>
       </div>
       <div className="absolute left-[-510px] top-[-568px] -z-10">

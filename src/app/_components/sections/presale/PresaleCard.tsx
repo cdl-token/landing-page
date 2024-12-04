@@ -38,8 +38,8 @@ const PresaleCard = () => {
     contractData,
     BuyWithUSDTandUSDC,
     GetValues,
-    loader,
-    // purchaseLoader,
+    //Loader,
+    purchaseLoader,
     // transactionSuccess,
     copyToClipboard,
     addTokenToMetamask,
@@ -152,25 +152,25 @@ const PresaleCard = () => {
             "linear-gradient(164.11deg, rgba(255, 255, 255, 0.28) 4.4%, rgba(255, 255, 255, 0) 54.85%)",
         }}
       >
-        {loader ? (
+        {purchaseLoader ? (
           <Skeleton className="h-8 w-[250px] max-w-full bg-gray-500" />
         ) : (
           <h1 className="font-neue font-bold uppercase sm:text-2xl">
             Token sale ends in:
           </h1>
         )}
-        {loader ? (
+        {purchaseLoader ? (
           <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
         ) : (
           <PresaleCountdown />
         )}
         <div className="flex w-full flex-col gap-2">
-          {loader ? (
+          {purchaseLoader ? (
             <Skeleton className="h-6 w-[200px] max-w-full bg-gray-500" />
           ) : (
             <h2 className="font-neue font-bold sm:text-xl">Token Address:</h2>
           )}
-          {loader ? (
+          {purchaseLoader ? (
             <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
           ) : (
             <div className="flex items-center justify-between gap-3 rounded-md border border-white/20 bg-custom-bg py-3 pl-4 pr-2 font-apfel">
@@ -183,7 +183,7 @@ const PresaleCard = () => {
             </div>
           )}
         </div>
-        {loader ? (
+        {purchaseLoader ? (
           <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
         ) : (
           <ProgressBar
@@ -200,7 +200,7 @@ const PresaleCard = () => {
           <div className="h-[1px] w-full bg-white"></div>
         </div>
         <div className="grid w-full grid-cols-3 gap-2 font-neue text-sm font-bold sm:gap-5">
-          {loader ? (
+          {purchaseLoader ? (
             <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
           ) : (
             <button
@@ -221,7 +221,7 @@ const PresaleCard = () => {
               <span className="pt-1">ETH</span>
             </button>
           )}
-          {loader ? (
+          {purchaseLoader ? (
             <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
           ) : (
             <button
@@ -242,7 +242,7 @@ const PresaleCard = () => {
               <span className="pt-1">USDT</span>
             </button>
           )}
-          {loader ? (
+          {purchaseLoader ? (
             <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
           ) : (
             <button
@@ -265,7 +265,7 @@ const PresaleCard = () => {
           )}
         </div>
         <div className="mt-5 grid w-full gap-5 font-neue font-bold sm:grid-cols-2">
-          {loader ? (
+          {purchaseLoader ? (
             <Skeleton className="h-28 w-full max-w-full bg-gray-500" />
           ) : (
             <div className="flex flex-col gap-1">
@@ -294,7 +294,7 @@ const PresaleCard = () => {
               />
             </div>
           )}
-          {loader ? (
+          {purchaseLoader ? (
             <Skeleton className="h-28 w-full max-w-full bg-gray-500" />
           ) : (
             <div className="flex flex-col gap-1">
@@ -311,12 +311,13 @@ const PresaleCard = () => {
                 value={Number(
                   formatEther(cdlValue?.toString() || "0"),
                 )?.toFixed(2)}
-                // onChange={(e) => setcdlValue(e.target.value)}
+                readOnly
+              // onChange={(e) => setcdlValue(e.target.value)}
               />
             </div>
           )}
         </div>
-        {loader ? (
+        {purchaseLoader ? (
           <Skeleton className="h-28 w-full max-w-full bg-gray-500" />
         ) : (
           <div className="mt-5 flex w-full flex-col items-center justify-between gap-5 xl:flex-row">
@@ -326,10 +327,10 @@ const PresaleCard = () => {
                 action={
                   isConnected
                     ? () =>
-                        BuyWithETH({
-                          tokens: cdlValue?.toString(),
-                          amountInEthPayable: tokenAmount?.toString(),
-                        })
+                      BuyWithETH({
+                        tokens: cdlValue?.toString(),
+                        amountInEthPayable: tokenAmount?.toString(),
+                      })
                     : () => open()
                 }
                 title={buttonText}
@@ -340,11 +341,11 @@ const PresaleCard = () => {
                 action={
                   isConnected
                     ? () =>
-                        BuyWithUSDTandUSDC({
-                          payAmountInUSDT: +tokenAmount,
-                          tokens: cdlValue?.toString(),
-                          isUSDT: true,
-                        })
+                      BuyWithUSDTandUSDC({
+                        payAmountInUSDT: +tokenAmount,
+                        tokens: cdlValue?.toString(),
+                        isUSDT: true,
+                      })
                     : () => open()
                 }
                 title={buttonText}
@@ -355,11 +356,11 @@ const PresaleCard = () => {
                 action={
                   isConnected
                     ? () =>
-                        BuyWithUSDTandUSDC({
-                          payAmountInUSDT: +tokenAmount,
-                          tokens: cdlValue?.toString(),
-                          isUSDT: false,
-                        })
+                      BuyWithUSDTandUSDC({
+                        payAmountInUSDT: +tokenAmount,
+                        tokens: cdlValue?.toString(),
+                        isUSDT: false,
+                      })
                     : () => open()
                 }
                 title={buttonText}

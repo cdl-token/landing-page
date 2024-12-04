@@ -7,6 +7,7 @@ import {
   leftToRightVariants,
   rightToLeftVariants,
 } from "@/lib/animation-variants";
+import TextAnimation from "@/components/ui/scroll-text";
 
 const UnlockSection = () => {
   return (
@@ -19,14 +20,14 @@ const UnlockSection = () => {
           exit="show"
           variants={leftToRightVariants}
         >
-          <h1 className="font-neue text-3xl font-bold uppercase md:text-[38px] md:leading-[42.6px]">
+          <span className="font-neue text-3xl font-bold uppercase text-white md:text-[38px] md:leading-[42.6px]">
             Unlock the future with CDL Token
-          </h1>
-          <p className="pr-10 text-[16px] leading-[24px]">
+          </span>
+          <p className="pr-10 text-[16px] leading-[24px] text-white">
             Step into the next era of decentralized finance with CDL Token.
             Harness the power of innovation and opportunity, and be part of a
-            revolutionary platform. Don&apos;t miss out – start your journey
-            with CDL today and experience the limitless potential of blockchain
+            revolutionary platform. Don&apos;t miss out - start your journey with CDL
+            today and experience the limitless potential of blockchain
             technology.
           </p>
           <Link href="#">

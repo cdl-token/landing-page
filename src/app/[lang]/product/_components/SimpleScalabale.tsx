@@ -1,15 +1,42 @@
+"use client";
+
+import {
+  leftVariant,
+  rightVariants,
+  topVariants,
+} from "@/lib/animation-variants";
+import { motion } from "framer-motion";
+
 const SimpleScalabale = () => {
   return (
     <div className="relative flex w-full items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-2 border-b border-white/30 px-5 py-20">
-        <div className="font-neue text-[45px] font-bold uppercase leading-[50px]">
+        <motion.div
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={leftVariant(0)}
+          className="font-neue text-[45px] font-bold uppercase leading-[50px]"
+        >
           Simple, scalable pricing
-        </div>
-        <span className="font-apfel uppercase text-white/75">
+        </motion.div>
+        <motion.span
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={rightVariants(0)}
+          className="font-apfel uppercase text-white/75"
+        >
           Pricing to fit builders and teams of all sizes.
-        </span>
-        <div className="static z-10 grid w-full md:grid-cols-3 gap-5 py-20">
-          <div className="flex h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] xl:max-w-[421px]">
+        </motion.span>
+        <div className="static z-10 grid w-full gap-5 py-20 md:grid-cols-3">
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={topVariants(0)}
+            className="flex h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] xl:max-w-[421px]"
+          >
             <div className="flex w-full flex-col">
               <span className="mb-2 w-fit rounded-full border px-3.5 pb-[5px] pt-1">
                 FREE PLAN
@@ -30,15 +57,19 @@ const SimpleScalabale = () => {
               {buttonIcon}
               <span className="uppercase">Get started</span>
             </button>
-          </div>
-          <div className="flex h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] xl:max-w-[421px]">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={topVariants(0.1)}
+            className="flex h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] xl:max-w-[421px]"
+          >
             <div className="flex w-full flex-col">
               <span className="mb-2 w-fit rounded-full border px-3.5 pb-[5px] pt-1">
                 GROWTH PLAN
               </span>
-              <span className="mb-3 text-[15px]">
-                For teams & startups
-              </span>
+              <span className="mb-3 text-[15px]">For teams & startups</span>
               <span className="text-[72px] font-bold leading-[79px]">$350</span>
               <span className="mb-5 text-[20px]">per million requests</span>
               <div className="flex flex-col gap-2 border-t border-[#D6D6D6] p-3">
@@ -54,16 +85,24 @@ const SimpleScalabale = () => {
               {buttonIcon}
               <span className="uppercase">Get started</span>
             </button>
-          </div>
-          <div className="flex h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] xl:max-w-[421px]">
+          </motion.div>
+          <motion.div
+            initial="hide"
+            whileInView="show"
+            exit="show"
+            variants={topVariants(0.2)}
+            className="flex h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] xl:max-w-[421px]"
+          >
             <div className="flex w-full flex-col">
               <span className="mb-2 w-fit rounded-full border px-3.5 pb-[5px] pt-1">
-               ENTERPRISE PLAN
+                ENTERPRISE PLAN
               </span>
               <span className="mb-3 text-[15px]">
                 Tailored solution for larger companies
               </span>
-              <span className="sm:text-[62px] text-5xl font-bold sm:leading-[69px]">CUSTOM</span>
+              <span className="text-5xl font-bold sm:text-[62px] sm:leading-[69px]">
+                CUSTOM
+              </span>
               <span className="mb-5 text-[20px]">per million requests</span>
               <div className="flex flex-col gap-2 border-t border-[#D6D6D6] p-3">
                 <span className="text-">Unlimited API keys</span>
@@ -80,7 +119,7 @@ const SimpleScalabale = () => {
               {buttonIcon}
               <span className="uppercase">Get started</span>
             </button>
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className="absolute">{gradientSvg}</div>

@@ -1,19 +1,37 @@
 "use client";
 
+import { motion } from "framer-motion";
 import ServicesSlider from "./ServicesSlider";
+import { bottomVariants, leftVariant } from "@/lib/animation-variants";
+import TextAnimation from "@/components/ui/scroll-text";
 
 export function OurServices() {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center relative">
-      <div className="flex w-full gap-5 max-w-7xl flex-col border-t border-white/30 px-5 py-20">
-        <h2 className="pl-4 font-neue text-3xl font-bold uppercase md:text-5xl">
-          Our Services
-        </h2>
-        <ServicesSlider />
+    <div className="relative flex h-full w-full flex-col items-center justify-center">
+      <div className="flex w-full max-w-7xl flex-col gap-5 border-t border-white/30 px-5 py-20">
+        <TextAnimation
+          text="Our Services"
+          variants={{
+            hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+            visible: {
+              filter: "blur(0px)",
+              opacity: 1,
+              y: 0,
+              transition: { ease: "linear" },
+            },
+          }}
+          classname="pl-4 font-neue text-3xl font-bold md:text-5xl uppercase text-white"
+        />
+        <motion.div
+          initial="hide"
+          whileInView="show"
+          exit="show"
+          variants={bottomVariants(0)}
+        >
+          <ServicesSlider />
+        </motion.div>
       </div>
-      <div className="absolute -z-10">
-        {gradientSvg}
-      </div>
+      <div className="absolute -z-10">{gradientSvg}</div>
     </div>
   );
 }
