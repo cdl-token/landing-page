@@ -18,7 +18,7 @@ const AboutPage = () => {
       <OurTeam />
       <FAQs />
       <div className="flex items-center justify-center px-5 py-10">
-        <p className="font-neue">
+        <p className="font-neue text-xs sm:text-sm md:text-base">
           Haven’t got your answer?{" "}
           <Link href="#" className="text-primary">
             Contact our support now

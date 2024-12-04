@@ -9,10 +9,10 @@ import {
   youtubeIcon,
 } from "./footer-icons";
 
-const Footer = () => {
+const Footer = ({ lang = "en" }: { lang: string }) => {
   return (
     <footer className="relative flex w-full flex-col items-center justify-center overflow-hidden border-t border-white/30">
-      <div className="flex w-full max-w-7xl flex-col gap-5 px-5 pt-20">
+      <div className="flex w-full max-w-7xl flex-col gap-5 px-5 pt-20 static z-10">
         <div className="grid gap-10 pb-10 lg:grid-cols-[10fr_5fr_5fr_5fr_10fr]">
           <div className="flex flex-col gap-2">
             <HeaderLogo />
@@ -22,34 +22,36 @@ const Footer = () => {
               ahead in the market with CDL
             </span>
             <div className="mt-5 flex items-center gap-3 pl-5">
-              <Link href="/">{telegramIcon}</Link>
-              <Link href="/">{twitterIcon}</Link>
-              <Link href="/">{facebookIcon}</Link>
-              <Link href="/">{youtubeIcon}</Link>
-              <Link href="/">{discordIcon}</Link>
+              <Link className="hover:text-primary" href="/">{telegramIcon}</Link>
+              <Link className="hover:text-primary" href="/">{twitterIcon}</Link>
+              <Link className="hover:text-primary" href="/">{facebookIcon}</Link>
+              <Link className="hover:text-primary" href="/">{youtubeIcon}</Link>
+              <Link className="hover:text-primary" href="/">{discordIcon}</Link>
             </div>
           </div>
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-2xl font-bold">Company</h1>
-            <Link href="/">About</Link>
-            <Link href="/">Token</Link>
-            <Link href="/">Team</Link>
-            <Link href="/">Features</Link>
+            <Link className="hover:text-primary" href={`/${lang}/about`}>About</Link>
+            <Link className="hover:text-primary" href={`/${lang}/tokens`}>Token</Link>
+            <Link className="hover:text-primary" href={`/${lang}/team`}>Team</Link>
+            <Link className="hover:text-primary" href={`/${lang}/features`}>Features</Link>
           </div>
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-2xl font-bold">Resources</h1>
-            <Link href="/">Whitepaper</Link>
-            <Link href="https://cdl-token.gitbook.io/cdl-token/">Lightpaper</Link>
-            <Link href="/">Github</Link>
-            <Link href="/contact">Contact</Link>
+            <Link className="hover:text-primary" href="/">Whitepaper</Link>
+            <Link className="hover:text-primary" href="https://cdl-token.gitbook.io/cdl-token/">
+              Lightpaper
+            </Link>
+            <Link className="hover:text-primary" href="/">Github</Link>
+            <Link className="hover:text-primary" href="/contact">Contact</Link>
           </div>
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-2xl font-bold">Community</h1>
-            <Link href="/">Roles</Link>
-            <Link href="/">Ecosystem</Link>
-            <Link href="/">Faq&apos;s</Link>
+            <Link className="hover:text-primary" href="/">Roles</Link>
+            <Link className="hover:text-primary" href="/">Ecosystem</Link>
+            <Link className="hover:text-primary" href="/">Faq&apos;s</Link>
           </div>
-          <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0 justify-end">
+          <div className="flex flex-col justify-end gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-xl">Sign up for our neweletter</h1>
             <input
               type="email"
@@ -60,14 +62,14 @@ const Footer = () => {
             />
           </div>
         </div>
-        <div className="flex flex-wrap justify-between gap-3 pb-5 ml-5">
+        <div className="ml-5 flex flex-wrap justify-between gap-3 pb-5">
           <span className="text-sm">
             Copyright © 2024 CDL. All Rights Reserved
           </span>
-          <div className="flex items-center flex-wrap gap-5 text-sm">
-            <Link href="/">Terms of Service</Link>
-            <Link href="/">Privacy Policy</Link>
-            <Link href="/">Security</Link>
+          <div className="flex flex-wrap items-center gap-5 text-sm">
+            <Link className="hover:text-primary" href="/">Terms of Service</Link>
+            <Link className="hover:text-primary" href="/">Privacy Policy</Link>
+            <Link className="hover:text-primary" href="/">Security</Link>
           </div>
         </div>
         <img src="/static/footer/cdl-token.svg" className="w-full" />

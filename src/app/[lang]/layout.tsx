@@ -45,20 +45,25 @@ interface RootLayoutProps {
   params: Promise<{ lang: string }>;
 }
 
-export default async function RootLayout({ children, params }: RootLayoutProps) {
+export default async function RootLayout({
+  children,
+  params,
+}: RootLayoutProps) {
   const lang = (await params).lang;
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${neueMachinaFont.variable} ${apfelFont.variable} font-apfel scrollbar-none`}>
-      <AppKit>
-        <StoreProvider>
-        <ToastProvider>
-        <MovingBar />
-        <Header lang={lang} />
-        {children}
-        <Footer />
-        </ToastProvider>
-        </StoreProvider>
+      <body
+        className={`${neueMachinaFont.variable} ${apfelFont.variable} scrollbar-none font-apfel`}
+      >
+        <AppKit>
+          <StoreProvider>
+            <ToastProvider>
+              <MovingBar />
+              <Header lang={lang} />
+              {children}
+              <Footer lang={lang} />
+            </ToastProvider>
+          </StoreProvider>
         </AppKit>
       </body>
     </html>
