@@ -63,7 +63,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ lang = "en" }) => {
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setDocsDropdown(!docsDropdown)}
-          className="font-apfel text-lg font-bold"
+          className="font-apfel text-lg hover:text-primary font-bold"
         >
           Docs
         </button>
@@ -81,7 +81,10 @@ const NavLinks: React.FC<NavLinksProps> = ({ lang = "en" }) => {
           >
             Lightpaper
           </button>
-          <button className="px-3 py-2 text-start hover:bg-white/5">
+          <button
+            onClick={() => router.push("/whitepaper.pdf")}
+            className="px-3 py-2 text-start hover:bg-white/5"
+          >
             Whitepaper
           </button>
         </div>

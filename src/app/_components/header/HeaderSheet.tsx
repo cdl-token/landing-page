@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Sheet,
   SheetClose,
@@ -12,8 +14,14 @@ import Link from "next/link";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import { useAppKit } from "@reown/appkit/react";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
+  const [isDocsOpen, setIsDocsOpen] = useState(false);
+  const router = useRouter();
+
   const { open } = useAppKit();
   const headerLinks = [
     {
@@ -57,6 +65,30 @@ const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
                   </Link>
                 </SheetClose>
               ))}
+              <div className="flex flex-col items-start gap-1 font-apfel text-lg">
+                <button onClick={() => setIsDocsOpen(!isDocsOpen)}>Docs</button>
+                <div
+                  className={cn(
+                    "flex flex-col transition-all ease-in duration-200",
+                    isDocsOpen ? "h-fit" : "h-0 overflow-hidden",
+                  )}
+                >
+                  <button
+                    onClick={() =>
+                      router.push("https://cdl-token.gitbook.io/cdl-token")
+                    }
+                    className="border-b border-white/10 px-3 py-2 text-start hover:bg-white/5"
+                  >
+                    Lightpaper
+                  </button>
+                  <button
+                    onClick={() => router.push("/whitepaper.pdf")}
+                    className="border-b border-white/10 px-3 py-2 text-start hover:bg-white/5"
+                  >
+                    Whitepaper
+                  </button>
+                </div>
+              </div>
               <div className="flex flex-col gap-2 py-5">
                 <PrimaryButton title="Launch Dapp" className="py-2 text-sm" />
                 <SecondaryButton
