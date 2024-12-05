@@ -56,7 +56,7 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
           </div>
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-2xl font-bold">Resources</h1>
-            <Link className="hover:text-primary" href="/whitepaper.pdf">
+            <Link className="hover:text-primary" href="/static/whitepaper.pdf">
               Whitepaper
             </Link>
             <Link

@@ -82,7 +82,7 @@ const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
                     Lightpaper
                   </button>
                   <button
-                    onClick={() => router.push("/whitepaper.pdf")}
+                    onClick={() => router.push("/static/whitepaper.pdf")}
                     className="border-b border-white/10 px-3 py-2 text-start hover:bg-white/5"
                   >
                     Whitepaper
