@@ -40,7 +40,7 @@ const WhatIsCDL = () => {
                 classname="font-neue text-3xl font-bold uppercase text-white md:text-[45px] md:leading-[50px]"
               />
               <div className="relative md:hidden max-w-[78.7px] items-center flex h-full w-full flex-col">
-                <div className="absolute w-[120px] h-full rounded-full bg-black/50 z-10"></div>
+                <div className="absolute w-[120px] h-full rounded-full bg-black/75 z-10"></div>
                 <img
                   src="/static/glow-logo.png"
                   className="absolute top-0 md:hidden"

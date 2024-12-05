@@ -61,7 +61,7 @@ const WhyInvestSection = () => {
               classname="font-neue text-3xl font-bold md:text-5xl uppercase text-white"
             />
             <div className="relative flex h-full w-full max-w-[78.7px] flex-col items-center md:hidden">
-              <div className="absolute z-10 h-[130px] w-[130px] rounded-full bg-black/50"></div>
+              <div className="absolute z-10 h-[130px] w-[130px] rounded-full bg-black/75"></div>
               <img
                 src="/static/glow-logo.png"
                 className="absolute top-0 md:hidden"
