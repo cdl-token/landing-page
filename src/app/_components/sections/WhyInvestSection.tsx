@@ -18,16 +18,19 @@ const WhyInvestSection = () => {
           variants={leftVariant(0)}
           className="relative hidden w-full md:block"
         >
+          <div className="relative h-[223px] w-[223px]">
+            <div className="absolute z-10 h-full w-full rounded-full bg-black/50" />
+            <Image
+              src="/static/glow-logo.png"
+              className="hidden md:block"
+              width={223}
+              height={315}
+              alt="shape"
+            />
+          </div>
           <Image
-            src="/static/shape.png"
-            className="hidden md:absolute md:-top-20 md:block"
-            width={223}
-            height={315}
-            alt="shape"
-          />
-          <Image
-            src="/static/shape-1.png"
-            className="sm:max-w-full md:absolute md:top-20 md:max-w-[450px]"
+            src="/static/glow-logo.png"
+            className="static z-10 mt-10 sm:max-w-full md:absolute md:top-20 md:max-w-[450px]"
             width={624}
             height={600}
             alt="shape"
@@ -57,27 +60,28 @@ const WhyInvestSection = () => {
               }}
               classname="font-neue text-3xl font-bold md:text-5xl uppercase text-white"
             />
-            <div className="relative h-[70px] w-10 md:hidden">
-              <Image
-                src="/static/shape.png"
-                className="absolute bottom-0 right-0"
-                width={30}
-                height={35}
-                alt="shape"
+            <div className="relative flex h-full w-full max-w-[78.7px] flex-col items-center md:hidden">
+              <div className="absolute z-10 h-[130px] w-[130px] rounded-full bg-black/50"></div>
+              <img
+                src="/static/glow-logo.png"
+                className="absolute top-0 md:hidden"
+                alt="shape 1"
+                width={70}
+                height={70}
               />
-              <Image
-                src="/static/shape.png"
-                className="absolute right-6 top-0"
-                width={30}
-                height={35}
-                alt="shape"
+              <img
+                src="/static/glow-logo.png"
+                className="absolute left-[-24px] top-12 md:hidden"
+                alt="shape 1"
+                width={70}
+                height={70}
               />
-              <Image
-                src="/static/shape.png"
-                className="absolute bottom-0 right-12"
-                width={30}
-                height={35}
-                alt="shape"
+              <img
+                src="/static/glow-logo.png"
+                className="absolute left-[34px] top-12 md:hidden"
+                alt="shape 1"
+                width={70}
+                height={70}
               />
             </div>
           </div>

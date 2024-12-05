@@ -4,17 +4,20 @@ import { motion } from "framer-motion";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import { bottomVariants } from "@/lib/animation-variants";
+import Image from "next/image";
 
 const AboutMain = () => {
   return (
-    <div
-      className="relative flex min-h-[50rem] w-full flex-col items-center px-5 pt-40 text-center"
-      style={{
-        backgroundImage: "url(/static/looper.svg)",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-    >
+    <div className="relative flex w-full flex-col items-center px-5 py-40 text-center">
+      <div className="absolute right-0 top-0 h-full w-full">
+        <Image
+          src="/static/looper.svg"
+          width={1200}
+          height={1200}
+          alt="Looper"
+          className="w-full"
+        />
+      </div>
       <motion.h1
         initial="hide"
         whileInView="show"

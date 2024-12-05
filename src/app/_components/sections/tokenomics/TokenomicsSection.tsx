@@ -77,24 +77,24 @@ const TokenomicsSection = () => {
           <div className="flex flex-col justify-center gap-y-4 pl-5">
             <div className="flex items-center gap-x-3">
               <div className="h-4 w-4 bg-[#CFD4C1]"></div>
-              <h2>15% Private Sale</h2>
+              <h2>10% Operations</h2>
             </div>
             <div className="flex items-center gap-x-3">
               <div className="h-4 w-4 bg-[#CE86FF]"></div>
-              <h2>15% Public Sale</h2>
+              <h2>5% Legal Department</h2>
             </div>
             <div className="flex items-center gap-x-3">
               <div className="h-4 w-4 bg-[#FEDB32]"></div>
-              <h2>15% Staking Reward</h2>
+              <h2>15% Team Management</h2>
             </div>
             <div className="flex items-start gap-x-3">
               <div className="mt-1 h-4 w-4 bg-[#F7931A]"></div>
-              <h2>10% Partnership Funds</h2>
+              <h2>10% Marketing & Development</h2>
             </div>
-            <div className="flex items-start gap-x-3">
+            {/* <div className="flex items-start gap-x-3">
               <div className="mt-1 h-4 w-4 bg-[#7100BD]"></div>
               <h2>5% Team Pool</h2>
-            </div>
+            </div> */}
           </div>
         </motion.div>
         <motion.div

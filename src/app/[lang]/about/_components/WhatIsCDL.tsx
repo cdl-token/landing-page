@@ -9,7 +9,7 @@ const WhatIsCDL = () => {
   return (
     <div className="relative flex min-h-[45rem] w-full items-center justify-center">
       <div className="absolute top-0">{gradientSvg}</div>
-      <div className="static z-10 flex w-full max-w-7xl flex-col border-y border-white/30 px-5 py-10">
+      <div className="static z-10 flex w-full max-w-7xl flex-col px-5 py-10">
         <div className="grid py-10 md:grid-cols-[6fr_4fr]">
           <div className="flex flex-col gap-3">
             <TextAnimation
@@ -25,19 +25,45 @@ const WhatIsCDL = () => {
               }}
               classname="font-neue text-2xl md:text-[34px] font-bold uppercase text-primary"
             />
-            <TextAnimation
-              text="We've built a platform to trade & utilize crypto data"
-              variants={{
-                hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
-                visible: {
-                  filter: "blur(0px)",
-                  opacity: 1,
-                  y: 0,
-                  transition: { ease: "linear" },
-                },
-              }}
-              classname="font-neue text-3xl font-bold uppercase text-white md:text-[45px] md:leading-[50px]"
-            />
+            <div className="flex items-center">
+              <TextAnimation
+                text="We've built a platform to trade & utilize crypto data"
+                variants={{
+                  hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+                  visible: {
+                    filter: "blur(0px)",
+                    opacity: 1,
+                    y: 0,
+                    transition: { ease: "linear" },
+                  },
+                }}
+                classname="font-neue text-3xl font-bold uppercase text-white md:text-[45px] md:leading-[50px]"
+              />
+              <div className="relative md:hidden max-w-[78.7px] items-center flex h-full w-full flex-col">
+                <div className="absolute w-[120px] h-full rounded-full bg-black/50 z-10"></div>
+                <img
+                  src="/static/glow-logo.png"
+                  className="absolute top-0 md:hidden"
+                  alt="shape 1"
+                  width={70}
+                  height={70}
+                />
+                <img
+                  src="/static/glow-logo.png"
+                  className="absolute top-12 left-[-24px] md:hidden"
+                  alt="shape 1"
+                  width={70}
+                  height={70}
+                />
+                <img
+                  src="/static/glow-logo.png"
+                  className="md:hidden absolute top-12 left-[34px]"
+                  alt="shape 1"
+                  width={70}
+                  height={70}
+                />
+              </div>
+            </div>
             <motion.span
               initial="hide"
               whileInView="show"
@@ -75,7 +101,8 @@ const WhatIsCDL = () => {
             </motion.span>
           </div>
           <Image
-            src="/static/shape-1.png"
+            src="/static/glow-logo.png"
+            className="hidden md:block"
             alt="shape 1"
             width={740}
             height={740}
