@@ -9,7 +9,7 @@ import Image from "next/image";
 const AboutMain = () => {
   return (
     <div className="relative flex w-full flex-col items-center px-5 py-40 text-center">
-      <div className="absolute right-0 top-30 flex h-full w-full items-center justify-center">
+      <div className="absolute right-0 -z-10 top-30 flex h-full w-full items-center justify-center">
         <Image
           src="/static/looper.svg"
           width={1200}
@@ -59,8 +59,8 @@ const AboutMain = () => {
         variants={bottomVariants(0.3)}
         className="mt-10 flex w-full flex-col items-center gap-5 sm:w-fit sm:flex-row"
       >
-        <PrimaryButton className="w-full sm:w-fit" title="About CDL Token" />
-        <SecondaryButton className="w-full sm:w-fit" title="Our Services" />
+        <PrimaryButton className="w-full sm:w-fit z-10" title="About CDL Token" />
+        <SecondaryButton className="w-full sm:w-fit z-10" title="Our Services" />
       </motion.div>
       <div className="absolute left-0 top-0">{gradientSvg}</div>
     </div>
