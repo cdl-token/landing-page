@@ -7,7 +7,7 @@ import { leftVariant, rightVariants } from "@/lib/animation-variants";
 const StayInformed = () => {
   const [email, setEmail] = useState("");
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-2 bg-[#7100BD] px-5 py-24 text-center">
+    <div className="static z-10 flex w-full flex-col items-center justify-center gap-2 bg-[#7100BD] px-5 py-24 text-center">
       <motion.h1
         initial="hide"
         whileInView="show"

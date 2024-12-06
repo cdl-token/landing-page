@@ -9,9 +9,10 @@ const TokenPowers = () => {
     <div className="relative flex w-full items-center justify-center">
       <div className="absolute -top-10 right-0">
         <Image
-          src="/static/services/parrallax.png"
+          src="/static/services/parallax.png"
           width={700}
           height={867}
+          className="-z-10 static"
           alt="parallax"
         />
       </div>
