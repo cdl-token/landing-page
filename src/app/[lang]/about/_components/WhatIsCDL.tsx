@@ -9,7 +9,7 @@ const WhatIsCDL = () => {
   return (
     <div className="relative flex min-h-[45rem] w-full items-center justify-center">
       <div className="absolute top-0">{gradientSvg}</div>
-      <div className="static z-10 flex w-full max-w-7xl flex-col px-5 py-10">
+      <div className="static z-10 flex w-full max-w-7xl flex-col bg-black/50 rounded-[20px] px-5 py-10">
         <div className="grid py-10 md:grid-cols-[6fr_4fr]">
           <div className="flex flex-col gap-3">
             <TextAnimation

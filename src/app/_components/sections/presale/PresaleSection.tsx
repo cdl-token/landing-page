@@ -82,7 +82,7 @@ const PresaleSection = () => {
             variants={rightVariants(0.5)}
           >
             <Image
-              src="/static/globe.png"
+              src="/static/globe-trans.png"
               className="hidden md:block"
               width={733}
               height={659}

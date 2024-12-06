@@ -37,54 +37,54 @@ const WhyInvestSection = () => {
           />
         </motion.div>
         <div className="static z-10 flex w-full flex-col gap-5 md:justify-center">
-          <motion.span
-            initial="hide"
-            whileInView="show"
-            exit="show"
-            variants={rightVariants(0)}
-            className="font-neue font-bold"
-          >
-            Unbreakable protection
-          </motion.span>
-          <div className="flex items-center">
-            <TextAnimation
-              text="Why invest in CDL Token?"
-              variants={{
-                hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
-                visible: {
-                  filter: "blur(0px)",
-                  opacity: 1,
-                  y: 0,
-                  transition: { ease: "linear" },
-                },
-              }}
-              classname="font-neue text-3xl font-bold md:text-5xl uppercase text-white"
-            />
+          <div className="flex items-center justify-between">
+            <motion.span
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={rightVariants(0)}
+              className="font-neue font-bold"
+            >
+              Unbreakable protection
+            </motion.span>
             <div className="relative flex h-full w-full max-w-[78.7px] flex-col items-center md:hidden">
-              <div className="absolute z-10 h-[130px] w-[130px] rounded-full bg-black/75"></div>
+              <div className="absolute -bottom-5 z-10 h-[110px] w-[110px] rounded-full bg-black/75"></div>
               <img
                 src="/static/glow-logo.png"
-                className="absolute top-0 md:hidden"
+                className="absolute bottom-8 md:hidden"
                 alt="shape 1"
-                width={70}
-                height={70}
+                width={60}
+                height={60}
               />
               <img
                 src="/static/glow-logo.png"
-                className="absolute left-[-24px] top-12 md:hidden"
+                className="absolute -bottom-2 left-[-14px] md:hidden"
                 alt="shape 1"
-                width={70}
-                height={70}
+                width={60}
+                height={60}
               />
               <img
                 src="/static/glow-logo.png"
-                className="absolute left-[34px] top-12 md:hidden"
+                className="absolute -bottom-2 left-[32px] md:hidden"
                 alt="shape 1"
-                width={70}
-                height={70}
+                width={60}
+                height={60}
               />
             </div>
           </div>
+          <TextAnimation
+            text="Why invest in CDL Token?"
+            variants={{
+              hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
+              visible: {
+                filter: "blur(0px)",
+                opacity: 1,
+                y: 0,
+                transition: { ease: "linear" },
+              },
+            }}
+            classname="font-neue text-3xl font-bold md:text-5xl uppercase text-white"
+          />
           <motion.p
             initial="hide"
             whileInView="show"

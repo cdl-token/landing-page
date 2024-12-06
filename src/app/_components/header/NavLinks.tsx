@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
@@ -63,9 +64,12 @@ const NavLinks: React.FC<NavLinksProps> = ({ lang = "en" }) => {
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setDocsDropdown(!docsDropdown)}
-          className="font-apfel text-lg hover:text-primary font-bold"
+          className="flex items-center gap-1 font-apfel text-lg font-bold hover:text-primary"
         >
           Docs
+          <ChevronDown
+            className={`mt-1 h-5 w-5 transition-all ease-in duration-200 ${docsDropdown ? "rotate-180" : "rotate-0"}`}
+          />
         </button>
         <div
           className={cn(
