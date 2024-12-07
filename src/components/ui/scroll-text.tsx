@@ -113,14 +113,13 @@ const TextAnimation = ({
                   {letterAnime ? (
                     <>
                       {word.split("").map((letter: string, index: number) => (
-                        <>
-                          <motion.span
-                            className={`inline-block`}
-                            variants={modifiedVariants}
-                          >
-                            {letter}
-                          </motion.span>
-                        </>
+                        <motion.span
+                          className={`inline-block`}
+                          variants={modifiedVariants}
+                          key={index}
+                        >
+                          {letter}
+                        </motion.span>
                       ))}
                       &nbsp;
                     </>

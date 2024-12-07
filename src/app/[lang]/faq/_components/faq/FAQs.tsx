@@ -1,13 +1,10 @@
 "use client";
 
-import TextAnimation from "@/components/ui/scroll-text";
-import QuestionAccordion from "./QuestionAccordion";
-import { motion } from "framer-motion";
-import { leftVariant } from "@/lib/animation-variants";
+import QuestionAccordion from "@/components/QuestionAccordion";
 
 const FAQs = () => {
   return (
-    <div className="flex items-center w-full">
+    <div className="flex w-full items-center">
       <div className="flex w-full flex-col gap-5 pb-20">
         <QuestionAccordion
           question="How can I participate in the CDL Token presale?"

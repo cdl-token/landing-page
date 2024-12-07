@@ -6,10 +6,12 @@ import { useState } from "react";
 const QuestionAccordion = ({
   question,
   answer,
+  list,
   defaultState = false,
 }: {
   question: string;
-  answer: string;
+  answer?: string;
+  list?: string[];
   defaultState?: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState(defaultState);
@@ -35,10 +37,17 @@ const QuestionAccordion = ({
       <div
         className={cn(
           isOpen ? "h-fit pb-6" : "h-0 pb-0",
-          "overflow-hidden transition-all text-white/50 mt-2 duration-200 ease-in",
+          "mt-2 overflow-hidden text-white/50 transition-all duration-200 ease-in",
         )}
       >
         {answer}
+        {list && (
+          <ul className="list-disc pl-5">
+            {list.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        )}
       </div>
       <div className="absolute left-0 top-0">{gradientSvg}</div>
     </div>

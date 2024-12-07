@@ -9,13 +9,13 @@ import Image from "next/image";
 const AboutMain = () => {
   return (
     <div className="relative flex w-full flex-col items-center px-5 py-40 text-center">
-      <div className="absolute right-0 -z-10 top-30 flex h-full w-full items-center justify-center">
+      <div className="absolute -right-[200px] -z-10 top-0 flex h-full w-full items-center justify-center">
         <Image
           src="/static/looper.svg"
-          width={1200}
+          width={1970}
           height={1200}
           alt="Looper"
-          className="w-full min-w-[1000px] 2xl:max-w-7xl"
+          className="min-w-[1970px]"
         />
       </div>
       <motion.h1

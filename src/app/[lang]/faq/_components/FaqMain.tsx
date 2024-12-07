@@ -2,17 +2,20 @@
 
 import { motion } from "framer-motion";
 import { bottomVariants } from "@/lib/animation-variants";
+import Image from "next/image";
 
 const FaqMain = () => {
   return (
-    <div
-      className="relative flex w-full flex-col items-center px-5 pt-40 text-center"
-      style={{
-        backgroundImage: "url(/static/looper.svg)",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-    >
+    <div className="relative flex w-full flex-col items-center px-5 pt-40 text-center">
+      <div className="absolute -right-[200px] top-0 -z-10 flex h-full w-full items-center justify-center">
+        <Image
+          src="/static/looper.svg"
+          width={1970}
+          height={1200}
+          alt="Looper"
+          className="min-w-[1970px]"
+        />
+      </div>
       <motion.h1
         initial="hide"
         whileInView="show"
