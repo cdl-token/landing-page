@@ -50,8 +50,8 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
             <Link className="hover:text-primary" href={`/${lang}/team`}>
               Team
             </Link>
-            <Link className="hover:text-primary" href={`/${lang}/features`}>
-              Features
+            <Link className="hover:text-primary" href={`/${lang}/product`}>
+              Product
             </Link>
           </div>
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
