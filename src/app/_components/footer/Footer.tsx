@@ -41,16 +41,16 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
           </div>
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-2xl font-bold">Company</h1>
-            <Link className="hover:text-primary" href={`/${lang}/about`}>
+            <Link className="hover:text-primary" href="/about">
               About
             </Link>
-            <Link className="hover:text-primary" href={`/${lang}/tokens`}>
+            <Link className="hover:text-primary" href="/tokens">
               Token
             </Link>
-            <Link className="hover:text-primary" href={`/${lang}/team`}>
+            <Link className="hover:text-primary" href="/about#our-team">
               Team
             </Link>
-            <Link className="hover:text-primary" href={`/${lang}/product`}>
+            <Link className="hover:text-primary" href="/product">
               Product
             </Link>
           </div>
@@ -77,10 +77,16 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
           </div>
           <div className="flex flex-col gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-2xl font-bold">Community</h1>
-            <Link className="hover:text-primary" href="/">
+            <Link
+              className="hover:text-primary"
+              href="https://cdl-token.gitbook.io/cdl-token/getting-started/team-and-principles"
+            >
               Roles
             </Link>
-            <Link className="hover:text-primary" href="/">
+            <Link
+              className="hover:text-primary"
+              href="https://cdl-token.gitbook.io/cdl-token/getting-started/publish-your-docs"
+            >
               Ecosystem
             </Link>
             <Link className="hover:text-primary" href={`/${lang}/faq`}>
@@ -103,13 +109,22 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
             Copyright © 2024 CDL. All Rights Reserved
           </span>
           <div className="flex flex-wrap items-center gap-5 text-sm">
-            <Link className="hover:text-primary" href="/">
+            <Link
+              className="hover:text-primary"
+              href="https://cdl-token.gitbook.io/cdl-token/security/term-and-conditons"
+            >
               Terms of Service
             </Link>
-            <Link className="hover:text-primary" href="/">
+            <Link
+              className="hover:text-primary"
+              href="https://cdl-token.gitbook.io/cdl-token/security/privacy-policy"
+            >
               Privacy Policy
             </Link>
-            <Link className="hover:text-primary" href="/">
+            <Link
+              className="hover:text-primary"
+              href="https://cdl-token.gitbook.io/cdl-token/security/audits"
+            >
               Security
             </Link>
           </div>

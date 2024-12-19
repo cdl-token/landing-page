@@ -11,6 +11,7 @@ import {
   rightVariants,
 } from "@/lib/animation-variants";
 import TextAnimation from "@/components/ui/scroll-text";
+import Link from "next/link";
 
 const MainBanner = () => {
   const words = ["Outsmarting", "Surpassing", "Overcoming"];
@@ -82,7 +83,9 @@ const MainBanner = () => {
             className="flex w-full flex-col items-center gap-5 pb-20 sm:w-fit sm:flex-row"
           >
             <PrimaryButton title="Buy CDL Token" className="w-full sm:w-fit" />
-            <SecondaryButton title="Details" className="sn:w-fit w-full" />
+            <Link href="https://cdl-token.gitbook.io/cdl-token/">
+              <SecondaryButton title="Details" className="sn:w-fit w-full" />
+            </Link>
           </motion.div>
         </div>
         <div className="flex h-full w-full items-center">

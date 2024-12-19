@@ -67,7 +67,7 @@ const ContactFooter = () => {
               </span>
               <button
                 className="mt-2 flex items-center gap-x-2 text-center"
-                onClick={() => router.push("/contact-us")}
+                onClick={() => router.push("/contact")}
               >
                 <p className="text-primary1 hover:border-primary1 font-neue font-bold hover:border-b">
                   Chat now
@@ -124,7 +124,7 @@ const ContactFooter = () => {
               />
               <button
                 className="mt-2 flex items-center gap-x-2 text-center"
-                onClick={() => router.push("/faqs")}
+                onClick={() => router.push("/faq")}
               >
                 <p className="text-primary1 hover:border-primary1 font-neue font-bold hover:border-b">
                   Learn more
@@ -181,7 +181,7 @@ const ContactFooter = () => {
               />
               <button
                 className="mt-2 flex items-center gap-x-2 text-center"
-                onClick={() => router.push("/faqs")}
+                onClick={() => router.push("/product")}
               >
                 <p className="text-primary1 hover:border-primary1 font-neue font-bold hover:border-b">
                   Learn more

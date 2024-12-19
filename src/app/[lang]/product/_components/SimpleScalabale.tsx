@@ -6,8 +6,9 @@ import {
   topVariants,
 } from "@/lib/animation-variants";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
-const SimpleScalabale = () => {
+const SimpleScalabale = ({ lang = "en" }: { lang: string }) => {
   return (
     <div className="relative flex w-full items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-2 border-b border-white/30 px-5 py-20">
@@ -53,10 +54,13 @@ const SimpleScalabale = () => {
                 <span className="text-">Community support</span>
               </div>
             </div>
-            <button className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white">
+            <Link
+              href="/contact"
+              className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white"
+            >
               {buttonIcon}
               <span className="uppercase">Get started</span>
-            </button>
+            </Link>
           </motion.div>
           <motion.div
             initial="hide"
@@ -81,10 +85,13 @@ const SimpleScalabale = () => {
                 <span className="text-">Webhooks</span>
               </div>
             </div>
-            <button className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white">
+            <Link
+              href="/contact"
+              className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white"
+            >
               {buttonIcon}
               <span className="uppercase">Get started</span>
-            </button>
+            </Link>
           </motion.div>
           <motion.div
             initial="hide"
@@ -115,10 +122,13 @@ const SimpleScalabale = () => {
                 <span className="text-">Custom SLAs</span>
               </div>
             </div>
-            <button className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white">
+            <Link
+              href="/contact"
+              className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white"
+            >
               {buttonIcon}
               <span className="uppercase">Get started</span>
-            </button>
+            </Link>
           </motion.div>
         </div>
       </div>

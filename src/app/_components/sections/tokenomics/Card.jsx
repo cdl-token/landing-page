@@ -1,6 +1,7 @@
 "use client";
 
 import SecondaryButton from "@/components/buttons/SecondaryButton";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const Card = ({
@@ -93,10 +94,12 @@ const Card = ({
             BONUS
           </p>
         </div>
-        <SecondaryButton
-          className="absolute right-5 top-20 mt-auto hidden group-hover:flex"
-          title="Buy now"
-        />
+        <Link href="/#presale" className="z-10">
+          <SecondaryButton
+            className="absolute right-5 top-20 mt-auto hidden group-hover:flex"
+            title="Buy now"
+          />
+        </Link>
         <div className="relative mt-7 flex w-full justify-center py-5 text-start"></div>
       </div>
       <div className="my-4 flex items-center justify-between gap-1 px-4">

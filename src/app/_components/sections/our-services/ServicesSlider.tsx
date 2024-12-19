@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { type CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import Link from "next/link";
 
 const ServicesSlider = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -41,7 +42,7 @@ const ServicesSlider = () => {
         <CarouselContent>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="h-ful relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
+              <div className="h-ful relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
                 <div className="z-10 flex h-full flex-col p-5 pt-[180px]">
                   <h1 className="font-neue text-3xl font-bold">
                     Secure transactions
@@ -51,9 +52,12 @@ const ServicesSlider = () => {
                     market analysis to identify trends, patterns, and
                     opportunities for strategic decision-making
                   </span>
-                  <button className="mt-16 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <Link
+                    href="/product"
+                    className="absolute bottom-6 mt-16 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
+                  >
                     See more
-                  </button>
+                  </Link>
                 </div>
                 <div className="absolute right-0">{cardGradient1}</div>
                 <Image
@@ -68,7 +72,7 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
+              <div className="relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
                     Historical Data & Market Analysis
@@ -78,9 +82,12 @@ const ServicesSlider = () => {
                     market analysis to identify trends, patterns, and
                     opportunities for strategic decision-making
                   </span>
-                  <button className="mt-40 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <Link
+                    href="/product"
+                    className="absolute bottom-6 mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
+                  >
                     See more
-                  </button>
+                  </Link>
                 </div>
                 <div className="absolute right-0">{cardGradient2}</div>
                 <Image
@@ -95,7 +102,7 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
+              <div className="relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
                     APIs for Real-Time Data
@@ -105,9 +112,12 @@ const ServicesSlider = () => {
                     your platform, delivering real-time crypto data and insights
                     directly to your application
                   </span>
-                  <button className="mt-40 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <Link
+                    href="/product"
+                    className="absolute bottom-6 mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
+                  >
                     See more
-                  </button>
+                  </Link>
                 </div>
                 <div className="absolute right-0">{cardGradient3}</div>
                 <Image
@@ -122,7 +132,7 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="h-ful relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
+              <div className="h-ful relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
                 <div className="z-10 flex h-full flex-col p-5 pt-[180px]">
                   <h1 className="font-neue text-3xl font-bold">
                     Multi-Exchange Support
@@ -132,9 +142,12 @@ const ServicesSlider = () => {
                     place, making it easy to compare prices, liquidity, and
                     trading volume across various platforms
                   </span>
-                  <button className="mt-16 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <Link
+                    href="/product"
+                    className="absolute bottom-6 mt-16 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
+                  >
                     See more
-                  </button>
+                  </Link>
                 </div>
                 <div className="absolute right-0">{cardGradient1}</div>
                 <Image
@@ -149,7 +162,7 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
+              <div className="relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
                     Real-Time Data Feeds
@@ -159,9 +172,12 @@ const ServicesSlider = () => {
                     data, and market trends to stay informed and make timely
                     decisions
                   </span>
-                  <button className="mt-40 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <Link
+                    href="/product"
+                    className="absolute bottom-6 mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
+                  >
                     See more
-                  </button>
+                  </Link>
                 </div>
                 <div className="absolute right-0">{cardGradient2}</div>
                 <Image
@@ -176,7 +192,7 @@ const ServicesSlider = () => {
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <div className="relative flex w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F] h-[488px]">
+              <div className="relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
                 <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
                   <h1 className="font-neue text-3xl font-bold">
                     Harnessing the Power of AI
@@ -186,9 +202,12 @@ const ServicesSlider = () => {
                     establish a cutting-edge AI research arm, transforming the
                     way crypto data is analyzed and utilized.
                   </span>
-                  <button className="mt-40 flex w-fit items-center bg-black/20 absolute bottom-6 justify-center rounded-full border border-white/30 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white">
+                  <Link
+                    href="/product"
+                    className="absolute bottom-6 mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
+                  >
                     See more
-                  </button>
+                  </Link>
                 </div>
                 <div className="absolute right-0">{cardGradient3}</div>
                 <Image
@@ -202,10 +221,6 @@ const ServicesSlider = () => {
             </div>
           </CarouselItem>
         </CarouselContent>
-        {/* <div className="flex items-center gap-2">
-              <button onClick={() => setCurrent(current + 1)}>Next</button>
-              <button onClick={() => setCurrent(current - 1)}>Prev</button>
-            </div> */}
       </Carousel>
     </div>
   );

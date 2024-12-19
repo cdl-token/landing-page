@@ -10,6 +10,7 @@ import SecondaryButton from "@/components/buttons/SecondaryButton";
 import { motion } from "framer-motion";
 import { leftVariant, rightVariants } from "@/lib/animation-variants";
 import TextAnimation from "@/components/ui/scroll-text";
+import Link from "next/link";
 
 const PresaleSection = () => {
   useDisableLocalStorage();
@@ -30,7 +31,10 @@ const PresaleSection = () => {
   }
 
   return (
-    <div className="max-w-screen relative flex w-full flex-col items-center justify-center py-20">
+    <div
+      id="presale"
+      className="max-w-screen relative flex w-full flex-col items-center justify-center py-20"
+    >
       <div className="grid w-full max-w-7xl gap-20 px-5 lg:grid-cols-2">
         <div>{chainId === 97 ? <PresaleCardBinance /> : <PresaleCard />}</div>
         <motion.div
@@ -73,7 +77,12 @@ const PresaleSection = () => {
             className="mt-10 flex w-full items-center gap-2"
           >
             <PrimaryButton className="w-full sm:w-fit" title="Launch Dapp" />
-            <SecondaryButton className="w-full sm:w-fit" title="How to buy?" />
+            <Link href="https://cdl-token.gitbook.io/cdl-token/information/how-to-buy">
+              <SecondaryButton
+                className="w-full sm:w-fit"
+                title="How to buy?"
+              />
+            </Link>
           </motion.div>
           <motion.div
             initial="hide"

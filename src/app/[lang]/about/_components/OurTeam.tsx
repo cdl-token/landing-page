@@ -7,7 +7,10 @@ import { leftVariant, rightVariants } from "@/lib/animation-variants";
 
 const OurTeam = () => {
   return (
-    <div className="flex w-full flex-col items-center justify-center">
+    <div
+      className="flex w-full flex-col items-center justify-center"
+      id="our-team"
+    >
       <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-3 px-5 py-20">
         <TextAnimation
           text="MEET OUR TEAM"

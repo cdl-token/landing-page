@@ -90,7 +90,7 @@ const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
                 </div>
               </div>
               <div className="flex flex-col gap-2 py-5">
-                <PrimaryButton title="Launch Dapp" className="py-2 text-sm" />
+                <PrimaryButton action={()=>router.push("https://dapp-one-phi.vercel.app/")} title="Launch Dapp" className="py-2 text-sm" />
                 <SecondaryButton
                   action={() => open()}
                   className="py-2 text-sm"

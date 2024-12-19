@@ -9,12 +9,13 @@ const PrimaryButton = ({
 }: {
   className?: string;
   title: string;
-  action?: () => Promise<void> | undefined; 
+  action?: (() => Promise<void>) | (() => void) | undefined;
 }) => {
-return (
-    <button onClick={action && action}
+  return (
+    <button
+      onClick={action && action}
       className={cn(
-        "flex items-center justify-center text-nowrap pt-1 rounded-md bg-primary hover:bg-black hover:text-white hover:border-white border border-primary transition-all ease-in duration-200 px-5 py-3 font-neue font-bold text-black",
+        "flex items-center justify-center text-nowrap rounded-md border border-primary bg-primary px-5 py-3 font-neue font-bold text-black transition-all duration-200 ease-in hover:border-white hover:bg-black hover:text-white",
         className,
       )}
       {...props}
@@ -23,6 +24,5 @@ return (
     </button>
   );
 };
-
 
 export default PrimaryButton;

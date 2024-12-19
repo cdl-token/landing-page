@@ -6,7 +6,10 @@ import { leftVariant, rightVariants } from "@/lib/animation-variants";
 
 const TransformingSection = () => {
   return (
-    <div className="relative flex w-full items-center justify-center">
+    <div
+      className="relative flex w-full items-center justify-center"
+      id="about-cdl"
+    >
       <div className="absolute top-0 md:-top-[400px]">{gradientSvg}</div>
       <div className="flex w-full max-w-7xl flex-col border-y border-white/30">
         <div className="static z-10 grid w-full gap-10 px-5 py-10 md:grid-cols-2">

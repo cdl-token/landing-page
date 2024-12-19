@@ -7,7 +7,10 @@ import TextAnimation from "@/components/ui/scroll-text";
 
 export function OurServices() {
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center">
+    <div
+      className="relative flex h-full w-full flex-col items-center justify-center"
+      id="our-services"
+    >
       <div className="flex w-full max-w-7xl flex-col gap-5 border-t border-white/30 px-5 py-20">
         <TextAnimation
           text="Our Services"

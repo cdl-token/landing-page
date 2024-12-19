@@ -1,4 +1,3 @@
-import React from "react";
 import AboutMain from "./_components/AboutMain";
 import WhatIsCDL from "./_components/WhatIsCDL";
 import JoinTheSystem from "./_components/JoinTheSystem";
@@ -8,10 +7,11 @@ import StayInformed from "../../../components/StayInformed";
 import FAQs from "./_components/faq/FAQs";
 import Link from "next/link";
 
-const AboutPage = () => {
+const AboutPage = async ({ params }) => {
+  const lang = (await params).lang;
   return (
     <div className="max-w-screen flex flex-col overflow-hidden">
-      <AboutMain />
+      <AboutMain lang={lang} />
       <WhatIsCDL />
       <JoinTheSystem />
       <TransformingSection />
@@ -20,7 +20,7 @@ const AboutPage = () => {
       <div className="flex items-center justify-center px-5 py-10">
         <p className="font-neue text-xs sm:text-sm md:text-base">
           Haven’t got your answer?{" "}
-          <Link href="#" className="text-primary">
+          <Link href="/contact" className="text-primary">
             Contact our support now
           </Link>
         </p>

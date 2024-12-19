@@ -5,11 +5,12 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import { bottomVariants } from "@/lib/animation-variants";
 import Image from "next/image";
+import Link from "next/link";
 
-const AboutMain = () => {
+const AboutMain = ({ lang = "en" }: { lang: string }) => {
   return (
     <div className="relative flex w-full flex-col items-center px-5 py-40 text-center">
-      <div className="absolute -right-[200px] -z-10 top-0 flex h-full w-full items-center justify-center">
+      <div className="absolute -right-[200px] top-0 -z-10 flex h-full w-full items-center justify-center">
         <Image
           src="/static/looper.svg"
           width={1970}
@@ -59,8 +60,15 @@ const AboutMain = () => {
         variants={bottomVariants(0.3)}
         className="mt-10 flex w-full flex-col items-center gap-5 sm:w-fit sm:flex-row"
       >
-        <PrimaryButton className="w-full sm:w-fit z-10" title="About CDL Token" />
-        <SecondaryButton className="w-full sm:w-fit z-10" title="Our Services" />
+        <Link className="z-10" href="/about#about-cdl">
+          <PrimaryButton
+            className="z-10 w-full sm:w-fit"
+            title="About CDL Token"
+          />
+        </Link>
+        <Link className="z-10" href="/#our-services">
+          <SecondaryButton className="w-full sm:w-fit" title="Our Services" />
+        </Link>
       </motion.div>
       <div className="absolute left-0 top-0">{gradientSvg}</div>
     </div>

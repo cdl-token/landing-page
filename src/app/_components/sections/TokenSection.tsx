@@ -64,7 +64,7 @@ const TokenSection = () => {
             Wondering what tokens is supported?
           </motion.p>
           <span className="mt-2 flex text-center">
-            <Link href="#">
+            <Link href="/product">
               <p className="text-primary1 hover:border-primary1 cursor-pointer font-neue font-bold hover:border-b">
                 See all tokens
               </p>
