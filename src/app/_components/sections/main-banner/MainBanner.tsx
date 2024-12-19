@@ -83,7 +83,7 @@ const MainBanner = () => {
             className="flex w-full flex-col items-center gap-5 pb-20 sm:w-fit sm:flex-row"
           >
             <PrimaryButton title="Buy CDL Token" className="w-full sm:w-fit" />
-            <Link href="https://cdl-token.gitbook.io/cdl-token/">
+            <Link className="sn:w-fit w-full" href="https://cdl-token.gitbook.io/cdl-token/">
               <SecondaryButton title="Details" className="sn:w-fit w-full" />
             </Link>
           </motion.div>

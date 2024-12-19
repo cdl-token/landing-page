@@ -60,13 +60,13 @@ const AboutMain = ({ lang = "en" }: { lang: string }) => {
         variants={bottomVariants(0.3)}
         className="mt-10 flex w-full flex-col items-center gap-5 sm:w-fit sm:flex-row"
       >
-        <Link className="z-10" href="/about#about-cdl">
+        <Link className="z-10 w-full sm:w-fit" href="/about#about-cdl">
           <PrimaryButton
             className="z-10 w-full sm:w-fit"
             title="About CDL Token"
           />
         </Link>
-        <Link className="z-10" href="/#our-services">
+        <Link className="z-10 w-full sm:w-fit" href="/#our-services">
           <SecondaryButton className="w-full sm:w-fit" title="Our Services" />
         </Link>
       </motion.div>

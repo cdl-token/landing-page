@@ -77,7 +77,10 @@ const PresaleSection = () => {
             className="mt-10 flex w-full items-center gap-2"
           >
             <PrimaryButton className="w-full sm:w-fit" title="Launch Dapp" />
-            <Link href="https://cdl-token.gitbook.io/cdl-token/information/how-to-buy">
+            <Link
+              className="w-full sm:w-fit"
+              href="https://cdl-token.gitbook.io/cdl-token/information/how-to-buy"
+            >
               <SecondaryButton
                 className="w-full sm:w-fit"
                 title="How to buy?"
