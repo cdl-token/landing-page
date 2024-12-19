@@ -7,6 +7,7 @@ import Footer from "../_components/footer/Footer";
 import { AppKit } from "@/context/Web3Modal";
 import { StoreProvider } from "@/context/Store/Store";
 import ToastProvider from "@/components/notification/ToastProvider";
+import PreloaderProvider from "./PreloaderProvider";
 
 const neueMachinaFont = localFont({
   src: [
@@ -56,14 +57,16 @@ export default async function RootLayout({
         className={`${neueMachinaFont.variable} ${apfelFont.variable} scrollbar-none font-apfel`}
       >
         <AppKit>
-          <StoreProvider>
-            <ToastProvider>
-              <MovingBar />
-              <Header lang={lang} />
-              {children}
-              <Footer lang={lang} />
-            </ToastProvider>
-          </StoreProvider>
+          <PreloaderProvider>
+            <StoreProvider>
+              <ToastProvider>
+                <MovingBar />
+                <Header lang={lang} />
+                {children}
+                <Footer lang={lang} />
+              </ToastProvider>
+            </StoreProvider>
+          </PreloaderProvider>
         </AppKit>
       </body>
     </html>
