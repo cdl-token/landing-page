@@ -109,7 +109,7 @@ const WhyInvestSection = () => {
           >
             <Link
               className="w-full sm:w-fit"
-              href="https://cdl-token.gitbook.io/cdl-token/information/how-to-buy"
+              href="/#presale"
             >
               <PrimaryButton
                 className="w-full sm:w-fit"

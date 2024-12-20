@@ -82,10 +82,7 @@ const MainBanner = () => {
             variants={bottomVariants(0.7)}
             className="flex w-full flex-col items-center gap-5 pb-20 sm:w-fit sm:flex-row"
           >
-            <Link
-              className="w-full sm:w-fit"
-              href="https://cdl-token.gitbook.io/cdl-token/information/how-to-buy"
-            >
+            <Link className="w-full sm:w-fit" href="/#presale">
               <PrimaryButton
                 title="Buy CDL Token"
                 className="w-full sm:w-fit"
