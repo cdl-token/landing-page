@@ -7,6 +7,7 @@ import {
 } from "@/lib/animation-variants";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const ServiceMain = () => {
   return (
@@ -74,9 +75,12 @@ const ServiceMain = () => {
             className="my-5 flex items-center rounded-[5px] bg-white p-1 text-black hover:shadow-lg"
           >
             {buttonSvg}
-            <span className="px-3 pt-0.5 font-neue text-sm font-bold uppercase">
+            <Link
+              href="/contact"
+              className="px-3 pt-0.5 font-neue text-sm font-bold uppercase"
+            >
               get started
-            </span>
+            </Link>
           </motion.button>
           <div className="my-10 flex flex-col items-center justify-center gap-5 rounded-[20px] bg-white px-5 py-10 text-black md:w-[696px]">
             <motion.span
