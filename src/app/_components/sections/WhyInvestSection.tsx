@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { leftVariant, rightVariants } from "@/lib/animation-variants";
 import TextAnimation from "@/components/ui/scroll-text";
+import Link from "next/link";
 
 const WhyInvestSection = () => {
   return (
@@ -106,8 +107,24 @@ const WhyInvestSection = () => {
             variants={rightVariants(0.2)}
             className="mt-10 flex w-full items-center gap-2"
           >
-            <PrimaryButton className="w-full sm:w-fit" title="Buy CDL Token" />
-            <SecondaryButton className="w-full sm:w-fit" title="Launch Dapp" />
+            <Link
+              className="w-full sm:w-fit"
+              href="https://cdl-token.gitbook.io/cdl-token/information/how-to-buy"
+            >
+              <PrimaryButton
+                className="w-full sm:w-fit"
+                title="Buy CDL Token"
+              />
+            </Link>
+            <Link
+              className="w-full sm:w-fit"
+              href="https://dapp-one-phi.vercel.app/"
+            >
+              <SecondaryButton
+                className="w-full sm:w-fit"
+                title="Launch Dapp"
+              />
+            </Link>
           </motion.div>
         </div>
       </div>

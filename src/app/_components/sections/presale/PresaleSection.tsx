@@ -76,7 +76,12 @@ const PresaleSection = () => {
             variants={rightVariants(0.4)}
             className="mt-10 flex w-full items-center gap-2"
           >
-            <PrimaryButton className="w-full sm:w-fit" title="Launch Dapp" />
+            <Link
+              className="w-full sm:w-fit"
+              href="https://dapp-one-phi.vercel.app/"
+            >
+              <PrimaryButton className="w-full sm:w-fit" title="Launch Dapp" />
+            </Link>
             <Link
               className="w-full sm:w-fit"
               href="https://cdl-token.gitbook.io/cdl-token/information/how-to-buy"
