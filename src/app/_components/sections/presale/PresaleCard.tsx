@@ -36,14 +36,14 @@ const PresaleCard = () => {
 
   const {
     contractData,
-    BuyWithUSDTandUSDC,
+    // BuyWithUSDTandUSDCBinance,
     GetValues,
     //Loader,
     purchaseLoader,
     // transactionSuccess,
     copyToClipboard,
     addTokenToMetamask,
-    BuyWithETH,
+    // BuyWithETHOnBinance,
     // userDatabaseData,
     // transactionHash,
     // transactionHashID
@@ -312,12 +312,12 @@ const PresaleCard = () => {
                   formatEther(cdlValue?.toString() || "0"),
                 )?.toFixed(2)}
                 readOnly
-              // onChange={(e) => setcdlValue(e.target.value)}
+                // onChange={(e) => setcdlValue(e.target.value)}
               />
             </div>
           )}
         </div>
-        {purchaseLoader ? (
+        {/* {purchaseLoader ? (
           <Skeleton className="h-28 w-full max-w-full bg-gray-500" />
         ) : (
           <div className="mt-5 flex w-full flex-col items-center justify-between gap-5 xl:flex-row">
@@ -327,10 +327,10 @@ const PresaleCard = () => {
                 action={
                   isConnected
                     ? () =>
-                      BuyWithETH({
-                        tokens: cdlValue?.toString(),
-                        amountInEthPayable: tokenAmount?.toString(),
-                      })
+                        BuyWithETH({
+                          tokens: cdlValue?.toString(),
+                          amountInEthPayable: tokenAmount?.toString(),
+                        })
                     : () => open()
                 }
                 title={buttonText}
@@ -341,11 +341,11 @@ const PresaleCard = () => {
                 action={
                   isConnected
                     ? () =>
-                      BuyWithUSDTandUSDC({
-                        payAmountInUSDT: +tokenAmount,
-                        tokens: cdlValue?.toString(),
-                        isUSDT: true,
-                      })
+                        BuyWithUSDTandUSDC({
+                          payAmountInUSDT: +tokenAmount,
+                          tokens: cdlValue?.toString(),
+                          isUSDT: true,
+                        })
                     : () => open()
                 }
                 title={buttonText}
@@ -356,11 +356,11 @@ const PresaleCard = () => {
                 action={
                   isConnected
                     ? () =>
-                      BuyWithUSDTandUSDC({
-                        payAmountInUSDT: +tokenAmount,
-                        tokens: cdlValue?.toString(),
-                        isUSDT: false,
-                      })
+                        BuyWithUSDTandUSDC({
+                          payAmountInUSDT: +tokenAmount,
+                          tokens: cdlValue?.toString(),
+                          isUSDT: false,
+                        })
                     : () => open()
                 }
                 title={buttonText}
@@ -373,7 +373,7 @@ const PresaleCard = () => {
               title="ADD TOKEN IN METAMASK"
             />
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

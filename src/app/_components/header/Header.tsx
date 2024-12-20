@@ -33,8 +33,6 @@ const Header = ({ lang = "en" }: { lang: string }) => {
     }
   };
 
-
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", controlNavbar);
@@ -68,11 +66,17 @@ const Header = ({ lang = "en" }: { lang: string }) => {
             <HeaderLogo />
             <NavLinks lang={lang} />
           </div>
-          <SecondaryButton
-            className="hidden lg:flex"
-            action={() => open()}
-            title="Connect Wallet"
-          />
+
+          {isConnected ? (
+            <appkit-button size="md" />
+          ) : (
+            <SecondaryButton
+              className="hidden lg:flex"
+              action={() => open()}
+              title={"Connect Wallet"}
+            />
+          )}
+
           <HeaderSheet lang={lang} />
         </div>
       </div>
