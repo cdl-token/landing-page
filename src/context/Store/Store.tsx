@@ -71,7 +71,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     );
   }
 
-  const [loader, setloader] = useState(false);
+  const [loader, setloader] = useState(true);
 
   const [purchaseLoader, setPurchaseLoader] = useState(false);
 
