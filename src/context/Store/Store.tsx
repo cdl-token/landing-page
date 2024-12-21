@@ -75,10 +75,10 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
 
   const [purchaseLoader, setPurchaseLoader] = useState(false);
 
-  // // TRANSACTION SUCCESS DIALOGUE BOX
-  // const [transactionSuccess, setTransactionSuccess] = useState(false);
-  // const [transactionHash, setTransactionHash] = useState("");
-  // const [transactionHashID, setTransactionHashID] = useState("");
+  // TRANSACTION SUCCESS DIALOGUE BOX
+  const [transactionSuccess, setTransactionSuccess] = useState(false);
+  const [transactionHash, setTransactionHash] = useState("");
+  const [transactionHashID, setTransactionHashID] = useState("");
 
   const [contractData, setContractData] = useState({
     ethBalance: 0,
@@ -702,8 +702,8 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
           contractData,
           purchaseLoader,
           // setPurchaseLoader,
-          // transactionSuccess,
-          // setTransactionSuccess,
+          transactionSuccess,
+          setTransactionSuccess,
           // copyToClipboardAddress,
           // transactionHash,
           // transactionHashID,

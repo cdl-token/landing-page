@@ -41,8 +41,8 @@ export interface StoreContextType {
   contractData: ContractData;
 
   //   setPurchaseLoader: React.Dispatch<React.SetStateAction<boolean>>;
-  //   transactionSuccess: boolean;
-  //   setTransactionSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  transactionSuccess: boolean;
+  setTransactionSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   //   copyToClipboardAddress: string;
   //   transactionHash: string;
   //   transactionHashID: string;
