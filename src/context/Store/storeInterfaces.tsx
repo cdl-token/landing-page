@@ -39,6 +39,7 @@ export interface StoreContextType {
   copyToClipboard: () => void;
   purchaseLoader: boolean;
   contractData: ContractData;
+
   //   setPurchaseLoader: React.Dispatch<React.SetStateAction<boolean>>;
   //   transactionSuccess: boolean;
   //   setTransactionSuccess: React.Dispatch<React.SetStateAction<boolean>>;
@@ -49,8 +50,8 @@ export interface StoreContextType {
   GetValues: () => void;
   networkChange: () => void;
   BuyWithUSDTandUSDC: (args: BuyWithUSDCProps) => Promise<void>;
-  GetBridgeValues: () => void;
-  BuyWithUSDTandUSDCOnBinance: (args: BuyWithUSDCProps) => Promise<void>;
-  BuyWithETHOnBinance: (args: BuyWithETHProps) => Promise<void>;
-}
 
+  // GetBridgeValues: () => void;
+  // BuyWithUSDTandUSDCOnBinance: (args: BuyWithUSDCProps) => Promise<void>;
+  // BuyWithETHOnBinance: (args: BuyWithETHProps) => Promise<void>;
+}

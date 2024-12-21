@@ -13,8 +13,8 @@ import {
   useAppKitNetworkCore,
 } from "@reown/appkit/react";
 import cdlToken from "@/context/contractsData/CryptoDataLive-address.json";
-import cdlBinanceBridgePresaleAddress from "@/context/contractsData/WrappedBridgeCDL-address.json";
-import cdlBinanceBridgePresaleContract from "@/context/contractsData/WrappedBridgeCDL.json";
+import cdlPresaleContractAddress from "@/context/contractsData/Crypto_Data_Live_Presale-address.json";
+import cdlPresaleContract from "@/context/contractsData/Crypto_Data_Live_Presale.json";
 import { Store } from "@/context/Store/Store";
 import {
   ethers,
@@ -45,9 +45,8 @@ const PresaleCardBinance = () => {
     // copyToClipboardReferral,
     addTokenToMetamask,
     networkChange,
-    GetBridgeValues,
-    BuyWithUSDTandUSDCOnBinance,
-    BuyWithETHOnBinance,
+    BuyWithUSDTandUSDC,
+    BuyWithETH,
     // presaleStart,
     // presaleStop,
     // userDatabaseData,
@@ -55,9 +54,7 @@ const PresaleCardBinance = () => {
     // transactionHashID
   } = context;
 
-  
   console.log(purchaseLoader, "purchaseLoaderpurchaseLoader");
-
 
   const { address, isConnected } = useAppKitAccount();
   const { open } = useAppKit();
@@ -96,12 +93,11 @@ const PresaleCardBinance = () => {
           const parse = parseEther(tokenAmount?.toString() || "0");
 
           if (parse > 0) {
-            const provider = new JsonRpcProvider(
-              "https://bsc-testnet-rpc.publicnode.com",
-            ); //TODO:: providers  //"http://localhost:8545/"
+            const providers = process.env.NEXT_PUBLIC_RPC_URL_BNB;
+            const provider = new JsonRpcProvider(providers);
             const presaleContract = new ethers.Contract(
-              cdlBinanceBridgePresaleAddress.address,
-              cdlBinanceBridgePresaleContract.abi,
+              cdlPresaleContractAddress.address,
+              cdlPresaleContract.abi,
               provider,
             );
             const oneDoller = await presaleContract.getLatestUSDTPrice();
@@ -141,7 +137,6 @@ const PresaleCardBinance = () => {
   }, [tokenAmount, selectedToken]);
 
   useEffect(() => {
-    GetBridgeValues();
     GetValues();
     networkChange();
   }, [address, chainId]);
@@ -160,11 +155,8 @@ const PresaleCardBinance = () => {
       ) {
         setButtonText("Insufficient Balance");
         return;
-      } else if (isConnected) {
-        setButtonText("Buy");
-        return;
       } else {
-        setButtonText("Connect Wallet");
+        setButtonText("Buy");
         return;
       }
     };
@@ -325,7 +317,7 @@ const PresaleCardBinance = () => {
         </div>
         {purchaseLoader ? (
           <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
-        ) : (
+        ) : isConnected == true ? (
           <div className="mt-5 flex w-full flex-col items-center justify-between gap-5 xl:flex-row">
             {selectedToken === "BNB" ? (
               <PrimaryButton
@@ -333,10 +325,10 @@ const PresaleCardBinance = () => {
                 action={
                   isConnected
                     ? () =>
-                      BuyWithETHOnBinance({
-                        tokens: cdlValue?.toString(),
-                        amountInEthPayable: tokenAmount?.toString(),
-                      })
+                        BuyWithETH({
+                          tokens: cdlValue?.toString(),
+                          amountInEthPayable: tokenAmount?.toString(),
+                        })
                     : () => open()
                 }
                 title={buttonText}
@@ -347,11 +339,11 @@ const PresaleCardBinance = () => {
                 action={
                   isConnected
                     ? () =>
-                      BuyWithUSDTandUSDCOnBinance({
-                        payAmountInUSDT: +tokenAmount,
-                        tokens: cdlValue?.toString(),
-                        isUSDT: true,
-                      })
+                        BuyWithUSDTandUSDC({
+                          payAmountInUSDT: +tokenAmount,
+                          tokens: cdlValue?.toString(),
+                          isUSDT: true,
+                        })
                     : () => open()
                 }
                 title={buttonText}
@@ -362,11 +354,11 @@ const PresaleCardBinance = () => {
                 action={
                   isConnected
                     ? () =>
-                      BuyWithUSDTandUSDCOnBinance({
-                        payAmountInUSDT: +tokenAmount,
-                        tokens: cdlValue?.toString(),
-                        isUSDT: false,
-                      })
+                        BuyWithUSDTandUSDC({
+                          payAmountInUSDT: +tokenAmount,
+                          tokens: cdlValue?.toString(),
+                          isUSDT: false,
+                        })
                     : () => open()
                 }
                 title={buttonText}
@@ -378,12 +370,25 @@ const PresaleCardBinance = () => {
               title="ADD TOKEN IN METAMASK"
             />
           </div>
+        ) : (
+          <div className="mt-5 flex w-full flex-col items-center justify-between gap-5 xl:flex-row">
+            <PrimaryButton
+              className="w-full text-sm sm:text-base"
+              action={() => open()}
+              title={"Connect Wallet"}
+            />
+
+            <SecondaryButton
+              className="w-full text-sm sm:text-base"
+              action={() => addTokenToMetamask()}
+              title="ADD TOKEN IN METAMASK"
+            />
+          </div>
         )}
       </div>
     </div>
   );
 };
-
 
 const clipboardIcon = (
   <svg

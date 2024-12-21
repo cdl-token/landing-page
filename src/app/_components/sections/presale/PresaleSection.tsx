@@ -36,7 +36,7 @@ const PresaleSection = () => {
       className="max-w-screen relative flex w-full flex-col items-center justify-center py-20"
     >
       <div className="grid w-full max-w-7xl gap-20 px-5 lg:grid-cols-2">
-        <div>{chainId === 97 ? <PresaleCardBinance /> : <PresaleCard />}</div>
+        <div>{chainId === 1 ? <PresaleCard /> : <PresaleCardBinance />}</div>
         <motion.div
           initial="hide"
           whileInView="show"
