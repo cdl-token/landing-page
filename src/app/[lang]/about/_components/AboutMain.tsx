@@ -66,7 +66,7 @@ const AboutMain = ({ lang = "en" }: { lang: string }) => {
             title="About CDL Token"
           />
         </Link>
-        <Link className="z-10 w-full sm:w-fit" href="/#our-services">
+        <Link className="z-10 w-full sm:w-fit" href="/about#whatiscdl">
           <SecondaryButton className="w-full sm:w-fit" title="Our Services" />
         </Link>
       </motion.div>
