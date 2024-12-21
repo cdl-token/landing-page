@@ -6,7 +6,7 @@ import LightGraph from "./LightGraph";
 import { motion } from "framer-motion";
 import { leftVariant, rightVariants } from "@/lib/animation-variants";
 
-const ExploreNow = () => {
+const ExploreNow = ({ coinData }) => {
   const tabs = ["chart", "nft", "holders"];
   const [selectedTab, setSelectedTab] = useState("chart");
   return (
@@ -53,7 +53,7 @@ const ExploreNow = () => {
             ))}
           </div>
           <div className="flex h-full w-full p-5">
-            {selectedTab === "chart" && <LightGraph />}
+            {selectedTab === "chart" && <LightGraph coinData={coinData} />}
             {selectedTab === "nft" && <p>Coming Soon</p>}
             {selectedTab === "holders" && <p>Coming Soon</p>}
           </div>
