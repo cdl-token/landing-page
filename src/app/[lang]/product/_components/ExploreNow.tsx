@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { leftVariant, rightVariants } from "@/lib/animation-variants";
 
 const ExploreNow = ({ coinData }) => {
-  const tabs = ["chart", "nft", "holders"];
+  const tabs = ["chart"];
   const [selectedTab, setSelectedTab] = useState("chart");
   return (
     <div className="static z-10 flex w-full items-center justify-center gap-3">
