@@ -45,6 +45,7 @@ export interface StoreContextType {
   setShowModel: React.Dispatch<React.SetStateAction<boolean>>;
   setErrorToast: React.Dispatch<React.SetStateAction<string>>;
   setTransactionHash: React.Dispatch<React.SetStateAction<string>>;
+  setTransactionHashID: React.Dispatch<React.SetStateAction<string>>;
   errorToast: string;
   transactionFailed: boolean;
   setTransactionFailed: React.Dispatch<React.SetStateAction<boolean>>;
