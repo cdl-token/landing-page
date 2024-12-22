@@ -52,6 +52,8 @@ export default function TransactionModal() {
     setApprovalPending,
     setTransactionPending,
     setTransactionSuccess,
+    setTransactionHash,
+    setTransactionHashID,
     transactionFailed,
     setTransactionFailed,
     errorToast,
@@ -65,19 +67,21 @@ export default function TransactionModal() {
   };
 
   const handleStartTransaction = async () => {
+    setErrorToast("");
+    setTransactionHash("");
+    setTransactionHashID("");
     setShowModel(false);
     setApprovalPending(false);
     setTransactionPending(false);
     setTransactionSuccess(false);
     setTransactionFailed(false);
-    setErrorToast("");
   };
 
   return (
     <div className="fixed inset-0 z-[102] flex items-center justify-center bg-black/80 py-40">
       <div className="flex w-[350px] flex-col items-center gap-1 rounded-2xl bg-custom-bg p-8">
         <div className="flex w-full justify-end text-gray-400">
-          <button onClick={() => setShowModel(false)}>
+          <button onClick={() => handleStartTransaction(false)}>
             <X size={12} />
           </button>
         </div>

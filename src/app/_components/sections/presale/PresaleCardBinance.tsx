@@ -338,7 +338,7 @@ const PresaleCardBinance = () => {
                     <PrimaryButton
                       className="w-full text-sm sm:text-base"
                       action={
-                        isConnected
+                        isConnected && buttonText === "Buy"
                           ? () =>
                               BuyWithETH({
                                 tokens: cdlValue?.toString(),
@@ -352,7 +352,7 @@ const PresaleCardBinance = () => {
                     <PrimaryButton
                       className="w-full text-sm sm:text-base"
                       action={
-                        isConnected
+                        isConnected && buttonText === "Buy"
                           ? () =>
                               BuyWithUSDTandUSDC({
                                 payAmountInUSDT: +tokenAmount,
@@ -367,7 +367,7 @@ const PresaleCardBinance = () => {
                     <PrimaryButton
                       className="w-full text-sm sm:text-base"
                       action={
-                        isConnected
+                        isConnected && buttonText === "Buy"
                           ? () =>
                               BuyWithUSDTandUSDC({
                                 payAmountInUSDT: +tokenAmount,

@@ -40,8 +40,8 @@ import cdlTokenContract from "../contractsData/CryptoDataLive.json";
 import USDTContractAbis from "../contractsData/USDCToken.json";
 import USDTTokenEthereumAddress from "../contractsData/USDTTokenEthereum-address.json";
 import USDCTokenEthereumAddress from "../contractsData/USDCTokenEthereum-address.json";
-import WrapedBridgecdlEthereumAddress from "../contractsData/WrappedBridgeCDL-address.json";
-import WrapedBridgecdlEthereumAbis from "../contractsData/WrappedBridgeCDL.json";
+import WrapedBridgecdlEthereumAddress from "../contractsData/CryptoDataLiveBridge-address.json";
+import WrapedBridgecdlEthereumAbis from "../contractsData/CryptoDataLiveBridge.json";
 import WrapedcdlEthereumAddress from "../contractsData/WrappedCryptoDataLive-address.json";
 import WrapedcdlEthereumAbis from "../contractsData/WrappedCryptoDataLive.json";
 
@@ -166,7 +166,12 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
 
       if (chainId === 1) {
         //TODO::1 //mainnet
+        setContractData((prevState) => ({
+          ...prevState,
+          tokenPrice: "0",
+        }));
         const sellPrice = await EthereumPresaleContract.salePrice();
+        console.log(sellPrice?.toString(), "sellPricesellPricesellPrice");
         setContractData((prevState) => ({
           ...prevState,
           tokenPrice: sellPrice?.toString(),
@@ -295,9 +300,9 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     try {
       const buyingTokensAmount = formatEther(tokens?.toString() || "0");
 
-      if (+buyingTokensAmount < 10) {
+      if (+buyingTokensAmount < 43.48) {
         toast.error("Please buy minimum One Dollar");
-      } else if (+buyingTokensAmount > 30000) {
+      } else if (+buyingTokensAmount > 1304400) {
         toast.error("Please buy maximum Three Thousands 30000 Dollars");
       }
 
@@ -406,9 +411,9 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     try {
       const buyingTokensAmount = formatEther(tokens?.toString() || "0");
 
-      if (+buyingTokensAmount < 10) {
+      if (+buyingTokensAmount < 43.48) {
         toast.error("Please buy minimum One (1) Dollar");
-      } else if (+buyingTokensAmount > 30000) {
+      } else if (+buyingTokensAmount > 1304400) {
         toast.error("Please buy maximum Three Thousands (3000) Dollars");
       }
 
@@ -559,9 +564,9 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
       const tokensss = formatEther(tokens?.toString());
       console.log(+tokensss?.toString(), "tokenssstokenssstokensss");
 
-      if (+tokensss?.toString() < 10) {
+      if (+tokensss?.toString() < 43.48) {
         toast.error("Please buy minimum One (1) Dollar");
-      } else if (+tokensss?.toString() > 30000) {
+      } else if (+tokensss?.toString() > 1304400) {
         toast.error("Please buy maximum Three Thousands (3000) Dollars");
       }
       setShowModel(true);
@@ -681,9 +686,9 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
       networkChange();
       const tokensss = formatEther(tokens?.toString());
 
-      if (+tokensss?.toString() < 10) {
+      if (+tokensss?.toString() < 43.48) {
         toast.error("Please buy minimum One (1) Dollar");
-      } else if (+tokensss?.toString() > 30000) {
+      } else if (+tokensss?.toString() > 1304400) {
         toast.error("Please buy maximum Three Thousands (3000) Dollars");
       }
 
@@ -768,6 +773,8 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
           transactionHashID,
           transactionPending,
           transactionFailed,
+          setTransactionHash,
+          setTransactionHashID,
           setTransactionFailed,
           errorToast,
           setErrorToast,

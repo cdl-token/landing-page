@@ -9,8 +9,8 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
 import cdlToken from "@/context/contractsData/WrappedCryptoDataLive-address.json";
-import cdlPresaleContractEthereumAddress from "@/context/contractsData/WrappedBridgeCDL-address.json";
-import cdlPresaleEthereumContract from "@/context/contractsData/WrappedBridgeCDL.json";
+import cdlPresaleContractEthereumAddress from "@/context/contractsData/CryptoDataLiveBridge-address.json";
+import cdlPresaleEthereumContract from "@/context/contractsData/CryptoDataLiveBridge.json";
 import { Store } from "@/context/Store/Store";
 import {
   ethers,
@@ -343,7 +343,7 @@ const PresaleCardEthereum = () => {
                     <PrimaryButton
                       className="w-full text-sm sm:text-base"
                       action={
-                        isConnected
+                        isConnected && buttonText === "Buy"
                           ? () =>
                               BuyWithETHOnEthereum({
                                 tokens: cdlValue?.toString(),
@@ -357,7 +357,7 @@ const PresaleCardEthereum = () => {
                     <PrimaryButton
                       className="w-full text-sm sm:text-base"
                       action={
-                        isConnected
+                        isConnected && buttonText === "Buy"
                           ? () =>
                               BuyWithUSDTandUSDCOnEthereum({
                                 payAmountInUSDT: +tokenAmount,
@@ -372,7 +372,7 @@ const PresaleCardEthereum = () => {
                     <PrimaryButton
                       className="w-full text-sm sm:text-base"
                       action={
-                        isConnected
+                        isConnected && buttonText === "Buy"
                           ? () =>
                               BuyWithUSDTandUSDCOnEthereum({
                                 payAmountInUSDT: +tokenAmount,
