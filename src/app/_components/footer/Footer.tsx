@@ -44,7 +44,7 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
             <Link className="hover:text-primary" href="/about">
               About
             </Link>
-            <Link className="hover:text-primary" href="/tokens">
+            <Link className="hover:text-primary" href="https://cdl-token.gitbook.io/cdl-token/usdcdl-token/editor">
               Token
             </Link>
             <Link className="hover:text-primary" href="/about#our-team">
