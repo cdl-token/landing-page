@@ -2,7 +2,7 @@
 
 import { createAppKit } from "@reown/appkit/react";
 import { EthersAdapter } from "@reown/appkit-adapter-ethers";
-import { bsc, bscTestnet, sepolia } from "@reown/appkit/networks";
+import { bsc, mainnet, bscTestnet, sepolia } from "@reown/appkit/networks";
 
 const projectId = process.env.NEXT_PUBLIC_PROJECT_ID || "";
 
@@ -43,7 +43,7 @@ createAppKit({
   adapters: [new EthersAdapter()],
   metadata: metadata,
   defaultNetwork: bsc,
-  networks: [bsc],
+  networks: [bsc, mainnet],
   projectId,
   features: {
     swaps: false, // Disable swaps feature

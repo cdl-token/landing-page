@@ -8,9 +8,9 @@ import Image from "next/image";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
-import cdlToken from "@/context/contractsData/CryptoDataLive-address.json";
-import cdlPresaleContractAddress from "@/context/contractsData/Crypto_Data_Live_Presale-address.json";
-import cdlPresaleContract from "@/context/contractsData/Crypto_Data_Live_Presale.json";
+import cdlToken from "@/context/contractsData/WrappedCryptoDataLive-address.json";
+import cdlPresaleContractEthereumAddress from "@/context/contractsData/WrappedBridgeCDL-address.json";
+import cdlPresaleEthereumContract from "@/context/contractsData/WrappedBridgeCDL.json";
 import { Store } from "@/context/Store/Store";
 import {
   ethers,
@@ -24,7 +24,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Loader from "@/components/Loader";
 import TransactionSuccessModal from "@/components/TransactionSuccessModal";
 
-const PresaleCard = () => {
+const PresaleCardEthereum = () => {
   useDisableLocalStorage();
 
   {
@@ -38,18 +38,15 @@ const PresaleCard = () => {
 
   const {
     contractData,
-    // BuyWithUSDTandUSDCBinance,
-    GetValues,
-    //Loader,
+    GetBridgeValues,
     loader,
     purchaseLoader,
     transactionSuccess,
+    showModel,
     copyToClipboard,
     addTokenToMetamask,
-    // BuyWithETHOnBinance,
-    // userDatabaseData,
-    // transactionHash,
-    // transactionHashID
+    BuyWithUSDTandUSDCOnEthereum,
+    BuyWithETHOnEthereum,
   } = context;
 
   const { address, isConnected } = useAppKitAccount();
@@ -67,15 +64,23 @@ const PresaleCard = () => {
           const parse = parseEther(tokenAmount?.toString() || "0");
 
           if (parse > 0) {
-            const provider = new JsonRpcProvider("https://1rpc.io/sepolia"); //TODO:: providers  //"http://localhost:8545/"
+            const etherProvider = process.env.NEXT_PUBLIC_RPC_URL_ETH;
+            const provider = new JsonRpcProvider(etherProvider); //TODO:: providers  //"http://localhost:8545/"
             const presaleContract = new ethers.Contract(
-              cdlPresaleContractAddress.address,
-              cdlPresaleContract.abi,
+              cdlPresaleContractEthereumAddress.address,
+              cdlPresaleEthereumContract.abi,
               provider,
             );
             const oneDoller = await presaleContract.getLatestUSDTPrice();
 
+            console.log(
+              oneDoller?.toString(),
+              "oneDolleroneDolleroneDolleroneDoller",
+            );
+
             const howMuch = +parse?.toString() / +oneDoller?.toString();
+
+            console.log(howMuch, "howMuchhowMuchhowMuchhowMuch");
 
             const tokenTokens =
               +howMuch / (+contractData?.tokenPrice / 10 ** 6);
@@ -106,7 +111,7 @@ const PresaleCard = () => {
   }, [tokenAmount, selectedToken]);
 
   useEffect(() => {
-    GetValues();
+    GetBridgeValues();
   }, [address]);
 
   useEffect(() => {
@@ -123,22 +128,19 @@ const PresaleCard = () => {
       ) {
         setButtonText("Insufficient Balance");
         return;
-      } else if (isConnected) {
-        setButtonText("Buy");
-        return;
       } else {
-        setButtonText("Connect Wallet");
+        setButtonText("Buy");
         return;
       }
     };
     checked();
-  }, [tokenAmount, selectedToken, address, isConnected]);
-  console.log(cdlValue, "cdlValuecdlValuecdlValue");
+  }, [tokenAmount, selectedToken]);
+
   const soldPercentage = (contractData?.raisedAmount * 100) / 10000000;
 
   return (
     <>
-    {transactionSuccess && <TransactionSuccessModal />}
+      {showModel && <TransactionSuccessModal />}
       <div className="relative">
         <div className="absolute -right-5 -top-24 -z-10">{btcBG}</div>
         <div className="absolute left-3 top-3 -z-10">
@@ -333,63 +335,77 @@ const PresaleCard = () => {
                   </div>
                 )}
               </div>
-              {/* {purchaseLoader ? (
-          <Skeleton className="h-28 w-full max-w-full bg-gray-500" />
-        ) : (
-          <div className="mt-5 flex w-full flex-col items-center justify-between gap-5 xl:flex-row">
-            {selectedToken === "ETH" ? (
-              <PrimaryButton
-                className="w-full text-sm sm:text-base"
-                action={
-                  isConnected
-                    ? () =>
-                        BuyWithETH({
-                          tokens: cdlValue?.toString(),
-                          amountInEthPayable: tokenAmount?.toString(),
-                        })
-                    : () => open()
-                }
-                title={buttonText}
-              />
-            ) : selectedToken === "USDT" ? (
-              <PrimaryButton
-                className="w-full text-sm sm:text-base"
-                action={
-                  isConnected
-                    ? () =>
-                        BuyWithUSDTandUSDC({
-                          payAmountInUSDT: +tokenAmount,
-                          tokens: cdlValue?.toString(),
-                          isUSDT: true,
-                        })
-                    : () => open()
-                }
-                title={buttonText}
-              />
-            ) : (
-              <PrimaryButton
-                className="w-full text-sm sm:text-base"
-                action={
-                  isConnected
-                    ? () =>
-                        BuyWithUSDTandUSDC({
-                          payAmountInUSDT: +tokenAmount,
-                          tokens: cdlValue?.toString(),
-                          isUSDT: false,
-                        })
-                    : () => open()
-                }
-                title={buttonText}
-              />
-            )}
+              {purchaseLoader ? (
+                <Skeleton className="h-28 w-full max-w-full bg-gray-500" />
+              ) : isConnected == true ? (
+                <div className="mt-5 flex w-full flex-col items-center justify-between gap-5 xl:flex-row">
+                  {selectedToken === "ETH" ? (
+                    <PrimaryButton
+                      className="w-full text-sm sm:text-base"
+                      action={
+                        isConnected
+                          ? () =>
+                              BuyWithETHOnEthereum({
+                                tokens: cdlValue?.toString(),
+                                amountInEthPayable: tokenAmount?.toString(),
+                              })
+                          : () => open()
+                      }
+                      title={buttonText}
+                    />
+                  ) : selectedToken === "USDT" ? (
+                    <PrimaryButton
+                      className="w-full text-sm sm:text-base"
+                      action={
+                        isConnected
+                          ? () =>
+                              BuyWithUSDTandUSDCOnEthereum({
+                                payAmountInUSDT: +tokenAmount,
+                                tokens: cdlValue?.toString(),
+                                isUSDT: true,
+                              })
+                          : () => open()
+                      }
+                      title={buttonText}
+                    />
+                  ) : (
+                    <PrimaryButton
+                      className="w-full text-sm sm:text-base"
+                      action={
+                        isConnected
+                          ? () =>
+                              BuyWithUSDTandUSDCOnEthereum({
+                                payAmountInUSDT: +tokenAmount,
+                                tokens: cdlValue?.toString(),
+                                isUSDT: false,
+                              })
+                          : () => open()
+                      }
+                      title={buttonText}
+                    />
+                  )}
 
-            <SecondaryButton
-              className="w-full text-sm sm:text-base"
-              action={() => addTokenToMetamask()}
-              title="ADD TOKEN IN METAMASK"
-            />
-          </div>
-        )} */}
+                  <SecondaryButton
+                    className="w-full text-sm sm:text-base"
+                    action={() => addTokenToMetamask()}
+                    title="ADD TOKEN IN METAMASK"
+                  />
+                </div>
+              ) : (
+                <div className="mt-5 flex w-full flex-col items-center justify-between gap-5 xl:flex-row">
+                  <PrimaryButton
+                    className="w-full text-sm sm:text-base"
+                    action={() => open()}
+                    title={"Connect Wallet"}
+                  />
+
+                  <SecondaryButton
+                    className="w-full text-sm sm:text-base"
+                    action={() => addTokenToMetamask()}
+                    title="ADD TOKEN IN METAMASK"
+                  />
+                </div>
+              )}
             </>
           )}
         </div>
@@ -434,4 +450,4 @@ const btcBG = (
   </svg>
 );
 
-export default PresaleCard;
+export default PresaleCardEthereum;

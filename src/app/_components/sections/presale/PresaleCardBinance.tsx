@@ -50,6 +50,7 @@ const PresaleCardBinance = () => {
     networkChange,
     BuyWithUSDTandUSDC,
     BuyWithETH,
+    showModel,
     // presaleStart,
     // presaleStop,
     // userDatabaseData,
@@ -170,7 +171,7 @@ const PresaleCardBinance = () => {
 
   return (
     <>
-      {transactionSuccess && <TransactionSuccessModal />}
+      {showModel && <TransactionSuccessModal />}
       <div className="relative">
         <div className="absolute -right-5 -top-24 -z-10">{btcBG}</div>
         <div className="absolute left-3 top-3 -z-10">

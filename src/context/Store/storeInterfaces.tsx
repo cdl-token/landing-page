@@ -39,19 +39,27 @@ export interface StoreContextType {
   copyToClipboard: () => void;
   purchaseLoader: boolean;
   contractData: ContractData;
-
-  //   setPurchaseLoader: React.Dispatch<React.SetStateAction<boolean>>;
   transactionSuccess: boolean;
+  transactionPending: boolean;
+  showModel: boolean;
+  setShowModel: React.Dispatch<React.SetStateAction<boolean>>;
+  setErrorToast: React.Dispatch<React.SetStateAction<string>>;
+  errorToast: string;
+  transactionFailed: boolean;
+  setTransactionFailed: React.Dispatch<React.SetStateAction<boolean>>;
+  setTransactionPending: React.Dispatch<React.SetStateAction<boolean>>;
+  approvalPending: boolean;
+  setApprovalPending: React.Dispatch<React.SetStateAction<boolean>>;
   setTransactionSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-  //   copyToClipboardAddress: string;
-  //   transactionHash: string;
-  //   transactionHashID: string;
+  copyToClipboardAddress: () => void;
+  transactionHash: string;
+  transactionHashID: string;
   addTokenToMetamask: () => void;
   GetValues: () => void;
   networkChange: () => void;
   BuyWithUSDTandUSDC: (args: BuyWithUSDCProps) => Promise<void>;
 
-  // GetBridgeValues: () => void;
-  // BuyWithUSDTandUSDCOnBinance: (args: BuyWithUSDCProps) => Promise<void>;
-  // BuyWithETHOnBinance: (args: BuyWithETHProps) => Promise<void>;
+  GetBridgeValues: () => void;
+  BuyWithUSDTandUSDCOnEthereum: (args: BuyWithUSDCProps) => Promise<void>;
+  BuyWithETHOnEthereum: (args: BuyWithETHProps) => Promise<void>;
 }

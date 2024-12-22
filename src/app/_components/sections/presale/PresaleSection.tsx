@@ -1,7 +1,7 @@
 "use client";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import Image from "next/image";
-import PresaleCard from "./PresaleCard";
+import PresaleCardEthereum from "./PresaleCardEthereum";
 import PresaleCardBinance from "./PresaleCardBinance";
 import { useAppKitNetworkCore } from "@reown/appkit/react";
 import { useEffect, useState } from "react";
@@ -36,7 +36,9 @@ const PresaleSection = () => {
       className="max-w-screen relative flex w-full flex-col items-center justify-center py-20"
     >
       <div className="grid w-full max-w-7xl gap-20 px-5 lg:grid-cols-2">
-        <div>{chainId === 1 ? <PresaleCard /> : <PresaleCardBinance />}</div>
+        <div>
+          {chainId === 1 ? <PresaleCardEthereum /> : <PresaleCardBinance />}
+        </div>
         <motion.div
           initial="hide"
           whileInView="show"
