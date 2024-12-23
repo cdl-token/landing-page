@@ -19,7 +19,7 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
             <span className="pl-5 text-sm">
               Empowering the future of crypto investments with real-time data,
               advanced AI analytics, and innovative blockchain solutions. Stay
-              ahead in the market with CDL
+              ahead in the market with CDL.
             </span>
             <div className="mt-5 flex items-center gap-3 pl-5">
               <Link className="hover:text-primary" href="/">
@@ -67,7 +67,7 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
             </Link>
             <Link
               className="hover:text-primary"
-              href="https://github.com/cyhammad/cdl-token"
+              href="https://github.com/cdl-token"
             >
               Github
             </Link>
