@@ -228,36 +228,72 @@ const PresaleCardBinance = () => {
               ) : (
                 <PresaleCountdown />
               )}
-              <div className="flex w-full flex-col gap-2">
-                {loader ? (
-                  <Skeleton className="h-6 w-[200px] max-w-full bg-gray-500" />
-                ) : (
-                  <h2 className="font-neue font-bold sm:text-xl">
-                    Token Address:
-                  </h2>
-                )}
-                {loader ? (
-                  <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
-                ) : (
-                  <div className="flex items-center justify-between gap-3 rounded-md border border-white/20 bg-custom-bg py-3 pl-4 pr-2 font-apfel">
-                    <span>
-                      {cdlToken?.address?.slice(0, 8)}......
-                      {cdlToken?.address?.slice(-8)}
+              <div className="flex w-full flex-col gap-5 rounded-lg bg-black/20 px-3 py-5">
+                <div className="flex w-full flex-col gap-1">
+                  {loader ? (
+                    <Skeleton className="h-5 w-[70px] max-w-full bg-gray-500" />
+                  ) : (
+                    <span className="font-neue text-sm font-bold">
+                      USD RAISED
                     </span>
-                    <button onClick={() => copyToClipboard()}>
-                      {clipboardIcon}
-                    </button>
+                  )}
+                  {loader ? (
+                    <Skeleton className="h-12 w-full max-w-full bg-gray-500" />
+                  ) : (
+                    <div className="flex items-center gap-1">
+                      <span className="font-neue text-3xl font-bold text-primary">
+                        $285,980
+                      </span>
+                      <div className="font-neue text-xl">/$10,000,000</div>
+                    </div>
+                  )}
+                  {loader ? (
+                    <Skeleton className="h-5 w-2/3 max-w-full bg-gray-500" />
+                  ) : (
+                    <div className="text-gray-400">
+                      240250215.03 of 333,333,334 tokens
+                    </div>
+                  )}
+                </div>
+                {loader ? (
+                  <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
+                ) : (
+                  <ProgressBar
+                    raisedAmount={contractData?.raisedAmount}
+                    soldPercentage={soldPercentage || 0}
+                  />
+                )}
+                <div className="flex w-full flex-col gap-2">
+                  {loader ? (
+                    <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
+                  ) : (
+                    <div className="flex items-center justify-between gap-3 rounded-md border border-white/20 bg-custom-bg py-3 pl-4 pr-2 font-apfel">
+                      <span>
+                        {cdlToken?.address?.slice(0, 8)}......
+                        {cdlToken?.address?.slice(-8)}
+                      </span>
+                      <button onClick={() => copyToClipboard()}>
+                        {clipboardIcon}
+                      </button>
+                    </div>
+                  )}
+                </div>
+                {loader ? (
+                  <Skeleton className="h-20 w-full max-w-full bg-gray-500" />
+                ) : (
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-col">
+                      <div className="text-sm text-primary">
+                        Buy CDL in presale
+                      </div>
+                      <div className="text-xs text-gray-400">
+                        Until it is sold out
+                      </div>
+                    </div>
+                    <div className="px-5 py-1.5 bg-primary rounded-full font-neue pt-2">Active</div>
                   </div>
                 )}
               </div>
-              {loader ? (
-                <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
-              ) : (
-                <ProgressBar
-                  raisedAmount={contractData?.raisedAmount}
-                  soldPercentage={soldPercentage || 0}
-                />
-              )}
               <div className="flex w-full items-center gap-2">
                 <div className="h-[1px] w-full bg-white"></div>
                 <span className="text-nowrap font-apfel">
