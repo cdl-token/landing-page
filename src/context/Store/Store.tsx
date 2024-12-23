@@ -101,6 +101,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     ClaimedReward: 0,
     tokensInContract: 0,
     remainTokensForSale: 0,
+    soldTokenOfEthereum: 0,
   });
 
   //////////////////////////////////////////////////////////////////////////////////////
@@ -146,10 +147,13 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
       const raisedAmountEthereum = await EthereumPresaleContract.raisedAmount();
 
       ////////////////////// Smart Contract Balance Check ////////////////////////////
-      const tokens = +Number(
-        formatUnits(raisedAmountEthereum?.toString() || "0", 6)?.toString(),
-      );
+
+      // const tokens = +Number(
+      //   formatUnits(raisedAmountEthereum?.toString() || "0", 6)?.toString(),
+      // );
+
       console.log(salePriceToken?.toString(), "salePriceToken?.toString()");
+
       const sold = await getTokensValues(
         Number(formatUnits(raisedAmount?.toString() || "0", 18)?.toString()),
         Number(formatUnits(salePriceToken?.toString() || "0", 18)),
@@ -175,13 +179,6 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
 
       const supply = await cdlContractsOnEthereum.totalSupply();
 
-      console.log(
-        10000 -
-          (+sold +
-            Number(formatUnits(supply?.toString() || "0", 18)?.toString())),
-        "supplysupplysupply",
-      );
-
       setContractData((prevState) => ({
         ...prevState,
         raisedAmount: 0,
@@ -199,10 +196,16 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
         tokensInContract: Number(
           formatUnits(TokensInContracts?.toString() || "0", 18)?.toString(),
         ),
+
+        soldTokenOfBinance: Number(sold?.toString())?.toFixed(2),
+
         //Supply For Sale
         remainTokensForSale:
-          10000 -
-          Number(formatUnits(supply?.toString() || "0", 18)?.toString()),
+          2000 - Number(formatUnits(supply?.toString() || "0", 18)?.toString()),
+
+        soldTokenOfEthereum: Number(
+          formatUnits(supply?.toString() || "0", 18)?.toString(),
+        ),
       }));
 
       if (chainId === 1) {
@@ -289,7 +292,10 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
           params: {
             type: "ERC20",
             options: {
-              address: cdlTokenAddress.address,
+              address:
+                chainId == 1
+                  ? WrapedcdlEthereumAddress.address
+                  : cdlTokenAddress.address,
               symbol: "CDL",
               decimals: 18,
               image: "https://cdl.vercel.app/static/logo.svg",
@@ -308,7 +314,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     }
   };
 
-  const copyToClipboard = () => {
+  const copyToClipboardBinance = () => {
     const tokenAddress = cdlTokenAddress?.address;
     navigator.clipboard
       .writeText(tokenAddress)
@@ -320,12 +326,12 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
       });
   };
 
-  const copyToClipboardAddress = () => {
-    const tokenAddress = address; // Your token address
+  const copyToClipboardEthereum = () => {
+    const tokenAddress = WrapedcdlEthereumAddress?.address; // Your token address
     navigator.clipboard
       .writeText(tokenAddress || "")
       .then(() => {
-        toast.success("User address copied to clipboard!");
+        toast.success("Token address copied to clipboard!");
       })
       .catch((error) => {
         console.error("Failed to copy: ", error);
@@ -799,7 +805,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
       <Store.Provider
         value={{
           setloader,
-          copyToClipboard,
+          copyToClipboardBinance,
           BuyWithETH,
           GetValues,
           loader,
@@ -822,7 +828,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
           setErrorToast,
           setTransactionPending,
           addTokenToMetamask,
-          copyToClipboardAddress,
+          copyToClipboardEthereum,
           networkChange,
           BuyWithUSDTandUSDC,
 

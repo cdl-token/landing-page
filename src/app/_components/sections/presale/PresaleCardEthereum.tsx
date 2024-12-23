@@ -43,7 +43,7 @@ const PresaleCardEthereum = () => {
     purchaseLoader,
     transactionSuccess,
     showModel,
-    copyToClipboard,
+    copyToClipboardEthereum,
     addTokenToMetamask,
     BuyWithUSDTandUSDCOnEthereum,
     BuyWithETHOnEthereum,
@@ -147,7 +147,14 @@ const PresaleCardEthereum = () => {
     checked();
   }, [tokenAmount, selectedToken, cdlValue]);
 
-  const soldPercentage = (contractData?.raisedAmount * 100) / 10000000;
+  const soldPercentage = (contractData?.raisedAmount * 100) / 12; //TODO::
+
+  const roundOff = (num: number) => {
+    // convert string to int
+    const number = parseFloat(num?.toString());
+    // round off to 2 decimal
+    return number.toFixed(2);
+  };
 
   return (
     <>
@@ -188,7 +195,7 @@ const PresaleCardEthereum = () => {
                   ) : (
                     <div className="flex items-center gap-1">
                       <span className="font-neue text-3xl font-bold text-primary">
-                        $285,980
+                        ${roundOff(contractData?.raisedAmount)}
                       </span>
                       <div className="font-neue text-xl">/$10,000,000</div>
                     </div>
@@ -197,8 +204,14 @@ const PresaleCardEthereum = () => {
                     <Skeleton className="h-5 w-2/3 max-w-full bg-gray-500" />
                   ) : (
                     <div className="text-gray-400">
-                      240250215.03 of 333,333,334 tokens
+                      Sold Tokens{" "}
+                      {Number(contractData?.soldTokenOfEthereum)?.toFixed(2)} /{" "}
+                      {+contractData?.remainTokensForSale > 0
+                        ? Number(+contractData?.remainTokensForSale)?.toFixed(2)
+                        : 0}{" "}
+                      Up For Sale
                     </div>
+                    //TODO:: Supplu change here
                   )}
                 </div>
                 {loader ? (
@@ -208,6 +221,21 @@ const PresaleCardEthereum = () => {
                     raisedAmount={contractData?.raisedAmount}
                     soldPercentage={soldPercentage || 0}
                   />
+                )}
+              </div>
+              <div className="flex w-full flex-col gap-2">
+                {loader ? (
+                  <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
+                ) : (
+                  <div className="flex items-center justify-between gap-3 rounded-md border border-white/20 bg-custom-bg py-3 pl-4 pr-2 font-apfel">
+                    <span>
+                      {cdlToken?.address?.slice(0, 8)}......
+                      {cdlToken?.address?.slice(-8)}
+                    </span>
+                    <button onClick={() => copyToClipboardEthereum()}>
+                      {clipboardIcon}
+                    </button>
+                  </div>
                 )}
               </div>
               {loader ? (
@@ -221,7 +249,7 @@ const PresaleCardEthereum = () => {
                   {loader ? (
                     <Skeleton className="h-5 w-[100px] bg-gray-500" />
                   ) : (
-                    `1 CDL = ${formatUnits(contractData?.tokenPrice || "0", 18)}$`
+                    `1 CDL = ${formatUnits(contractData?.tokenPrice || "0", 6)}$`
                   )}
                 </span>
                 <div className="h-[1px] w-full bg-white"></div>
@@ -315,7 +343,7 @@ const PresaleCardEthereum = () => {
                     action={
                       isConnected && buttonText === "Buy"
                         ? () =>
-                            BuyWithETH({
+                            BuyWithETHOnEthereum({
                               tokens: cdlValue?.toString(),
                               amountInEthPayable: tokenAmount?.toString(),
                             })

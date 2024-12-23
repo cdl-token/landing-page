@@ -15,7 +15,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       <div className="flex justify-between">
         <div className="flex items-center gap-3">
           <h3 className="text-sm sm:text-base sm:leading-[18px]">
-            Stage 3 / 10
+            Stage 1 / 10
           </h3>
         </div>
         <div className="flex items-center gap-3">

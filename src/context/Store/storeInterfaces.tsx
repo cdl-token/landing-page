@@ -31,13 +31,15 @@ export interface ContractData {
   ClaimedReward: number;
   tokensInContract: number;
   remainTokensForSale: number;
+  soldTokenOfEthereum: number;
+  soldTokenOfBinance: number;
 }
 
 export interface StoreContextType {
   loader: boolean;
   setloader: React.Dispatch<React.SetStateAction<boolean>>;
   BuyWithETH: (args: BuyWithETHProps) => Promise<void>;
-  copyToClipboard: () => void;
+  copyToClipboardBinance: () => void;
   purchaseLoader: boolean;
   contractData: ContractData;
   transactionSuccess: boolean;
@@ -53,7 +55,7 @@ export interface StoreContextType {
   approvalPending: boolean;
   setApprovalPending: React.Dispatch<React.SetStateAction<boolean>>;
   setTransactionSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-  copyToClipboardAddress: () => void;
+  copyToClipboardEthereum: () => void;
   transactionHash: string;
   transactionHashID: string;
   setTransactionHashID: React.Dispatch<React.SetStateAction<string>>;

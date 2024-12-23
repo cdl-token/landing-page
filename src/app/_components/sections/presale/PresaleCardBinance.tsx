@@ -44,8 +44,7 @@ const PresaleCardBinance = () => {
     purchaseLoader,
     loader,
     transactionSuccess,
-    copyToClipboard,
-    // copyToClipboardReferral,
+    copyToClipboardBinance,
     addTokenToMetamask,
     networkChange,
     BuyWithUSDTandUSDC,
@@ -156,6 +155,10 @@ const PresaleCardBinance = () => {
     "contractData?.remainTokensForSale?.toString()",
   );
 
+  const soldPercentage = (contractData?.raisedAmount * 100) / 10000000;
+
+  // const remainTokens = 2000 - contractData?.tokensInContract;
+
   useEffect(() => {
     const checked = () => {
       const tokenBalance =
@@ -174,8 +177,8 @@ const PresaleCardBinance = () => {
       if (
         parseFloat(formatEther(cdlValue?.toString() || "0")?.toString()) >
         parseFloat(
-          contractData?.remainTokensForSale?.toString() > "0"
-            ? contractData?.remainTokensForSale?.toString()
+          contractData?.tokensInContract?.toString() > "0"
+            ? contractData?.tokensInContract?.toString()
             : "0",
         )
       ) {
@@ -187,9 +190,14 @@ const PresaleCardBinance = () => {
       }
     };
     checked();
-  }, [tokenAmount, selectedToken, cdlValue]);
+  }, [tokenAmount, selectedToken, cdlValue, contractData?.tokensInContract]);
 
-  const soldPercentage = (contractData?.raisedAmount * 100) / 10000000;
+  const roundOff = (num: number) => {
+    // convert string to int
+    const number = parseFloat(num?.toString());
+    // round off to 2 decimal
+    return number.toFixed(2);
+  };
 
   return (
     <>
@@ -230,7 +238,7 @@ const PresaleCardBinance = () => {
                   ) : (
                     <div className="flex items-center gap-1">
                       <span className="font-neue text-3xl font-bold text-primary">
-                        $285,980
+                        ${roundOff(contractData?.raisedAmount)}
                       </span>
                       <div className="font-neue text-xl">/$10,000,000</div>
                     </div>
@@ -239,7 +247,12 @@ const PresaleCardBinance = () => {
                     <Skeleton className="h-5 w-2/3 max-w-full bg-gray-500" />
                   ) : (
                     <div className="text-gray-400">
-                      240250215.03 of 333,333,334 tokens
+                      Sold Tokens{" "}
+                      {Number(contractData?.soldTokenOfBinance)?.toFixed(2)} /{" "}
+                      {+contractData?.tokensInContract > 0
+                        ? Number(+contractData?.tokensInContract)?.toFixed(2)
+                        : 0}{" "}
+                      Up For Sale
                     </div>
                   )}
                 </div>
@@ -260,7 +273,7 @@ const PresaleCardBinance = () => {
                         {cdlToken?.address?.slice(0, 8)}......
                         {cdlToken?.address?.slice(-8)}
                       </span>
-                      <button onClick={() => copyToClipboard()}>
+                      <button onClick={() => copyToClipboardBinance()}>
                         {clipboardIcon}
                       </button>
                     </div>
