@@ -216,18 +216,6 @@ const PresaleCardBinance = () => {
             <Loader isPresale />
           ) : (
             <>
-              {loader ? (
-                <Skeleton className="h-8 w-[250px] max-w-full bg-gray-500" />
-              ) : (
-                <h1 className="font-neue font-bold uppercase sm:text-2xl">
-                  Token sale ends in:
-                </h1>
-              )}
-              {loader ? (
-                <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
-              ) : (
-                <PresaleCountdown />
-              )}
               <div className="flex w-full flex-col gap-5 rounded-lg bg-black/20 px-3 py-5">
                 <div className="flex w-full flex-col gap-1">
                   {loader ? (
@@ -290,10 +278,17 @@ const PresaleCardBinance = () => {
                         Until it is sold out
                       </div>
                     </div>
-                    <div className="px-5 py-1.5 bg-primary rounded-full font-neue pt-2">Active</div>
+                    <div className="rounded-full bg-primary px-5 py-1.5 pt-2 font-neue">
+                      Active
+                    </div>
                   </div>
                 )}
               </div>
+              {loader ? (
+                <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
+              ) : (
+                <PresaleCountdown />
+              )}
               <div className="flex w-full items-center gap-2">
                 <div className="h-[1px] w-full bg-white"></div>
                 <span className="text-nowrap font-apfel">

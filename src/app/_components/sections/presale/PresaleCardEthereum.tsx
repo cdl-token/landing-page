@@ -174,18 +174,6 @@ const PresaleCardEthereum = () => {
             <Loader isPresale />
           ) : (
             <>
-              {loader ? (
-                <Skeleton className="h-8 w-[250px] max-w-full bg-gray-500" />
-              ) : (
-                <h1 className="font-neue font-bold uppercase sm:text-2xl">
-                  Token sale ends in:
-                </h1>
-              )}
-              {loader ? (
-                <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
-              ) : (
-                <PresaleCountdown />
-              )}
               <div className="flex w-full flex-col gap-5 rounded-lg bg-black/20 px-3 py-5">
                 <div className="flex w-full flex-col gap-1">
                   {loader ? (
@@ -222,6 +210,11 @@ const PresaleCardEthereum = () => {
                   />
                 )}
               </div>
+              {loader ? (
+                <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
+              ) : (
+                <PresaleCountdown />
+              )}
               <div className="flex w-full items-center gap-2">
                 <div className="h-[1px] w-full bg-white"></div>
                 <span className="text-nowrap font-apfel">
