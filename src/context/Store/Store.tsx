@@ -102,6 +102,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     tokensInContract: 0,
     remainTokensForSale: 0,
     soldTokenOfEthereum: 0,
+    soldTokenOfBinance: 0,
   });
 
   //////////////////////////////////////////////////////////////////////////////////////
@@ -196,9 +197,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
         tokensInContract: Number(
           formatUnits(TokensInContracts?.toString() || "0", 18)?.toString(),
         ),
-
-        soldTokenOfBinance: Number(sold?.toString())?.toFixed(2),
-
+        soldTokenOfBinance: +Number(sold?.toString())?.toFixed(2),
         //Supply For Sale
         remainTokensForSale:
           2000 - Number(formatUnits(supply?.toString() || "0", 18)?.toString()),
