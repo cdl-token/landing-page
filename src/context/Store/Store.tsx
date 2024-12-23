@@ -176,9 +176,9 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
       const supply = await cdlContractsOnEthereum.totalSupply();
 
       console.log(
-      (10000 -
+        10000 -
           (+sold +
-            Number(formatUnits(supply?.toString() || "0", 18)?.toString()))),
+            Number(formatUnits(supply?.toString() || "0", 18)?.toString())),
         "supplysupplysupply",
       );
 
@@ -202,8 +202,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
         //Supply For Sale
         remainTokensForSale:
           10000 -
-          (+sold +
-            Number(formatUnits(supply?.toString() || "0", 18)?.toString())),
+          Number(formatUnits(supply?.toString() || "0", 18)?.toString()),
       }));
 
       if (chainId === 1) {
