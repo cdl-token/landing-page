@@ -67,7 +67,7 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
             </Link>
             <Link
               className="hover:text-primary"
-              href="https://github.com/cyhammad/cdl-token"
+              href="https://github.com/cdl-token"
             >
               Github
             </Link>
