@@ -145,6 +145,17 @@ const PresaleCardBinance = () => {
     networkChange();
   }, [address, chainId]);
 
+  console.log(
+    parseFloat(formatEther(cdlValue?.toString() || "0")?.toString()),
+    //  || "0"),
+    parseFloat(
+      contractData?.remainTokensForSale?.toString() > "0"
+        ? contractData?.remainTokensForSale?.toString()
+        : "0",
+    ),
+    "contractData?.remainTokensForSale?.toString()",
+  );
+
   useEffect(() => {
     const checked = () => {
       const tokenBalance =
@@ -153,11 +164,22 @@ const PresaleCardBinance = () => {
           : selectedToken == "USDC"
             ? contractData?.usdcBalance
             : contractData?.usdtBalance;
+      // if (
+      //   parseFloat(tokenAmount > "0" ? tokenAmount?.toString() : "0") >
+      //   parseFloat(tokenBalance > 0 ? tokenBalance?.toString() : "0")
+      // ) {
+      //   setButtonText("Insufficient Balance");
+      //   return;
+      // } else if (
       if (
-        parseFloat(tokenAmount > "0" ? tokenAmount?.toString() : "0") >
-        parseFloat(tokenBalance > 0 ? tokenBalance?.toString() : "0")
+        parseFloat(formatEther(cdlValue?.toString() || "0")?.toString()) >
+        parseFloat(
+          contractData?.remainTokensForSale?.toString() > "0"
+            ? contractData?.remainTokensForSale?.toString()
+            : "0",
+        )
       ) {
-        setButtonText("Insufficient Balance");
+        setButtonText("Available Supply Exceed");
         return;
       } else {
         setButtonText("Buy");
@@ -165,7 +187,7 @@ const PresaleCardBinance = () => {
       }
     };
     checked();
-  }, [tokenAmount, selectedToken]);
+  }, [tokenAmount, selectedToken, cdlValue]);
 
   const soldPercentage = (contractData?.raisedAmount * 100) / 10000000;
 

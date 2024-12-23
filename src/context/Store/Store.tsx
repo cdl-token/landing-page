@@ -100,11 +100,18 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     rewardEarned: 0,
     ClaimedReward: 0,
     tokensInContract: 0,
+    remainTokensForSale: 0,
   });
 
   //////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////// HELPING FUNCTIONS ////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////
+
+  const getTokensValues = async (raised: number, price: number) => {
+    const tokens = raised / price;
+    console.log(tokens, "tokenstokens");
+    return tokens;
+  };
 
   const GetValues = async () => {
     try {
@@ -122,6 +129,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
 
       const etherProvider = process.env.NEXT_PUBLIC_RPC_URL_ETH;
       const providerEthereum = new JsonRpcProvider(etherProvider); //TODO:: providers  //"http://localhost:8545/"
+
       const EthereumPresaleContract = new ethers.Contract(
         WrapedBridgecdlEthereumAddress.address,
         WrapedBridgecdlEthereumAbis.abi,
@@ -129,12 +137,25 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
       );
 
       const raisedAmount = await presaleContract.raisedAmount();
+      const salePriceToken = await presaleContract.salePrice();
+
+      console.log(salePriceToken, "salePricesalePrice");
 
       console.log("🚀 ~ GetValues ~ raisedAmount:", raisedAmount?.toString());
 
       const raisedAmountEthereum = await EthereumPresaleContract.raisedAmount();
 
       ////////////////////// Smart Contract Balance Check ////////////////////////////
+      const tokens = +Number(
+        formatUnits(raisedAmountEthereum?.toString() || "0", 6)?.toString(),
+      );
+      console.log(salePriceToken?.toString(), "salePriceToken?.toString()");
+      const sold = await getTokensValues(
+        Number(formatUnits(raisedAmount?.toString() || "0", 18)?.toString()),
+        Number(formatUnits(salePriceToken?.toString() || "0", 18)),
+      );
+
+      console.log(sold?.toString(), "soldsoldsoldsold");
 
       const cdlContracts = new ethers.Contract(
         cdlTokenAddress.address,
@@ -142,14 +163,30 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
         provider,
       );
 
-      const TokensInContract = await cdlContracts.balanceOf(
+      const TokensInContracts = await cdlContracts.balanceOf(
         cdlPresaleContractAddress.address,
+      );
+
+      const cdlContractsOnEthereum = new ethers.Contract(
+        WrapedcdlEthereumAddress.address,
+        WrapedcdlEthereumAbis.abi,
+        providerEthereum,
+      );
+
+      const supply = await cdlContractsOnEthereum.totalSupply();
+
+      console.log(
+      (10000 -
+          (+sold +
+            Number(formatUnits(supply?.toString() || "0", 18)?.toString()))),
+        "supplysupplysupply",
       );
 
       setContractData((prevState) => ({
         ...prevState,
         raisedAmount: 0,
         tokensInContract: 0,
+        remainTokensForSale: 0,
       }));
 
       setContractData((prevState) => ({
@@ -160,8 +197,13 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
             formatUnits(raisedAmountEthereum?.toString() || "0", 6)?.toString(),
           ),
         tokensInContract: Number(
-          formatUnits(TokensInContract?.toString() || "0", 18)?.toString(),
+          formatUnits(TokensInContracts?.toString() || "0", 18)?.toString(),
         ),
+        //Supply For Sale
+        remainTokensForSale:
+          10000 -
+          (+sold +
+            Number(formatUnits(supply?.toString() || "0", 18)?.toString())),
       }));
 
       if (chainId === 1) {
@@ -521,6 +563,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
             USDTContractAbis.abi,
             ethersProvider,
           );
+
           const cdlContracts = new ethers.Contract(
             WrapedcdlEthereumAddress.address,
             WrapedcdlEthereumAbis.abi,

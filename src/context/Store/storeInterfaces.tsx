@@ -30,6 +30,7 @@ export interface ContractData {
   rewardEarned: number;
   ClaimedReward: number;
   tokensInContract: number;
+  remainTokensForSale: number;
 }
 
 export interface StoreContextType {
@@ -55,6 +56,7 @@ export interface StoreContextType {
   copyToClipboardAddress: () => void;
   transactionHash: string;
   transactionHashID: string;
+  setTransactionHashID: React.Dispatch<React.SetStateAction<string>>;
   addTokenToMetamask: () => void;
   GetValues: () => void;
   networkChange: () => void;
