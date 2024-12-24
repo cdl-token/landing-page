@@ -155,7 +155,7 @@ const PresaleCardBinance = () => {
     "contractData?.remainTokensForSale?.toString()",
   );
 
-  const soldPercentage = (contractData?.raisedAmount * 100) / 300000000;
+  const soldPercentage = (contractData?.raisedAmount * 100) / 300000;
 
   // const remainTokens = 2000 - contractData?.tokensInContract;
 
@@ -245,7 +245,7 @@ const PresaleCardBinance = () => {
                       <span className="font-neue text-3xl font-bold text-primary">
                         ${roundOff(contractData?.raisedAmount)}
                       </span>
-                      <div className="font-neue text-xl">/$300,000,000</div>
+                      <div className="font-neue text-xl">/$300,000</div>
                     </div>
                   )}
                   {loader ? (

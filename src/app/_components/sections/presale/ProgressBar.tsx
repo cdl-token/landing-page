@@ -22,8 +22,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
         </div>
         <div className="flex items-center gap-3">
           <h3 className="text-sm sm:text-base sm:leading-[18px]">
-            ${roundOff(raisedAmount || 0)} / $300M (
-            {formatNumber((+roundOff(raisedAmount || 0) / 300000000) * 100)}
+            ${roundOff(raisedAmount || 0)} / $300K (
+            {formatNumber((+roundOff(raisedAmount || 0) / 300000) * 100)}
             %)
           </h3>
         </div>
