@@ -181,6 +181,11 @@ const PresaleCardEthereum = () => {
             <Loader isPresale />
           ) : (
             <>
+              {loader ? (
+                <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
+              ) : (
+                <PresaleCountdown />
+              )}
               <div className="flex w-full flex-col gap-5 rounded-lg bg-black/20 px-3 py-5">
                 <div className="flex w-full flex-col gap-1">
                   {loader ? (
@@ -238,11 +243,6 @@ const PresaleCardEthereum = () => {
                   </div>
                 )}
               </div>
-              {loader ? (
-                <Skeleton className="h-24 w-full max-w-full bg-gray-500" />
-              ) : (
-                <PresaleCountdown />
-              )}
               <div className="flex w-full items-center gap-2">
                 <div className="h-[1px] w-full bg-white"></div>
                 <span className="text-nowrap font-apfel">
@@ -337,7 +337,7 @@ const PresaleCardEthereum = () => {
               {loader ? (
                 <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
               ) : isConnected == true ? (
-                <div className="mt-5 flex w-full flex-col items-center justify-between gap-5 xl:flex-row">
+                <div className="mt-5 flex w-full flex-col items-center justify-between gap-5">
                   <PrimaryButton
                     className="w-full text-sm sm:text-base"
                     action={
@@ -358,7 +358,7 @@ const PresaleCardEthereum = () => {
                   />
                 </div>
               ) : (
-                <div className="mt-5 flex w-full flex-col items-center justify-between gap-5 xl:flex-row">
+                <div className="mt-5 flex w-full flex-col items-center justify-between gap-5">
                   <PrimaryButton
                     className="w-full text-sm sm:text-base"
                     action={() => open()}
