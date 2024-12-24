@@ -1,3 +1,5 @@
+import { formatNumber } from "@/utils/formatters";
+
 interface ProgressBarProps {
   raisedAmount?: number;
   soldPercentage?: number;
@@ -20,14 +22,16 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
         </div>
         <div className="flex items-center gap-3">
           <h3 className="text-sm sm:text-base sm:leading-[18px]">
-            ${roundOff(raisedAmount || 0)} / $300M (2.1%)
+            ${roundOff(raisedAmount || 0)} / $300M (
+            {formatNumber((+roundOff(raisedAmount || 0) / 300000000) * 100)}
+            %)
           </h3>
         </div>
       </div>
       <div className="h-[10px] w-full rounded-[5px] bg-custom-bg/50 sm:h-[17px]">
         <div
           className="h-full rounded-[5px] bg-primary"
-          style={{ width: `30%` }}
+          style={{ width: `${soldPercentage}%` }}
         ></div>
       </div>
     </div>

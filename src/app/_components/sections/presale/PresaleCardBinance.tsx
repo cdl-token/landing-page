@@ -155,7 +155,7 @@ const PresaleCardBinance = () => {
     "contractData?.remainTokensForSale?.toString()",
   );
 
-  const soldPercentage = (contractData?.raisedAmount * 100) / 10000000;
+  const soldPercentage = (contractData?.raisedAmount * 100) / 300000000;
 
   // const remainTokens = 2000 - contractData?.tokensInContract;
 
@@ -177,8 +177,8 @@ const PresaleCardBinance = () => {
       if (
         parseFloat(formatEther(cdlValue?.toString() || "0")?.toString()) >
         parseFloat(
-          contractData?.tokensInContract?.toString() > "0"
-            ? contractData?.tokensInContract?.toString()
+          contractData?.remainTokensForSale?.toString() > "0"
+            ? contractData?.remainTokensForSale?.toString()
             : "0",
         )
       ) {
@@ -190,7 +190,7 @@ const PresaleCardBinance = () => {
       }
     };
     checked();
-  }, [tokenAmount, selectedToken, cdlValue, contractData?.tokensInContract]);
+  }, [tokenAmount, selectedToken, cdlValue, contractData?.remainTokensForSale]);
 
   const roundOff = (num: number) => {
     // convert string to int
@@ -240,7 +240,7 @@ const PresaleCardBinance = () => {
                       <span className="font-neue text-3xl font-bold text-primary">
                         ${roundOff(contractData?.raisedAmount)}
                       </span>
-                      <div className="font-neue text-xl">/$10,000,000</div>
+                      <div className="font-neue text-xl">/$300,000,000</div>
                     </div>
                   )}
                   {loader ? (
@@ -249,8 +249,8 @@ const PresaleCardBinance = () => {
                     <div className="text-gray-400">
                       Sold Tokens{" "}
                       {Number(contractData?.soldTokenOfBinance)?.toFixed(2)} /{" "}
-                      {+contractData?.tokensInContract > 0
-                        ? Number(+contractData?.tokensInContract)?.toFixed(2)
+                      {+contractData?.remainTokensForSale > 0
+                        ? Number(+contractData?.remainTokensForSale)?.toFixed(2)
                         : 0}{" "}
                       Up For Sale
                     </div>
