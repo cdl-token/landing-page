@@ -147,7 +147,7 @@ const PresaleCardEthereum = () => {
     checked();
   }, [tokenAmount, selectedToken, cdlValue]);
 
-  const soldPercentage = (contractData?.raisedAmount * 100) / 12; //TODO::
+  const soldPercentage = (contractData?.raisedAmount * 100) / 300000; //TODO::
 
   const roundOff = (num: number) => {
     // convert string to int
@@ -202,7 +202,7 @@ const PresaleCardEthereum = () => {
                       <span className="font-neue text-3xl font-bold text-primary">
                         ${roundOff(contractData?.raisedAmount)}
                       </span>
-                      <div className="font-neue text-xl">/$10,000,000</div>
+                      <div className="font-neue text-xl">/$300,000</div>
                     </div>
                   )}
                   {loader ? (

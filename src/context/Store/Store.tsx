@@ -197,14 +197,20 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
         tokensInContract: Number(
           formatUnits(TokensInContracts?.toString() || "0", 18)?.toString(),
         ),
-        soldTokenOfBinance: +Number(sold?.toString())?.toFixed(2),
-        //Supply For Sale
-        remainTokensForSale:
-          2000 - Number(formatUnits(supply?.toString() || "0", 18)?.toString()),
+        soldTokenOfBinance:
+          Number(formatUnits(supply?.toString() || "0", 18)?.toString()) +
+          Number(sold?.toString()),
 
-        soldTokenOfEthereum: Number(
-          formatUnits(supply?.toString() || "0", 18)?.toString(),
-        ),
+        //Supply For Sale
+        // 13043478.26
+        remainTokensForSale:
+          2000 -
+          (Number(formatUnits(supply?.toString() || "0", 18)?.toString()) +
+            Number(sold?.toString())),
+
+        soldTokenOfEthereum:
+          Number(formatUnits(supply?.toString() || "0", 18)?.toString()) +
+          Number(sold?.toString()),
       }));
 
       if (chainId === 1) {
