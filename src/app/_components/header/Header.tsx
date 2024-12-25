@@ -68,7 +68,9 @@ const Header = ({ lang = "en" }: { lang: string }) => {
           </div>
 
           {isConnected ? (
-            <appkit-button size="md" />
+            <div className="hidden lg:flex">
+              <appkit-button size="md" />
+            </div>
           ) : (
             <SecondaryButton
               className="hidden lg:flex"
@@ -76,7 +78,6 @@ const Header = ({ lang = "en" }: { lang: string }) => {
               title={"Connect Wallet"}
             />
           )}
-
           <HeaderSheet lang={lang} />
         </div>
       </div>

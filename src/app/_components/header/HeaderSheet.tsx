@@ -12,13 +12,14 @@ import { MenuIcon } from "lucide-react";
 import HeaderLogo from "./HeaderLogo";
 import Link from "next/link";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
-import { useAppKit } from "@reown/appkit/react";
+import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
+  const { isConnected } = useAppKitAccount();
   const [isDocsOpen, setIsDocsOpen] = useState(false);
   const router = useRouter();
 
@@ -47,14 +48,14 @@ const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
         <SheetTrigger>
           <MenuIcon size={20} />
         </SheetTrigger>
-        <SheetContent className="border-none bg-custom-bg text-white">
+        <SheetContent className="border-none w-[350px] pt-10 px-5 bg-custom-bg text-white">
           <SheetHeader>
             <SheetTitle className="text-white">
               <HeaderLogo />
             </SheetTitle>
           </SheetHeader>
           <div className="flex h-full flex-col justify-between">
-            <div className="flex flex-col gap-5 px-3 py-10">
+            <div className="flex flex-col gap-5 py-10">
               {headerLinks.map((link, index) => (
                 <SheetClose key={index} asChild>
                   <Link
@@ -69,7 +70,7 @@ const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
                 <button onClick={() => setIsDocsOpen(!isDocsOpen)}>Docs</button>
                 <div
                   className={cn(
-                    "flex flex-col transition-all ease-in duration-200",
+                    "flex flex-col transition-all duration-200 ease-in",
                     isDocsOpen ? "h-fit" : "h-0 overflow-hidden",
                   )}
                 >
@@ -90,12 +91,22 @@ const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
                 </div>
               </div>
               <div className="flex flex-col gap-2 py-5">
-                <PrimaryButton action={()=>router.push("https://dapp-one-phi.vercel.app/")} title="Launch Dapp" className="py-2 text-sm" />
-                <SecondaryButton
-                  action={() => open()}
+                <PrimaryButton
+                  action={() => router.push("https://dapp-one-phi.vercel.app/")}
+                  title="Launch Dapp"
                   className="py-2 text-sm"
-                  title="Connect Wallet"
                 />
+                {isConnected ? (
+                  <div className="">
+                    <appkit-button size="md" />
+                  </div>
+                ) : (
+                  <SecondaryButton
+                    action={() => open()}
+                    className="py-2 text-sm"
+                    title="Connect Wallet"
+                  />
+                )}
               </div>
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
