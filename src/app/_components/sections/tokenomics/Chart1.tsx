@@ -70,7 +70,7 @@ const Chart1 = ({
         className="fill-black font-neue text-[12px] font-bold md:text-[14px] lg:text-[16px]"
         dominantBaseline="middle"
       >
-        1 B
+        100M
       </text>
     </svg>
   );
