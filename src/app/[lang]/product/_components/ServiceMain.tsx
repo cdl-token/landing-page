@@ -72,7 +72,7 @@ const ServiceMain = () => {
             whileInView="show"
             exit="show"
             variants={bottomVariants(0.4)}
-            className="my-5 flex items-center rounded-[5px] bg-white p-1 text-black hover:shadow-lg"
+            className="group my-5 flex items-center rounded-[5px] border border-white bg-white p-1 text-black hover:border-white hover:bg-black transition-all ease-in duration-200 hover:text-white hover:shadow-lg"
           >
             {buttonSvg}
             <Link
@@ -151,6 +151,7 @@ const buttonSvg = (
     width="40"
     height="40"
     viewBox="0 0 40 40"
+    className="overflow-hidden rounded border border-black transition-all duration-200 ease-in group-hover:border-white"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
