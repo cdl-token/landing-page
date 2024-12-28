@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const QuestionAccordion = ({
   question,
@@ -15,42 +16,56 @@ const QuestionAccordion = ({
   defaultState?: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState(defaultState);
+
   return (
-    <div
+    <motion.div
       className="relative flex w-full max-w-6xl flex-col overflow-hidden rounded-xl border border-white/30 p-6"
       onClick={() => setIsOpen(!isOpen)}
     >
-      <div className="flex w-full items-center justify-between gap-2">
+      {/* Header */}
+      <div className="flex w-full cursor-pointer items-center justify-between gap-2">
         <h1 className="max-w-[80%] font-neue text-xl font-bold md:text-2xl">
           {question}
         </h1>
-        <div
+        <motion.div
           className={cn(
             "flex h-8 w-16 items-center justify-center rounded-xl border border-white/20 sm:h-12",
-            isOpen ? "rotate-0 bg-white/20" : "rotate-180",
-            "transition-all duration-200 ease-in",
+            "transition-transform",
           )}
+          animate={{ rotate: isOpen ? 0 : 180 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           {chevronSvg}
-        </div>
+        </motion.div>
       </div>
-      <div
-        className={cn(
-          isOpen ? "h-fit pb-6" : "h-0 pb-0",
-          "mt-2 overflow-hidden text-white/50 transition-all duration-200 ease-in",
-        )}
+
+      {/* Content */}
+      <motion.div
+        className="overflow-hidden text-white/50"
+        initial={{ height: 0, opacity: 0 }}
+        animate={
+          isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }
+        }
+        transition={{
+          height: { duration: 0.4, ease: "easeInOut" },
+          opacity: { duration: 0.2 },
+        }}
       >
-        {answer}
-        {list && (
-          <ul className="list-disc pl-5">
-            {list.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        )}
-      </div>
+        <div className="mt-2">
+          {answer && <p>{answer}</p>}
+          {list && (
+            <ul className="list-disc pl-5">
+              {list.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </motion.div>
+
+      {/* Gradient Decoration */}
       <div className="absolute left-0 top-0">{gradientSvg}</div>
-    </div>
+    </motion.div>
   );
 };
 
