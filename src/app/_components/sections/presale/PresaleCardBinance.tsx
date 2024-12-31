@@ -116,7 +116,7 @@ const PresaleCardBinance = () => {
             // setETHValue(howMuch);
           }
         }, 500);
-      } else if (selectedToken !== "Binance" && tokenAmount !== "") {
+      } else if (selectedToken !== "BNB" && tokenAmount !== "") {
         const parse2 = parseEther(tokenAmount?.toString());
         if (parse2 > 0) {
           console.log(
