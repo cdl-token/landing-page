@@ -167,14 +167,13 @@ const PresaleCardBinance = () => {
           : selectedToken == "USDC"
             ? contractData?.usdcBalance
             : contractData?.usdtBalance;
-      // if (
-      //   parseFloat(tokenAmount > "0" ? tokenAmount?.toString() : "0") >
-      //   parseFloat(tokenBalance > 0 ? tokenBalance?.toString() : "0")
-      // ) {
-      //   setButtonText("Insufficient Balance");
-      //   return;
-      // } else if (
       if (
+        parseFloat(tokenAmount > "0" ? tokenAmount?.toString() : "0") >
+        parseFloat(tokenBalance > 0 ? tokenBalance?.toString() : "0")
+      ) {
+        setButtonText("Insufficient Balance");
+        return;
+      } else if (
         parseFloat(formatEther(cdlValue?.toString() || "0")?.toString()) >
         parseFloat(
           contractData?.remainTokensForSale?.toString() > "0"
