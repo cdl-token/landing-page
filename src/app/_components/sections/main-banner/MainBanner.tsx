@@ -1,17 +1,24 @@
 "use client";
 
-import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { motion } from "framer-motion";
-import SecondaryButton from "@/components/buttons/SecondaryButton";
-import Earth from "@/components/ui/better-globe";
 import { FlipWords } from "@/components/ui/flip-words";
-import {
-  bottomVariants,
-  leftVariant,
-  rightVariants,
-} from "@/lib/animation-variants";
-import TextAnimation from "@/components/ui/scroll-text";
+import { bottomVariants, rightVariants } from "@/lib/animation-variants";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+// Dynamic imports
+const PrimaryButton = dynamic(
+  () => import("@/components/buttons/PrimaryButton"),
+);
+const SecondaryButton = dynamic(
+  () => import("@/components/buttons/SecondaryButton"),
+);
+const Earth = dynamic(() => import("@/components/ui/better-globe"), {
+  ssr: false, // Avoid server-side rendering for performance-heavy components
+});
+const TextAnimation = dynamic(() => import("@/components/ui/scroll-text"), {
+  ssr: false,
+});
 
 const MainBanner = () => {
   const words = ["Outsmarting", "Surpassing", "Overcoming"];
@@ -19,8 +26,9 @@ const MainBanner = () => {
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-x-hidden">
       <div className="grid min-h-screen w-full max-w-7xl justify-center px-5 pb-20 md:min-h-[900px] md:pb-0 lg:grid-cols-2 lg:gap-12">
+        {/* Left Content */}
         <div className="flex h-full flex-col justify-center gap-12">
-          <div className="flex flex-col gap-2 pt-32 font-neue text-3xl font-bold uppercase lg:pt-0 md:text-5xl lg:text-[50px] xl:text-[55px]">
+          <div className="flex flex-col gap-2 pt-32 font-neue text-3xl font-bold uppercase md:text-5xl lg:pt-0 lg:text-[50px] xl:text-[55px]">
             <motion.h1
               initial="hide"
               whileInView="show"
@@ -96,6 +104,8 @@ const MainBanner = () => {
             </Link>
           </motion.div>
         </div>
+
+        {/* Right Content */}
         <div className="flex h-full w-full items-center">
           <motion.div
             initial="hide"
@@ -108,6 +118,8 @@ const MainBanner = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Keep existing background gradient unchanged */}
       <div className="absolute left-[-510px] top-[-568px] -z-10">
         {gradientBg}
       </div>

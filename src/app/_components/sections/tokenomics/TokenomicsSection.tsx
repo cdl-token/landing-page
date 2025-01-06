@@ -1,21 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Card from "./Card";
-import Chart1 from "./Chart1";
-import Chart2 from "./Chart2";
+import dynamic from "next/dynamic";
 import {
   leftToRightVariants,
   leftVariant,
   rightToLeftVariants,
-  rightVariants,
 } from "@/lib/animation-variants";
-import TextAnimation from "@/components/ui/scroll-text";
+import React from "react";
+
+// Dynamic imports for better performance
+const TextAnimation = dynamic(() => import("@/components/ui/scroll-text"), {
+  ssr: false,
+});
+const Card = dynamic(() => import("./Card"), { ssr: false });
+const Chart1 = dynamic(() => import("./Chart1"), { ssr: false });
+const Chart2 = dynamic(() => import("./Chart2"), { ssr: false });
 
 const TokenomicsSection = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <div className="flex h-full w-full max-w-7xl flex-col items-center justify-center border-t border-white/30 px-5 py-20">
+        {/* Title */}
         <TextAnimation
           text="Tokenomics"
           variants={{
@@ -29,6 +35,8 @@ const TokenomicsSection = () => {
           }}
           classname="font-neue font-bold text-4xl uppercase text-white"
         />
+
+        {/* Description */}
         <motion.p
           initial="hide"
           whileInView="show"
@@ -41,6 +49,8 @@ const TokenomicsSection = () => {
           powerful analytics tools, CDL Token empowers users to shape the future
           of crypto data solutions and drive platform success.
         </motion.p>
+
+        {/* Tokenomics Chart Section */}
         <motion.div
           className="grid h-full w-full max-w-7xl grid-cols-1 gap-y-5 px-5 py-5 sm:grid-cols-2 md:px-20 md:py-20 lg:grid-cols-4"
           initial="hide"
@@ -48,55 +58,27 @@ const TokenomicsSection = () => {
           exit="show"
           variants={rightToLeftVariants}
         >
-          {/* <TotalSuppliesChart /> */}
           <Chart1 />
           <div className="flex flex-col justify-center gap-y-4">
-            <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#7100BD]"></div>
-              <h2>15% Private Sale</h2>
-            </div>
-            <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#D1A3FF]"></div>
-              <h2>15% Public Sale</h2>
-            </div>
-            <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#7F38CC]"></div>
-              <h2>10% Partnership Funds</h2>
-            </div>
-            <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#D08BFE]"></div>
-              <h2>15% Staking Reward</h2>
-            </div>
-            <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#5A199A]"></div>
-              <h2>5% Team Pool</h2>
-            </div>
+            <AllocationItem color="#7100BD" label="15% Private Sale" />
+            <AllocationItem color="#D1A3FF" label="15% Public Sale" />
+            <AllocationItem color="#7F38CC" label="10% Partnership Funds" />
+            <AllocationItem color="#D08BFE" label="15% Staking Reward" />
+            <AllocationItem color="#5A199A" label="5% Team Pool" />
           </div>
-          {/* <TokenomicsChart2 /> */}
           <Chart2 />
           <div className="flex flex-col justify-center gap-y-4 pl-5">
-            <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#CFD4C1]"></div>
-              <h2>10% Operations</h2>
-            </div>
-            <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#CE86FF]"></div>
-              <h2>5% Legal Department</h2>
-            </div>
-            <div className="flex items-center gap-x-3">
-              <div className="h-4 w-4 bg-[#FEDB32]"></div>
-              <h2>15% Team Management</h2>
-            </div>
-            <div className="flex items-start gap-x-3">
-              <div className="mt-1 h-4 w-4 bg-[#F7931A]"></div>
-              <h2>10% Marketing & Development</h2>
-            </div>
-            {/* <div className="flex items-start gap-x-3">
-              <div className="mt-1 h-4 w-4 bg-[#7100BD]"></div>
-              <h2>5% Team Pool</h2>
-            </div> */}
+            <AllocationItem color="#CFD4C1" label="10% Operations" />
+            <AllocationItem color="#CE86FF" label="5% Legal Department" />
+            <AllocationItem color="#FEDB32" label="15% Team Management" />
+            <AllocationItem
+              color="#F7931A"
+              label="10% Marketing & Development"
+            />
           </div>
         </motion.div>
+
+        {/* Token Sale Stages */}
         <motion.div
           className="mt-8 flex w-full flex-col px-4 sm:px-24"
           initial="hide"
@@ -121,31 +103,31 @@ const TokenomicsSection = () => {
             <Card
               state={1}
               bonusPercent={13}
-              daysLeft={"1 day only"}
-              start={"End In: "}
-              endTime={"03:08:30:15"}
-            ></Card>
+              daysLeft="1 day only"
+              start="End In: "
+              endTime="03:08:30:15"
+            />
             <Card
               state={2}
               bonusPercent={20}
-              daysLeft={"1 day only"}
-              start={"End In: "}
-              endTime={"04:08:30:15"}
-            ></Card>
+              daysLeft="1 day only"
+              start="End In: "
+              endTime="04:08:30:15"
+            />
             <Card
               state={3}
               bonusPercent={15}
-              daysLeft={"2 weeks"}
-              start={"Start In: "}
-              endTime={"05:08:30:15"}
-            ></Card>
+              daysLeft="2 weeks"
+              start="Start In: "
+              endTime="05:08:30:15"
+            />
             <Card
               state={4}
               bonusPercent={0}
-              daysLeft={"1 month"}
-              start={"Start In: "}
-              endTime={"07.30.2022"}
-            ></Card>
+              daysLeft="1 month"
+              start="Start In: "
+              endTime="07.30.2022"
+            />
           </div>
         </motion.div>
       </div>
@@ -154,3 +136,17 @@ const TokenomicsSection = () => {
 };
 
 export default TokenomicsSection;
+
+// Reusable AllocationItem Component
+const AllocationItem = React.memo(
+  ({ color, label }: { color: string; label: string }) => {
+    return (
+      <div className="flex items-center gap-x-3">
+        <div className="h-4 w-4" style={{ backgroundColor: color }}></div>
+        <h2>{label}</h2>
+      </div>
+    );
+  },
+);
+
+AllocationItem.displayName = "AllocationItem";
