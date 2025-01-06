@@ -219,11 +219,24 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
           ...prevState,
           tokenPrice: "0",
         }));
+
         const sellPrice = await EthereumPresaleContract.salePrice();
         console.log(sellPrice?.toString(), "sellPricesellPricesellPrice");
         setContractData((prevState) => ({
           ...prevState,
           tokenPrice: sellPrice?.toString(),
+        }));
+      }
+      if (chainId !== 1) {
+        //TODO::1 //mainnet
+        setContractData((prevState) => ({
+          ...prevState,
+          tokenPrice: "0",
+        }));
+
+        setContractData((prevState) => ({
+          ...prevState,
+          tokenPrice: "23000000000000000",
         }));
       }
 
@@ -546,6 +559,12 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
 
       if (chainId === 1) {
         //TODO::1
+
+        setContractData((prevState) => ({
+          ...prevState,
+          tokenPrice: "0",
+        }));
+
         const sellPrice = await EthereumPresaleContract.salePrice();
         setContractData((prevState) => ({
           ...prevState,

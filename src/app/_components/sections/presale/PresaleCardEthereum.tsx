@@ -122,14 +122,13 @@ const PresaleCardEthereum = () => {
           : selectedToken == "USDC"
             ? contractData?.usdcBalance
             : contractData?.usdtBalance;
-      // if (
-      //   parseFloat(tokenAmount > "0" ? tokenAmount?.toString() : "0") >
-      //   parseFloat(tokenBalance > 0 ? tokenBalance?.toString() : "0")
-      // ) {
-      //   setButtonText("Insufficient Balance");
-      //   return;
-      // } else if (
       if (
+        parseFloat(tokenAmount > "0" ? tokenAmount?.toString() : "0") >
+        parseFloat(tokenBalance > 0 ? tokenBalance?.toString() : "0")
+      ) {
+        setButtonText("Insufficient Balance");
+        return;
+      } else if (
         parseFloat(formatEther(cdlValue?.toString() || "0")?.toString()) >
         parseFloat(
           contractData?.remainTokensForSale?.toString() > "0"
@@ -255,7 +254,7 @@ const PresaleCardEthereum = () => {
                 <div className="h-[1px] w-full bg-white"></div>
               </div>
               <div className="grid w-full grid-cols-3 gap-2 font-neue text-sm font-bold sm:gap-5">
-                {["BNB", "USDT", "USDC"].map((token) => (
+                {["ETH", "USDT", "USDC"].map((token) => (
                   <div key={token}>
                     {loader ? (
                       <Skeleton className="h-16 w-full max-w-full bg-gray-500" />
@@ -294,7 +293,7 @@ const PresaleCardEthereum = () => {
                         <span className="font-apfel text-sm">
                           (balance:{" "}
                           {Number(
-                            selectedToken === "BNB"
+                            selectedToken === "ETH"
                               ? contractData?.ethBalance
                               : selectedToken === "USDT"
                                 ? contractData?.usdtBalance
