@@ -8,7 +8,82 @@ import {
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const SimpleScalabale = ({ lang = "en" }: { lang: string }) => {
+const pricingPlans = [
+  {
+    name: "Basic",
+    price: "$0",
+    license: "Personal",
+    support: "Email",
+    apiCalls: "3,600",
+    updateFrequency: "5 Mins",
+    callsPerMinute: "5",
+    endpoints: "Basic",
+    websocket: "No",
+    historicData: "No",
+  },
+  {
+    name: "Personal",
+    price: "$25",
+    license: "Personal",
+    support: "Email",
+    apiCalls: "210,000",
+    updateFrequency: "1 Min",
+    callsPerMinute: "5",
+    endpoints: "Basic",
+    websocket: "No",
+    historicData: "No",
+  },
+  {
+    name: "Startup",
+    price: "$75",
+    license: "Corporate",
+    support: "Email",
+    apiCalls: "850,000",
+    updateFrequency: "30 Seconds",
+    callsPerMinute: "120",
+    endpoints: "Level 2",
+    websocket: "No",
+    historicData: "1 Month",
+  },
+  {
+    name: "Business",
+    price: "$250",
+    license: "Corporate",
+    support: "Email / Portal",
+    apiCalls: "10,000,000",
+    updateFrequency: "10 Seconds",
+    callsPerMinute: "500",
+    endpoints: "Level 2",
+    websocket: "Yes",
+    historicData: "3 Months",
+  },
+  {
+    name: "Corporate",
+    price: "$750",
+    license: "Corporate",
+    support: "Email / Portal",
+    apiCalls: "40,000,000",
+    updateFrequency: "5 Seconds",
+    callsPerMinute: "2,000",
+    endpoints: "Level 3",
+    websocket: "Yes",
+    historicData: "6 Months",
+  },
+  {
+    name: "Enterprise",
+    price: "POA",
+    license: "Custom",
+    support: "Email / Portal / Slack",
+    apiCalls: "Unlimited",
+    updateFrequency: "< 1 Second",
+    callsPerMinute: "Unlimited",
+    endpoints: "Level 3",
+    websocket: "Yes",
+    historicData: "Unlimited",
+  },
+];
+
+const SimpleScalable = ({ lang = "en" }: { lang: string }) => {
   return (
     <div className="relative flex w-full items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-2 border-b border-white/30 px-5 py-20">
@@ -31,105 +106,42 @@ const SimpleScalabale = ({ lang = "en" }: { lang: string }) => {
           Pricing to fit builders and teams of all sizes.
         </motion.span>
         <div className="static z-10 grid w-full gap-5 py-20 md:grid-cols-3">
-          <motion.div
-            initial="hide"
-            whileInView="show"
-            exit="show"
-            variants={topVariants(0)}
-            className="flex h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] xl:max-w-[421px]"
-          >
-            <div className="flex w-full flex-col">
-              <span className="mb-2 w-fit rounded-full border px-3.5 pb-[5px] pt-1">
-                FREE PLAN
-              </span>
-              <span className="mb-3 text-[15px]">
-                For personal & hobby projects
-              </span>
-              <span className="text-[72px] font-bold leading-[79px]">$0</span>
-              <span className="mb-5 text-[20px]">per million requests</span>
-              <div className="flex flex-col gap-2 border-t border-[#D6D6D6] p-3">
-                <span className="text-">1 API key</span>
-                <span className="text-">10,000 requests/month</span>
-                <span className="text-">5 requests per second</span>
-                <span className="text-">Community support</span>
-              </div>
-            </div>
-            <Link
-              href="/contact"
-              className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white"
+          {pricingPlans.map((plan, index) => (
+            <motion.div
+              key={plan.name}
+              initial="hide"
+              whileInView="show"
+              exit="show"
+              variants={topVariants(index * 0.1)}
+              className="flex h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] xl:max-w-[421px]"
             >
-              {buttonIcon}
-              <span className="uppercase">Get started</span>
-            </Link>
-          </motion.div>
-          <motion.div
-            initial="hide"
-            whileInView="show"
-            exit="show"
-            variants={topVariants(0.1)}
-            className="flex h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] xl:max-w-[421px]"
-          >
-            <div className="flex w-full flex-col">
-              <span className="mb-2 w-fit rounded-full border px-3.5 pb-[5px] pt-1">
-                GROWTH PLAN
-              </span>
-              <span className="mb-3 text-[15px]">For teams & startups</span>
-              <span className="text-[72px] font-bold leading-[79px]">$350</span>
-              <span className="mb-5 text-[20px]">per million requests</span>
-              <div className="flex flex-col gap-2 border-t border-[#D6D6D6] p-3">
-                <span className="text-">5 API key</span>
-                <span className="text-">1,000,000 requests/month</span>
-                <span className="text-">300 requests per second</span>
-                <span className="text-">Priority support</span>
-                <span className="text-">Websockets</span>
-                <span className="text-">Webhooks</span>
+              <div className="flex w-full flex-col">
+                <span className="mb-2 w-fit rounded-full border px-3.5 pb-[5px] pt-1">
+                  {plan.name.toUpperCase()}
+                </span>
+                <span className="mb-3 text-[15px]">{plan.license} License</span>
+                <span className="text-[72px] font-bold leading-[79px]">
+                  {plan.price}
+                </span>
+                <span className="mb-5 text-[20px]">per month</span>
+                <div className="flex flex-col gap-2 border-t border-[#D6D6D6] p-3">
+                  <span>{plan.apiCalls} API Calls / Month</span>
+                  <span>Update Frequency: {plan.updateFrequency}</span>
+                  <span>Calls per Minute: {plan.callsPerMinute}</span>
+                  <span>Endpoints: {plan.endpoints}</span>
+                  <span>Websocket: {plan.websocket}</span>
+                  <span>Historic Data: {plan.historicData}</span>
+                </div>
               </div>
-            </div>
-            <Link
-              href="/contact"
-              className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white"
-            >
-              {buttonIcon}
-              <span className="uppercase">Get started</span>
-            </Link>
-          </motion.div>
-          <motion.div
-            initial="hide"
-            whileInView="show"
-            exit="show"
-            variants={topVariants(0.2)}
-            className="flex h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] xl:max-w-[421px]"
-          >
-            <div className="flex w-full flex-col">
-              <span className="mb-2 w-fit rounded-full border px-3.5 pb-[5px] pt-1">
-                ENTERPRISE PLAN
-              </span>
-              <span className="mb-3 text-[15px]">
-                Tailored solution for larger companies
-              </span>
-              <span className="text-5xl font-bold sm:text-[62px] sm:leading-[69px]">
-                CUSTOM
-              </span>
-              <span className="mb-5 text-[20px]">per million requests</span>
-              <div className="flex flex-col gap-2 border-t border-[#D6D6D6] p-3">
-                <span className="text-">Unlimited API keys</span>
-                <span className="text-">Unlimited requests/month</span>
-                <span className="text-">Custom requests per second</span>
-                <span className="text-">Dedicated support</span>
-                <span className="text-">Websockets</span>
-                <span className="text-">Webhooks</span>
-                <span className="text-">High concurrency</span>
-                <span className="text-">Custom SLAs</span>
-              </div>
-            </div>
-            <Link
-              href="/contact"
-              className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white"
-            >
-              {buttonIcon}
-              <span className="uppercase">Get started</span>
-            </Link>
-          </motion.div>
+              <Link
+                href="/contact"
+                className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white"
+              >
+                {buttonIcon}
+                <span className="uppercase">Get started</span>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
       <div className="absolute">{gradientSvg}</div>
@@ -228,4 +240,4 @@ const gradientSvg = (
   </svg>
 );
 
-export default SimpleScalabale;
+export default SimpleScalable;
