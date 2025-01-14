@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "../_components/header/Header";
-import MovingBar from "../_components/header/MovingBar";
+import TokensMarquee from "../_components/header/TokensMarquee";
 import Footer from "../_components/footer/Footer";
 import { AppKit } from "@/context/Web3Modal";
 import { StoreProvider } from "@/context/Store/Store";
@@ -60,7 +60,7 @@ export default async function RootLayout({
           <PreloaderProvider>
             <StoreProvider>
               <ToastProvider>
-                <MovingBar />
+                <TokensMarquee />
                 <Header lang={lang} />
                 {children}
                 <Footer lang={lang} />

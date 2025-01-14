@@ -41,10 +41,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse | v
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next)
     "/((?!_next).*)",
     "/((?!_next/static|_next/image|static/|favicon.ico|robots.txt|sitemap.xml|manifest.json).*)",
-    // Optional: only run on root (/) URL
-    // '/'
   ],
 };
