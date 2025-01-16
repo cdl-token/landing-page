@@ -21,7 +21,7 @@ const TextAnimation = dynamic(() => import("@/components/ui/scroll-text"), {
 });
 
 const MainBanner = () => {
-  const words = ["Outsmarting", "Surpassing", "Overcoming"];
+  const words = ["Beat", "Outdo", "Exceed"];
 
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-x-hidden">
@@ -53,7 +53,7 @@ const MainBanner = () => {
               exit="show"
               variants={bottomVariants(0.2)}
             >
-              Their Own Arena
+              Their Own Game
             </motion.h1>
           </div>
           <motion.p
