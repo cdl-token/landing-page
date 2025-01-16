@@ -102,7 +102,7 @@ const TokenomicsSection = () => {
           <div className="mt-3 grid w-full items-center justify-center gap-10 md:grid-cols-2 md:gap-20 xl:grid-cols-4">
             <Card
               state={1}
-              bonusPercent={13}
+              bonusPercent={30}
               daysLeft="1 day only"
               start="End In: "
               endTime="03:08:30:15"
