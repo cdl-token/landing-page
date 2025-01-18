@@ -64,7 +64,6 @@ const ServicesPage = async ({ params }) => {
       <FilterSearch />
       <CDLvs />
       <SimpleScalabale lang={lang} />
-      <TokenPowers />
       <StayInformed />
     </div>
   );
