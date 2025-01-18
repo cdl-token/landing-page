@@ -22,8 +22,7 @@ const TokenSection = () => {
           variants={leftToRightVariants}
         >
           <TextAnimation
-            text="Gain access to real-time and historical data for your favorite
-              assets"
+            text="Access Real-Time and Historical Data for Your Favourite Assets"
             variants={{
               hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
               visible: {
@@ -42,9 +41,9 @@ const TokenSection = () => {
             variants={leftVariant(0)}
             className="mt-8 text-wrap text-[16px] lowercase leading-[24px] text-white/50"
           >
-            Empower yourself to manage your cryptocurrencies, NFTs, and other
-            digital assets with complete control, privacy, and security, all
-            from the convenience of your own device.
+            The CDL Token is your gateway into a new era of crypto data. $CDL
+            holders benefit from exclusive access, additional features and
+            special offers on our subscriptions plans
           </motion.p>
           <div className="mt-6 max-w-[38rem]">
             <Image

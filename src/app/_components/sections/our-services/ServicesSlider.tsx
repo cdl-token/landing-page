@@ -15,211 +15,118 @@ const ServicesSlider = () => {
   const [count, setCount] = useState(0);
   const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
 
+  const sliderData = [
+    {
+      title: "Live Data Flows",
+      description:
+        "Our Data Flows are doing something new - providing live data from source so users are aware of market moves as they happen, not after. With no lag, global providers and multiple plug-in options the way we handle data is different.",
+      link: "/product",
+      image: "/static/cube3.png",
+      gradient: cardGradient1,
+      imagePosition: "absolute left-0 top-0",
+      contentClass: "p-5 pt-[180px]",
+    },
+    {
+      title: "Neo Oracles",
+      description:
+        "Old oracles use data that is updated infrequently and after the event. Our Neo Oracles harness data with multiple instances running simultaneously across a decentralized global network to verify it for pin-point accuracy.",
+      link: "/product",
+      image: "/static/cube2.png",
+      gradient: cardGradient2,
+      imagePosition: "absolute bottom-0 right-0",
+      contentClass: "p-5 pb-[28px] mt-[20px]",
+    },
+    {
+      title: "AI Agents & Algos",
+      description:
+        "Our AI Agents and advanced algorithms deliver market intelligence and data-driven insights both online and on-chain. Gain a trading edge with bespoke models, predictive pricing, real time price slippage curves and much more.",
+      link: "/product",
+      image: "/static/cube1.png",
+      gradient: cardGradient3,
+      imagePosition: "absolute -bottom-10 -right-10",
+      contentClass: "p-5 pb-[28px] mt-[20px]",
+    },
+    {
+      title: "Multi-Exchange Support",
+      description:
+        "Get real-time data from multiple crypto exchanges in one place, making it easy to compare prices, liquidity, and trading volume across various platforms",
+      link: "/product",
+      image: "/static/cube3.png",
+      gradient: cardGradient1,
+      imagePosition: "absolute left-0 top-0",
+      contentClass: "p-5 pt-[180px]",
+    },
+    {
+      title: "Real-Time Data Feeds",
+      description:
+        "Access up-to-the-minute cryptocurrency price updates, volume data, and market trends to stay informed and make timely decisions",
+      link: "/product",
+      image: "/static/cube2.png",
+      gradient: cardGradient2,
+      imagePosition: "absolute bottom-0 right-0",
+      contentClass: "p-5 pb-[28px] mt-[20px]",
+    },
+    {
+      title: "Harnessing the Power of AI",
+      description:
+        "At CDL Token, we are partnering with leading AI companies to establish a cutting-edge AI research arm, transforming the way crypto data is analyzed and utilized.",
+      link: "/product",
+      image: "/static/cube1.png",
+      gradient: cardGradient3,
+      imagePosition: "absolute -bottom-10 -right-10",
+      contentClass: "p-5 pb-[28px] mt-[20px]",
+    },
+  ];
+
   useEffect(() => {
-    if (!api) {
-      return;
-    }
-    console.log(current, count);
+    if (!api) return;
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
+    api.on("select", () => setCurrent(api.selectedScrollSnap() + 1));
   }, [api]);
 
   return (
     <div className="flex flex-col gap-5">
       <Carousel
-        opts={{
-          align: "start",
-          loop: true,
-        }}
+        opts={{ align: "start", loop: true }}
         setApi={setApi}
         plugins={[plugin.current]}
         className="w-full max-w-7xl"
       >
         <CarouselContent>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <div className="h-ful relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
-                <div className="z-10 flex h-full flex-col p-5 pt-[180px]">
-                  <h1 className="font-neue text-3xl font-bold">
-                    Secure transactions
-                  </h1>
-                  <span className="font-apfel text-lg text-white/75">
-                    Gain access to historical cryptocurrency data and detailed
-                    market analysis to identify trends, patterns, and
-                    opportunities for strategic decision-making
-                  </span>
-                  <Link
-                    href="/product"
-                    className="absolute bottom-6 mt-16 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
+          {sliderData.map((item, index) => (
+            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+              <div className="p-1">
+                <div className="relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
+                  <div
+                    className={`z-10 flex h-full flex-col ${item.contentClass}`}
                   >
-                    See more
-                  </Link>
+                    <h1 className="font-neue text-3xl font-bold">
+                      {item.title}
+                    </h1>
+                    <span className="font-apfel text-lg text-white/75">
+                      {item.description}
+                    </span>
+                    <Link
+                      href={item.link}
+                      className="absolute bottom-6 mt-16 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
+                    >
+                      See more
+                    </Link>
+                  </div>
+                  <div className="absolute right-0">{item.gradient}</div>
+                  <Image
+                    className={item.imagePosition}
+                    width={233}
+                    height={260}
+                    alt={`image-${index}`}
+                    src={item.image}
+                  />
                 </div>
-                <div className="absolute right-0">{cardGradient1}</div>
-                <Image
-                  className="absolute left-0 top-0"
-                  width={233}
-                  height={260}
-                  alt="cube3"
-                  src="/static/cube3.png"
-                />
               </div>
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <div className="relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
-                <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
-                  <h1 className="font-neue text-3xl font-bold">
-                    Historical Data & Market Analysis
-                  </h1>
-                  <span className="font-apfel text-lg text-white/75">
-                    Gain access to historical cryptocurrency data and detailed
-                    market analysis to identify trends, patterns, and
-                    opportunities for strategic decision-making
-                  </span>
-                  <Link
-                    href="/product"
-                    className="absolute bottom-6 mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
-                  >
-                    See more
-                  </Link>
-                </div>
-                <div className="absolute right-0">{cardGradient2}</div>
-                <Image
-                  className="absolute bottom-0 right-0"
-                  width={233}
-                  height={260}
-                  alt="cube2"
-                  src="/static/cube2.png"
-                />
-              </div>
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <div className="relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
-                <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
-                  <h1 className="font-neue text-3xl font-bold">
-                    APIs for Real-Time Data
-                  </h1>
-                  <span className="font-apfel text-lg text-white/75">
-                    Seamlessly integrate CDL Token&apos; s powerful APIs into
-                    your platform, delivering real-time crypto data and insights
-                    directly to your application
-                  </span>
-                  <Link
-                    href="/product"
-                    className="absolute bottom-6 mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
-                  >
-                    See more
-                  </Link>
-                </div>
-                <div className="absolute right-0">{cardGradient3}</div>
-                <Image
-                  className="absolute -bottom-10 -right-10"
-                  width={233}
-                  height={260}
-                  alt="cube1"
-                  src="/static/cube1.png"
-                />
-              </div>
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <div className="h-ful relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
-                <div className="z-10 flex h-full flex-col p-5 pt-[180px]">
-                  <h1 className="font-neue text-3xl font-bold">
-                    Multi-Exchange Support
-                  </h1>
-                  <span className="font-apfel text-lg text-white/75">
-                    Get real-time data from multiple crypto exchanges in one
-                    place, making it easy to compare prices, liquidity, and
-                    trading volume across various platforms
-                  </span>
-                  <Link
-                    href="/product"
-                    className="absolute bottom-6 mt-16 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
-                  >
-                    See more
-                  </Link>
-                </div>
-                <div className="absolute right-0">{cardGradient1}</div>
-                <Image
-                  className="absolute left-0 top-0"
-                  width={233}
-                  height={260}
-                  alt="cube3"
-                  src="/static/cube3.png"
-                />
-              </div>
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <div className="relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
-                <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
-                  <h1 className="font-neue text-3xl font-bold">
-                    Real-Time Data Feeds
-                  </h1>
-                  <span className="font-apfel text-lg text-white/75">
-                    Access up-to-the-minute cryptocurrency price updates, volume
-                    data, and market trends to stay informed and make timely
-                    decisions
-                  </span>
-                  <Link
-                    href="/product"
-                    className="absolute bottom-6 mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
-                  >
-                    See more
-                  </Link>
-                </div>
-                <div className="absolute right-0">{cardGradient2}</div>
-                <Image
-                  className="absolute bottom-0 right-0"
-                  width={233}
-                  height={260}
-                  alt="cube2"
-                  src="/static/cube2.png"
-                />
-              </div>
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <div className="relative flex h-[488px] w-full flex-col overflow-hidden rounded-2xl bg-[#F8F8F81F]">
-                <div className="z-10 mt-[20px] flex h-full flex-col p-5 pb-[28px]">
-                  <h1 className="font-neue text-3xl font-bold">
-                    Harnessing the Power of AI
-                  </h1>
-                  <span className="font-apfel text-lg text-white/75">
-                    At CDL Token, we are partnering with leading AI companies to
-                    establish a cutting-edge AI research arm, transforming the
-                    way crypto data is analyzed and utilized.
-                  </span>
-                  <Link
-                    href="/product"
-                    className="absolute bottom-6 mt-40 flex w-fit items-center justify-center rounded-full border border-white/30 bg-black/20 px-5 pb-2 pt-1.5 font-apfel transition-all ease-in hover:border-white"
-                  >
-                    See more
-                  </Link>
-                </div>
-                <div className="absolute right-0">{cardGradient3}</div>
-                <Image
-                  className="absolute -bottom-10 -right-10"
-                  width={233}
-                  height={260}
-                  alt="cube1"
-                  src="/static/cube1.png"
-                />
-              </div>
-            </div>
-          </CarouselItem>
+            </CarouselItem>
+          ))}
         </CarouselContent>
       </Carousel>
     </div>

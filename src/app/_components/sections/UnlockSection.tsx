@@ -21,14 +21,14 @@ const UnlockSection = () => {
           variants={leftToRightVariants}
         >
           <span className="font-neue text-3xl font-bold uppercase text-white md:text-[38px] md:leading-[42.6px]">
-            Unlock the future with CDL Token
+            Unlock the Future of Finance with $CDL
           </span>
           <p className="pr-10 text-[16px] leading-[24px] text-white">
-            Step into the next era of decentralized finance with CDL Token.
-            Harness the power of innovation and opportunity, and be part of a
-            revolutionary platform. Don&apos;t miss out - start your journey with CDL
-            today and experience the limitless potential of blockchain
-            technology.
+            Join the new era of Decentralized Finance. The CDL token is your
+            ticket into an unprecedented platform that&apos;s reshaping how financial
+            data moves on-chain. Our Neo Oracles and Live Data Flows are
+            bridging the gap between TradFi and DeFi to deliver the best of both
+            worlds so you can stay ahead of the curve.
           </p>
           <Link href="https://dapp-one-phi.vercel.app/">
             <button className="mt-5 w-fit rounded-lg border border-white/75 px-[25px] py-[15px] font-neue font-bold transition-all duration-200 ease-in hover:border hover:bg-white/75 hover:text-black">

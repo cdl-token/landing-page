@@ -44,10 +44,10 @@ const TokenomicsSection = () => {
           variants={leftVariant(0)}
           className="max-w-[1000px] text-balance text-center font-apfel text-white/70"
         >
-          CDL Token is designed for sustainable growth and long-term value, with
-          adaptable tokenomics to support a thriving community. By offering
-          powerful analytics tools, CDL Token empowers users to shape the future
-          of crypto data solutions and drive platform success.
+          The CDL token is designed for sustainable growth and long-term value,
+          complemented by tokenomics to support a thriving community. With real
+          utility, from governance to staking, $CDL allows holders to shape the
+          future of crypto data solutions and drive our platform's success.
         </motion.p>
 
         {/* Tokenomics Chart Section */}
@@ -60,21 +60,22 @@ const TokenomicsSection = () => {
         >
           <Chart1 />
           <div className="flex flex-col justify-center gap-y-4">
-            <AllocationItem color="#7100BD" label="15% Private Sale" />
-            <AllocationItem color="#D1A3FF" label="15% Public Sale" />
-            <AllocationItem color="#7F38CC" label="10% Partnership Funds" />
-            <AllocationItem color="#D08BFE" label="15% Staking Reward" />
-            <AllocationItem color="#5A199A" label="5% Team Pool" />
+            <AllocationItem color="#7100BD" label="10% Private Sale" />
+            <AllocationItem color="#D1A3FF" label="10% Public Sale" />
+            <AllocationItem color="#7F38CC" label="15% Presale" />
+            <AllocationItem color="#D08BFE" label="10% Liquidity" />
+            <AllocationItem color="#5A199A" label="15% Staking Reward" />
           </div>
           <Chart2 />
           <div className="flex flex-col justify-center gap-y-4 pl-5">
-            <AllocationItem color="#CFD4C1" label="10% Operations" />
-            <AllocationItem color="#CE86FF" label="5% Legal Department" />
-            <AllocationItem color="#FEDB32" label="15% Team Management" />
+            <AllocationItem color="#CFD4C1" label="15% Ecosystem" />
+            <AllocationItem color="#CE86FF" label="10% Team & Advisors" />
             <AllocationItem
-              color="#F7931A"
-              label="10% Marketing & Development"
+              color="#FEDB32"
+              label="5% Marketing & Development"
             />
+            <AllocationItem color="#F7931A" label="5% KOL's & Airdrop's" />
+            <AllocationItem color="#5300AE" label="5% Legal Department" />
           </div>
         </motion.div>
 

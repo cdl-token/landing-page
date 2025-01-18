@@ -94,7 +94,7 @@ const WhyInvestSection = () => {
 
           {/* Animated Text */}
           <TextAnimation
-            text="Why invest in CDL Token?"
+            text="Why invest in CDL?"
             variants={{
               hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
               visible: {
@@ -115,11 +115,11 @@ const WhyInvestSection = () => {
             variants={rightVariants(0)}
             className="lowercase text-white"
           >
-            CDL Token empowers investors with real-time analytics, live charts,
-            and secure transactions on the Binance Smart Chain. With plans to
-            expand features and partnerships, CDL Token offers exclusive
-            insights and innovative tools for informed, data-driven
-            investing—positioning itself as a leader in crypto data solutions.
+            Crypto Data Live empowers traders, builders and institutions at all
+            levels with raw, real-time analytics. Our product suite combines
+            oracles, AI Agents, data feeds and more, to provide a full service
+            platform that delivers actionable market insights, live
+            opportunities and timely warnings.
           </motion.p>
 
           {/* Call-to-Action Buttons */}
@@ -136,7 +136,7 @@ const WhyInvestSection = () => {
                 title="Buy CDL Token"
               />
             </Link>
-            <Link
+            {/* <Link
               className="w-full sm:w-fit"
               href="https://dapp-one-phi.vercel.app/"
             >
@@ -144,7 +144,7 @@ const WhyInvestSection = () => {
                 className="w-full sm:w-fit"
                 title="Launch Dapp"
               />
-            </Link>
+            </Link> */}
           </motion.div>
         </div>
       </div>

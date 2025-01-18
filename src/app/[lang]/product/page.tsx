@@ -5,7 +5,6 @@ import FilterSearch from "./_components/FilterSearch";
 import HowDoes from "./_components/HowDoes";
 import ServiceMain from "./_components/ServiceMain";
 import SimpleScalabale from "./_components/SimpleScalabale";
-import TokenPowers from "./_components/TokenPowers";
 import VersatileDelivery from "./_components/VersatileDelivery";
 import ExploreNow from "./_components/ExploreNow";
 import axios from "axios";

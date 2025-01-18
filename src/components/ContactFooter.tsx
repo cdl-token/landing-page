@@ -25,7 +25,7 @@ const ContactFooter = () => {
 
   return (
     <div className="grid place-items-center">
-      <div className="mt-8 flex max-w-[75rem] flex-col gap-y-[61px] px-8 xl:px-2">
+      <div className="mt-8 flex w-full max-w-[75rem] flex-col gap-y-[61px] px-8 xl:px-2">
         <div className="flex flex-col gap-y-0.5">
           <TextAnimation
             text="Need Help?"
@@ -41,41 +41,7 @@ const ContactFooter = () => {
             classname="text-wrap font-neue text-xl font-bold md:text-3xl uppercase text-white"
           />
         </div>
-        <div className="grid gap-x-5 gap-y-10 md:grid-cols-3">
-          <motion.div
-            className="group flex w-full gap-x-3 gap-y-[30px] rounded-[10px]"
-            initial="hide"
-            whileInView="show"
-            exit="show"
-            variants={leftToRightVariants(0)}
-          >
-            <div className="grid h-[80px] w-[80px] place-items-center">
-              <Image
-                src="/static/contact-footer/chat.png"
-                width={80}
-                height={80}
-                alt="img"
-              />
-            </div>
-            <div className="flex w-[80%] flex-col gap-x-3 gap-y-3">
-              <span className="font-neue text-[21.33px] font-bold leading-6 text-white">
-                24/7 Chat Support
-              </span>
-              <span className="">
-                Get 24/7 chat support with our friendly customer service agents
-                at your service.
-              </span>
-              <button
-                className="mt-2 flex items-center gap-x-2 text-center"
-                onClick={() => router.push("/contact")}
-              >
-                <p className="text-primary1 hover:border-primary1 font-neue font-bold hover:border-b">
-                  Chat now
-                </p>
-                {arrowHead}
-              </button>
-            </div>
-          </motion.div>
+        <div className="grid w-full gap-x-5 gap-y-10 md:grid-cols-2">
           <motion.div
             className="group flex w-full gap-x-3 gap-y-[30px] rounded-[10px]"
             initial="hide"
@@ -106,10 +72,9 @@ const ContactFooter = () => {
                 classname="font-neue text-[21.33px] font-bold leading-6 text-white"
               />
               <TextAnimation
-                as="p"
                 letterAnime={true}
                 text="View FAQs for detailed instructions on specific features."
-                classname="lowercase text-white"
+                classname="text-[#898990] normal-case"
                 variants={{
                   hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
                   visible: {
@@ -163,10 +128,9 @@ const ContactFooter = () => {
                 classname="font-neue text-[21.33px] font-bold leading-6 text-white"
               />
               <TextAnimation
-                as="p"
                 letterAnime={true}
                 text="Stay up to date with the latest stories and commentary."
-                classname="lowercase text-white"
+                classname="normal-case text-[#898990]"
                 variants={{
                   hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
                   visible: {
