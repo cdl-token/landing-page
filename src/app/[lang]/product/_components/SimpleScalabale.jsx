@@ -6,7 +6,14 @@ import {
   topVariants,
 } from "@/lib/animation-variants";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const pricingPlans = [
   {
@@ -83,16 +90,16 @@ const pricingPlans = [
   },
 ];
 
-const SimpleScalable = ({ lang = "en" }: { lang: string }) => {
+const SimpleScalable = ({ lang = "en" }) => {
   return (
     <div className="relative flex w-full items-center justify-center">
-      <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-2 border-b border-white/30 px-5 py-20">
+      <div className="flex w-full max-w-7xl flex-col items-center justify-center gap-2 px-5 py-10">
         <motion.div
           initial="hide"
           whileInView="show"
           exit="show"
           variants={leftVariant(0)}
-          className="font-neue text-[45px] font-bold uppercase leading-[50px]"
+          className="font-neue text-3xl md:text-[45px] font-bold uppercase md:leading-[50px]"
         >
           Simple, scalable pricing
         </motion.div>
@@ -105,46 +112,66 @@ const SimpleScalable = ({ lang = "en" }: { lang: string }) => {
         >
           Pricing to fit builders and teams of all sizes.
         </motion.span>
-        <div className="static z-10 grid w-full gap-5 py-20 md:grid-cols-3">
-          {pricingPlans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial="hide"
-              whileInView="show"
-              exit="show"
-              variants={topVariants(index * 0.1)}
-              className="flex h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] xl:max-w-[421px]"
-            >
-              <div className="flex w-full flex-col">
-                <span className="mb-2 w-fit rounded-full border px-3.5 pb-[5px] pt-1">
-                  {plan.name.toUpperCase()}
-                </span>
-                <span className="mb-3 text-[15px]">{plan.license} License</span>
-                <span className="text-[72px] font-bold leading-[79px]">
-                  {plan.price}
-                </span>
-                <span className="mb-5 text-[20px]">per month</span>
-                <div className="flex flex-col gap-2 border-t border-[#D6D6D6] p-3">
-                  <span>{plan.apiCalls} API Calls / Month</span>
-                  <span>Update Frequency: {plan.updateFrequency}</span>
-                  <span>Calls per Minute: {plan.callsPerMinute}</span>
-                  <span>Endpoints: {plan.endpoints}</span>
-                  <span>Websocket: {plan.websocket}</span>
-                  <span>Historic Data: {plan.historicData}</span>
-                </div>
-              </div>
-              <Link
-                href="/contact"
-                className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white"
-              >
-                {buttonIcon}
-                <span className="uppercase">Get started</span>
-              </Link>
-            </motion.div>
-          ))}
+        <div className="py-10 max-w-screen px-5 flex w-full flex-col">
+          <Carousel
+            plugins={[
+              Autoplay({
+                delay: 4000,
+              }),
+            ]}
+            opts={{
+              loop: true,
+              align: "start",
+            }}
+          >
+            <CarouselContent>
+              {pricingPlans.map((plan, index) => (
+                <CarouselItem className="sm:basis-1/2 md:basis-1/3" key={index}>
+                  <div className="flex gap-10 md:h-[45rem] w-full flex-col justify-between rounded-[15px] border border-[#c8bed8] p-5 md:p-8 text-[#c8bed8] transition-all duration-200 ease-in hover:border-[#A625F6] md:max-w-[421px]">
+                    <div className="flex w-full flex-col">
+                      <span className="mb-2 w-fit rounded-full border px-3.5 pb-[5px] pt-1">
+                        {plan.name.toUpperCase()}
+                      </span>
+                      <span className="mb-3 text-[15px]">
+                        {plan.license} License
+                      </span>
+                      <span className="text-[72px] font-bold leading-[79px]">
+                        {plan.price}
+                      </span>
+                      <span className="mb-5 text-[20px]">per month</span>
+                      <div className="flex flex-col gap-2 border-t border-[#D6D6D6] p-3">
+                        <span>{plan.apiCalls} API Calls / Month</span>
+                        <span>Update Frequency: {plan.updateFrequency}</span>
+                        <span>Calls per Minute: {plan.callsPerMinute}</span>
+                        <span>Endpoints: {plan.endpoints}</span>
+                        <span>Websocket: {plan.websocket}</span>
+                        <span>Historic Data: {plan.historicData}</span>
+                      </div>
+                    </div>
+                    <Link
+                      href="/contact"
+                      className="flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#D6D6D6] px-5 py-3 text-primary hover:bg-white"
+                    >
+                      {buttonIcon}
+                      <span className="uppercase">Get started</span>
+                    </Link>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
       </div>
-      <div className="absolute">{gradientSvg}</div>
+      
+      <div className="absolute w-full right-0 bottom-[350px] -z-10">
+        <Image
+          src="/static/bg/home/simple-scalable-gradient.svg"
+          width={4251}
+          height={6285}
+          alt="Gradient"
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 };

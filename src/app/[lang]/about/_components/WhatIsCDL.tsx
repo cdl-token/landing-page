@@ -166,7 +166,7 @@ const WhatIsCDL = () => {
             />
             <h1 className="font-neue font-bold uppercase">Security</h1>
             <span className="text-center font-apfel text-white/75">
-              Modular "security as a service", provided either by Ethereum or by
+              Modular &quot;security as a service&quot;, provided either by Ethereum or by
               a pool of professional validators.
             </span>
           </motion.div>
