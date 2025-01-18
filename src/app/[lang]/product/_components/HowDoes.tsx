@@ -16,7 +16,7 @@ const HowDoes = () => {
             variants={leftVariant(0)}
             className="font-neue text-3xl font-bold uppercase md:text-[45px] md:leading-[50px]"
           >
-            How does enhanced data drive better decisions?
+            Trade Smarter, Build Better, Act Faster
           </motion.h1>
           <motion.span
             initial="hide"
@@ -24,9 +24,9 @@ const HowDoes = () => {
             exit="show"
             variants={leftVariant(0)}
           >
-            Managing raw blockchain data is complex, requiring nodes, servers,
-            and vast technical resources. This process can be time-intensive and
-            costly for businesses.
+            Our data doesn&apos;t compromise. We deliver directly from source
+            via our unique Neo Oracle and Live Data Flow technology so our
+            market insights, APIs, and plug-ins are unparalleled.
           </motion.span>
           <motion.span
             initial="hide"
@@ -34,10 +34,10 @@ const HowDoes = () => {
             exit="show"
             variants={leftVariant(0)}
           >
-            CDL Token simplifies this by providing enriched, well-structured
-            blockchain data through valuable endpoints. It saves time, reduces
-            costs, and allows businesses to focus on innovation, making
-            blockchain data more accessible and efficient to use.
+            Managing blockchain data is complex, costly, and time-consuming,
+            requiring nodes, servers and vast resources. Save time, money and
+            man-power with our range of intuitive solutions, so you can focus on
+            what matters to you and your team.
           </motion.span>
         </div>
         <motion.div

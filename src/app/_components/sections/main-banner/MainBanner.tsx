@@ -64,7 +64,7 @@ const MainBanner = () => {
           >
             Gain an edge in the markets with bespoke data. For years, CDL has
             empowered institutional investors with advanced analytics, price
-            predictions and real-time data feeds. Now, we're bringing that same
+            predictions and real-time data feeds. Now, we&apos;re bringing that same
             power to you.
           </motion.p>
           <TextAnimation

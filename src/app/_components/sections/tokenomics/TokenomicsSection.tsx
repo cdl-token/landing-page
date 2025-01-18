@@ -47,7 +47,7 @@ const TokenomicsSection = () => {
           The CDL token is designed for sustainable growth and long-term value,
           complemented by tokenomics to support a thriving community. With real
           utility, from governance to staking, $CDL allows holders to shape the
-          future of crypto data solutions and drive our platform's success.
+          future of crypto data solutions and drive our platform&apos;s success.
         </motion.p>
 
         {/* Tokenomics Chart Section */}

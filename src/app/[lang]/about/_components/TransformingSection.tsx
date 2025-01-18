@@ -24,7 +24,7 @@ const TransformingSection = () => {
               ABOUT CDL token
             </motion.h2>
             <TextAnimation
-              text="Transforming Data for Tomorrow"
+              text="Better Data for the Future of Finance"
               variants={{
                 hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
                 visible: {
@@ -43,12 +43,14 @@ const TransformingSection = () => {
               variants={leftVariant(0.1)}
               className="max-w-[534px] font-apfel leading-[24px] text-white/50"
             >
-              CDL Token stands out as a unique oracle data solution, bridging
-              real-world data with decentralized applications. By providing
-              secure, reliable, and scalable data feeds, CDL enables blockchain
-              projects to make informed decisions and execute smart contracts
-              with accuracy, all while fostering transparency and
-              decentralization.
+              Our data does not compromise. And neither should you.
+              <br />
+              <br />
+              The Crypto Data Live platform bridges real-world data with
+              decentralized applications. By providing secure, reliable and
+              scalable data feeds in a variety of forms, CDL enables both
+              blockchain-based and traditional finance projects to make informed
+              decisions.
             </motion.span>
           </div>
           <div className="grid grid-cols-2">
@@ -212,12 +214,10 @@ const TransformingSection = () => {
               OUR VISION
             </h1>
             <span className="text-[#898990]">
-              To empower the next generation of blockchain and crypto data
-              services by providing seamless integration, robust security, and
-              innovative solutions that drive value for users and businesses
-              globally. CDL Token aims to bridge the gap between decentralized
-              finance, data analytics, and blockchain technology, enabling
-              real-time insights and actionable strategies.
+              To empower the next generation of blockchain builders and crypto
+              data services by providing seamless integration, robust security
+              and innovative solutions that drive value for businesses and
+              brands globally.
             </span>
           </motion.div>
           <motion.div
@@ -231,12 +231,10 @@ const TransformingSection = () => {
               OUR MISSION
             </h1>
             <span className="text-[#898990]">
-              To become the leading cryptocurrency and data platform, creating a
-              fully decentralized ecosystem that fosters transparency,
-              scalability, and growth. CDL Token envisions a future where
-              blockchain-powered data services are universally accessible,
-              transforming industries and enabling enterprises to thrive in a
-              decentralized world.
+              To become the leading crypto data platform, creating a fully
+              decentralized ecosystem that fosters transparency and growth while
+              fusing DeFi with TradFi so users benefit from the best of both
+              worlds.
             </span>
           </motion.div>
           <motion.div
@@ -250,11 +248,10 @@ const TransformingSection = () => {
               CORE VALUE
             </h1>
             <span className="text-[#898990]">
-              CDL Token is built on transparency, security, innovation,
-              decentralization, and scalability. We ensure open access to data,
-              protect user assets, and drive continuous innovation. By
-              empowering the community and reducing centralization, we create a
-              scalable ecosystem that grows with user needs.
+              We ensure open access to high-quality data, user asset protection
+              and intuitive oracle technology. Through frequent evaluation we
+              continually evolve to provide market-leading services and
+              solutions.
             </span>
           </motion.div>
         </div>

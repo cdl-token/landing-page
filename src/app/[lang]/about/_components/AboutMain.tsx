@@ -31,7 +31,7 @@ const AboutMain = ({ lang = "en" }: { lang: string }) => {
           color: "transparent",
         }}
       >
-        A Next-Gen Blockchain.
+        A Next Generation
       </motion.h1>
       <motion.h1
         initial="hide"
@@ -40,7 +40,7 @@ const AboutMain = ({ lang = "en" }: { lang: string }) => {
         variants={bottomVariants(0.1)}
         className="static z-10 font-neue text-3xl font-bold lg:text-[60px] lg:leading-[62px]"
       >
-        Reliable & Secure Data.
+        of Financial Data.
       </motion.h1>
       <motion.span
         initial="hide"
@@ -49,9 +49,9 @@ const AboutMain = ({ lang = "en" }: { lang: string }) => {
         variants={bottomVariants(0.2)}
         className="static z-10 w-full max-w-[780px] py-5 text-center text-[20px]"
       >
-        Experience unparalleled speed and efficiency with our next-generation
-        blockchain, designed to power seamless transactions and real-time data
-        processing
+        Experience unmatched speed and efficiency with our next generation of
+        data products designed to power individuals, institutions and
+        enterprises of all sizes
       </motion.span>
       <motion.div
         initial="hide"

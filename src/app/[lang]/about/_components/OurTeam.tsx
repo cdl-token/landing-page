@@ -58,10 +58,10 @@ const OurTeam = () => {
                 Co-Founder & CEO
               </span>
               <div className="flex items-center gap-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary cursor-pointer hover:text-black">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary hover:text-black">
                   {linkedIn}
                 </div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary cursor-pointer hover:text-black">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary hover:text-black">
                   {twitter}
                 </div>
               </div>
@@ -88,10 +88,10 @@ const OurTeam = () => {
                 Co-Founder & COO
               </span>
               <div className="flex items-center gap-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary cursor-pointer hover:text-black">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary hover:text-black">
                   {linkedIn}
                 </div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary cursor-pointer hover:text-black">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary hover:text-black">
                   {twitter}
                 </div>
               </div>
@@ -118,10 +118,10 @@ const OurTeam = () => {
                 Co-Founder & CFO
               </span>
               <div className="flex items-center gap-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary cursor-pointer hover:text-black">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary hover:text-black">
                   {linkedIn}
                 </div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary cursor-pointer hover:text-black">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary hover:text-black">
                   {twitter}
                 </div>
               </div>
@@ -146,10 +146,10 @@ const OurTeam = () => {
               </h1>
               <span className="mb-3 text-center text-[#898990]">CMO</span>
               <div className="flex items-center gap-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary cursor-pointer hover:text-black">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary hover:text-black">
                   {linkedIn}
                 </div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary cursor-pointer hover:text-black">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary hover:text-black">
                   {twitter}
                 </div>
               </div>

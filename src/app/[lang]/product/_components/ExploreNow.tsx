@@ -59,11 +59,11 @@ const ExploreNow = ({ coinData }) => {
           </div>
         </div>
         <div className="grid w-full gap-5 md:grid-cols-2">
-          <div className="flex h-[35rem] w-full max-w-full flex-col items-start gap-3 overflow-auto rounded-2xl border border-white/30 px-5 py-4 text-start">
+          <div className="flex h-[35rem] w-full max-w-full flex-col items-start gap-3 overflow-auto rounded-2xl border-2 border-[#242424] bg-[#141414] px-5 py-4 text-start">
             <h1 className="text-2xl font-semibold">QUERY</h1>
             {queryCode}
           </div>
-          <div className="flex h-[35rem] w-full flex-col items-start gap-3 rounded-2xl border border-white/30 px-5 py-4">
+          <div className="flex h-[35rem] w-full flex-col items-start gap-3 rounded-2xl border-2 border-[#91AD00] bg-[#91AD001A] px-5 py-4">
             <h1 className="text-2xl font-semibold">RESPONSE</h1>
             {responseCode}
           </div>
