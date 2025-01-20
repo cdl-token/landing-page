@@ -165,7 +165,7 @@ const SimpleScalable = ({ lang = "en" }) => {
       
       <div className="absolute w-full right-0 bottom-[350px] -z-10">
         <Image
-          src="/static/bg/home/simple-scalable-gradient.svg"
+          src="/static/bgs/gradient-bg.svg"
           width={4251}
           height={6285}
           alt="Gradient"

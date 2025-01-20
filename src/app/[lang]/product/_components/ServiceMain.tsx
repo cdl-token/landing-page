@@ -6,8 +6,14 @@ import {
   rightVariants,
 } from "@/lib/animation-variants";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
+import { Unbounded } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const unbounded = Unbounded({
+  subsets: ["latin"],
+  weight: ["800"],
+});
 
 const ServiceMain = () => {
   return (
@@ -36,7 +42,7 @@ const ServiceMain = () => {
               color: "transparent",
             }}
           >
-            WHY ACCEPT
+            FROM LIVE DATA
           </motion.h1>
           <motion.h1
             initial="hide"
@@ -45,16 +51,7 @@ const ServiceMain = () => {
             variants={bottomVariants(0.1)}
             className="font-neue text-3xl font-bold uppercase md:text-[65px] md:leading-[68px]"
           >
-            Raw data when
-          </motion.h1>
-          <motion.h1
-            initial="hide"
-            whileInView="show"
-            exit="show"
-            variants={bottomVariants(0.2)}
-            className="font-neue text-3xl font-bold uppercase md:text-[65px] md:leading-[68px]"
-          >
-            Insights await?
+            TO ACTIONABLE INSIGHTS
           </motion.h1>
           <motion.span
             initial="hide"
@@ -63,16 +60,16 @@ const ServiceMain = () => {
             variants={bottomVariants(0.3)}
             className="max-w-[597px] py-5 text-center font-apfel text-sm md:py-0 md:text-lg"
           >
-            The CDL Token enables real-time access to comprehensive crypto data,
-            delivering insights on over 6 million tokens and 1 billion NFTs
-            across 57 blockchain networks.
+            Holding the CDL token enables exclusive access to comprehensive
+            crypto data, AI Agents to advance your trading, and instant insights
+            on the financial markets.
           </motion.span>
           <motion.button
             initial="hide"
             whileInView="show"
             exit="show"
             variants={bottomVariants(0.4)}
-            className="group my-5 flex items-center rounded-[5px] border border-white bg-white p-1 text-black hover:border-white hover:bg-black transition-all ease-in duration-200 hover:text-white hover:shadow-lg"
+            className="group my-5 flex items-center rounded-[5px] border border-white bg-white p-1 text-black transition-all duration-200 ease-in hover:border-white hover:bg-black hover:text-white hover:shadow-lg"
           >
             {buttonSvg}
             <Link
@@ -90,7 +87,7 @@ const ServiceMain = () => {
               variants={leftVariant(0)}
               className="uppercase"
             >
-              Powering leading web3 platforms
+              Powering leading DeFi and TradFi platforms
             </motion.span>
             <motion.div
               initial="hide"
@@ -99,36 +96,14 @@ const ServiceMain = () => {
               variants={rightVariants(0)}
               className="flex flex-wrap items-center justify-center gap-5"
             >
-              <Image
-                src="/static/services/companies/1.svg"
-                width={128}
-                height={23}
-                alt="trading view"
-              />
-              <Image
-                src="/static/services/companies/2.svg"
-                width={120}
-                height={23}
-                alt="sudoswap"
-              />
-              <Image
-                src="/static/services/companies/3.svg"
-                width={84}
-                height={23}
-                alt="defined"
-              />
-              <Image
-                src="/static/services/companies/4.svg"
-                width={29}
-                height={23}
-                alt="0x"
-              />
-              <Image
-                src="/static/services/companies/5.svg"
-                width={108}
-                height={23}
-                alt="matcha"
-              />
+              <span
+                className={cn(
+                  "spacing-[0.2px] text-center text-[17px] font-extrabold uppercase",
+                  unbounded.className,
+                )}
+              >
+                London Stock Exchange | ChainLink | Refinitiv
+              </span>
             </motion.div>
           </div>
         </div>
