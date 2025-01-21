@@ -80,7 +80,7 @@ const PresaleSection = () => {
           >
             <Link
               className="w-full sm:w-fit"
-              href="https://dapp-one-phi.vercel.app/"
+              href="https://app.cryptodata.live/"
             >
               <PrimaryButton className="w-full sm:w-fit" title="Launch Dapp" />
             </Link>

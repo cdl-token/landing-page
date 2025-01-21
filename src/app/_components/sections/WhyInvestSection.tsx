@@ -138,7 +138,7 @@ const WhyInvestSection = () => {
             </Link>
             {/* <Link
               className="w-full sm:w-fit"
-              href="https://dapp-one-phi.vercel.app/"
+              href="https://app.cryptodata.live/"
             >
               <SecondaryButton
                 className="w-full sm:w-fit"

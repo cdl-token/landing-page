@@ -92,7 +92,7 @@ const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
               </div>
               <div className="flex flex-col gap-2 py-5">
                 <PrimaryButton
-                  action={() => router.push("https://dapp-one-phi.vercel.app/")}
+                  action={() => router.push("https://app.cryptodata.live/")}
                   title="Launch Dapp"
                   className="py-2 text-sm"
                 />
