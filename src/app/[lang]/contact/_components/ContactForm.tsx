@@ -10,7 +10,6 @@ const ContactForm: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  // const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
@@ -25,39 +24,39 @@ const ContactForm: React.FC = () => {
     return () => clearTimeout(timer);
   }, [formSubmitted]);
 
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   if (name && email && isChecked) {
-  //     await fetch("/api/email", {
-  //       method: "POST",
-  //       body: JSON.stringify({
-  //         name,
-  //         email,
-  //         message,
-  //         selectedOption,
-  //         phoneNumber,
-  //       }),
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         if (data) {
-  //           setFormSubmitted(true);
-  //           setName("");
-  //           setMessage("");
-  //           setPhoneNumber("");
-  //           setIsChecked(false);
-  //           setEmail("");
-  //           setSelectedOption("Your inquiry about");
-  //         }
-  //       })
-  //       .catch((err) => console.error(err));
-  //   } else {
-  //     alert("Please fill in all required fields.");
-  //   }
-  // };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log("ccasdas");
+    e.preventDefault();
+    if (name && email && isChecked) {
+      await fetch("/api/email", {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          selectedOption,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            setFormSubmitted(true);
+            setName("");
+            setMessage("");
+            setIsChecked(false);
+            setEmail("");
+            setSelectedOption("Your inquiry about");
+          }
+          console.log("DAta", data);
+        })
+        .catch((err) => console.error(err));
+    } else {
+      alert("Please fill in all required fields.");
+    }
+  };
 
   const options: string[] = [
     "Technical Support",
@@ -68,7 +67,10 @@ const ContactForm: React.FC = () => {
   ];
 
   return (
-    <div className="static z-10 mt-20 flex flex-col rounded-[20px] border border-white/30 bg-[#FAFAFA2B] px-6 py-10 backdrop-blur-[20px] lg:min-w-[680px]">
+    <form
+      onSubmit={handleSubmit}
+      className="static z-10 mt-20 flex flex-col rounded-[20px] border border-white/30 bg-[#FAFAFA2B] px-6 py-10 backdrop-blur-[20px] lg:min-w-[680px]"
+    >
       <div className="flex w-full flex-col md:flex-row md:space-x-4">
         <input
           name="name"
@@ -92,6 +94,7 @@ const ContactForm: React.FC = () => {
       <button
         className="flex h-[60px] w-full items-center justify-between rounded-md bg-[#232325] px-4 font-apfel text-white outline-none"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        type="button"
       >
         <span>{selectedOption || "Your inquiry about"}</span>
         <div>
@@ -115,6 +118,7 @@ const ContactForm: React.FC = () => {
               setIsDropdownOpen(false);
             }}
             className="flex w-full rounded-[3px] px-2 py-3 text-start transition-all duration-200 ease-in hover:bg-[#f3f3f3] hover:text-black"
+            type="button"
           >
             {option}
           </button>
@@ -132,6 +136,7 @@ const ContactForm: React.FC = () => {
           <button
             onClick={() => setIsChecked(!isChecked)}
             className="ml-2 flex h-5 w-5 items-center justify-center rounded-[3px] bg-[#232325]"
+            type="button"
           >
             {isChecked && <Check className="h-3 w-3 text-white" />}
           </button>
@@ -142,9 +147,13 @@ const ContactForm: React.FC = () => {
             I accept terms & conditions
           </label>
         </div>
-        <PrimaryButton className="mx-auto mt-10" title="Send Message" />
+        <PrimaryButton
+          className="mx-auto mt-10"
+          title="Send Message"
+          type="submit"
+        />
       </div>
-    </div>
+    </form>
   );
 };
 
