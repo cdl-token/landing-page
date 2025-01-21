@@ -15,8 +15,8 @@ export const EmailTemplate = ({
     <p>{message}</p>
     <p className="mt-12">--</p>
     <p>
-      This email was sent from a contact form on forcefinancecoin
-      (https://www.forcefinancecoin.ca)
+      This email was sent from a contact form on crptodata.live
+      (https://ico.cryptodata.live)
     </p>
   </div>
 );

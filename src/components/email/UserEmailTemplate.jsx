@@ -6,7 +6,7 @@ export const UserEmailTemplate = ({name, selectedOption}) => (
     <br />
     <p className="mt-28">Message Body:</p>
     <p>
-      Thanks you for your interest in Force Finance Coin. One our support
+      Thanks you for your interest in Crypto Data Live. One our support
       representative will contact you shortly.
     </p>
     <br />
@@ -15,17 +15,17 @@ export const UserEmailTemplate = ({name, selectedOption}) => (
       Regards
       <br />
       <br />
-      Force Finance Coin <br />
+      Crypto Data Live <br />
       Defi Financial Solutions <br />
       Address: Laurier Ave w, 629, Ottawa, ON K1P 5J2, Canada
       <br />
-      Mail: info@forcefinancecoin.com
+      Mail: info@crptodata.live.com
     </p>
     <br />
     <br />
     <p>
-      This email was sent from a contact form on forcefinancecoin
-      (https://www.forcefinancecoin.ca)
+      This email was sent from a contact form on crptodata.live
+      (https://ico.cryptodata.live)
     </p>
   </div>
 );
