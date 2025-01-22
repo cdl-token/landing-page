@@ -9,10 +9,13 @@ const FaqForm = () => {
   const [email, setEmail] = useState<string>("");
   const [question, setQuestion] = useState<string>("");
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // Track submission state
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (isSubmitting) return; // Prevent duplicate submissions
 
     const recaptchaValue = recaptchaRef.current?.getValue();
 
@@ -20,10 +23,12 @@ const FaqForm = () => {
       alert(
         !recaptchaValue
           ? "Please complete the ReCAPTCHA."
-          : "Please fill in all required fields.",
+          : "Please fill in all required fields."
       );
       return;
     }
+
+    setIsSubmitting(true); // Set submitting state to true
 
     try {
       const response = await fetch("/api/faqs", {
@@ -47,6 +52,8 @@ const FaqForm = () => {
     } catch (error) {
       console.error("Error submitting the form:", error);
       alert("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false); // Reset submitting state
     }
   };
 
@@ -107,9 +114,10 @@ const FaqForm = () => {
           />
         </div>
         <PrimaryButton
-          title={formSubmitted ? "Message Sent!" : "Send a message"}
+          title={isSubmitting ? "Submitting..." : formSubmitted ? "Message Sent!" : "Send a message"}
           type="submit"
-          className={formSubmitted ? "pointer-events-none opacity-50" : ""}
+          disabled={isSubmitting} // Disable button during submission
+          className={isSubmitting || formSubmitted ? "pointer-events-none opacity-50" : ""}
         />
       </form>
     </>

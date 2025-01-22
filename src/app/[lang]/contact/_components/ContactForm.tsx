@@ -14,6 +14,7 @@ const ContactForm: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // Track submitting state
   const recaptchaRef = createRef<ReCAPTCHA>();
 
   useEffect(() => {
@@ -29,6 +30,8 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (isSubmitting) return; // Prevent duplicate submissions
+
     const recaptchaValue = recaptchaRef.current?.getValue();
 
     if (!name || !email || !isChecked || !recaptchaValue) {
@@ -39,6 +42,8 @@ const ContactForm: React.FC = () => {
       );
       return;
     }
+
+    setIsSubmitting(true); // Set submitting state to true
 
     try {
       const response = await fetch("/api/email", {
@@ -68,6 +73,8 @@ const ContactForm: React.FC = () => {
     } catch (error) {
       console.error("Error submitting the form:", error);
       alert("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false); // Reset submitting state
     }
   };
 
@@ -181,8 +188,9 @@ const ContactForm: React.FC = () => {
           </div>
           <PrimaryButton
             className="mx-auto mt-10"
-            title="Send Message"
+            title={isSubmitting ? "Submitting..." : "Send Message"}
             type="submit"
+            disabled={isSubmitting} // Disable button during submission
           />
         </div>
       </form>
