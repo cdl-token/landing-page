@@ -66,10 +66,10 @@ const PresaleSection = () => {
             variants={rightVariants(0)}
             className="w-full max-w-[667px] lowercase text-white"
           >
-            Welcome to the CDL Token Sale, your exclusive entry point into a
-            world of powerful, real-time crypto intelligence, secure
-            transactions, and innovative analytics, all powered by the Ethereum
-            chain.
+            Get exclusive entry into a world of powerful, real-time crypto
+            intelligence, analytics and AI-driven market insights. Join the
+            Crypto Data Live presale and be part of a community fusing TradFi
+            with DeFi
           </motion.p>
           <motion.div
             initial="hide"

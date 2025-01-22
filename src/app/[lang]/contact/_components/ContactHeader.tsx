@@ -12,11 +12,9 @@ const ContactHeader = () => {
         Contact Us
       </h1>
       <span className="w-full max-w-[780px] py-5 text-center text-[18px]">
-        Reach Out to Us, Whether you have questions, feedback, or partnership
-        inquiries, we&apos;re here to assist you. Contact CDL TOKEN today and let&apos;s
-        explore the future of finance together
+        Have questions, feedback, or partnership inquiries? Contact us today
       </span>
-      <div className="flex items-center gap-5">
+      {/* <div className="flex items-center gap-5">
         <button className="flex h-[30px] w-[30px] items-center justify-center rounded-[5px] border border-white/30 p-1 text-white hover:text-primary">
           {telegram}
         </button>
@@ -29,7 +27,7 @@ const ContactHeader = () => {
         <button className="flex h-[30px] w-[30px] items-center justify-center rounded-[5px] border border-white/30 p-1 text-white hover:text-primary">
           {discord}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

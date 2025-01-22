@@ -37,8 +37,9 @@ const apfelFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "CDL Token",
-  description: "CDL token landing page",
+  title: "Crypto Data Live CDL Token Presale",
+  description:
+    "The CDL token is the native coin for the Crypto Data Live platform. Join the presale and be part of redefining how data flows between TradFi and DeFi.",
 };
 
 interface RootLayoutProps {

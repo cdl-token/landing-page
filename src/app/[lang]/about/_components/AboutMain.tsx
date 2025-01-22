@@ -31,7 +31,7 @@ const AboutMain = ({ lang = "en" }: { lang: string }) => {
           color: "transparent",
         }}
       >
-        A Next Generation
+        The Next Generation
       </motion.h1>
       <motion.h1
         initial="hide"

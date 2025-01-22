@@ -113,7 +113,7 @@ const WhyInvestSection = () => {
             whileInView="show"
             exit="show"
             variants={rightVariants(0)}
-            className="lowercase text-white"
+            className="text-white"
           >
             Crypto Data Live empowers traders, builders and institutions at all
             levels with raw, real-time analytics. Our product suite combines

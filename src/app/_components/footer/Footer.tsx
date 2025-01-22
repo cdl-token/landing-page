@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import HeaderLogo from "../header/HeaderLogo";
 import Link from "next/link";
 import {
@@ -9,7 +11,38 @@ import {
   youtubeIcon,
 } from "./footer-icons";
 
-const Footer = ({ lang = "en" }: { lang: string }) => {
+const Footer = ({ lang = "en" }) => {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("");
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    setStatus(""); // Reset status before submission
+
+    if (!email) {
+      setStatus("Please enter a valid email address.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setStatus("Thank you for subscribing!");
+        setEmail(""); // Reset email input
+      } else {
+        setStatus("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setStatus("Failed to subscribe. Please try again.");
+    }
+  };
+
   return (
     <footer className="relative flex w-full flex-col items-center justify-center overflow-hidden border-t border-white/30">
       <div className="static z-10 flex w-full max-w-7xl flex-col gap-5 px-5 pt-20">
@@ -44,7 +77,10 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
             <Link className="hover:text-primary" href="/about">
               About
             </Link>
-            <Link className="hover:text-primary" href="https://cdl-token.gitbook.io/cdl-token/usdcdl-token/editor">
+            <Link
+              className="hover:text-primary"
+              href="https://cdl-token.gitbook.io/cdl-token/usdcdl-token/editor"
+            >
               Token
             </Link>
             <Link className="hover:text-primary" href="/about#our-team">
@@ -90,18 +126,29 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
               Ecosystem
             </Link>
             <Link className="hover:text-primary" href={`/${lang}/faq`}>
-              Faq&apos;s
+              FAQ&apos;s
             </Link>
           </div>
           <div className="flex flex-col justify-end gap-5 px-5 pt-8 lg:px-0">
-            <h1 className="font-neue text-xl">Sign up for our neweletter</h1>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              className="rounded-md border border-white/30 bg-transparent px-3 py-2 focus:outline-none"
-              placeholder="Email Address ->"
-            />
+            <h1 className="font-neue text-xl">Sign up for our newsletter</h1>
+            <form onSubmit={handleNewsletterSubmit}>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="rounded-md border border-white/30 bg-transparent px-3 py-2 focus:outline-none"
+                placeholder="Email Address ->"
+              />
+              <button
+                type="submit"
+                className="mt-3 rounded-md bg-primary px-4 py-2 text-white"
+              >
+                Subscribe
+              </button>
+            </form>
+            {status && <span className="text-sm text-red-500">{status}</span>}
           </div>
         </div>
         <div className="ml-5 flex flex-wrap justify-between gap-3 pb-5">
@@ -135,6 +182,8 @@ const Footer = ({ lang = "en" }: { lang: string }) => {
     </footer>
   );
 };
+
+export default Footer;
 
 const gradientSvg = (
   <svg
@@ -186,5 +235,3 @@ const gradientSvg = (
     </defs>
   </svg>
 );
-
-export default Footer;

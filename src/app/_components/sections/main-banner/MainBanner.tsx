@@ -21,7 +21,7 @@ const TextAnimation = dynamic(() => import("@/components/ui/scroll-text"), {
 });
 
 const MainBanner = () => {
-  const words = ["Beat", "Outdo", "Exceed"];
+  const words = ["Trump", "Outdo", "Exceed"];
 
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-x-hidden">

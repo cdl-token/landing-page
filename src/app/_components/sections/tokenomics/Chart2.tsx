@@ -1,46 +1,116 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Chart2 = ({
   width = "380",
   height = "380",
+  data = [
+    { color: "#CFD4C1", label: "15% Ecosystem", percentage: 15 },
+    { color: "#CE86FF", label: "10% Team & Advisors", percentage: 10 },
+    { color: "#FEDB32", label: "5% Marketing & Development", percentage: 5 },
+    { color: "#F7931A", label: "5% KOL's & Airdrop's", percentage: 5 },
+    { color: "#5300AE", label: "5% Legal Department", percentage: 5 },
+  ],
 }: {
   width?: string;
   height?: string;
+  data?: { color: string; label: string; percentage: number }[];
 }) => {
+  const [tooltip, setTooltip] = useState<{
+    label: string;
+    x: number;
+    y: number;
+  } | null>(null);
+
+  const totalPercentage = data.reduce((sum, item) => sum + item.percentage, 0);
+
+  // Calculate angles
+  let startAngle = 0;
+  const segments = data.map((item) => {
+    const angle = (item.percentage / totalPercentage) * 360;
+    const endAngle = startAngle + angle;
+    const largeArcFlag = angle > 180 ? 1 : 0;
+
+    const x1 = 200 + 200 * Math.cos((Math.PI * startAngle) / 180);
+    const y1 = 200 + 200 * Math.sin((Math.PI * startAngle) / 180);
+    const x2 = 200 + 200 * Math.cos((Math.PI * endAngle) / 180);
+    const y2 = 200 + 200 * Math.sin((Math.PI * endAngle) / 180);
+
+    // Calculate the center of the segment to show the tooltip
+    const tooltipX =
+      200 + 150 * Math.cos((Math.PI * (startAngle + endAngle)) / 2 / 180);
+    const tooltipY =
+      200 + 150 * Math.sin((Math.PI * (startAngle + endAngle)) / 2 / 180);
+
+    const pathData = `M200,200 L${x1},${y1} A200,200 0 ${largeArcFlag} 1 ${x2},${y2} Z`;
+
+    startAngle = endAngle;
+
+    return {
+      color: item.color,
+      pathData,
+      label: item.label,
+      percentage: item.percentage,
+      tooltipX,
+      tooltipY,
+    };
+  });
+
+  // Handle mouse enter
+  const handleMouseEnter = (label: string, x: number, y: number) => {
+    setTooltip({ label, x, y });
+  };
+
+  // Handle mouse leave
+  const handleMouseLeave = () => {
+    setTooltip(null);
+  };
+
   return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 399 399"
-      className="w-full"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M199.613 0.7771C231.164 0.7771 262.261 8.28601 290.335 22.6832C318.409 37.0803 342.654 57.9523 361.065 83.574L280.311 141.601C271.109 128.795 258.991 118.363 244.958 111.167C230.926 103.97 215.383 100.217 199.613 100.217V0.7771Z"
-        className="fill-[#CE86FF] transition-colors hover:fill-[#9a64cc]"
-      />
-      <path
-        d="M361.824 84.6384C376.73 105.673 387.403 129.405 393.247 154.514L296.397 177.059C293.475 164.509 288.141 152.647 280.69 142.133L361.824 84.6384Z"
-        className="fill-[#FEDB31] transition-colors hover:fill-[#e0c417]"
-      />
-      <path
-        d="M393.525 155.722C401.694 191.833 399.617 229.508 387.528 264.503C375.439 299.497 353.819 330.421 325.102 353.79L262.336 276.662C276.689 264.982 287.496 249.525 293.538 232.034C299.58 214.543 300.618 195.712 296.535 177.663L393.525 155.722Z"
-        className="fill-[#F7931A] transition-colors hover:fill-[#f37a12]"
-      />
-      <path
-        d="M323.596 355.004C290.568 381.352 250.005 396.493 207.791 398.231C165.576 399.969 123.906 388.213 88.8242 364.669C53.7424 341.125 27.0733 307.017 12.6854 267.292C-1.70255 227.567 -3.06111 184.292 8.80675 143.743L104.243 171.675C98.3115 191.943 98.9905 213.573 106.182 233.428C113.373 253.284 126.703 270.332 144.238 282.1C161.773 293.868 182.601 299.743 203.7 298.875C224.8 298.006 245.075 290.438 261.583 277.269L323.596 355.004Z"
-        className="fill-[#7100BD] transition-colors hover:fill-[#5a006f]"
-      />
-      <path
-        d="M9.1523 142.576C22.3918 98.3465 50.6115 60.1041 88.9692 34.4103L144.311 117.028C125.138 129.87 111.033 148.985 104.416 171.092L9.1523 142.576Z"
-        className="fill-[#CE86FF] transition-colors hover:fill-[#9a64cc]"
-      />
-      <path
-        d="M90.0949 33.6618C121.991 12.6093 159.278 1.19602 197.493 0.788408L198.553 100.223C179.453 100.427 160.815 106.131 144.873 116.654L90.0949 33.6618Z"
-        className="fill-[#DEEBBC] transition-colors hover:fill-[#c1d27b]"
-      />
-    </svg>
+    <div className="relative">
+      <svg
+        width={width}
+        height={height}
+        viewBox="0 0 400 400"
+        className="w-full"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Outer circle segments */}
+        {segments.map((segment, index) => (
+          <path
+            key={index}
+            d={segment.pathData}
+            fill={segment.color}
+            className="transition-colors hover:opacity-75"
+            onMouseEnter={() =>
+              handleMouseEnter(
+                segment.label,
+                segment.tooltipX,
+                segment.tooltipY,
+              )
+            }
+            onMouseLeave={handleMouseLeave}
+          />
+        ))}
+
+        {/* Inner circle (hole) */}
+        <circle cx="200" cy="200" r="100" fill="black" />
+      </svg>
+
+      {/* Tooltip */}
+      {tooltip && (
+        <div
+          className="absolute rounded bg-black p-2 text-white"
+          style={{
+            top: tooltip.y,
+            left: tooltip.x,
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <span>{tooltip.label}</span>
+        </div>
+      )}
+    </div>
   );
 };
 
