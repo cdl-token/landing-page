@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Chart1 = ({
   width = "380",
@@ -7,92 +7,135 @@ const Chart1 = ({
   width?: string;
   height?: string;
 }) => {
-  const data = [
-    { label: "Private Sale", percentage: 10, color: "#7100BD" },
-    { label: "Public Sale", percentage: 10, color: "#D1A3FF" },
-    { label: "Presale", percentage: 15, color: "#7F38CC" },
-    { label: "Liquidity", percentage: 10, color: "#D08BFE" },
-    { label: "Staking Reward", percentage: 15, color: "#5A199A" },
+  const allocations = [
+    { percentage: 10, color: "#7100BD", label: "Private Sale", radius: 180 },
+    { percentage: 10, color: "#D1A3FF", label: "Public Sale", radius: 150 },
+    { percentage: 15, color: "#7F38CC", label: "Presale", radius: 170 },
+    { percentage: 10, color: "#D08BFE", label: "Liquidity", radius: 120 },
+    { percentage: 15, color: "#5A199A", label: "Staking Reward", radius: 160 },
   ];
 
-  const total = 60; // Total percentage
-  const radius = 190; // Radius of the circle
-  const centerX = 200; // Center X
-  const centerY = 200; // Center Y
-
-  // Helper to calculate arc paths
-  const calculatePath = (
-    percentage: number,
-    startAngle: number,
-  ): { path: string; endAngle: number } => {
-    const angle = (percentage / total) * 360; // Convert percentage to degrees
-    const endAngle = startAngle + angle;
-
-    const x1 = centerX + radius * Math.cos((Math.PI * startAngle) / 180);
-    const y1 = centerY + radius * Math.sin((Math.PI * startAngle) / 180);
-
-    const x2 = centerX + radius * Math.cos((Math.PI * endAngle) / 180);
-    const y2 = centerY + radius * Math.sin((Math.PI * endAngle) / 180);
-
-    const largeArcFlag = angle > 180 ? 1 : 0;
-
-    const path = `M ${centerX},${centerY} L ${x1},${y1} A ${radius},${radius} 0 ${largeArcFlag} 1 ${x2},${y2} Z`;
-    return { path, endAngle };
-  };
+  const totalPercentage = 60;
+  const [tooltip, setTooltip] = useState<{
+    label: string;
+    percentage: number;
+    x: number;
+    y: number;
+  } | null>(null);
 
   let startAngle = 0;
 
-  return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 400 400"
-      className="w-full"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {data.map((item, index) => {
-        const { path, endAngle } = calculatePath(item.percentage, startAngle);
-        startAngle = endAngle; // Update start angle for the next slice
+  // Utility to calculate SVG path and tooltip position
+  const calculatePathAndTooltip = (
+    allocation: (typeof allocations)[0],
+    cumulativeAngle: number,
+  ) => {
+    const angle = (allocation.percentage / totalPercentage) * 360;
+    const endAngle = cumulativeAngle + angle;
+    const largeArcFlag = angle > 180 ? 1 : 0;
 
-        return (
-          <path
-            key={index}
-            d={path}
-            fill={item.color}
-            className="transition-transform duration-200 hover:scale-105 hover:brightness-90"
-          />
-        );
-      })}
-      {/* Inner Circle */}
-      <circle cx={centerX} cy={centerY} r="56.8032" fill="white" />
-      <text
-        x={centerX}
-        y={centerY - 10}
-        textAnchor="middle"
-        className="fill-black font-neue text-[10px] font-bold md:text-[12px] lg:text-[14px]"
-        dominantBaseline="middle"
+    const x1 =
+      200 + allocation.radius * Math.cos((Math.PI * cumulativeAngle) / 180);
+    const y1 =
+      200 + allocation.radius * Math.sin((Math.PI * cumulativeAngle) / 180);
+    const x2 = 200 + allocation.radius * Math.cos((Math.PI * endAngle) / 180);
+    const y2 = 200 + allocation.radius * Math.sin((Math.PI * endAngle) / 180);
+
+    const tooltipX =
+      200 +
+      (allocation.radius / 1.5) *
+        Math.cos((Math.PI * (cumulativeAngle + endAngle)) / 360);
+    const tooltipY =
+      200 +
+      (allocation.radius / 1.5) *
+        Math.sin((Math.PI * (cumulativeAngle + endAngle)) / 360);
+
+    const pathData = `M200,200 L${x1},${y1} A${allocation.radius},${allocation.radius} 0 ${largeArcFlag} 1 ${x2},${y2} Z`;
+
+    return { pathData, tooltipX, tooltipY, endAngle };
+  };
+
+  return (
+    <div className="relative">
+      <svg
+        width={width}
+        height={height}
+        viewBox="0 0 400 400"
+        className="w-full"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        Total
-      </text>
-      <text
-        x={centerX}
-        y={centerY + 5}
-        textAnchor="middle"
-        className="fill-black font-neue text-[10px] font-bold md:text-[12px] lg:text-[14px]"
-        dominantBaseline="middle"
-      >
-        Supply
-      </text>
-      <text
-        x={centerX}
-        y={centerY + 20}
-        textAnchor="middle"
-        className="fill-black font-neue text-[12px] font-bold md:text-[14px] lg:text-[16px]"
-        dominantBaseline="middle"
-      >
-        100M
-      </text>
-    </svg>
+        {allocations.map((allocation, index) => {
+          const { pathData, tooltipX, tooltipY, endAngle } =
+            calculatePathAndTooltip(allocation, startAngle);
+          startAngle = endAngle;
+
+          return (
+            <path
+              key={index}
+              d={pathData}
+              fill={allocation.color}
+              className="transition-colors hover:opacity-75"
+              onMouseEnter={() =>
+                setTooltip({
+                  label: allocation.label,
+                  percentage: allocation.percentage,
+                  x: tooltipX,
+                  y: tooltipY,
+                })
+              }
+              onMouseLeave={() => setTooltip(null)}
+            />
+          );
+        })}
+
+        {/* Central white circle */}
+        <circle cx="200" cy="200" r="56" fill="white" />
+        <text
+          x="200"
+          y="190"
+          textAnchor="middle"
+          className="fill-black font-neue text-[10px] font-bold md:text-[12px] lg:text-[14px]"
+          dominantBaseline="middle"
+        >
+          Total
+        </text>
+        <text
+          x="200"
+          y="205"
+          textAnchor="middle"
+          className="fill-black font-neue text-[10px] font-bold md:text-[12px] lg:text-[14px]"
+          dominantBaseline="middle"
+        >
+          Supply
+        </text>
+        <text
+          x="200"
+          y="223"
+          textAnchor="middle"
+          className="fill-black font-neue text-[12px] font-bold md:text-[14px] lg:text-[16px]"
+          dominantBaseline="middle"
+        >
+          100M
+        </text>
+      </svg>
+
+      {/* Tooltip */}
+      {tooltip && (
+        <div
+          className="absolute rounded bg-black px-2 py-1 text-sm text-white shadow-lg"
+          style={{
+            top: tooltip.y,
+            left: tooltip.x,
+            transform: "translate(-50%, -50%)",
+            pointerEvents: "none",
+          }}
+        >
+          <div>{tooltip.label}</div>
+          <div>{tooltip.percentage}%</div>
+        </div>
+      )}
+    </div>
   );
 };
 
