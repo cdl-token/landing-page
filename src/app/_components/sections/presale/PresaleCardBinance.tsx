@@ -389,7 +389,8 @@ const PresaleCardBinance = () => {
                         value={Number(
                           formatEther(cdlValue?.toString() || "0"),
                         )?.toFixed(2)}
-                        onChange={(e) => setcdlValue(e.target.value)}
+                        readOnly
+                        // onChange={(e) => setcdlValue(e.target.value)}
                       />
                     </div>
                   </>
