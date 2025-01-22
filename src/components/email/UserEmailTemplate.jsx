@@ -4,7 +4,6 @@ export const UserEmailTemplate = ({name, selectedOption}) => (
     <p>Customer Name: Dear {name}</p>
     <br />
     <br />
-    <p className="mt-28">Message Body:</p>
     <p>
       Thanks you for your interest in Crypto Data Live. One our support
       representative will contact you shortly.
@@ -17,9 +16,8 @@ export const UserEmailTemplate = ({name, selectedOption}) => (
       <br />
       Crypto Data Live <br />
       Defi Financial Solutions <br />
-      Address: Laurier Ave w, 629, Ottawa, ON K1P 5J2, Canada
       <br />
-      Mail: info@crptodata.live.com
+      Mail: info@crptodata.live
     </p>
     <br />
     <br />
