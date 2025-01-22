@@ -12,7 +12,7 @@ const PrimaryButton = ({
   className?: string;
   title: string;
   type?: "button" | "submit" | "reset"; // Match the button type
-  disabled: boolean;
+  disabled?: boolean;
   action?: (() => Promise<void>) | (() => void);
 }) => {
   return (
