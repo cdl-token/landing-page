@@ -59,7 +59,7 @@ const TokenomicsSection = () => {
           variants={rightToLeftVariants}
         >
           <Chart1 />
-          <div className="flex flex-col justify-center gap-y-4">
+          <div className="flex flex-col justify-center gap-y-4 pl-5">
             <AllocationItem color="#7100BD" label="10% Private Sale" />
             <AllocationItem color="#D1A3FF" label="10% Public Sale" />
             <AllocationItem color="#7F38CC" label="15% Presale" />
@@ -68,13 +68,13 @@ const TokenomicsSection = () => {
           </div>
           <Chart2 />
           <div className="flex flex-col justify-center gap-y-4 pl-5">
-            <AllocationItem color="#CFD4C1" label="15% Ecosystem" />
+            <AllocationItem color="#F7931A" label="15% Ecosystem" />
             <AllocationItem color="#CE86FF" label="10% Team & Advisors" />
             <AllocationItem
               color="#FEDB32"
               label="5% Marketing & Development"
             />
-            <AllocationItem color="#F7931A" label="5% KOL's & Airdrop's" />
+            <AllocationItem color="#CFD4C1" label="5% KOL's & Airdrop's" />
             <AllocationItem color="#5300AE" label="5% Legal Department" />
           </div>
         </motion.div>

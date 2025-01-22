@@ -4,10 +4,10 @@ const Chart2 = ({
   width = "380",
   height = "380",
   data = [
-    { color: "#CFD4C1", label: "15% Ecosystem", percentage: 15 },
+    { color: "#F7931A", label: "15% Ecosystem", percentage: 15 },
     { color: "#CE86FF", label: "10% Team & Advisors", percentage: 10 },
     { color: "#FEDB32", label: "5% Marketing & Development", percentage: 5 },
-    { color: "#F7931A", label: "5% KOL's & Airdrop's", percentage: 5 },
+    { color: "#CFD4C1", label: "5% KOL's & Airdrop's", percentage: 5 },
     { color: "#5300AE", label: "5% Legal Department", percentage: 5 },
   ],
 }: {

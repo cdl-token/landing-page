@@ -17,7 +17,7 @@ const Footer = ({ lang = "en" }) => {
 
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    setStatus(""); // Reset status before submission
+    setStatus("");
 
     if (!email) {
       setStatus("Please enter a valid email address.");
@@ -33,7 +33,7 @@ const Footer = ({ lang = "en" }) => {
 
       if (response.ok) {
         setStatus("Thank you for subscribing!");
-        setEmail(""); // Reset email input
+        setEmail("");
       } else {
         setStatus("Something went wrong. Please try again.");
       }
@@ -131,7 +131,7 @@ const Footer = ({ lang = "en" }) => {
           </div>
           <div className="flex flex-col justify-end gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-xl">Sign up for our newsletter</h1>
-            <form onSubmit={handleNewsletterSubmit}>
+            <form className="flex items-center gap-2" onSubmit={handleNewsletterSubmit}>
               <input
                 type="email"
                 name="email"
@@ -143,7 +143,7 @@ const Footer = ({ lang = "en" }) => {
               />
               <button
                 type="submit"
-                className="mt-3 rounded-md bg-primary px-4 py-2 text-white"
+                className="rounded-md bg-primary px-4 py-2 text-white"
               >
                 Subscribe
               </button>
