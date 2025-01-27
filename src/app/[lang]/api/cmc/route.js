@@ -1,13 +1,10 @@
+import { NextResponse } from "next/server";
 import axios from "axios";
 
-export default async function handler(req, res) {
-  if (req.method !== "GET") {
-    res.setHeader("Allow", ["GET"]);
-    return res.status(405).json({ message: `Method ${req.method} Not Allowed` });
-  }
-
-  const apiKey = process.env.CMC_API_KEY; // Store your API key in an environment variable
-  const url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+export async function GET(req) {
+  const apiKey = process.env.CMC_API_KEY; // Ensure the API key is stored securely in environment variables
+  const url =
+    "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
 
   try {
     const response = await axios.get(url, {
@@ -21,9 +18,20 @@ export default async function handler(req, res) {
       },
     });
 
-    res.status(200).json(response.data);
+    // Return a JSON response with the data
+    return NextResponse.json(response.data);
   } catch (error) {
     console.error("Error fetching data from CoinMarketCap API:", error);
-    res.status(500).json({ message: "Failed to fetch data from CoinMarketCap API" });
+    return NextResponse.json(
+      { message: "Failed to fetch data from CoinMarketCap API" },
+      { status: 500 },
+    );
   }
+}
+
+export function POST() {
+  return NextResponse.json(
+    { message: "Method POST Not Allowed" },
+    { status: 405 },
+  );
 }
