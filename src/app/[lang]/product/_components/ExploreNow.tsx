@@ -5,7 +5,6 @@ import { useState } from "react";
 import LightGraph from "./LightGraph";
 import { motion } from "framer-motion";
 import { leftVariant, rightVariants } from "@/lib/animation-variants";
-import CMCChart from "./CMCGraph";
 
 const ExploreNow = ({ coinData }) => {
   const tabs = ["chart"];
@@ -55,7 +54,6 @@ const ExploreNow = ({ coinData }) => {
           </div>
           <div className="flex h-full w-full p-5">
             {selectedTab === "chart" && <LightGraph coinData={coinData} />}
-            {/* {selectedTab === "chart" && <CMCChart coinData={coinData} />} */}
             {selectedTab === "nft" && <p>Coming Soon</p>}
             {selectedTab === "holders" && <p>Coming Soon</p>}
           </div>
