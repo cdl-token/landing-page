@@ -91,7 +91,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     usdtBalance: 0,
     cdlBalance: 0,
     raisedAmount: 0,
-    tokenPrice: "23000000000000000",
+    tokenPrice: "100000000000000000",
     totalSupply: 100000000,
     isPreSaleActive: false,
     stakedTokens: 0,
@@ -236,7 +236,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
 
         setContractData((prevState) => ({
           ...prevState,
-          tokenPrice: "23000000000000000",
+          tokenPrice: "100000000000000000",
         }));
       }
 
