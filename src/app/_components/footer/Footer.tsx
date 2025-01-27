@@ -67,7 +67,10 @@ const Footer = ({ lang = "en" }) => {
               <Link className="hover:text-primary" href="/">
                 {youtubeIcon}
               </Link>
-              <Link className="hover:text-primary" href="/">
+              <Link
+                className="hover:text-primary"
+                href="https://discord.gg/qt5D3EVtsR"
+              >
                 {discordIcon}
               </Link>
             </div>
@@ -131,7 +134,10 @@ const Footer = ({ lang = "en" }) => {
           </div>
           <div className="flex flex-col justify-end gap-5 px-5 pt-8 lg:px-0">
             <h1 className="font-neue text-xl">Sign up for our newsletter</h1>
-            <form className="flex items-center gap-2" onSubmit={handleNewsletterSubmit}>
+            <form
+              className="flex items-center gap-2"
+              onSubmit={handleNewsletterSubmit}
+            >
               <input
                 type="email"
                 name="email"

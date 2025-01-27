@@ -48,7 +48,7 @@ const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
         <SheetTrigger>
           <MenuIcon size={20} />
         </SheetTrigger>
-        <SheetContent className="border-none w-[350px] pt-10 px-5 bg-custom-bg text-white">
+        <SheetContent className="w-[350px] border-none bg-custom-bg px-5 pt-10 text-white">
           <SheetHeader>
             <SheetTitle className="text-white">
               <HeaderLogo />
@@ -120,7 +120,10 @@ const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
                 <Link className="hover:text-primary" href="/">
                   {linkedInIcon}
                 </Link>
-                <Link className="hover:text-primary" href="/">
+                <Link
+                  className="hover:text-primary"
+                  href="https://discord.gg/qt5D3EVtsR"
+                >
                   {discordIcon}
                 </Link>
               </div>
