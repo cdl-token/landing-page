@@ -1,44 +1,29 @@
 import axios from "axios";
 
-const API_KEY = process.env.NEXT_PUBLIC_COIN_MARKET_CAP_API_KEY; // Replace with your CoinMarketCap API key
-const API_BASE_URL =
-  "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/historical";
-
-export async function GET(request) {
-  const { searchParams } = new URL(request.url);
-  const symbol = searchParams.get("symbol");
-
-  if (!symbol) {
-    return new Response(JSON.stringify({ error: "Symbol is required" }), {
-      status: 400,
-    });
+export default async function handler(req, res) {
+  if (req.method !== "GET") {
+    res.setHeader("Allow", ["GET"]);
+    return res.status(405).json({ message: `Method ${req.method} Not Allowed` });
   }
 
+  const apiKey = process.env.CMC_API_KEY; // Store your API key in an environment variable
+  const url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+
   try {
-    // Make the API call to CoinMarketCap
-    const response = await axios.get(API_BASE_URL, {
+    const response = await axios.get(url, {
       headers: {
-        "X-CMC_PRO_API_KEY": API_KEY,
+        "X-CMC_PRO_API_KEY": apiKey,
       },
       params: {
-        symbol,
-        interval: "daily", // Daily intervals
-        count: 30, // Last 30 days
+        start: 1,
+        limit: 10,
+        convert: "USD",
       },
     });
-    const data = response.data.data;
-    console.log("DATA", data);
-    // Return the data
-    return new Response(JSON.stringify(data), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+
+    res.status(200).json(response.data);
   } catch (error) {
-    console.error("Failed to fetch CMC data:", error.message);
-    return new Response(JSON.stringify({ error: "Failed to fetch data" }), {
-      status: 500,
-    });
+    console.error("Error fetching data from CoinMarketCap API:", error);
+    res.status(500).json({ message: "Failed to fetch data from CoinMarketCap API" });
   }
 }

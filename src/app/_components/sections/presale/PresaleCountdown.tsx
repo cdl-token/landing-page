@@ -47,7 +47,7 @@ const PresaleCountdown = () => {
   };
 
   const getDeadTime = () => {
-    const deadline = new Date("2024-12-20T00:00:00Z");
+    const deadline = new Date("2025-02-20T00:00:00Z");
 
     return deadline.toISOString();
   };
