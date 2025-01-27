@@ -21,6 +21,7 @@ const LightGraph = ({ coinData }) => {
     BNB: { line: "#f3ba2f", top: "#f3ba2f99", bottom: "#f3ba2f10" },
   };
   useEffect(() => {
+    console.log("DATA", coinData[selectedCoin]);
     if (!chartContainerRef.current || !coinData[selectedCoin]) return;
 
     const chart = createChart(chartContainerRef.current, {
@@ -69,8 +70,8 @@ const LightGraph = ({ coinData }) => {
   }, [coinData, selectedCoin]);
 
   return (
-    <div className="relative w-full h-full">
-      <div className="flex w-full flex-col md:flex-row items-center mb-5 gap-5 md:items-start justify-between">
+    <div className="relative h-full w-full">
+      <div className="mb-5 flex w-full flex-col items-center justify-between gap-5 md:flex-row md:items-start">
         <div className="flex w-fit justify-start gap-1 rounded bg-[#1f1f1f] p-1">
           {["BTC", "ETH", "SOL", "BNB"].map((coin) => (
             <button
@@ -105,7 +106,7 @@ const LightGraph = ({ coinData }) => {
                     : "text-[#f3ba2f]",
             )}
           >
-            ${coinData[selectedCoin][10].price.toFixed(2)}
+            ${coinData[selectedCoin][98].price.toFixed(2)}
           </span>
         </div>
       </div>

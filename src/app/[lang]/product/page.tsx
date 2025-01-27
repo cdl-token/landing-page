@@ -11,17 +11,25 @@ import axios from "axios";
 
 const getData = async () => {
   const apiKey = process.env.NEXT_PUBLIC_COIN_MARKET_CAP_API_KEY;
-  const baseUrl = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/historical?symbol=SOL,ETH,BNB,BTC&count=100&interval=5m`;
+  const currentTime = Math.floor(Date.now() / 1000); // Current time in Unix timestamp
+  const baseUrl = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/historical?symbol=SOL,ETH,BNB,BTC&count=100&interval=5m&time_end=${currentTime}`;
+  const latestPriceUrl = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=SOL,ETH,BNB,BTC`; // Endpoint to get the latest price
   const headers = {
     "X-CMC_PRO_API_KEY": apiKey,
   };
 
   try {
-    const response = await axios.get(baseUrl, { headers });
-    const tokenList = response.data.data;
+    // Fetch historical data
+    const historicalResponse = await axios.get(baseUrl, { headers });
+    const tokenList = historicalResponse.data.data;
 
+    // Fetch latest price data
+    const latestPriceResponse = await axios.get(latestPriceUrl, { headers });
+    const latestPriceData = latestPriceResponse.data.data;
+
+    // Format the data
     const formattedData = Object.keys(tokenList).reduce((acc, symbol) => {
-      acc[symbol] = tokenList[symbol][0].quotes
+      const historicalPrices = tokenList[symbol][0].quotes
         .map((quote) => {
           const timestamp = quote?.timestamp;
           const price = quote?.quote?.USD?.price;
@@ -39,6 +47,18 @@ const getData = async () => {
         })
         .filter(Boolean) // Remove invalid data
         .sort((a, b) => a.time - b.time); // Sort by ascending time
+
+      // Add the latest price to the end of the array
+      const latestPrice = latestPriceData[symbol]?.quote?.USD?.price;
+      if (latestPrice) {
+        const latestPriceEntry = {
+          time: currentTime, // Use current time for the latest price
+          price: latestPrice,
+        };
+        historicalPrices.push(latestPriceEntry);
+      }
+
+      acc[symbol] = historicalPrices;
       return acc;
     }, {});
 

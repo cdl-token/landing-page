@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import axios from "axios";
 
 export async function GET(req) {
-  const apiKey = process.env.CMC_API_KEY; // Ensure the API key is stored securely in environment variables
+  const apiKey = process.env.NEXT_PUBLIC_COIN_MARKET_CAP_API_KEY; // Ensure the API key is stored securely in environment variables
   const url =
     "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
 
