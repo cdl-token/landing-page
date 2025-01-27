@@ -158,7 +158,7 @@ const PresaleCardEthereum = () => {
   return (
     <>
       {showModel && <TransactionSuccessModal />}
-      <div className="relative">
+      <div className="relative blur-sm">
         <div className="absolute -right-5 -top-24 -z-10">{btcBG}</div>
         <div className="absolute left-3 top-3 -z-10">
           <Image

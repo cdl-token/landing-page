@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { leftVariant, rightVariants } from "@/lib/animation-variants";
 import TextAnimation from "@/components/ui/scroll-text";
 import Link from "next/link";
+import PresaleCountdown from "./PresaleCountdown";
 
 const PresaleSection = () => {
   useDisableLocalStorage();
@@ -36,8 +37,14 @@ const PresaleSection = () => {
       className="max-w-screen relative flex w-full flex-col items-center justify-center py-20"
     >
       <div className="grid w-full max-w-7xl gap-20 px-5 lg:grid-cols-2">
-        <div>
+        <div className="relative">
           {chainId === 1 ? <PresaleCardEthereum /> : <PresaleCardBinance />}
+          <div className="absolute top-0 z-30 flex h-full gap-4 w-full flex-col items-center py-20 justify-center rounded-md bg-black/60">
+            <h1 className="font-neue text-3xl font-bold">
+              Presale Coming Soon!
+            </h1>
+            <PresaleCountdown deadlineDate="2025-02-20T00:00:00Z" />
+          </div>
         </div>
         <motion.div
           initial="hide"
@@ -47,7 +54,7 @@ const PresaleSection = () => {
           className="flex flex-col gap-5 md:py-20"
         >
           <TextAnimation
-            text="Join cdl token presale"
+            text="Cdl Token Presale Coming Soon!"
             variants={{
               hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
               visible: {

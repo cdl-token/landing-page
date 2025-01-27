@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 
-const PresaleCountdown = () => {
+const PresaleCountdown = ({ deadlineDate = "2025-02-20T00:00:00Z" }) => {
   const ref = useRef<NodeJS.Timeout | null>(null);
   const [timer, setTimer] = useState("00:00:00:00");
 
@@ -47,7 +47,7 @@ const PresaleCountdown = () => {
   };
 
   const getDeadTime = () => {
-    const deadline = new Date("2025-02-20T00:00:00Z");
+    const deadline = new Date(deadlineDate);
 
     return deadline.toISOString();
   };
