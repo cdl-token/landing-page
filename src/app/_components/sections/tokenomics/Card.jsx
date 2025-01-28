@@ -9,13 +9,13 @@ const Card = ({
   bonusPercent,
   daysLeft,
   start,
-  endTime = "01:00:00:00",
+  endDate, // Accepting endDate as a prop
 }) => {
   const Ref = useRef(null);
   const [timer, setTimer] = useState("00:00:00:00");
 
-  const getTimeRemaining = (e) => {
-    const total = Date.parse(e) - Date.parse(new Date());
+  const getTimeRemaining = (endDate) => {
+    const total = Date.parse(endDate) - Date.parse(new Date());
     const seconds = Math.floor((total / 1000) % 60);
     const minutes = Math.floor((total / 1000 / 60) % 60);
     const hours = Math.floor((total / 1000 / 60 / 60) % 24);
@@ -29,58 +29,35 @@ const Card = ({
     };
   };
 
-  const startTimer = (e) => {
-    let { total, days, hours, minutes, seconds } = getTimeRemaining(e);
+  const startTimer = (endDate) => {
+    const { total, days, hours, minutes, seconds } = getTimeRemaining(endDate);
     if (total >= 0) {
-      // update the timer
-      // check if less than 10 then we need to
-      // add '0' at the beginning of the variable
       setTimer(
-        (days > 9 ? days : "0" + days) +
-          ":" +
-          (hours > 9 ? hours : "0" + hours) +
-          ":" +
-          (minutes > 9 ? minutes : "0" + minutes) +
-          ":" +
-          (seconds > 9 ? seconds : "0" + seconds),
+        `${days > 9 ? days : "0" + days}:${
+          hours > 9 ? hours : "0" + hours
+        }:${minutes > 9 ? minutes : "0" + minutes}:${
+          seconds > 9 ? seconds : "0" + seconds
+        }`
       );
     }
   };
 
-  const clearTimer = (e) => {
-    // If you adjust it you should also need to
-    // adjust the Endtime formula we are about
-    // to code next
-    setTimer(endTime);
-
-    // If you try to remove this line the
-    // updating of timer Variable will be
-    // after 1000ms or 1sec
+  const clearTimer = (endDate) => {
     if (Ref.current) clearInterval(Ref.current);
     const id = setInterval(() => {
-      startTimer(e);
+      startTimer(endDate);
     }, 1000);
     Ref.current = id;
   };
 
-  const getDeadTime = () => {
-    let deadline = new Date();
-
-    // This is where you need to adjust if
-    // you entend to add more time
-    // set timer to 52 days 21 hours 12 minutes 08 seconds
-    deadline.setDate(deadline.getDate() + parseFloat(endTime.substring(0, 2)));
-    return deadline;
-  };
-
-  // We can use useEffect so that when the component
-  // mount the timer will start as soon as possible
-
-  // We put empty array to act as componentDid
-  // mount only
   useEffect(() => {
-    clearTimer(getDeadTime());
-  }, []);
+    if (endDate) {
+      clearTimer(endDate);
+    }
+    return () => {
+      if (Ref.current) clearInterval(Ref.current);
+    };
+  }, [endDate]);
 
   return (
     <div className="group w-[85vw] min-w-[271.5px] max-w-full rounded-3xl bg-[#232325] p-4 transition-all duration-500 ease-in-out hover:scale-105 sm:w-[313px]">
