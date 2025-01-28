@@ -55,10 +55,10 @@ const Footer = ({ lang = "en" }) => {
               ahead in the market with CDL.
             </span>
             <div className="mt-5 flex items-center gap-3 pl-5">
-              <Link className="hover:text-primary" href="/">
+              <Link className="hover:text-primary" href="https://t.me/CDL_Token">
                 {telegramIcon}
               </Link>
-              <Link className="hover:text-primary" href="/">
+              <Link className="hover:text-primary" href="https://x.com/CDL_Token">
                 {twitterIcon}
               </Link>
               <Link className="hover:text-primary" href="/">

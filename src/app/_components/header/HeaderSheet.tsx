@@ -111,10 +111,10 @@ const HeaderSheet = ({ lang = "en" }: { lang: string }) => {
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
               <div className="flex w-full items-center justify-center gap-5 py-2">
-                <Link className="hover:text-primary" href="/">
+                <Link className="hover:text-primary" href="https://x.com/CDL_Token">
                   {twitterIcon}
                 </Link>
-                <Link className="hover:text-primary" href="/">
+                <Link className="hover:text-primary" href="https://t.me/CDL_Token">
                   {telegramIcon}
                 </Link>
                 <Link className="hover:text-primary" href="/">
