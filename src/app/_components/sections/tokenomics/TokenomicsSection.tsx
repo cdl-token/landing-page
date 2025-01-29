@@ -104,28 +104,24 @@ const TokenomicsSection = () => {
             <Card
               state={1}
               bonusPercent={30}
-              daysLeft="1 day only"
               start="End In: "
               endDate="2025-02-28T00:00:00Z"
             />
             <Card
               state={2}
               bonusPercent={20}
-              daysLeft="1 day only"
               start="End In: "
               endDate="2025-03-30T00:00:00Z"
             />
             <Card
               state={3}
               bonusPercent={15}
-              daysLeft="2 weeks"
               start="Start In: "
               endDate="2025-04-29T00:00:00Z"
             />
             <Card
               state={4}
               bonusPercent={0}
-              daysLeft="1 month"
               start="Start In: "
               endDate="2025-05-29T00:00:00Z"
             />

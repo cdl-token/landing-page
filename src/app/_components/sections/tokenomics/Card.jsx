@@ -4,15 +4,10 @@ import SecondaryButton from "@/components/buttons/SecondaryButton";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const Card = ({
-  state,
-  bonusPercent,
-  daysLeft,
-  start,
-  endDate, // Accepting endDate as a prop
-}) => {
+const Card = ({ state, bonusPercent, start, endDate }) => {
   const Ref = useRef(null);
   const [timer, setTimer] = useState("00:00:00:00");
+  const [daysLeft, setDaysLeft] = useState(0);
 
   const getTimeRemaining = (endDate) => {
     const total = Date.parse(endDate) - Date.parse(new Date());
@@ -37,8 +32,9 @@ const Card = ({
           hours > 9 ? hours : "0" + hours
         }:${minutes > 9 ? minutes : "0" + minutes}:${
           seconds > 9 ? seconds : "0" + seconds
-        }`
+        }`,
       );
+      setDaysLeft(days);
     }
   };
 
@@ -53,6 +49,7 @@ const Card = ({
   useEffect(() => {
     if (endDate) {
       clearTimer(endDate);
+      setDaysLeft(getTimeRemaining(endDate).days);
     }
     return () => {
       if (Ref.current) clearInterval(Ref.current);
@@ -80,7 +77,7 @@ const Card = ({
         <div className="relative mt-7 flex w-full justify-center py-5 text-start"></div>
       </div>
       <div className="my-4 flex items-center justify-between gap-1 px-4">
-        <p className="text-neutralLight">{daysLeft}</p>
+        <p className="text-neutralLight">{daysLeft} days left</p>
         <span className="text-sm">
           {start} <p className="text-sm">{timer}</p>
         </span>
