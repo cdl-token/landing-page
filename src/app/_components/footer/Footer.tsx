@@ -61,12 +61,6 @@ const Footer = ({ lang = "en" }) => {
               <Link className="hover:text-primary" href="https://x.com/CDL_Token">
                 {twitterIcon}
               </Link>
-              <Link className="hover:text-primary" href="/">
-                {facebookIcon}
-              </Link>
-              <Link className="hover:text-primary" href="/">
-                {youtubeIcon}
-              </Link>
               <Link
                 className="hover:text-primary"
                 href="https://discord.gg/qt5D3EVtsR"
