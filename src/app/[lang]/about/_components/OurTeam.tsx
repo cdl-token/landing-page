@@ -36,7 +36,7 @@ const OurTeam = () => {
           expertise to drive innovation, collaboration, and growth. Together,
           we&apos;re shaping the future of our industry.
         </motion.span>
-        <div className="grid w-full gap-10 py-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid w-full gap-10 py-10 md:grid-cols-2 lg:grid-cols-3">
           <motion.div
             initial="hide"
             whileInView="show"
@@ -109,6 +109,7 @@ const OurTeam = () => {
               width={230}
               height={230}
               alt="Team 1"
+              className="rounded-full"
             />
             <div className="flex flex-col items-center gap-1">
               <h1 className="text-center font-neue text-[21px] font-bold uppercase leading-[22px]">
