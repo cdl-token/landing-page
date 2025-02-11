@@ -66,7 +66,7 @@ const TokenomicsSection = () => {
             <AllocationItem color="#D08BFE" label="10% Liquidity" />
             <AllocationItem color="#5A199A" label="15% Staking Reward" />
           </div>
-          <Chart2 />
+          <div className="max-w-56"><Chart2 /></div>
           <div className="flex flex-col justify-center gap-y-4 pl-5">
             <AllocationItem color="#F7931A" label="15% Ecosystem" />
             <AllocationItem color="#CE86FF" label="10% Team & Advisors" />

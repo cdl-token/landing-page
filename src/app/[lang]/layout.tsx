@@ -8,6 +8,8 @@ import { AppKit } from "@/context/Web3Modal";
 import { StoreProvider } from "@/context/Store/Store";
 import ToastProvider from "@/components/notification/ToastProvider";
 import PreloaderProvider from "./PreloaderProvider";
+import CookiesBanner from "../_components/CookiesBanner";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const neueMachinaFont = localFont({
   src: [
@@ -65,11 +67,13 @@ export default async function RootLayout({
                 <Header lang={lang} />
                 {children}
                 <Footer lang={lang} />
+                <CookiesBanner />
               </ToastProvider>
             </StoreProvider>
           </PreloaderProvider>
         </AppKit>
       </body>
+      <GoogleAnalytics gaId="G-1D409RB5B8" />
     </html>
   );
 }
