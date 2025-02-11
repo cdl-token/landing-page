@@ -36,7 +36,7 @@ const OurTeam = () => {
           expertise to drive innovation, collaboration, and growth. Together,
           we&apos;re shaping the future of our industry.
         </motion.span>
-        <div className="grid w-full gap-10 py-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid w-full gap-10 py-10 md:grid-cols-2 lg:grid-cols-3">
           <motion.div
             initial="hide"
             whileInView="show"
@@ -109,6 +109,7 @@ const OurTeam = () => {
               width={230}
               height={230}
               alt="Team 1"
+              className="rounded-full"
             />
             <div className="flex flex-col items-center gap-1">
               <h1 className="text-center font-neue text-[21px] font-bold uppercase leading-[22px]">
@@ -117,34 +118,6 @@ const OurTeam = () => {
               <span className="mb-3 text-center text-[#898990]">
                 Co-Founder & CFO
               </span>
-              <div className="flex items-center gap-2">
-                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary hover:text-black">
-                  {linkedIn}
-                </div>
-                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary hover:text-black">
-                  {twitter}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-          <motion.div
-            initial="hide"
-            whileInView="show"
-            exit="show"
-            variants={rightVariants(0.3)}
-            className="flex flex-col items-center gap-5"
-          >
-            <Image
-              src="/static/our-team/4.png"
-              width={230}
-              height={230}
-              alt="Team 1"
-            />
-            <div className="flex flex-col items-center gap-1">
-              <h1 className="text-center font-neue text-[21px] font-bold uppercase leading-[22px]">
-                Andrew Speer
-              </h1>
-              <span className="mb-3 text-center text-[#898990]">CMO</span>
               <div className="flex items-center gap-2">
                 <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#232325] transition-all duration-200 ease-in hover:bg-primary hover:text-black">
                   {linkedIn}
