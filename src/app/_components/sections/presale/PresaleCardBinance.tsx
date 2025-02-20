@@ -201,7 +201,7 @@ const PresaleCardBinance = () => {
   return (
     <>
       {showModel && <TransactionSuccessModal />}
-      <div className="relative blur-sm">
+      <div className="relative">
         <div className="absolute -right-5 -top-24 -z-10">{btcBG}</div>
         <div className="absolute left-3 top-3 -z-10">
           <Image
