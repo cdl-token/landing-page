@@ -203,8 +203,9 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
 
         //Supply For Sale
         // 13043478.26
+        //TODO::For update supply
         remainTokensForSale:
-          2000 -
+          3000000 -
           (Number(formatUnits(supply?.toString() || "0", 18)?.toString()) +
             Number(sold?.toString())),
 

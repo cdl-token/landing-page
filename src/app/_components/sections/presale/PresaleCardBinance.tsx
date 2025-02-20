@@ -155,7 +155,7 @@ const PresaleCardBinance = () => {
     "contractData?.remainTokensForSale?.toString()",
   );
 
-  const soldPercentage = (contractData?.raisedAmount * 100) / 300000;
+  const soldPercentage = (contractData?.raisedAmount * 100) / 3000000; //TODO::Its %
 
   // const remainTokens = 2000 - contractData?.tokensInContract;
 
