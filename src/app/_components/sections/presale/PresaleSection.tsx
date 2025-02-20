@@ -54,7 +54,7 @@ const PresaleSection = () => {
           className="flex flex-col gap-5 md:py-20"
         >
           <TextAnimation
-            text="Cdl Token Presale Coming Soon!"
+            text="Join The Presale"
             variants={{
               hidden: { filter: "blur(10px)", opacity: 0, y: 20 },
               visible: {
