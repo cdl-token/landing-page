@@ -3,7 +3,7 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import Image from "next/image";
 import PresaleCardEthereum from "./PresaleCardEthereum";
 import PresaleCardBinance from "./PresaleCardBinance";
-import { useAppKitNetworkCore } from "@reown/appkit/react";
+import { useAppKitAccount, useAppKitNetworkCore } from "@reown/appkit/react";
 import { useEffect, useState } from "react";
 import useDisableLocalStorage from "@/components/notification/useDisableLocalStorage";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
@@ -23,6 +23,7 @@ const PresaleSection = () => {
   }, []);
   // ----------------------------------------------------
 
+  const { address, isConnected } = useAppKitAccount();
   const { chainId } = useAppKitNetworkCore();
 
   console.log("🚀 ~ PresaleSection ~ chainId:", chainId);
@@ -38,7 +39,11 @@ const PresaleSection = () => {
     >
       <div className="grid w-full max-w-7xl gap-20 px-5 lg:grid-cols-2">
         <div className="relative">
-          {chainId === 1 ? <PresaleCardEthereum /> : <PresaleCardBinance />}
+          {isConnected && chainId === 1 ? (
+            <PresaleCardEthereum />
+          ) : (
+            <PresaleCardBinance />
+          )}
           {/* <div className="absolute top-0 z-30 flex h-full gap-4 w-full flex-col items-center py-20 justify-center rounded-md bg-black/60">
             <h1 className="font-neue text-xl md:text-3xl font-bold">
               Presale Coming Soon!
