@@ -71,7 +71,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
     );
   }
 
-  const [loader, setloader] = useState(true);
+  const [loader, setloader] = useState(false);
 
   const [purchaseLoader, setPurchaseLoader] = useState(false);
 
@@ -190,14 +190,18 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
       setContractData((prevState) => ({
         ...prevState,
         raisedAmount:
+          Number(85000) +
           Number(formatUnits(raisedAmount?.toString() || "0", 18)?.toString()) +
           Number(
             formatUnits(raisedAmountEthereum?.toString() || "0", 6)?.toString(),
           ),
         tokensInContract: Number(
-          formatUnits(TokensInContracts?.toString() || "0", 18)?.toString(),
+          formatUnits(TokensInContracts?.toString() || "0", 18)?.toString() +
+            850000,
         ),
+
         soldTokenOfBinance:
+          850000 +
           Number(formatUnits(supply?.toString() || "0", 18)?.toString()) +
           Number(sold?.toString()),
 
@@ -206,15 +210,17 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
         //TODO::For update supply
         remainTokensForSale:
           3000000 -
-          (Number(formatUnits(supply?.toString() || "0", 18)?.toString()) +
+          (850000 +
+            Number(formatUnits(supply?.toString() || "0", 18)?.toString()) +
             Number(sold?.toString())),
 
         soldTokenOfEthereum:
+          850000 +
           Number(formatUnits(supply?.toString() || "0", 18)?.toString()) +
           Number(sold?.toString()),
       }));
 
-      if (chainId === 1) {
+      if (isConnected && chainId === 1) {
         //TODO::1 //mainnet
         setContractData((prevState) => ({
           ...prevState,
@@ -228,7 +234,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
           tokenPrice: sellPrice?.toString(),
         }));
       }
-      if (chainId !== 1) {
+      if (isConnected && chainId !== 1) {
         //TODO::1 //mainnet
         setContractData((prevState) => ({
           ...prevState,
@@ -296,6 +302,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
         }
         setloader(false);
       }
+      setloader(false);
     } catch (error) {
       setloader(false);
       console.log("getErrorr", error);
@@ -558,7 +565,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
         provider,
       );
 
-      if (chainId === 1) {
+      if (isConnected && chainId === 1) {
         //TODO::1
 
         setContractData((prevState) => ({
@@ -619,6 +626,7 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
         }
         setloader(false);
       }
+      setloader(false);
     } catch (error) {
       setloader(false);
       console.log("Ethereum");
